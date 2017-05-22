@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/">
+    
+    
+    <title>Google 力挺 Kotlin，这是怎么回事！ | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="困死梦中惊坐起，Google 力挺 Kotlin ！                                                                                                             话说洒家梦中化身鲁肃，正准备跟孔明去草船借箭呢，突然好友微信发来则消息：Google 将 Kotlin 列为 Android 官">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google 力挺 Kotlin，这是怎么回事！">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="困死梦中惊坐起，Google 力挺 Kotlin ！                                                                                                             话说洒家梦中化身鲁肃，正准备跟孔明去草船借箭呢，突然好友微信发来则消息：Google 将 Kotlin 列为 Android 官">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/android_kotlin.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/maoyeye.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/bengkui.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/confirm.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/jacknjill.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/callback_evil.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/coroutine.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/xiangjingjing.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.18/byebye.jpeg">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google 力挺 Kotlin，这是怎么回事！">
+<meta name="twitter:description" content="困死梦中惊坐起，Google 力挺 Kotlin ！                                                                                                             话说洒家梦中化身鲁肃，正准备跟孔明去草船借箭呢，突然好友微信发来则消息：Google 将 Kotlin 列为 Android 官">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.05.18/android_kotlin.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Google 力挺 Kotlin，这是怎么回事！</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Google 力挺 Kotlin，这是怎么回事！</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-17T23:38:18.000Z" itemprop="datePublished" class="page-time">
+  2017-05-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不敢用-Kotlin？"><span class="post-toc-text">不敢用 Kotlin？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#想用-Lambda？"><span class="post-toc-text">想用 Lambda？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#想用-Coroutine？"><span class="post-toc-text">想用 Coroutine？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WTFUtils"><span class="post-toc-text">WTFUtils</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#空指针异常？"><span class="post-toc-text">空指针异常？</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin-on-Android-Now-official"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Google 力挺 Kotlin，这是怎么回事！</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月18日 7:38" datetime="2017-05-17T23:38:18.000Z"  itemprop="datePublished">2017-05-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>困死梦中惊坐起，Google 力挺 Kotlin ！</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/android_kotlin.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>话说洒家梦中化身鲁肃，正准备跟孔明去草船借箭呢，突然好友微信发来则消息：Google 将 Kotlin 列为 Android 官方开发语言，据称 IO 大会上提到这一点的时候，下面的掌声如雷鸣般不绝于耳~</p>
+<p>艾玛，这掌声，台上讲话的确定不是毛爷爷？</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/maoyeye.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>话说听到这一消息之后，群里的小伙伴们都炸了，嗯？这么多夜猫子！</p>
+<p>好啦，不说别的，就说说这一消息能给我们带来什么影响呢？</p>
+<h2 id="不敢用-Kotlin？"><a href="#不敢用-Kotlin？" class="headerlink" title="不敢用 Kotlin？"></a>不敢用 Kotlin？</h2><p>要知道，在 Google 大大在背后撑腰之前，我们在 Android 当中写 Kotlin 都算是野路子，没有人认可这事儿的，出了问题也还要自己负责，代码移交的时候也会带来一堆麻烦（毕竟大家大多数人不愿意学这个东西啊）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/bengkui.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>现在好了，你就可以理直气壮的说，哇塞，Kotlin 是官方语言了，这么好的东西你们都不用，都不愿意去用，你们迟早要被遗忘在历史的车轮印里面的那个小缝缝里面！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/confirm.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="想用-Lambda？"><a href="#想用-Lambda？" class="headerlink" title="想用 Lambda？"></a>想用 Lambda？</h2><p>要说 Kotlin 最早用在写 Android 上，让人感觉最爽的就是可以任性的使用 <strong>Lambda</strong>，当然这在 Java 8 中也得到了支持（虽然还是支持得很诡异），于是 Google 就差人去折腾个 Jack&amp;Jill，折腾了两年，有一天有个人一进门就冲着 J&amp;J 的开发者们喊了一句 “Hi, Jack!”，于是这个项目就 Deprecated 了。嗯，Android 开发者们想用 Lambda 指望 Google 看来是要等到猴年马月了，而且按照之前的尿性，估计也得等到某个 api 版本才会支持，这就尴尬了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/jacknjill.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>谁能拯救你？当然是 Kotlin 啊！函数是头等公民的 Kotlin，支持函数式编程都毫无压力，Lambda 的体验更是不在话下，哎呀，不说了，我要去写 Kotlin 了~</p>
+<h2 id="想用-Coroutine？"><a href="#想用-Coroutine？" class="headerlink" title="想用 Coroutine？"></a>想用 Coroutine？</h2><p>最近在封装 Camera api。用过的小伙伴肯定都知道，Camera 有两套 api，老 api 基本是是同步调用的接口，只有拍照、对角这两个有回调；新 api 呢，所有的指令都类似于 http 请求一样异步发出去，回调呢，运行在我们发请求时传入的一个 Handler 所在的线程上，这样看来，回调恶魔的大戏就要上演了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/callback_evil.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>遇到这样的 api，我也很绝望啊。。</p>
+<p>开发当中类似回调套回调的写法不在少数，我们该如何写出一段看上去是同步执行的代码，实际上却自己处理了异步请求呢？当然是 Coroutine 啊。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/coroutine.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>开发过 Unity 的朋友肯定会想到这个，去年有个同事去搞了一段时间游戏，对 Coroutine 的用法大为赞赏，它的主要优点有哪些呢？</p>
+<ul>
+<li>代码看上去直观，易懂</li>
+<li>异常处理简单（一个 try … catch 就解决问题）</li>
+<li>资源消耗少（比起你动不动就搞十个八个线程池来说，Coroutine 简直太经济啦）</li>
+</ul>
+<p>好，最关键的是什么呢？这在 Kotlin 1.1 当中，Coroutine 已经非常完善了，尽管还被标记为 Experimental，但 Kotlin 1.2 的时候目测也不会有大改动，想想以后的 Android 代码还会有这样的东西，真的感觉世界都很美好呢！</p>
+<p>哎呀，咋又说这么多，我要去写 Kotlin 了！</p>
+<h2 id="WTFUtils"><a href="#WTFUtils" class="headerlink" title="WTFUtils"></a>WTFUtils</h2><p>每次都要提这个东西。你的代码里面一定一堆堆的 StringUtils/ImageUtils/BitmapUtils/LogUtils 这样的东西吧！</p>
+<p>更搞笑的是，每个人都有自己的 LogUtils，当然也不排除有些人用的是 LogUtil，结果呢，我在 as 当中 double-shift 输入 LogUti 之后出来一堆，天呐，你们让我选哪一个啊。。</p>
+<p>曾经有一次组里面的 iOS 大哥做分享，叫“手把手教 Android 开发写 iOS”，里面特别提到了动态修改方法的特性，以及扩展方法的特性，艾玛，看得我眼馋的不要不要的，想着哪天我也可以给 String 加个什么 util 方法的，该多好。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/xiangjingjing.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>后来遇到了 Kotlin，Android 的小伙伴们，来吧，删掉你的 XXUtils 或者 XXUtil 吧，让那些不堪回首的往事都随风而去吧。</p>
+<h2 id="空指针异常？"><a href="#空指针异常？" class="headerlink" title="空指针异常？"></a>空指针异常？</h2><p>听说你用 Java 写的 Android 代码经常出空指针异常啊？是不是辛辛苦苦大半月，一跑就挂千百遍？千百遍，还每次都是那个空指针，急得你直把眼泪掉，哎，这TM是什么破逻辑，模板代码数不尽，查着查着就懵逼。</p>
+<p>Kotlin，安全类型来帮你，从此不怕空指针。</p>
+<p>。。。</p>
+<p>好人就做到这里，剩下的你们自己关注公众号 Kotlin 翻看以前的文章自己体会 ~</p>
+<p><strong>哈哈，我去写 Kotlin 了，别拦着我。</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.18/byebye.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果你有兴趣加入我们，请直接关注公众号 Kotlin ，或者加 QQ 群：162452394 联系我们。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin_group.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/05/18/Kotlin-on-Android-Now-official/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/null/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                null
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&title=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&title=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/22/2017-5-11-KotlinDSL2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotlin 一个很厉害的 DSL 写法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/17/kotlin-reference-translated/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 官方参考文档翻译完毕</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&title=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&title=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Google 力挺 Kotlin，这是怎么回事！》 — Kotlin&url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQVIDMQwEQP7/aXhASJiR7JBD72krBK97qZLNyF9f8fX95Hr8zuP9s++8/vzxKc9+98CFh4eHd2jqj0M/gz2bUIJvn57/Fh4eHt5tXj6h1xU4X0iSBSC5/8OCh4eH9wG8dtKrsl5ur/Hw8PA+k7cp6PnmOx8fDw8P7794SSk/NcU2on1T1oKHh4fX7VqjLtLn3F/p7+Hh4eGtu+rJQYH9N/Mlp54tHh4e3gVe29yatcTa5lmyNS+eiIeHh3eUl8cNmylu4on8OMIv93h4eHhv4b3eziaf7MfZ5Ax/JCh4eHh4a17eypoh26m0L6ju7+Hh4eGtebNW0ya8SD6ZxRnDrh0eHh7eemPa/nQWXmwi4HphwMPDw7vAy0vwbNu9ORDQjh9lLXh4eHhr3uuBVqcSRplqvoGuUxY8PDy8C7y2+OZlPSn6+YIUhct4eHh4F3h5C2rWspq9uHY0PDw8vHfyZk36togno7Xb92hRwcPDw/sn3n67fDvOONbfw8PDwyt5eXGfLRKzA1Wz2GKVteDh4eEFtXcziVPLSUIatuvw8PDwjvI2JX4Ws+ZHqYrDVa+XBDw8PLyjvLb078OC9pv50+tIAg8PD2/BS4Y+Fey2V7vtfrp44OHh4R3lnWqD5R38zROTV4mHh4f3fl5ejk+9lFNhRP128fDw8Na8JKjNrzxQaJeB4ggCHh4e3tt5eVhwYPubFPr2YBYeHh7eUd6s0LcHp2bb4vaJv/xh8PDw8C7wzjaiNiPsw4vVhYeHh1fyZi2uNvbNp5UEGcVhAjw8PLxrvDrDiBeAWTi7X8bw8PDwPod340BA3ipLFqpV8oGHh4d3gbeJX9uN8gyPh4eH9x7erPGfvKBk0rPQIXpBeHh4eBd47b/3+Xb2xlGAw509PDw8vI73A9QZfYIqr1HHAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

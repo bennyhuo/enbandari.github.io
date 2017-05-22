@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/">
+    
+    
+    <title>Kotlin 1.1 Beta 2 发布~ | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Coroutine,兼容">
+    <meta name="description" content="1 协程改包名风波说真的，看到这个标题的时候我还挺兴奋，离 release 又近了一步。不过，看了这篇文章的时候，我就觉得也是醉醉的。发生了啥呢？ 原来，协程相关的依赖统统被标记为 experimental 了，以前叫： 1package kotlin.coroutines 现在呢？ 1package kotlin.coroutines.experimental 这意味着啥？意味着我们在这次更新之">
+<meta name="keywords" content="Coroutine,兼容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 1.1 Beta 2 发布~">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="1 协程改包名风波说真的，看到这个标题的时候我还挺兴奋，离 release 又近了一步。不过，看了这篇文章的时候，我就觉得也是醉醉的。发生了啥呢？ 原来，协程相关的依赖统统被标记为 experimental 了，以前叫： 1package kotlin.coroutines 现在呢？ 1package kotlin.coroutines.experimental 这意味着啥？意味着我们在这次更新之">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin 1.1 Beta 2 发布~">
+<meta name="twitter:description" content="1 协程改包名风波说真的，看到这个标题的时候我还挺兴奋，离 release 又近了一步。不过，看了这篇文章的时候，我就觉得也是醉醉的。发生了啥呢？ 原来，协程相关的依赖统统被标记为 experimental 了，以前叫： 1package kotlin.coroutines 现在呢？ 1package kotlin.coroutines.experimental 这意味着啥？意味着我们在这次更新之">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin 1.1 Beta 2 发布~</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin 1.1 Beta 2 发布~</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-06T00:14:15.000Z" itemprop="datePublished" class="page-time">
+  2017-02-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-协程改包名风波"><span class="post-toc-text">1 协程改包名风波</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-兼容-1-0"><span class="post-toc-text">2 兼容 1.0</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-小结"><span class="post-toc-text">3 小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin 1.1 Beta 2 发布~"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin 1.1 Beta 2 发布~</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月06日 8:14" datetime="2017-02-06T00:14:15.000Z"  itemprop="datePublished">2017-02-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="1-协程改包名风波"><a href="#1-协程改包名风波" class="headerlink" title="1 协程改包名风波"></a>1 协程改包名风波</h2><p>说真的，看到这个标题的时候我还挺兴奋，离 release 又近了一步。不过，看了这篇文章的时候，我就觉得也是醉醉的。发生了啥呢？</p>
+<p>原来，协程相关的依赖统统被标记为 experimental 了，以前叫：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> kotlin.coroutines</div></pre></td></tr></table></figure>
+<p>现在呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> kotlin.coroutines.experimental</div></pre></td></tr></table></figure>
+<p>这意味着啥？意味着我们在这次更新之后，还得把原来的协程代码的包重新导入一遍，另外，如果你想使用协程，那么你还需要在配置当中呢启用它，例如 gradle 配置需要加入：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">kotlin &#123; </div><div class="line">    experimental &#123; </div><div class="line">        coroutines <span class="string">'enable'</span> </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你在升级所有的依赖的时候，确保它是兼容 1.1.0-beta-38 的，这一点很重要，不然等着报错吧！</p>
+<p>话说，为啥要这么搞呢？按照官方的说法就是，协程这个特性目前已经实现的非常不错了，内置 API 非常少，灵活扩展性也强，不过他们觉得这个东西还有很大的潜力，也不能就这样作为最终版本给大家放出来，而作为实验特性交给大家使用呢，更多地还是希望大家能提提意见啥的。嗯，说实在的，协程这个特性真不是个小特性。</p>
+<h2 id="2-兼容-1-0"><a href="#2-兼容-1-0" class="headerlink" title="2 兼容 1.0"></a>2 兼容 1.0</h2><p>话说，1.1 的编译器终于声称兼容 1.0 的源码了，这表明我们再也不用搞两个 IntelliJ 分别装 1.0 稳定版的插件和 1.1 Beta 版的插件了。</p>
+<p>是的，就算你不用 1.1 的特性，你装 1.1 的插件，用 1.1 的编译器，写 1.0 的代码毫无压力！！</p>
+<p>什么？你问我试了没？当然，我一直用最新的插件，折腾地挺苦的 T T，劝诸君还是装稳定版吧，吃螃蟹要做好心理准备~！</p>
+<h2 id="3-小结"><a href="#3-小结" class="headerlink" title="3 小结"></a>3 小结</h2><p>浏览了一下 1.1Beta 2 的主要特性，其实就是改改包名，修几个小 Bug，大的改动基本没有了。如果大家想要尽早上手 1.1 的特性，那么就从现在开始吧~</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.890Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/02/06/Kotlin 1.1 Beta 2 发布~/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coroutine/">Coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/兼容/">兼容</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&title=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&title=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/06/深入理解 Kotlin Coroutine (2)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">深入理解 Kotlin Coroutine (2)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/30/勘误：15 Kotlin 与 Java 共存 (2) /" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">勘误：15 Kotlin 与 Java 共存 (2)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&title=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&title=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 1.1 Beta 2 发布~》 — Kotlin&url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/06/Kotlin 1.1 Beta 2 发布~/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACN0lEQVR42u3aQXLjQAgF0Nz/0p5tFmnlA8pUCT2tXLbs7qcFhoavr/j6fLtOn57uP32rusoNFwYGxmMZn8sr2dY1L/luvu6RioGB8QLGdRjNQ+r89fW6x/cxMDAwLtO1JJjmyR8GBgbGnJGkcQn+OpRjYGBg9IrYPPjem2jeXItjYGA8kJGfuv//13/S38DAwHgU41O8qr+TH6jlQfaHVTAwMFYzqqXm/M556nlcBQMDYymj11bshd1eGyAa78DAwFjNmBSr+ZKThK/5cDEwMBYxJqMP1dZjoRkZP5RC3oqBgfFYxmQMohpMqwnffFgNAwNjByNZphdk8/ZA8pu/8DAwMFYz8sB61yhYfnxWHsvAwMBYzeglecn7efCdJKMYGBhvYOTpVzWZy5POaqYX5bkYGBgrGNVDsWoLoTrS2mwDYGBgrGb0Gof5FquDGtUGapThYmBgLGLkyVyy6Ul7cpKkYmBg7GMkR2N5UzNJHEdP+rQTDAyM1Yze0XxSUvaCcl4MH/8xMDAwVjPycJkfz+Vht9fm/KWFiYGBsY4xCXa9EY3JbEghNcTAwFjHqDY7523O3h6i6QwMDIwVjE/xqhao+SBFNVnEwMB4D6M3Z9Ub6kpK3Gr5OhoXw8DAeBTjriDbe363BVwMDIwXMKqBL99QdWgjD8cYGBgYk6OxXkKZD41hYGBg9I7VkrGMeZA9lsQYGBgvYORDEnkLc3J/dbwMAwNjN2NSOlaL0jwQ9/4GMDAw1jH+AS8fS6kEV3pbAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

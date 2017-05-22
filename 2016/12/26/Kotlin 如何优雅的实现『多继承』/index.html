@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/">
+    
+    
+    <title>Kotlin 如何优雅的实现『多继承』 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="接口代理,多继承">
+    <meta name="description" content="Hi，Kotliners，尽管视频完结了，不过每周一我还是会给大家推送一些 Kotlin 的有意思的话题，如果大家对视频有兴趣，直接点击阅读原文就可以找到~ Kotlin 从入门到『放弃』视频教程 – 这一期给大家讲一个有意思的东西。我们都知道 Java 当年高调的调戏 C++ 的时候，除了最爱说的内存自动回收之外，还有一个著名的单继承，任何 Java 类都是 Object 的子类，任何 Java">
+<meta name="keywords" content="接口代理,多继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 如何优雅的实现『多继承』">
+<meta property="og:url" content="http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Hi，Kotliners，尽管视频完结了，不过每周一我还是会给大家推送一些 Kotlin 的有意思的话题，如果大家对视频有兴趣，直接点击阅读原文就可以找到~ Kotlin 从入门到『放弃』视频教程 – 这一期给大家讲一个有意思的东西。我们都知道 Java 当年高调的调戏 C++ 的时候，除了最爱说的内存自动回收之外，还有一个著名的单继承，任何 Java 类都是 Object 的子类，任何 Java">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin 如何优雅的实现『多继承』">
+<meta name="twitter:description" content="Hi，Kotliners，尽管视频完结了，不过每周一我还是会给大家推送一些 Kotlin 的有意思的话题，如果大家对视频有兴趣，直接点击阅读原文就可以找到~ Kotlin 从入门到『放弃』视频教程 – 这一期给大家讲一个有意思的东西。我们都知道 Java 当年高调的调戏 C++ 的时候，除了最爱说的内存自动回收之外，还有一个著名的单继承，任何 Java 类都是 Object 的子类，任何 Java">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin 如何优雅的实现『多继承』</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin 如何优雅的实现『多继承』</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-26T01:49:45.000Z" itemprop="datePublished" class="page-time">
+  2016-12-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Kotlin 如何优雅的实现『多继承』"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin 如何优雅的实现『多继承』</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月26日 9:49" datetime="2016-12-26T01:49:45.000Z"  itemprop="datePublished">2016-12-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Hi，Kotliners，尽管视频完结了，不过每周一我还是会给大家推送一些 Kotlin 的有意思的话题，如果大家对视频有兴趣，直接点击阅读原文就可以找到~</p>
+<p><a href="https://github.com/enbandari/Kotlin-Tutorials" target="_blank" rel="external">Kotlin 从入门到『放弃』视频教程</a></p>
+<p>–</p>
+<p>这一期给大家讲一个有意思的东西。我们都知道 Java 当年高调的调戏 C++ 的时候，除了最爱说的内存自动回收之外，还有一个著名的单继承，任何 Java 类都是 Object 的子类，任何 Java 类有且只有一个父类，不过，它们可以有多个接口，就像这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span></span>&#123;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Kotlin</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span>, <span class="title">FERunnable</span></span>&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样用起来真的比 C++ 要简单得多，不过有时候也会有些麻烦：Java 和 Kotlin 都可以运行在 JVM 上面，我们用一个接口 JVMRunnable 来标识它们的这一身份；现在我们假设这二者对于 JVMRunnable 接口的实现都是一样的，所以我们将会在 Java 和 Kotlin 当中写下两段重复的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnJVM</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Kotlin</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span>, <span class="title">FERunnable</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnJVM</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnFE</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重复代码使我们最不愿意看到的，所以我们决定创建一个 JVMLanguage 作为 Java 和 Kotlin 的父类，它提供默认的 runOnJVM 的实现。看上去挺不错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">JVMLanguage</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnJVM</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java</span> <span class="keyword">extends</span> <span class="title">JVMLanguage</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Kotlin</span> <span class="keyword">extends</span> <span class="title">JVMLanguage</span> <span class="keyword">implements</span> <span class="title">FERunnable</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnFE</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，我们还知道 Kotlin 可以编译成 Js 运行，那我们硬生生的把 Kotlin 称作 JVMLanguage 就有些牵强了，而刚刚我们觉得很完美的写法呢，其实是不合适的。</p>
+<p>简单的说，继承和实现接口的区别就是：继承描述的是这个类『是什么』的问题，而实现的接口则描述的是这个类『能做什么』的问题。</p>
+<p>Kotlin 与 Java 在能够运行在 JVM 这个问题上是一致的，可 Java 却不能像 Kotlin 那样去运行在前端，Kotlin 和 Java 运行在 JVM 上这个点只能算作一种能力，而不能对其本质定性。</p>
+<p>于是我们在 Java 8 当中看到了接口默认实现的 Feature，于是我们的代码可以改改了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JVMRunnable</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">runOnJVM</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Kotlin</span> <span class="keyword">extends</span> <span class="title">Language</span> <span class="keyword">implements</span> <span class="title">JVMRunnable</span>, <span class="title">FERunnable</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runOnFE</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样很好，不过，由于接口无法保存状态，runOnJVM 这个方法的接口级默认实现仍然非常受限制。</p>
+<p>那么 Kotlin 给我们带来什么呢？大家请看下面的代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Language</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">JVMRunnable</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">runOnJVM</span><span class="params">()</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DefaultJVMRunnable</span> : <span class="type">JVMRunnable &#123;</span></span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">runOnJVM</span><span class="params">()</span></span> &#123;</div><div class="line">        println(<span class="string">"running on JVM!"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Java</span></span>(jvmRunnable: JVMRunnable) : Language(), JVMRunnable <span class="keyword">by</span> jvmRunnable</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kotlin</span></span>(jvmRunnable: JVMRunnable) : Language(), JVMRunnable <span class="keyword">by</span> jvmRunnable, FERunnable&#123;</div><div class="line">	<span class="function"><span class="keyword">fun</span> <span class="title">runOnFE</span><span class="params">()</span></span>&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过接口代理的方式，我们把 JVMRunnable 的具体实现代理给了 jvmRunnable 这个实例，这个实例当然是可以保存状态的，它一方面可以很好地解决我们前面提到的接口默认实现的问题，另一方面也能在提供能力的同时不影响原有类的『本质』。</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2016/12/26/Kotlin 如何优雅的实现『多继承』/ " target="_blank" rel="external">http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多继承/">多继承</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/接口代理/">接口代理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&title=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&title=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/02/Kotlin 1.0.6/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotlin 1.0.6</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/12/18/Learn Kotlin with “Advent of Code”/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]Learn Kotlin with “Advent of Code”</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&title=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&title=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 如何优雅的实现『多继承』》 — Kotlin&url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2016/12/26/Kotlin 如何优雅的实现『多继承』/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aQXLCMBAEQP7/aVKVKwFmtJLjQ/tEJUZ26yCJ3Xk84uv5e737/O6/8zFfr8eJCw8PD2/p1T8Pl/zl3ZhrI+SjfZkCPDw8vGO8ZOF+vTOZlM8vmj832X7w8PDw7sb7/K2Wl28Jyfvg4eHh3Zk3KRC0pHy68fDw8K7n5YfjYuj4pdtCw5FaCx4eHt6BLtJ9Pl/a38PDw8OLt4QNJdRyytbCBG/fFg8PD+8Ab1uTqWxxTaj1c/Hw8PC28iYF3GRq1iYi+Ut0+MbDw8M7wMsX9HzDWGuVJWOOQl14eHh4m3htIDVZvidRqmSaks0DDw8P7xxvV1Oqja6ulWgXSx54eHh4W3l5pCmfoMmW0OYBvljw8PDwDvNGRdKlQvAoYJpMNB4eHt4BXn4WzX/8t23+eatsW4wVDw8PL+BNogBtwHRtKV9rgOHh4eGd4+1q/Of355tNckwvArV4eHh4m3j50bZtdLUhrWTpz+/Hw8PDu4aXFwLa1503xkaZMjw8PLytvPonfYnPyxzJsTsvjuDh4eFdw8vDTGsl2rwAUcSqkiIIHh4e3mHe5AHtYTffkEYhLTw8PLwDvHn0Klms8+/mRVs8PDy8O/Dycm1yCN4VnMpDA3h4eHjX8CYLej7OvPTQBgvw8PDwTvDaL7dNsjyU0Ia3NmTK8PDw8Ma8uiUfH6nXAgH50XnU+sLDw8MreW18as5IjtRtHSXatPDw8PA28Z7l1S708+hAW+CIfjHg4eHhDXjzxlgyBW0U4FxxBA8PD28XL2815eGAtTjXkbIIHh4e3jHe2mbQFoXXklGTNhseHh7e//ImC/eknNFOCh4eHt49eXWHbdP9eSEDDw8P7zQvLw20i34yibsKIn88Cw8PD+8AbxRsWmpZzY/mixEBPDw8vCnvBw0JXpMeMaJmAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

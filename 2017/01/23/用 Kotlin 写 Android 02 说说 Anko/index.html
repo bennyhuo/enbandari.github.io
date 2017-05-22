@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/">
+    
+    
+    <title>用 Kotlin 写 Android 02 说说 Anko | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Anko,DSL">
+    <meta name="description" content="上周的文章其实我们提到了 Anko 的，不过我们只是给大家展示了一下 find 方法。除了这个之外，还有哪些好玩的东西呢？ 1、简化页面操作我们写 Android 最先做的是什么？当然是设置个 OnClickLisener，这样自然我的按钮听我的，我的地盘我做主了。 123hello.onClick &amp;#123;    startActivity&amp;lt;AnotherActivity&amp;gt;(&quot;f">
+<meta name="keywords" content="Anko,DSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Kotlin 写 Android 02 说说 Anko">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="上周的文章其实我们提到了 Anko 的，不过我们只是给大家展示了一下 find 方法。除了这个之外，还有哪些好玩的东西呢？ 1、简化页面操作我们写 Android 最先做的是什么？当然是设置个 OnClickLisener，这样自然我的按钮听我的，我的地盘我做主了。 123hello.onClick &amp;#123;    startActivity&amp;lt;AnotherActivity&amp;gt;(&quot;f">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.23/linear.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.23/relative.png">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 Kotlin 写 Android 02 说说 Anko">
+<meta name="twitter:description" content="上周的文章其实我们提到了 Anko 的，不过我们只是给大家展示了一下 find 方法。除了这个之外，还有哪些好玩的东西呢？ 1、简化页面操作我们写 Android 最先做的是什么？当然是设置个 OnClickLisener，这样自然我的按钮听我的，我的地盘我做主了。 123hello.onClick &amp;#123;    startActivity&amp;lt;AnotherActivity&amp;gt;(&quot;f">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.1.23/linear.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">用 Kotlin 写 Android 02 说说 Anko</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">用 Kotlin 写 Android 02 说说 Anko</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-23T04:46:49.000Z" itemprop="datePublished" class="page-time">
+  2017-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、简化页面操作"><span class="post-toc-text">1、简化页面操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、聊聊-DSL-布局"><span class="post-toc-text">2、聊聊 DSL 布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-纵向布局"><span class="post-toc-text">2.2 纵向布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-相对布局"><span class="post-toc-text">2.3 相对布局</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-独立的-UI"><span class="post-toc-text">2.4 独立的 UI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-5-在任意位置用-DSL-定义-View"><span class="post-toc-text">2.5 在任意位置用 DSL 定义 View</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-6-扩展-Anko，支持自定义-View"><span class="post-toc-text">2.6 扩展 Anko，支持自定义 View</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-7-Anko-DSL-使用小结"><span class="post-toc-text">2.7 Anko DSL 使用小结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3、简化异步操作"><span class="post-toc-text">3、简化异步操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、简化日志打印"><span class="post-toc-text">4、简化日志打印</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5、小结"><span class="post-toc-text">5、小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-用 Kotlin 写 Android 02 说说 Anko"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">用 Kotlin 写 Android 02 说说 Anko</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月23日 12:46" datetime="2017-01-23T04:46:49.000Z"  itemprop="datePublished">2017-01-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上周的文章其实我们提到了 Anko 的，不过我们只是给大家展示了一下 find 方法。除了这个之外，还有哪些好玩的东西呢？</p>
+<h2 id="1、简化页面操作"><a href="#1、简化页面操作" class="headerlink" title="1、简化页面操作"></a>1、简化页面操作</h2><p>我们写 Android 最先做的是什么？当然是设置个 OnClickLisener，这样自然我的按钮听我的，我的地盘我做主了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hello.onClick &#123;</div><div class="line">    startActivity&lt;AnotherActivity&gt;(<span class="string">"from"</span> to <span class="string">"MainActivity"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>哎哟，不错哦。其中 hello 是一个 TextView，我们通过 onClick 为其设置了一个 OnClickListener，这样看上去真是简洁不少。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> android.view.View.<span class="title">onClick</span><span class="params">(l: (<span class="type">v</span>: <span class="type">android</span>.<span class="type">view</span>.<span class="type">View</span>?)</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</div><div class="line">    setOnClickListener(l)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也没什么难理解的，onClick 是一个扩展方法，传入的 Lambda 表达式通过 SAM 转换成了 OnClickListener，一切都是这么的自然。如果你对传入的 view 感兴趣，你当然可以直接用 it 召唤它：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hello.onClick &#123;</div><div class="line">	Log.d(TAG, it.toString())</div><div class="line">    startActivity&lt;AnotherActivity&gt;(<span class="string">"from"</span> to <span class="string">"MainActivity"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简单吧。</p>
+<p><strong>等等！那个 startActivity 是怎么回事？没有 Intent 么？</strong></p>
+<p>哈哈，这个嘛，且看源码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;<span class="keyword">reified</span> T: Activity&gt;</span> Context.<span class="title">startActivity</span><span class="params">(<span class="keyword">vararg</span> params: <span class="type">Pair</span>&lt;<span class="type">String</span>, Any&gt;)</span></span> &#123;</div><div class="line">    AnkoInternals.internalStartActivity(<span class="keyword">this</span>, T::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>, <span class="type">params)</span></span></div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">internalStartActivity</span><span class="params">(</span></span></div><div class="line">        ctx: <span class="type">Context</span>,</div><div class="line">        activity: <span class="type">Class</span>&lt;<span class="type">out</span> <span class="type">Activity</span>&gt;,</div><div class="line">        params: <span class="type">Array</span>&lt;<span class="type">out</span> <span class="type">Pair</span>&lt;<span class="type">String</span>, Any&gt;&gt;</div><div class="line">) &#123;</div><div class="line">    ctx.startActivity(createIntent(ctx, activity, params))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实也没什么，就是对我们之前模板式的跳转写法做了简化而已，至于用到的 reified 和 Pair 也不算什么新鲜的东西，Pair 当中的 K-V 实际上就是我们通常放入 Intent 的 extra，所以我们自然可以在 AnotherActivity 当中取到这个值：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnotherActivity</span>: <span class="type">AppCompatActivity</span></span>() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</div><div class="line">        relativeLayout &#123;</div><div class="line">            textView &#123;</div><div class="line">                text = <span class="keyword">if</span>(intent == <span class="literal">null</span>) </div><div class="line">                			<span class="string">"from nowhere"</span> </div><div class="line">	                	<span class="keyword">else</span> </div><div class="line">   		             		intent.extras[<span class="string">"from"</span>]?.toString()</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>取到我们传入的值，在 AnotherActivity 当中显示出来。有木有觉得要比我们用 Java 老大哥写出来的代码简洁易懂呢？</p>
+<h2 id="2、聊聊-DSL-布局"><a href="#2、聊聊-DSL-布局" class="headerlink" title="2、聊聊 DSL 布局"></a>2、聊聊 DSL 布局</h2><p>**再等等！那个 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">嗯，这个要多说几句了，Anko 这个框架虽然打着简化开发的旗号，不过野心终归还是不小的。它自己搞出一套用 Kotlin 写布局的 DSL，换句话说，有了 Anko 我们布局甚至可以不需要用 XML 了，也不需要像用 Java 硬编码 View 那么繁琐，只需要通过几句 DSL 就可以搞定。我们来多看几个例子：</div><div class="line"></div><div class="line">### 2.1 水平布局</div><div class="line"></div><div class="line">下面是是三个按钮水平等分布局的写法，我们用到的实际上就是线性布局，比较简单，button 的参数是按钮的文字（有较多重载的版本，大家可以酌情选择），lparams 的参数有三个，前两个分别是宽、高，最后一个是一个 Lambda 表达式，我们可以在这个Lambda表达式当中详细定义我们需要的布局，比如设置 margin 等等。</div><div class="line"></div><div class="line">```kotlin</div><div class="line">linearLayout &#123;</div><div class="line">    button(&quot;1&quot;).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = 1f</div><div class="line">    &#125;</div><div class="line">    button(&quot;2&quot;).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = 1f</div><div class="line">    &#125;</div><div class="line">    button(&quot;3&quot;).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = 1f</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果图如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.23/linear.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="2-2-纵向布局"><a href="#2-2-纵向布局" class="headerlink" title="2.2 纵向布局"></a>2.2 纵向布局</h3><p>还是线性布局，不过换了个方向，你当然可以这么写：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">linearLayout &#123;</div><div class="line">    orientation = LinearLayout.VERTICAL</div><div class="line">    button(<span class="string">"1"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">    button(<span class="string">"2"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">    button(<span class="string">"3"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不过，Anko 更倾向于让我们用这个：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">verticalLayout &#123;</div><div class="line">    button(<span class="string">"1"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">    button(<span class="string">"2"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">    button(<span class="string">"3"</span>).lparams(wrapContent, wrapContent)&#123;</div><div class="line">        weight = <span class="number">1</span>f</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我给大家看一下源码，大家就分分钟明白了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> VERTICAL_LAYOUT_FACTORY = &#123; ctx: Context -&gt;</div><div class="line">    <span class="keyword">val</span> view = _LinearLayout(ctx)</div><div class="line">    view.orientation = LinearLayout.VERTICAL</div><div class="line">    view</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其实我们创建的 verticalLayout 最终是从这个方法当中获取的，没啥新鲜的，就是设置了一下 orientation 罢了。效果图我就不贴了，大家很容易猜得到。</p>
+<h3 id="2-3-相对布局"><a href="#2-3-相对布局" class="headerlink" title="2.3 相对布局"></a>2.3 相对布局</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">relativeLayout &#123;</div><div class="line">    relativeLayout &#123;</div><div class="line">        textView(<span class="string">"周杰伦"</span>) &#123;</div><div class="line">            id = R.id.extra</div><div class="line">            useSecondary()</div><div class="line">        &#125;.lparams(wrapContent, wrapContent) &#123;</div><div class="line">            alignParentRight()</div><div class="line">            centerVertically()</div><div class="line">            rightMargin = dip(<span class="number">10</span>)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        imageView &#123;</div><div class="line">            id = R.id.avatar</div><div class="line">            imageResource = R.drawable.jaychow</div><div class="line">            scaleType = ImageView.ScaleType.FIT_XY</div><div class="line">        &#125;.lparams(dip(<span class="number">40</span>), dip(<span class="number">40</span>))&#123;</div><div class="line">            centerVertically()</div><div class="line">            leftMargin = dip(<span class="number">10</span>)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        textView(<span class="string">"千里之外"</span>) &#123;</div><div class="line">            id = R.id.title</div><div class="line">            usePrimary()</div><div class="line">        &#125;.lparams(matchParent, wrapContent) &#123;</div><div class="line">            leftOf(R.id.extra)</div><div class="line">            rightOf(R.id.avatar)</div><div class="line">            margin = dip(<span class="number">5</span>)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        textView(<span class="string">"依然范特西"</span>) &#123;</div><div class="line">            id = R.id.subtitle</div><div class="line">            useSecondary()</div><div class="line">        &#125;.lparams(matchParent, wrapContent) &#123;</div><div class="line">            leftOf(R.id.extra)</div><div class="line">            rightOf(R.id.avatar)</div><div class="line">            below(R.id.title)</div><div class="line">            leftMargin = dip(<span class="number">5</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;.lparams(matchParent, dip(<span class="number">50</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"subtitle"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"extra"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"avatar"</span> <span class="attr">type</span>=<span class="string">"id"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这个布局我们看到其实就是一张图片，三个 TextView，难度也不大，不过这种写法可能要适应一下。</p>
+<p>效果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.23/relative.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>注意到我在 TextView 当中用了两个方法：usePrimary() 和 useSecondary()，这其实是我定义的样式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> TextView.<span class="title">usePrimary</span><span class="params">()</span></span>&#123;</div><div class="line">    textSize = <span class="number">15</span>f <span class="comment">//注意这里就是 sp 的值</span></div><div class="line">    textColor = Color.BLACK</div><div class="line">    typeface = Typeface.DEFAULT_BOLD</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> TextView.<span class="title">useSecondary</span><span class="params">()</span></span>&#123;</div><div class="line">    textSize = <span class="number">12</span>f <span class="comment">//注意这里就是 sp 的值</span></div><div class="line">    textColor = Color.GRAY</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个算是比较复杂的一个布局了，只要 XML 可以搞定的用 Anko DSL 的方式一样可以搞定，而且写出来的东西都可以直接对应到源码，这一点是非常棒的。我们在使用 XML 布局的时候如果想要知道某一个属性对应 View 的什么成员，还得去找这个 View 解析 XML 的代码，显然这一点 DSL 要方便一些。</p>
+<h3 id="2-4-独立的-UI"><a href="#2-4-独立的-UI" class="headerlink" title="2.4 独立的 UI"></a>2.4 独立的 UI</h3><p>前面我们说到的都是在 Activity 的 onCreate 方法中使用 DSL 的场景。很多时候我们其实还是希望布局和 Activity 分开的，那么我们就可以用官方推荐的这种方式来给 Activity 设置布局：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?, persistentState: <span class="type">PersistableBundle</span>?)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState, persistentState)</div><div class="line">        MyActivityUI().setContentView(<span class="keyword">this</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyActivityUI</span> : <span class="type">AnkoComponent</span>&lt;<span class="type">MyActivity</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">createView</span><span class="params">(ui: <span class="type">AnkoContext</span>&lt;<span class="type">MyActivity</span>&gt;)</span></span> = with(ui) &#123;</div><div class="line">        verticalLayout &#123;</div><div class="line">            <span class="keyword">val</span> name = editText()</div><div class="line">            button(<span class="string">"Say Hello"</span>) &#123;</div><div class="line">                onClick &#123; ctx.toast(<span class="string">"Hello, <span class="subst">$&#123;name.text&#125;</span>!"</span>) &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-5-在任意位置用-DSL-定义-View"><a href="#2-5-在任意位置用-DSL-定义-View" class="headerlink" title="2.5 在任意位置用 DSL 定义 View"></a>2.5 在任意位置用 DSL 定义 View</h3><p>前面提到的各种 <figure class="highlight plain"><figcaption><span>&#123;&#125;``` 也好，```verticalLayout &#123;&#125;``` 也好，都只能在 Activity、ViewManager（ViewGroup 的接口）、Context 这三个类的作用域范围之内使用，换句话说前面的几个布局的方法都是这几个类的扩展方法。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下面这个写法是没有问题的：</div><div class="line"></div><div class="line">```kotlin</div><div class="line">fun createView(context: Context): View&#123;</div><div class="line">	return context.relativeLayout&#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>相应的，我们可以用任意一个 ViewGroup 的子类来调用类似的方法，这与调用 <figure class="highlight plain"><figcaption><span>是一样的：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```kotlin</div><div class="line">fun addViewToParent(viewRoot: ViewGroup)&#123;</div><div class="line">    viewRoot.frameLayout &#123; </div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是在 Fragment 当中，Anko 还非常贴心的定义了一个叫 UI 的方法，这个方法同时也存在于 Context 当中，用法也比较简单：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainFragment</span>: <span class="type">Fragment</span></span>()&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateView</span><span class="params">(</span></span></div><div class="line">            inflater: <span class="type">LayoutInflater</span>?, </div><div class="line">            container: <span class="type">ViewGroup</span>?, </div><div class="line">            savedInstanceState: <span class="type">Bundle</span>?): View &#123;</div><div class="line">        <span class="keyword">return</span> UI &#123;</div><div class="line">            tableLayout &#123; </div><div class="line">                ...</div><div class="line">            &#125;</div><div class="line">        &#125;.view</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-6-扩展-Anko，支持自定义-View"><a href="#2-6-扩展-Anko，支持自定义-View" class="headerlink" title="2.6 扩展 Anko，支持自定义 View"></a>2.6 扩展 Anko，支持自定义 View</h3><p>我们在开发中经常继承一个 View 实现一些自己想要的功能，比如我们继承 _RelativeLayout:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomLayout</span></span>(context: Context)</div><div class="line">    : _RelativeLayout(context) &#123;</div><div class="line"> 	...   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意，如果我们直接继承 RelativeLayout，那么还需要自己定义 lparams 方法，这个我就不细说了，大家有需求可以自己详细研究~</p>
+<p>为了让 Anko DSL 支持下面的写法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">customLayout&#123;</div><div class="line">	button(<span class="string">"ClickMe"</span>)&#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们需要定义下面三组扩展方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> ViewManager.<span class="title">customLayout</span><span class="params">(theme: <span class="type">Int</span> = <span class="number">0</span>)</span></span> </div><div class="line">        = customLayout(theme) &#123;&#125;</div><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> ViewManager.<span class="title">customLayout</span><span class="params">(</span></span></div><div class="line">        theme: <span class="type">Int</span> = <span class="number">0</span>, </div><div class="line">        init: <span class="type">CustomLayout</span>.() -&gt; <span class="built_in">Unit</span>) </div><div class="line">        = ankoView(::CustomLayout, theme, init)</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Activity.<span class="title">customLayout</span><span class="params">(theme: <span class="type">Int</span> = <span class="number">0</span>)</span></span> </div><div class="line">        = customLayout(theme) &#123;&#125;</div><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Activity.<span class="title">customLayout</span><span class="params">(</span></span></div><div class="line">        theme: <span class="type">Int</span> = <span class="number">0</span>, </div><div class="line">        init: <span class="type">CustomLayout</span>.() -&gt; <span class="built_in">Unit</span>) </div><div class="line">        = ankoView(::CustomLayout, theme, init)</div><div class="line"></div><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Context.<span class="title">customLayout</span><span class="params">(theme: <span class="type">Int</span> = <span class="number">0</span>)</span></span> </div><div class="line">        = customLayout(theme) &#123;&#125;</div><div class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Context.<span class="title">customLayout</span><span class="params">(</span></span></div><div class="line">        theme: <span class="type">Int</span> = <span class="number">0</span>, </div><div class="line">        init: <span class="type">CustomLayout</span>.() -&gt; <span class="built_in">Unit</span>) </div><div class="line">        = ankoView(::CustomLayout, theme, init)</div></pre></td></tr></table></figure>
+<p>其中，第一组 ViewManager 的是为了在 ViewGroup 当中使用；第二组是为了在 Activity 当中使用，第三组就是为了在所有 Context 当中使用。</p>
+<p>扩展也是非常简单的，用起来也丝毫感觉不到这些 View 是自定义的，比起 XML 标签长长的一串确实也要美观得多。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">net.println.kotlinandroiddemo.CustomLayout</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line">		...</div><div class="line"><span class="tag">&lt;/<span class="name">net.println.kotlinandroiddemo.CustomLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="2-7-Anko-DSL-使用小结"><a href="#2-7-Anko-DSL-使用小结" class="headerlink" title="2.7 Anko DSL 使用小结"></a>2.7 Anko DSL 使用小结</h3><p>Anko DSL 的方式布局看上去还是比较清爽直观的，而且因为这是 Kotlin 代码，自然所有的view 都是强类型约束的，不需要我们 findViewById 再强转，除此之外由于是代码，可以直接运行，也就省去了运行时解析 XML 的开销，这一点可以说也是相比于 Android 官方的 XML 布局而言 Anko 主打的性能优势。</p>
+<p>它的各方面优势我们在前面已经给大家一一点到，可是它存在哪些问题呢？</p>
+<ul>
+<li>首先，Anko DSL 布局不能预览。可以说这一点足以让我们放弃它了，不能预览的话很多时候我们只能通过运行结果来判断布局是否准确，这对开发效率的影响是巨大的。当然，这么说可能 Anko 不服，毕竟人家也是发布了一个叫 Anko Preview Plugin 的 IDE 插件的，有了这个插件理论上我们就可以预览 Anko DSL 的布局结果了对吧？可是结果呢，每次做了修改都需要 make 一下才可以看到结果，显然预览速度来看不如 XML 快。而就算这个问题我们可以忍，慢就慢点儿，别慢太多就行了吧，结果呢，人家这个插件存在各种各样的问题，比如对最新版的 Android Studio 2.2 和 IntelliJ 2016.3 不支持（当然其实本质上是对新版本的 Preview 功能不兼容），大家可以参考这个 issue：<a href="https://github.com/Kotlin/anko/issues/202" target="_blank" rel="external">https://github.com/Kotlin/anko/issues/202</a>。也就是说，这个插件现在是不能用的，所以跟没有也没啥区别。</li>
+<li><p>其次，对于 id 的定义会比较蛋疼。我们知道我们在布局的时候可以通过 <figure class="highlight plain"><figcaption><span>的方式生成一个 id，并交给 Android 资源管理器统一管理，用 Anko DSL 的话我们就得专门定义一个变量或者在 value 目录下面增加 id 的定义（就像 2.3 的例子那样）去让 view 引用。不用 id 行不行呢？你去问问 RelativeLayout 答应不答应吧。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```kotlin</div><div class="line">   val FROM_TEXT = 0</div><div class="line">   val CLICK_ME = 1</div><div class="line">   relativeLayout &#123;</div><div class="line">       textView &#123;</div><div class="line">           text = ...</div><div class="line">           id = FROM_TEXT</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       button(&quot;clickMe&quot;)&#123;</div><div class="line">           id = CLICK_ME</div><div class="line">       &#125;.lparams &#123; </div><div class="line">           below(FROM_TEXT)</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>再次，我们通常会需要引用一些 view，通过 XML 布局 + kotlin-android-extensions 的方式，我们可以直接引用到这些有 id 的 view，非常方便，不过，如果我们用 Anko DSL 布局的话，我们就享受不到这项福利了（如果你不明白为什么，可以去看下我的<a href="http://mp.weixin.qq.com/s?__biz=MzIzMTYzOTYzNA==&amp;mid=2247483805&amp;idx=1&amp;sn=6382e2a758f4c50c0a31a3d36ccb81e7" target="_blank" rel="external">前一篇文章: 用Kotlin写Android 01 难道只有环境搭建这么简单？</a>）。</p>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> FROM_TEXT = <span class="number">0</span></div><div class="line">   <span class="keyword">val</span> CLICK_ME = <span class="number">1</span></div><div class="line">   <span class="keyword">var</span> fromText: TextView? = <span class="literal">null</span></div><div class="line">   relativeLayout &#123;</div><div class="line">       fromText = textView &#123;</div><div class="line">           text = ...</div><div class="line">           id = FROM_TEXT</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       button(<span class="string">"clickMe"</span>)&#123;</div><div class="line">           id = CLICK_ME</div><div class="line">       &#125;.lparams &#123; </div><div class="line">           below(FROM_TEXT)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   ...</div><div class="line">   </div><div class="line">   <span class="keyword">if</span>(shouldHideText) fromText?.visibility = View.GONE</div><div class="line">   <span class="keyword">else</span> fromText?.visibility = View.VISIBLE</div></pre></td></tr></table></figure>
+</li>
+<li><p>还有就是，如果我们的布局有多个版本，而且需要动态替换外部资源以达到换肤的效果，那么 XML 显然比 Kotlin 代码要来得容易：前者可以编译成一个只有资源的 apk 供应用加载，后者的话就得搞一下动态类加载了。</p>
+</li>
+</ul>
+<p>总之，Anko DSL 布局这个特性我个人觉得还没有达到可以取代 XML 布局的地步，如果大家习惯用 Java 硬编码 View 结构的话，Anko DSL 是个非常不错的选择；相反，如果大家一直用 XML 的话，那请接着用 XML 吧。当然，如果大家有好的使用方式，无论如何要来我这儿跟我嘚瑟一下哈~</p>
+<h2 id="3、简化异步操作"><a href="#3、简化异步操作" class="headerlink" title="3、简化异步操作"></a>3、简化异步操作</h2><p>假如你要在点击按钮之后把一个文件（本地或者服务端，也可能比较大，总之读取耗时）当中的文字显示出来，你用 Java 会怎么写呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">button.setOnClickListener(<span class="keyword">new</span> OnClickListener()&#123;</div><div class="line">	<span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span></span>&#123;</div><div class="line">		getExecutor().execute(<span class="keyword">new</span> Runnable()&#123;</div><div class="line">			<span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">				...</div><div class="line">				MainActivity.<span class="keyword">this</span>.runOnUiThread(<span class="keyword">new</span> Runnable()&#123;</div><div class="line">					...</div><div class="line">				&#125;);</div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>哎呀我去，真是蜜汁缩进啊，我都写晕了。可是有了 Anko 配合，这段代码简直不能更清爽：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">button.onClick &#123;</div><div class="line">    doAsync &#123;</div><div class="line">        <span class="keyword">val</span> text = File(<span class="string">"You raise me up.lrc"</span>).readText()</div><div class="line">        uiThread &#123;</div><div class="line">            hello.text = text</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>doAsync 当中的代码运行在 Anko 配置的线程池当中，执行完之后还可以转入 uiThread 块来操作 UI，简单明了，还不容易出错。你当然也可以处理异常和自定义线程池：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">doAsync(</div><div class="line">    exceptionHandler = &#123;</div><div class="line">        Log.e(TAG, <span class="string">"error happened when read file."</span>, it)</div><div class="line">    &#125;,</div><div class="line">    task = &#123;</div><div class="line">        <span class="keyword">val</span> text = File(<span class="string">"You raise me up.lrc"</span>).readText()</div><div class="line">        uiThread &#123;</div><div class="line">            hello.text = text</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    executorService = Executors.newSingleThreadExecutor()</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>其实大家肯定想到了这两个方法的实现逻辑：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> T.<span class="title">doAsync</span><span class="params">(</span></span></div><div class="line">        exceptionHandler: ((<span class="type">Throwable</span>) -&gt; <span class="built_in">Unit</span>)? = <span class="literal">null</span>,</div><div class="line">        executorService: ExecutorService,</div><div class="line">        task: AnkoAsyncContext&lt;T&gt;.() -&gt; <span class="built_in">Unit</span></div><div class="line">): Future&lt;<span class="built_in">Unit</span>&gt; &#123;</div><div class="line">    <span class="keyword">val</span> context = AnkoAsyncContext(WeakReference(<span class="keyword">this</span>))</div><div class="line">    <span class="keyword">return</span> executorService.submit&lt;<span class="built_in">Unit</span>&gt; &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            context.task()</div><div class="line">        &#125; <span class="keyword">catch</span> (thr: Throwable) &#123;</div><div class="line">            exceptionHandler?.invoke(thr)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> AnkoAsyncContext<span class="type">&lt;T&gt;</span>.<span class="title">uiThread</span><span class="params">(f: (<span class="type">T</span>)</span></span> -&gt; <span class="built_in">Unit</span>): <span class="built_in">Boolean</span> &#123;</div><div class="line">    <span class="keyword">val</span> ref = weakRef.<span class="keyword">get</span>() ?: <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    <span class="keyword">if</span> (ContextHelper.mainThread == Thread.currentThread()) &#123;</div><div class="line">        f(ref)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ContextHelper.handler.post &#123; f(ref) &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4、简化日志打印"><a href="#4、简化日志打印" class="headerlink" title="4、简化日志打印"></a>4、简化日志打印</h2><p>不知道大家有没有觉得 <figure class="highlight plain"><figcaption><span>...)``` 这样的代码写起来麻烦，绝大多数情况下，我们打日志都需要多写个 Log. 除非静态导入方法，以及 TAG 的值通常都是对应的类名，有时候我只是为了临时打印一行日志，还得去定义一个静态常量 TAG，简直了，还有就是如果我只是想要打印一下某一个对象，还得显式得调用 toString 方法，一点儿都不智能。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```java</div><div class="line">public class MainActivity extends Activity&#123;</div><div class="line">	public static final String TAG = &quot;MainActivity&quot;;</div><div class="line">	</div><div class="line">	...</div><div class="line">	View view = ...</div><div class="line">	Log.d(TAG, view.toString());</div><div class="line">	...</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有了 Anko 就要简单的多了，只要实现 AnkoLogger 这个接口，我们就可以愉快的打印日志了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeActivity</span> : <span class="type">Activity</span></span>(), AnkoLogger &#123;</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">someMethod</span><span class="params">()</span></span> &#123;</div><div class="line">        info(<span class="string">"London is the capital of Great Britain"</span>)</div><div class="line">        debug(<span class="number">5</span>) <span class="comment">// .toString() method will be executed</span></div><div class="line">        warn(<span class="literal">null</span>) <span class="comment">// "null" will be printed</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>日志的 TAG 默认就是类名称，如果你需要自定义，那也没关系，直接覆写这个变量就可以了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="keyword">val</span> loggerTag: String = <span class="string">"SomeActivityTag"</span></div></pre></td></tr></table></figure>
+<h2 id="5、小结"><a href="#5、小结" class="headerlink" title="5、小结"></a>5、小结</h2><p>Anko 这个框架其实没有什么复杂的地方，它更多的是在想办法简化我们的“八股文”代码，让我们的生活更轻松一些而已。DSL 布局是一个很不错的尝试，不过现在看来还是不太完美的，XML 本身也没有太大的问题，想必后续大家完全转向 DSL 的动力也不会很大。</p>
+<p>除了前面提到的特性，Anko 还可以简化对话框、toast、sqlite 等操作，相比之下，toast 的用法还是比较常用的，也比较简单，我就不细说了；至于 sqlite ，通常我们也不建议去直接操作它，用一些 ORM 框架可能会让你的代码更友好。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin扫码关注.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Anko/">Anko</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&title=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&title=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/30/如何优雅的在微信公众号中编辑代码/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">如何优雅的在微信公众号中编辑代码</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/21/喜大普奔！Kotlin 1.1 Beta 降临~/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">喜大普奔！Kotlin 1.1 Beta 降临~</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&title=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&title=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《用 Kotlin 写 Android 02 说说 Anko》 — Kotlin&url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3awW4iMRAEUP7/p7PXSCykqtuOiPTmhAYY/Hywm3I/HvH19e36fuf59fO3np+Q3E/ePXbh4eHhLYY+G8T757yaoPcTl9/5YWx4eHh413jJsp4s2e0S/37LyT/z8j4eHh7eB/BmP/8VX21Bj4eHh/fXeUlwkLy7jz/w8PDwbvOSKOF9OLsvtZMI+GLWgoeHh9dVrdEp0ue8vnK+h4eHh7c+Vd8chuWTlUQPw9Hi4eHhXeDlC27SGrXveppFtz9MDR4eHt5RXr705xvDrC1gPyn/eY2Hh4d3gdcWtTmjjTPaA7N2c8LDw8M7y5uFEcmk5Iv1bAOIfgUPDw/vKG/WIjAbdEsa7mmz+cbDw8NbH0flgcKs3aplJ2MrDsDw8PDwFrzZQp+Xy3kEPCvio5M9PDw8vAu8ZIj58t02AcxCh2JjwMPDwzvKa4+j2nhiE8i2ecLLz+Ph4eEd5eV/+PPh5st3u9zXU4yHh4d3gZcXpvsCd1Z8z8r6ojMCDw8Pr+TtQ9V9sJu/2x6P4eHh4d3g5Y1NeTg7izNm3VP1JoGHh4d3lNeW10n0sBrKIgrBw8PDu8erC9PRcdSmAWszKjw8PLx7vGQ53oQX+ZVsA0VzGB4eHt4F3uwAbPP5s3Ft9GQ8PDy8X+HlpW27WM+atPKiHA8PD+/3ee3f/lmI0Aa4swgYDw8P7zavXZqTACIfxIENIE9c8PDw8C7zNovyZnFvf+WHkhoPDw/vEO+rvGZFeTt97Xb18sl4eHh4F3jtoX7+A3l4MQPPWhPw8PDwTvH2rQBte0E+uPfPjLYEPDw8vGu8/KBrRjoQyJbbGB4eHt7n8JLIIC/H26fV9/Hw8PA+ktc2H8w2gGSDecxmAg8PD2/Ey0vh5E4eubaBRX30hYeHh3eBV/+9j1sH8uA1H/Thkz08PDy8jvcPARYDJ41LjvUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

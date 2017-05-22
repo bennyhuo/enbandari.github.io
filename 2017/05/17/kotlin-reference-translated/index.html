@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/17/kotlin-reference-translated/">
+    
+    
+    <title>Kotlin 官方参考文档翻译完毕 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin,中文,官网">
+    <meta name="description" content="非常高兴跟大家宣布：Kotlin 官方文档的参考部分已翻译校对完毕、且与官网同步，这也是目前唯一完整且最新的官方参考文档翻译。 打开 Kotlin 语言中文站，点学习即是，或者直接打开这个链接：https://www.kotlincn.net/docs/reference/。为了便于离线阅读，还可以从 GitBook 项目 gitbook.com/book/hltj/kotlin-referenc">
+<meta name="keywords" content="Kotlin,中文,官网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 官方参考文档翻译完毕">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="非常高兴跟大家宣布：Kotlin 官方文档的参考部分已翻译校对完毕、且与官网同步，这也是目前唯一完整且最新的官方参考文档翻译。 打开 Kotlin 语言中文站，点学习即是，或者直接打开这个链接：https://www.kotlincn.net/docs/reference/。为了便于离线阅读，还可以从 GitBook 项目 gitbook.com/book/hltj/kotlin-referenc">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.17/contributors.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.17/weibo_qr.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.05.17/wechat_qr.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin 官方参考文档翻译完毕">
+<meta name="twitter:description" content="非常高兴跟大家宣布：Kotlin 官方文档的参考部分已翻译校对完毕、且与官网同步，这也是目前唯一完整且最新的官方参考文档翻译。 打开 Kotlin 语言中文站，点学习即是，或者直接打开这个链接：https://www.kotlincn.net/docs/reference/。为了便于离线阅读，还可以从 GitBook 项目 gitbook.com/book/hltj/kotlin-referenc">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.05.17/contributors.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin 官方参考文档翻译完毕</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin 官方参考文档翻译完毕</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-17T03:13:15.000Z" itemprop="datePublished" class="page-time">
+  2017-05-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/社区动态/">社区动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin-是什么？"><span class="post-toc-text">Kotlin 是什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin-中文站"><span class="post-toc-text">Kotlin 中文站</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与官方站及时同步"><span class="post-toc-text">与官方站及时同步</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GitBook-避免重复工作"><span class="post-toc-text">GitBook 避免重复工作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参与和改进"><span class="post-toc-text">参与和改进</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于我"><span class="post-toc-text">关于我</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-kotlin-reference-translated"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin 官方参考文档翻译完毕</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月17日 11:13" datetime="2017-05-17T03:13:15.000Z"  itemprop="datePublished">2017-05-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/社区动态/">社区动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>非常高兴跟大家宣布：Kotlin 官方文档的参考部分已翻译校对完毕、且与官网同步，这也是目前唯一完整且最新的官方参考文档翻译。</p>
+<p>打开 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 语言中文站</a>，点<a href="https://www.kotlincn.net/docs/reference/" target="_blank" rel="external">学习</a>即是，或者直接打开这个链接：<a href="https://www.kotlincn.net/docs/reference/" target="_blank" rel="external">https://www.kotlincn.net/docs/reference/</a>。为了便于离线阅读，还可以从 GitBook 项目 <a href="https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details" target="_blank" rel="external">gitbook.com/book/hltj/kotlin-reference-chinese</a> 下载对应电子书。今后官方文档有更新时，中文站和 GitBook 也会及时同步并更新翻译，关注 Kotlin 语言的同学请保持关注。</p>
+<h2 id="Kotlin-是什么？"><a href="#Kotlin-是什么？" class="headerlink" title="Kotlin 是什么？"></a>Kotlin 是什么？</h2><p>Kotlin 中文站首页（<a href="https://www.kotlincn.net/" target="_blank" rel="external">https://www.kotlincn.net/</a>）已经用很醒目的字眼回答了这个问题。而我觉得这样介绍会更充分一些：Kotlin 是一门支持多范式、多平台的现代静态编程语言。Kotlin 支持面向对象、泛型与函数式等编程范式，它支持 JVM、Android、JavaScript 目标平台，而<a href="https://www.kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/">原生（Native）平台的 Kotlin 几天前也发布了 0.2 版本</a>。而且 Kotlin 具有很多现代（也有称下一代的）静态语言特性：如类型推断、多范式支持、可空性表达、扩展函数、模式匹配等。因此上面描述毫不夸张，它是一门非常有潜力的新兴语言。</p>
+<p>另外 100% 的 Java 互操作性，，使 Kotlin 能够与既有工具/框架如 Dagger、Spring、Vert.x 等集成，也能让既有的基于 Java 的服务端与 Android 项目逐步迁移到 Kotlin。详情参见<a href="https://www.kotlincn.net/docs/reference/server-overview.html" target="_blank" rel="external">Kotlin 用于服务器端</a>与<a href="https://www.kotlincn.net/docs/reference/android-overview.html" target="_blank" rel="external">Kotlin 用于 Android</a>。了解更多关于 Kotlin 的内容，请关注 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 中文站</a>与 <a href="https://www.kotliner.cn/">Kotlin 中文博客</a>。</p>
+<h2 id="Kotlin-中文站"><a href="#Kotlin-中文站" class="headerlink" title="Kotlin 中文站"></a>Kotlin 中文站</h2><p>针对 Kotlin 官方参考文档的翻译有很多支系，而只有 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 中文站</a> 能够与官网及时同步且最终完成全部参考文档翻译。</p>
+<p>这当然离不开创始人<a href="http://tanfujun.com" target="_blank" rel="external">晓_晨DEV</a>和我（<a href="https://hltj.me/" target="_blank" rel="external">灰蓝天际</a>）以及<a href="https://www.kotlincn.net/contribute.html#中文站翻译贡献者" target="_blank" rel="external">所有参与翻译的同学</a>的共同努力。我从 2016 年 2 月开始参与 Kotlin 中文站的翻译，Kotlin 1.0 就是那时正式发布的，时隔一年多又亲历了它 1.1 版的发布，见证它成长的同时，也在不断校对和补充官方参考文档的翻译。而晓_晨DEV更是在 2015 年就开了 Kotlin 中文站的翻译，并且组织带动社区参与者一起翻译。在 Kotlin 中文站版本库的<a href="https://github.com/hltj/kotlin-web-site-cn/graphs/contributors" target="_blank" rel="external">贡献者统计图</a>中可以看到晓_晨DEV与我分别提交了近 4000 行与近 6000 行的改动，已经同官方文档的撰写者一起排进了前十。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.05.17/contributors.png" alt="contributors.png" title="">
+                </div>
+                <div class="image-caption">contributors.png</div>
+            </figure>
+<h2 id="与官方站及时同步"><a href="#与官方站及时同步" class="headerlink" title="与官方站及时同步"></a>与官方站及时同步</h2><p>Kotlin 中文站之所以能够与官网内容同步，在于创始人晓_晨DEV采用了科学的翻译方式，其实也是开源界普遍采用的 fork-修改模式，只是 Kotlin 中文站直接 fork 了官方的英文源站。这样做的显著优势是官方站有任何更新可以及时合并进来。尽管这可能会引入冲突解决的环节，并且合并新的英文原版内容会降低翻译完整度。</p>
+<p>2016 年 2 月当我评估各个翻译组潜力的时候，就发现了这个问题，当时虽然 Kotlin 中文站的完成度不是最高的，但是其他的翻译组都不具备与官网及时同步的能力，于是果断加入了 Kotlin 中文站翻译。</p>
+<h2 id="GitBook-避免重复工作"><a href="#GitBook-避免重复工作" class="headerlink" title="GitBook 避免重复工作"></a>GitBook 避免重复工作</h2><p>Kotlin 网站最初是基于 Jekyll 的网站，目前是使用 Jinjia2 模版引擎的类 Jekyll 网站，并不能直接拿来制作 GitBook。为了能够方便提供 ePUB 版和 Moby 版电子书，我在 <a href="https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details" target="_blank" rel="external">gitbook.com/book/hltj/kotlin-reference-chinese</a> 项目中采用了引入语法，在 GitBook 项目中只维护目录、章节等基本结构，内容都是引用的 Kotlin 中文站版本库的，当然其中用了一些具体的技巧来处理不兼容问题。这样在避免重复工作的同时，也避免出现同步脱节的问题。</p>
+<h2 id="参与和改进"><a href="#参与和改进" class="headerlink" title="参与和改进"></a>参与和改进</h2><p>后续 Koltin 中文站会继续翻译教程部分以及参考部分的更新内容。参与翻译请直接 fork <a href="https://github.com/hltj/kotlin-web-site-cn" target="_blank" rel="external">github.com/hltj/kotlin-web-site-cn</a> 并提 Pull Request 过来。</p>
+<p>关于网站与 PDF 有任何问题请在<a href="https://github.com/hltj/kotlin-web-site-cn/issues" target="_blank" rel="external">这里</a>反馈；<br>关于 ePUB 与 Mobi 有任何问题请在<a href="https://github.com/hltj/kotlin-reference-chinese/issues" target="_blank" rel="external">这里</a>反馈。</p>
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>多年互联网研发从业者。Kotlin 中文站维护人。欢迎关注</p>
+<ul>
+<li>Github：<a href="https://github.com/hltj" target="_blank" rel="external">https://github.com/hltj</a></li>
+<li><p>微博：<a href="http://weibo.com/hltj" target="_blank" rel="external">灰蓝天际</a></p>
+<p><img src="/assets/2017.05.17/weibo_qr.png" alt="">    <img src="/assets/2017.05.17/wechat_qr.png" alt=""></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/05/17/kotlin-reference-translated/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/灰蓝天际/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                灰蓝天际
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文/">中文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/官网/">官网</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&title=《Kotlin 官方参考文档翻译完毕》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&title=《Kotlin 官方参考文档翻译完毕》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 官方参考文档翻译完毕》 — Kotlin&url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/18/Kotlin-on-Android-Now-official/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Google 力挺 Kotlin，这是怎么回事！</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/15/Good-news-chengdu_meetup-ucloud_support/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">成都线下活动成功举行，Kotliner 获得 Ucloud 赞助</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&title=《Kotlin 官方参考文档翻译完毕》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&title=《Kotlin 官方参考文档翻译完毕》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 官方参考文档翻译完毕》 — Kotlin&url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQW7DMAwF0dz/0i7QVYE07nzSDhpytDKSQNLzghFFPh54HN/j5/PzeP721Tx8touHDBkyPpZxnA7COJ+thuF7kyFDxh4GCbI8HJNgnX77x55lyJAho3QEJIGYsGXIkCEjDbj8SEc2miJlyJCxmcEv0c7TVzLnVfPIkCFjD6NWGHjP8+31DRkyZPx7xlEa5NBGjoZpGeDlfmTIkDGaQS7Oak0YnEpKoSgQy5AhYw2jFv449fzFpUXTlwFXhgwZCxg8CPbbMtJLvVZhQIYMGR/L4KkmCc2ddjEOLkZ3GTJkfCCDtEHUUt/OEZO/UBkyZGxjnD+nh0WOrz3/Ut+QIUPGaEanJJAWA9JOCbSuDBkyFjDSbqs07aylwXwtGTJkzGbULvf574uX+6VAL0OGjKmMWttWDZwWEoK1ZMiQsYDBt3tBwtkonQYxWIYMGaMZ5GCXHulqqSlvL5MhQ8ZsRm2Z/rbSQIxWlCFDxjJGcCwDy/N5+B8Aag6TIUPGOEaampKrf/L7Pk+GDBl7GDxd5Ndwd4RjlMTKkCFjHKN2LOOvgM92Wc+IDBkyBjGOcPSTWN66ykuqMmTImM24+xKtE47TwoMMGTJmM3hYJAGRfN6ZX4YMGZsZ6fUW/6SWAJMALUOGDBlpy1dno7Uwjc6hMmTIWMboXOingfg8fMuQIWMng09NQiq5MuNBtvVuZMiQMYKRFgbSw2La91G7jJMhQ8ZQxhckPvoIG+TLIgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

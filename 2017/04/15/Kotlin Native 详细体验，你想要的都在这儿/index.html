@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/">
+    
+    
+    <title>Kotlin Native 详细体验，你想要的都在这儿 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin,Native">
+    <meta name="description" content="本文来自：www.kotliner.cn， 源码地址：https://github.com/enbandari/Kotlin-Native-Demo  内容提要：本文通过 gradle 以及 makefile 两种方式对 Kotlin Native 项目进行构建，提供了详细的从 C 源码编译、到 Kotlin Native 项目的编译及运行的方法，以及该过程中遇到的问题和解决方案，涉及两处对编译">
+<meta name="keywords" content="Kotlin,Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin Native 详细体验，你想要的都在这儿">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="本文来自：www.kotliner.cn， 源码地址：https://github.com/enbandari/Kotlin-Native-Demo  内容提要：本文通过 gradle 以及 makefile 两种方式对 Kotlin Native 项目进行构建，提供了详细的从 C 源码编译、到 Kotlin Native 项目的编译及运行的方法，以及该过程中遇到的问题和解决方案，涉及两处对编译">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.04.15/deps.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.04.15/compiler.png">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin Native 详细体验，你想要的都在这儿">
+<meta name="twitter:description" content="本文来自：www.kotliner.cn， 源码地址：https://github.com/enbandari/Kotlin-Native-Demo  内容提要：本文通过 gradle 以及 makefile 两种方式对 Kotlin Native 项目进行构建，提供了详细的从 C 源码编译、到 Kotlin Native 项目的编译及运行的方法，以及该过程中遇到的问题和解决方案，涉及两处对编译">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.04.15/deps.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin Native 详细体验，你想要的都在这儿</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin Native 详细体验，你想要的都在这儿</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-15T03:13:15.000Z" itemprop="datePublished" class="page-time">
+  2017-04-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、Kotlin-Native-是什么"><span class="post-toc-text">1、Kotlin Native 是什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、如何编写-Kotlin-Native-程序"><span class="post-toc-text">2、如何编写 Kotlin Native 程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-准备编译器"><span class="post-toc-text">2.1 准备编译器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-Gradle-版-HelloWorld"><span class="post-toc-text">2.2 Gradle 版 HelloWorld</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-命令行版-HelloWorld"><span class="post-toc-text">2.3 命令行版 HelloWorld</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-几个重要的坑"><span class="post-toc-text">3. 几个重要的坑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-Gradle-插件指定包名的问题"><span class="post-toc-text">3.1 Gradle 插件指定包名的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-Kotlin-的-main-函数不能有包名"><span class="post-toc-text">3.2 Kotlin 的 main 函数不能有包名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-def-文件的路径"><span class="post-toc-text">3.3 def 文件的路径</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4、展望"><span class="post-toc-text">4、展望</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-IntelliJ-支持"><span class="post-toc-text">4.1 IntelliJ 支持</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-支持更多平台"><span class="post-toc-text">4.2 支持更多平台</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-再见，Jni"><span class="post-toc-text">4.3 再见，Jni</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-大一统"><span class="post-toc-text">4.4 大一统</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin Native 详细体验，你想要的都在这儿"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin Native 详细体验，你想要的都在这儿</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年04月15日 11:13" datetime="2017-04-15T03:13:15.000Z"  itemprop="datePublished">2017-04-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>本文来自：www.kotliner.cn，</p>
+<p>源码地址：<a href="https://github.com/enbandari/Kotlin-Native-Demo" target="_blank" rel="external">https://github.com/enbandari/Kotlin-Native-Demo</a></p>
+</blockquote>
+<p><strong>内容提要：本文通过 gradle 以及 makefile 两种方式对 Kotlin Native 项目进行构建，提供了详细的从 C 源码编译、到 Kotlin Native 项目的编译及运行的方法，以及该过程中遇到的问题和解决方案，涉及两处对编译器的修改也已经提交 pr。</strong></p>
+<p>最近因为 <a href="http://www.kotliner.cn/">www.kotliner.cn</a>上线的原因，一直没顾上对 Kotlin Native 进行体验，现在 Kotlin Native 预览版发布一周了，我来给大家较为详细地介绍一下它的一些相关内容。</p>
+<h2 id="1、Kotlin-Native-是什么"><a href="#1、Kotlin-Native-是什么" class="headerlink" title="1、Kotlin Native 是什么"></a>1、Kotlin Native 是什么</h2><p>Kotlin Native 不是 Jni 的概念，它不仅仅是要与底层代码比如 C、C++ 交互，而且还要绕过 Jvm 直接编译成机器码供系统运行。也就是说，Kotlin 准备丢掉 Java 这根拐杖了！</p>
+<p>其实我第一次看到 Native 这个名字的时候很自然的想到了 Jni，Kotlin 跑在 Jvm 上面，使用 Jni 与底层代码交互是一件再正常不过的事情了，至于搞这么大动静么，不过等我进行了一番了解之后才发现，Kotlin 项目组的野心真是不小，Java 诞生这么多年了，也没有做过编译成除 Java 虚拟机字节码以外的字节码的事情，Kotlin 才出来多久啊，果然具有革命性。</p>
+<p>所以以后有人再问你，什么是 Kotlin，你要回答，Kotlin 是一门很牛逼的静态语言（而不是之前经常说的 Kotlin 是一门运行在 Jvm、Android、FE 上的静态语言了），反正你能想到的，Kotlin 项目组都想干。。</p>
+<h2 id="2、如何编写-Kotlin-Native-程序"><a href="#2、如何编写-Kotlin-Native-程序" class="headerlink" title="2、如何编写 Kotlin Native 程序"></a>2、如何编写 Kotlin Native 程序</h2><p>现在 Kotlin Native 刚刚处在技术预览阶段，离商用目测还需要至少一年的时间（小小地激动一下，2018年会不会发布正式版呢），性能优化、标准库、反射等等功能现在尚处于早期的状态，所以大家也没必要强求。下面我给大家介绍下怎么编译出一个 HelloWorld 工程。</p>
+<h3 id="2-1-准备编译器"><a href="#2-1-准备编译器" class="headerlink" title="2.1 准备编译器"></a>2.1 准备编译器</h3><p>编译器目前有 Mac、Linux 两个版本，可以编出运行在 树莓派、iOS 以及 OS X 和 Linux 系统上的程序（Windows 真可怜。。），下面的演示运行在 Mac OS X 10.11.6 上，与 Linux 的小伙伴可能稍微一些差异。</p>
+<p>编译器官方有现成可用的版本，下载地址如下：</p>
+<ul>
+<li><a href="http://download.jetbrains.com/kotlin/native/kotlin-native-macos-0.1.tar.gz" target="_blank" rel="external">Mac / iOS</a></li>
+<li><a href="http://download.jetbrains.com/kotlin/native/kotlin-native-linux-0.1.tar.gz" target="_blank" rel="external">Linux / 树莓派</a></li>
+</ul>
+<p>不过呢，也建议小伙伴们直接 clone 编译器源码编译，没有复杂的编译步骤，两行命令即可搞定编译。</p>
+<p><a href="https://github.com/JetBrains/kotlin-native" target="_blank" rel="external">Github: Kotlin Native</a></p>
+<p>代码拖下来之后，保证网络畅通，运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./gradlew dependencies:update</div></pre></td></tr></table></figure>
+<p>这一步是下载依赖，官方源码使用了 gradle-wrapper，所以如果你本地没有 gradle 3.1 的话也会自动去下载。这一步就是下载下载下载，所以一定要注意，出错的话基本上就是网络问题。运行完成之后，你就会在 dist/dependencies 目录下面看到下载的各种依赖了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.04.15/deps.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>接着就可以编译了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew dist</div></pre></td></tr></table></figure>
+<p>编译时间不长，如果出现错误，可以 clean 多试几次。。编译完之后我们就可以得到编译器一份啦。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.04.15/compiler.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="2-2-Gradle-版-HelloWorld"><a href="#2-2-Gradle-版-HelloWorld" class="headerlink" title="2.2 Gradle 版 HelloWorld"></a>2.2 Gradle 版 HelloWorld</h3><p>下面我们先在 IntelliJ 中创建一个普通的 Gradle 工程，创建好之后，修改 build.gradle 文件，改成下面这样：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        mavenCentral()</div><div class="line">        maven &#123;</div><div class="line">            url  <span class="string">"https://dl.bintray.com/jetbrains/kotlin-native-dependencies"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">"org.jetbrains.kotlin:kotlin-native-gradle-plugin:0.1"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">apply <span class="string">plugin:</span> <span class="string">'konan'</span></div><div class="line"></div><div class="line">konanInterop &#123;</div><div class="line">    kotliner &#123;</div><div class="line">        defFile <span class="string">'kotliner.def'</span> <span class="comment">// interop 的配置文件</span></div><div class="line">        includeDirs <span class="string">"src/c"</span> <span class="comment">// C 头文件目录，可以传入多个</span></div><div class="line">        <span class="comment">//pkg "cn.kotliner.native" // C 头文件编译后映射为 Kotlin 的包名，这个有问题，后面我们再说</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">konanArtifacts &#123;</div><div class="line">    Kotliner &#123;</div><div class="line">        inputFiles fileTree(<span class="string">"src/kotlin"</span>) <span class="comment">//kotlin 代码配置，项目入口 main 需要定义在这里</span></div><div class="line">        useInterop <span class="string">'kotliner'</span> <span class="comment">//使用前面的 interop 配置</span></div><div class="line">        nativeLibrary file(<span class="string">'src/c/cn_kotliner.bc'</span>) <span class="comment">//自己编译的 llvm 字节格式的依赖</span></div><div class="line">        target <span class="string">'macbook'</span> <span class="comment">// 编译的目标平台</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看到，konan 就是用来编译 Kotlin 为 native 代码的插件，konanArtifacts 配置我们的项目，konanInterop 主要用来配置 Kotlin 调用 C 的接口。有关插件的配置，可以参考官方文档：<a href="https://github.com/JetBrains/kotlin-native/blob/master/GRADLE_PLUGIN.md" target="_blank" rel="external">GRADLE_PLUGIN</a>。</p>
+<p>配置好之后，我们还要创建一个 gradle.properties 文件，加入下面的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 配置编译器 home，要配置为 bin 目录的 parent</div><div class="line"># 例如：konan.home=&lt;你的 kotlin-native 源码路径&gt;/kotlin-native/dist</div><div class="line">konan.home=&lt;你的编译器路径&gt;</div></pre></td></tr></table></figure>
+<p>当然，这个配置可以不加，那样的话，你编译的时候会首先下载一个编译器放到你本地。</p>
+<p>接着我们创建一个 kotliner.def 文件，用来配置 c 源码到 kotlin 的映射关系：</p>
+<p><strong>kotliner.def</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">headers=cn_kotliner.h</div></pre></td></tr></table></figure>
+<p>下面准备我们的源码，在工程目录下面创建 src 目录，在 src/c 目录下面创建下面的文件：</p>
+<p><strong>src/c/cn_kotliner.h</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CN_KOTLINER_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> CN_KOTLINER_H</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printHello</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//CN_KOTLINER_H</span></span></div></pre></td></tr></table></figure>
+<p><strong>src/c/cn_kotliner.c</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"cn_kotliner.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printHello</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"[C]HelloWorld\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"[C]calc factorial: %d\n"</span>, n);</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们定义了两个函数，一个用来打印 “HelloWorld”，一个用来计算阶乘。</p>
+<p>接着在 src/c 目录下面，用命令行编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clang -std=c99 -c cn_kotliner.c -o cn_kotliner.bc -emit-llvm</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果提示找不到 clang 命令，可以去编译器的 dependencies 目录中找。</p>
+</blockquote>
+<p>截止到现在，我们已经编译好 C 源码了。接着我们创建 kotlin 源码：</p>
+<p><strong>src/kotlin/main.kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> kotliner.*</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    printHello()</div><div class="line">    (<span class="number">1.</span><span class="number">.5</span>).map(::factorial).forEach(::println)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了，这时候我们可以运行 gradle 的 build 任务了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">12:47:29: Executing external task &apos;build&apos;...</div><div class="line">:downloadKonanCompiler</div><div class="line">:genKotlinerInteropStubs UP-TO-DATE</div><div class="line">:compileKotlinerInteropStubs</div><div class="line">JetFile: kotliner.kt</div><div class="line">JetFile: kotliner.kt</div><div class="line">:compileKonanKotliner</div><div class="line">JetFile: main.kt</div><div class="line">src/kotlin/main.kt:4:11: warning: inliner failed to obtain inline function declaration</div><div class="line">src/kotlin/main.kt:4:28: warning: inliner failed to obtain inline function declaration</div><div class="line">:build</div><div class="line"></div><div class="line">BUILD SUCCESSFUL</div><div class="line"></div><div class="line">Total time: 34.743 secs</div><div class="line">12:48:04: External task execution finished &apos;build&apos;.</div></pre></td></tr></table></figure>
+<p>编译完成之后，在 build/konan/Kotliner/bin 目录中会生成一个 kexe 文件，命令行运行它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">$ ./Kotliner.kexe</div><div class="line">[C]HelloWorld</div><div class="line">[C]calc factorial: 1</div><div class="line">[C]calc factorial: 0</div><div class="line">[C]calc factorial: 2</div><div class="line">[C]calc factorial: 1</div><div class="line">[C]calc factorial: 0</div><div class="line">[C]calc factorial: 3</div><div class="line">[C]calc factorial: 2</div><div class="line">[C]calc factorial: 1</div><div class="line">[C]calc factorial: 0</div><div class="line">[C]calc factorial: 4</div><div class="line">[C]calc factorial: 3</div><div class="line">[C]calc factorial: 2</div><div class="line">[C]calc factorial: 1</div><div class="line">[C]calc factorial: 0</div><div class="line">[C]calc factorial: 5</div><div class="line">[C]calc factorial: 4</div><div class="line">[C]calc factorial: 3</div><div class="line">[C]calc factorial: 2</div><div class="line">[C]calc factorial: 1</div><div class="line">[C]calc factorial: 0</div><div class="line">1</div><div class="line">2</div><div class="line">6</div><div class="line">24</div><div class="line">120</div></pre></td></tr></table></figure>
+<p>好，我们的程序已经运行起来了，我们看到了 C 当中的 HelloWorld 输出以及阶乘求解的过程，大功告成。</p>
+<p>当然，你还可以编写更多好玩的代码，编译的结果就是 Kotlin 再也不需要 Jvm 了，你说激动不激动？</p>
+<h3 id="2-3-命令行版-HelloWorld"><a href="#2-3-命令行版-HelloWorld" class="headerlink" title="2.3 命令行版 HelloWorld"></a>2.3 命令行版 HelloWorld</h3><p>除了 gradle 构建外，我们也可以直接使用命令行编译 Kotlin Native，具体步骤也比较类似，首先准备好源码，跟 2.2 中一致。</p>
+<p>接着编写 Makefile 或者 build.sh，官方采用了 shell 脚本的方式来构建，那么我下面给出类似的 Makefile：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">build : src/kotlin/main.kt kotliner.kt.bc</div><div class="line">	konanc src/kotlin/main.kt -library build/kotliner/kotliner.kt.bc -nativelibrary build/kotliner/cn_kotliner.bc -o build/kotliner/kotliner.kexe</div><div class="line"></div><div class="line">kotliner.kt.bc : kotliner.bc kotliner.def</div><div class="line">	cinterop -def ./kotliner.def -o build/kotliner/kotliner.kt.bc</div><div class="line"></div><div class="line">kotliner.bc : src/c/cn_kotliner.c src/c/cn_kotliner.h</div><div class="line">	mkdir -p build/kotliner</div><div class="line">	clang -std=c99  -c src/c/cn_kotliner.c -o build/kotliner/cn_kotliner.bc -emit-llvm</div><div class="line"></div><div class="line"><span class="section">clean:</span></div><div class="line">	  rm -rf build/kotliner</div></pre></td></tr></table></figure>
+<p>这样只需要在命令行执行先把编译器 <konan.home>/bin 加入 path，之后执行 make，编译完成之后就可以在 build/kotliner/ 下面找到 kotliner.kexe 了。</konan.home></p>
+<h2 id="3-几个重要的坑"><a href="#3-几个重要的坑" class="headerlink" title="3. 几个重要的坑"></a>3. 几个重要的坑</h2><h3 id="3-1-Gradle-插件指定包名的问题"><a href="#3-1-Gradle-插件指定包名的问题" class="headerlink" title="3.1 Gradle 插件指定包名的问题"></a>3.1 Gradle 插件指定包名的问题</h3><p>gradle konan 插件配置中， 有一行可以配置 C 代码映射到 Kotlin 的包名：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">konanInterop &#123;</div><div class="line">    kotliner &#123;</div><div class="line">        ...</div><div class="line">        pkg <span class="string">"cn.kotliner.native"</span> <span class="comment">// 生成的 C 代码标识符中含有 “.” 倒是无法编译</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果这样配置，那么生成的 cstubs.c 文件就会出现下面的情形：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdint.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cn_kotliner.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int32_t</span> kni_cn.kotliner.native_factorial (<span class="keyword">int32_t</span> n) &#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">int32_t</span>) (factorial((<span class="keyword">int</span>)n));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>kni_cn.kotliner.native_factorial</code> 显然这不是一个合法的 C 标识符。因此目前这个地方还是有问题的。</p>
+<p>这个问题我已经提了 issue，参见：<a href="https://github.com/JetBrains/kotlin-native/issues/490" target="_blank" rel="external">interop with package name failed</a></p>
+<p>解决方案也比较简单，我发现这段儿 C 代码生成的时候，编译器企图对包名中的特殊字符进行替换，只不过替换的是 “/“ 而不是 “.”：</p>
+<p><strong>org/jetbrains/kotlin/native/interop/gen/jvm/StubGenerator.kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">private</span> <span class="keyword">val</span> FunctionDecl.cStubName: String</div><div class="line">         <span class="keyword">get</span>() &#123;</div><div class="line">             require(platform == KotlinPlatform.NATIVE)</div><div class="line">-            <span class="keyword">return</span> <span class="string">"kni_"</span> + pkgName.replace(<span class="string">'/'</span>, <span class="string">'_'</span>) + <span class="string">'_'</span> + <span class="keyword">this</span>.name</div><div class="line">+            <span class="keyword">return</span> <span class="string">"kni_"</span> + pkgName.replace(<span class="string">'.'</span>, <span class="string">'_'</span>) + <span class="string">'_'</span> + <span class="keyword">this</span>.name</div><div class="line">         &#125;</div></pre></td></tr></table></figure>
+<h3 id="3-2-Kotlin-的-main-函数不能有包名"><a href="#3-2-Kotlin-的-main-函数不能有包名" class="headerlink" title="3.2 Kotlin 的 main 函数不能有包名"></a>3.2 Kotlin 的 main 函数不能有包名</h3><p>细心的读者应该会发现，我们前面写的 main 函数所在文件是没有 package 的，如果你给这个文件制定一个 package，那么编译器就无法找到入口函数，进而导致编译链接错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Undefined symbols for architecture x86_64:</div><div class="line">  &quot;_kfun:main(kotlin.Array&lt;kotlin.String&gt;)&quot;, referenced from:</div><div class="line">      _Konan_start in combined8326574232997306104.o</div><div class="line">ld: symbol(s) not found for architecture x86_64</div><div class="line">exception: java.lang.IllegalStateException: The /Users/benny/Github/kotlin-native/dist/dependencies/target-sysroot-1-darwin-macos/usr/bin/ld command returned non-zero exit code: 1.</div><div class="line">	at org.jetbrains.kotlin.backend.konan.LinkStage.runTool(LinkStage.kt:285)</div><div class="line">	at org.jetbrains.kotlin.backend.konan.LinkStage.link(LinkStage.kt:261)</div></pre></td></tr></table></figure>
+<h3 id="3-3-def-文件的路径"><a href="#3-3-def-文件的路径" class="headerlink" title="3.3 def 文件的路径"></a>3.3 def 文件的路径</h3><p>如果你使用前面的 makefile 进行编译，cinterop 调用时传入的 def 文件的路径一定不能写成下面这样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cinterop -def kotliner.def -o build/kotliner/kotliner.kt.bc</div></pre></td></tr></table></figure>
+<p>kotliner.def 必须使用 ./kotliner.def 的形式，否则编译器在编译时出遇到类似下面的问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;konan.home&gt;/dependencies/clang-llvm-3.9.0-darwin-macos/bin/clang -Isrc/c -isystem &lt;konan.home&gt;/dependencies/clang-llvm-3.9.0-darwin-macos/lib/clang/3.9.0/include -B&lt;konan.home&gt;/dependencies/target-sysroot-1-darwin-macos/usr/bin --sysroot=&lt;konan.home&gt;/dependencies/target-sysroot-1-darwin-macos -mmacosx-version-min=10.11 -emit-llvm -c build/kotliner/kotliner.kt.bc-build/natives/cstubs.c -o build/kotliner/kotliner.kt.bc-build/natives/cstubs.bc</div><div class="line">clang-3.9: error: no such file or directory: &apos;build/kotliner/kotliner.kt.bc-build/natives/cstubs.c&apos;</div><div class="line">clang-3.9: error: no input files</div><div class="line">Exception in thread &quot;main&quot; java.lang.Error: Process finished with non-zero exit code: 1</div><div class="line">        at org.jetbrains.kotlin.native.interop.gen.jvm.MainKt.runExpectingSuccess(main.kt:112)</div><div class="line">        at org.jetbrains.kotlin.native.interop.gen.jvm.MainKt.runCmd(main.kt:158)</div><div class="line">        at org.jetbrains.kotlin.native.interop.gen.jvm.MainKt.processLib(main.kt:396)</div><div class="line">        at org.jetbrains.kotlin.native.interop.gen.jvm.MainKt.main(main.kt:43)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>以上用 &lt; konan.home &gt; 替换了编译的路径。</p>
+</blockquote>
+<p>这个问题是因为 cinterop 最终会调用 clang 去编译一个动态生成的 c 文件，而调用时传入的 workdir 是 def 文件的父目录，如果我们传入 def 文件时写了形如 “-def kotliner.def” 这样的参数，那么得到的父目录就是 null 了，于是就出现了各种找不到文件的情况。</p>
+<p>当然我们可以对编译器源码稍作修改就可以解决这个问题：</p>
+<p><strong>Interop/StubGenerator/src/main/kotlin/org/jetbrains/kotlin/native/interop/gen/jvm/main.kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">357</span> -    <span class="keyword">val</span> workDir = defFile?.parentFile ?: File(System.getProperty(<span class="string">"java.io.tmpdir"</span>))</div><div class="line">    +    <span class="keyword">val</span> workDir = defFile?.absoluteFile?.parentFile ?: File(System.getProperty(<span class="string">"java.io.tmpdir"</span>))</div></pre></td></tr></table></figure>
+<p>这个问题我也在 github 提了 pr，大家可以参考：<a href="https://github.com/JetBrains/kotlin-native/pull/492" target="_blank" rel="external">Wrong workdir when use relative def file path like “-def interop.def”</a>。</p>
+<h2 id="4、展望"><a href="#4、展望" class="headerlink" title="4、展望"></a>4、展望</h2><p>嗯，这题目看上去真有点儿让我想起毕业论文来呢。不过这个展望比起论文的展望要踏实得多。</p>
+<h3 id="4-1-IntelliJ-支持"><a href="#4-1-IntelliJ-支持" class="headerlink" title="4.1 IntelliJ 支持"></a>4.1 IntelliJ 支持</h3><p>通过前面两节对 Kotlin Native 项目的构建和运行，我们发现 Kotlin 官方对于开发体验非常关注，尽管目前 IntelliJ 对此的支持还基本为零，不过 gradle 插件的支持已经非常令人满意了。相信随着 Kotlin Native 项目的迭代，IntelliJ 对其的支持也会趋于完善，彼时我们开发 Kotlin Native 的程序简直会 high 到飞起。</p>
+<p>当然，我们也看到前面的构建过程中，对于 c 源码的构建支持几乎为零，我们仍然需要手动对 c 文件进行编译，不过这个并不复杂，所以极有可能出现的情形是 JetBrains 专门为 Kotlin 搞一个 IntelliJ 的版本（哇塞），整合 CLion 以及现有 Kotlin Native 的功能，一键编译 c 以及 Kotlin Native 源码也未可知呀。</p>
+<h3 id="4-2-支持更多平台"><a href="#4-2-支持更多平台" class="headerlink" title="4.2 支持更多平台"></a>4.2 支持更多平台</h3><p>Kotlin Native 技术预览版还不支持 windows，这可苦了没有 Unix-like 机器的小伙伴们（嗯，虚拟机可以拯救你们），不过这只是暂时的，前期也没必要在很多平台上投入精力，一旦 Kotlin Native 在 Unix-like 机器上火起来，届时 windows 版的动力岂不是更大么，哈哈。</p>
+<p>比起对 windows 版的支持，我觉得对 Android 的支持才是杀手级的。毕竟现在写桌面程序的人要少一些了，而 windows 程序也大多用微软全家桶，所以赶紧支持 Android 吧，哈哈哈。</p>
+<h3 id="4-3-再见，Jni"><a href="#4-3-再见，Jni" class="headerlink" title="4.3 再见，Jni"></a>4.3 再见，Jni</h3><p>从学知道 Jni 的一开始，就尝试着写过几个小程序，结果毋庸置疑，除了蛋疼就是蛋疼，IDE 支持也困难得不要不要的。后来开始写 Android，也基本上对 Jni 是敬而远之。</p>
+<p>说起来我们公司项目有大量的 openGL 代码用 C/C++ 编写，在 windows 和 Mac 上有相应的移植版本，开发完成后再打包移植到 Android 以及 iOS 上。当然，我并不在这些项目组，我只是觉得搞这些开发的同事特别是负责移植到 Android 的同事的实在太优秀了，像我这种 JB 脑残粉，离了 IDE 智能提示的话，一行代码都写不下去。。。</p>
+<p>Kotlin 的出现很有希望终结 Jni 的痛苦现状，Kotlin Native 也将为我们这些 Jvmer 打开一扇窗户，让我们几乎零成本进入底层代码的编写。</p>
+<p>那个什么，以后别说自己是 Jvmer 了，说自己是 Kotliner 吧，也欢迎大家经常光顾 www.kotliner.cn。</p>
+<h3 id="4-4-大一统"><a href="#4-4-大一统" class="headerlink" title="4.4 大一统"></a>4.4 大一统</h3><p>如果我想写个牛逼一点儿的程序，我会选择 Java，原因是我对它最熟；</p>
+<p>如果我想写一个工具脚本，我会选择 python，尽管 python 有时候还真是挺坑的，不过用着还算不错；</p>
+<p>如果我想写个网站，我会选择 php，因为。。开发方便，资料也多。。。</p>
+<p>嗯，自打一开始学编程，我就发现这坑可踩大发了。尽管用 C 可以写出 php 能写出的任何程序，Java 也一样，不过每一门语言终究因其自身的特点而擅长于不同的使用场景。</p>
+<p>前不久跟一个资深开发聊天，他问我 Kotlin 能做什么，我说能做这个，能做那个，结果他听了之后来了一句：Kotlin 能写的 Java 都能写是呗？没错，他说得是对的，只是这能和能做好之间可就差了十万八千里了。</p>
+<p>请问，如果你想要写一个小工具，你用 Java 写的话，是不是工程还没有配好，别人用 python 就已经调试完了？如果你用 C++ 写 web 应用，是不是工程还没配好，别人用 php 已经开始跟客户端联调了？这么说也许夸张了一些，但不得不承认的是，每一门语言都有其擅长的场景，“xxx能干的yyy也能干” 这样的句式简直让人有种 “你行你上啊” 来批驳的冲动。</p>
+<p>那么 Kotlin 的出现究竟能给我们带来什么呢？试想一下，写小工具，我们可以用 kts（Kotlin Script）；所有 Java 擅长的 Kotlin 都擅长，而且写起来还比 Java 简洁不少；你甚至可以用 Kotlin 来开发前端程序来替代 JavaScript，尽管这个目前看来还没有很多人用到。而现在呢，我们还可以把 Kotlin 直接编译成 C 一样的机器码来运行，这样一来，Kotlin 将来还可以直接应用于嵌入式等对性能要求比较高的场景，这可真是上的了云端，下的了桌面，写的了网页，嵌的了冰箱啊。</p>
+<p>一句话，Kotlin 从 Jvm 起家，现正在向着各种应用场景用功，各个场景的表现也不错，俨然成为一门擅长多个领域的语言了。</p>
+<p>当然，程序员们也是萝卜青菜各有所爱，真正实现大一统显然也不太现实，但我们至少拥有了这样的途径和机会是不是？</p>
+<hr>
+<p>如果你有兴趣加入我们，请直接关注公众号 Kotlin ，并且加 QQ 群：162452394 联系我们。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin_group.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Native/">Native</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&title=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&title=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/18/Use Kotlin with npm, webpack and react/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[译]Use Kotlin with npm, webpack and react</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/10/Kotliner.cn 上线啦/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotliner.cn 上线啦</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&title=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&title=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Native 详细体验，你想要的都在这儿》 — Kotlin&url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNklEQVR42u3a0U5jMQwEUP7/p1mJ113aGbsrNem5T6hAmpNKGI/z9RU/3z/P36/89jz+yd9Wfvy7+d5e9mBjY2Mfwk4A++8mjOT1fP3Hx42NjY19H3v2ZkmBeVw7Hr+efyS5BRsbG/uT2W3DkBzTrP1Iihk2NjY2dr65DTg53Lx8YmNjY38yO/93Pw/lZ81GDpu1LtjY2Nj3sdtB7zt//R/n29jY2Nhvyf4un00c34ZESfn5Hj3Y2NjYN7E3Ac0Gn1+4SaizoTI2Njb2TexZSdiUpfb4kh0mMRM2Njb2fexZmJ7E8Xkg1Y4Q8jWHHRg2Njb2Uey2Ick3XTcDcYmKruPkYRY2Njb2Few21tkc2Syoai8PFaULGxsb+3B2HsfPxrftgHY2ME4CJmxsbOxb2UlZaoP7tlzlJW3T8BR4bGxs7APZm2HA5rpMMuhtS10xSMbGxsa+gv2qqzmzUCl/r3yUG62MjY2NfTW7bSryUpS3OrOrP8VQARsbG/s6dh4htbD2CPJhwGzwjI2NjX0fux3Hzo4gbxtaXj4qKMYD2NjY2IezN5dsknAnHzbkIdcwGsPGxsa+gt0uNGtjZqVuE10NSxc2Njb2gezZ27cXffKrP21pTAoeNjY29t3sWTmZXe7Jz774fGaDBGxsbOzr2HmzkW8oaRLy5iE5+qSMYWNjY9/Kng1o8/KTNx5JqDQbHmNjY2Pfyp41AHmL0hanvOwlK0R4bGxs7CvY7ZWatmC0EVLeICWNUB0tYWNjYx/IbpfLR7z7kW1+TMP2CRsbG/sK9uZ6TbJOzpi1N/n44Umiho2NjX0gO7/suDrXOAzKm5m8NfrHOtjY2NiXsofXXxaRfRH9lGOJJzvHxsbGvog9i4RmV3b2jM1OikQNGxsb+yj27E9/u5Vktc3gtt0nNjY29k3s/MmDp1lDsmkk9kUXGxsb+3R2W7T2o9/ZUW6GwXX1xsbGxj6Q3RaGffT/qmYmb2Ce3FTCxsbG/gD2psjNVsjbpPoDwMbGxv5g9quCp9kAeDbNXrUi2NjY2IewN6Ulj3KS6CdZfxZOYWNjY9/K3gx686ZlEwC1496XzbqxsbGx3539BwcJm6dPfvrVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

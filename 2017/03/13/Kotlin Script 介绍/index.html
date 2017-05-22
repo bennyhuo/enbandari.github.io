@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/03/13/Kotlin Script 介绍/">
+    
+    
+    <title>Kotlin Script 介绍 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="KotlinScript,脚本运行">
+    <meta name="description" content="1. 认识 kts打开你的 IntelliJ，随便找个位置，注意我说的，随便找个位置，创建一个文件，命名为 Hello.kts，然后你就会发现 IntelliJ 能够识别这种类型，文件的 icon 与 kt 后缀的 kotlin 文件没啥区别。 那你知道你创建了一个什么东西吗？它究竟与平时我们写的 Kotlin 代码有啥区别呢？其实，从名字我们就可以了解到，这是一个 Kotlin 的脚本文件，我们">
+<meta name="keywords" content="KotlinScript,脚本运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin Script 介绍">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="1. 认识 kts打开你的 IntelliJ，随便找个位置，注意我说的，随便找个位置，创建一个文件，命名为 Hello.kts，然后你就会发现 IntelliJ 能够识别这种类型，文件的 icon 与 kt 后缀的 kotlin 文件没啥区别。 那你知道你创建了一个什么东西吗？它究竟与平时我们写的 Kotlin 代码有啥区别呢？其实，从名字我们就可以了解到，这是一个 Kotlin 的脚本文件，我们">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin Script 介绍">
+<meta name="twitter:description" content="1. 认识 kts打开你的 IntelliJ，随便找个位置，注意我说的，随便找个位置，创建一个文件，命名为 Hello.kts，然后你就会发现 IntelliJ 能够识别这种类型，文件的 icon 与 kt 后缀的 kotlin 文件没啥区别。 那你知道你创建了一个什么东西吗？它究竟与平时我们写的 Kotlin 代码有啥区别呢？其实，从名字我们就可以了解到，这是一个 Kotlin 的脚本文件，我们">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin Script 介绍</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin Script 介绍</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-13T04:43:19.000Z" itemprop="datePublished" class="page-time">
+  2017-03-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-认识-kts"><span class="post-toc-text">1. 认识 kts</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-命令行调用-kts"><span class="post-toc-text">2. 命令行调用 kts</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-我的-main-函数去哪儿啦？"><span class="post-toc-text">3. 我的 main 函数去哪儿啦？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-小结"><span class="post-toc-text">4. 小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin Script 介绍"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin Script 介绍</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月13日 12:43" datetime="2017-03-13T04:43:19.000Z"  itemprop="datePublished">2017-03-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="1-认识-kts"><a href="#1-认识-kts" class="headerlink" title="1. 认识 kts"></a>1. 认识 kts</h2><p>打开你的 IntelliJ，随便找个位置，注意我说的，随便找个位置，创建一个文件，命名为 Hello.kts，然后你就会发现 IntelliJ 能够识别这种类型，文件的 icon 与 kt 后缀的 kotlin 文件没啥区别。</p>
+<p>那你知道你创建了一个什么东西吗？它究竟与平时我们写的 Kotlin 代码有啥区别呢？其实，从名字我们就可以了解到，这是一个 Kotlin 的脚本文件，我们可以在其中直接写函数调用，逻辑判断，数值计算，干什么都行。</p>
+<p><strong>Hello.kts</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.File</div><div class="line"></div><div class="line">println(<span class="string">"Hello from kts"</span>)</div><div class="line"></div><div class="line"><span class="keyword">val</span> file = File(<span class="string">"."</span>)</div><div class="line">file.listFiles().forEach(::println)</div><div class="line"></div><div class="line">println(<span class="string">"The End."</span>)</div></pre></td></tr></table></figure>
+<p>这段代码能输出什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Hello from kts</div><div class="line">./.gradle</div><div class="line">./.idea</div><div class="line">./build</div><div class="line">./build.gradle</div><div class="line">./gradle</div><div class="line">./gradlew</div><div class="line">./gradlew.bat</div><div class="line">./Hello.kts</div><div class="line">./settings.gradle</div><div class="line">./src</div><div class="line">The End.</div></pre></td></tr></table></figure>
+<p>我恰好把这个脚本文件放到了一个工程的目录下面，于是它输出了这个工程根目录的所有文件。</p>
+<h2 id="2-命令行调用-kts"><a href="#2-命令行调用-kts" class="headerlink" title="2. 命令行调用 kts"></a>2. 命令行调用 kts</h2><p>如果只是在 IntelliJ 当中能够运行脚本，那多没意思。脚本就是要放到命令行跑的，就跟 python 一样，当成 shell 的神助攻来帮我们处理一下任务才好。</p>
+<p>IntelliJ 的运行方法当然也是可以的，我们不妨把它的命令复制过来给大家看一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$JAVA_HOME</span>/java -Dfile.encoding=UTF-8 -classpath <span class="string">"<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-compiler.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-reflect.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-runtime.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-script-runtime.jar"</span> org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -script /Users/benny/workspace/temp/Forty/Hello.kts</div></pre></td></tr></table></figure>
+<p>不知道大家看明白没，Kotlin 的编译器或者说脚本运行时环境都是 jar 包，用 Java 直接调用就 OK 了。不过这么复杂的命令我可不想每次都写。</p>
+<p>嗨，这你还犹豫什么，赶紧安装 kotlin 的安装包，里面有 kotlinc 和 kotlin 这样的命令，用法几乎与 javac 和 java 一模一样。安装方法<a href="http://kotlinlang.org/docs/tutorials/command-line.html" target="_blank" rel="external">点这里</a>。</p>
+<p>啊，你说安装好了？那么这时候你运行 kotlinc，是不是会出现一个响应式终端呢？ 跟 Python Scala 之类的一样呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ kotlinc</div><div class="line">Welcome to Kotlin version 1.0.6-release-127 (JRE 1.8.0_60-b27)</div><div class="line">Type :<span class="built_in">help</span> <span class="keyword">for</span> <span class="built_in">help</span>, :quit <span class="keyword">for</span> quit</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>你可以在里面随便敲个运算式啥的，从今天开始，kotlin 也可以成为你的御用“计算器”啦！</p>
+<p>额，扯远了，现在我们该说说怎么运行刚才那个脚本了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ kotlinc -script Hello.kts</div><div class="line">Hello from kts</div><div class="line">./.gradle</div><div class="line">./.idea</div><div class="line">./build</div><div class="line">./build.gradle</div><div class="line">./gradle</div><div class="line">./gradlew</div><div class="line">./gradlew.bat</div><div class="line">./Hello.class</div><div class="line">./Hello.kts</div><div class="line">./settings.gradle</div><div class="line">./src</div><div class="line">The End.</div></pre></td></tr></table></figure>
+<p>我最初觉得应该是类似 python 那样直接运行，可结果却有点儿让人尴尬。。好吧，随便啦。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ kotlin Hello.kts</div><div class="line">error: running Kotlin scripts is not yet supported</div></pre></td></tr></table></figure>
+<h2 id="3-我的-main-函数去哪儿啦？"><a href="#3-我的-main-函数去哪儿啦？" class="headerlink" title="3. 我的 main 函数去哪儿啦？"></a>3. 我的 main 函数去哪儿啦？</h2><p>我们都知道，Java 虚拟机上面的程序入口是 main 函数，嗯，就连 Android dalvik 那个算不上真正意义上的 Java 虚拟机的虚拟机，入口函数也是 main 呢！可是前面的脚本分明就没有 main 函数，还跑得挺欢啊，这简直不能让人相信爱情了（什么？跟爱情有毛关系？！）。。</p>
+<p>好吧，这个事儿我们还是要仔细探查一下，不然毁了三观可不好。Java 系的孩子，还是要有点儿信仰的，嗯，信仰 main 的存在~</p>
+<p>且说，我们运行 kotlinc 这个程序，你知道它是什么吗？不知道？没关系，找着它，结果发现丫其实就一 shell 脚本。。我去，搞得这么恐怖，原来就一 shell。。</p>
+<p><strong>Mac 版 kotlinc</strong> 部分 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$KOTLIN_RUNNER</span>"</span> ];</div><div class="line"><span class="keyword">then</span></div><div class="line">    java_args=(<span class="string">"<span class="variable">$&#123;java_args[@]&#125;</span>"</span> <span class="string">"-Dkotlin.home=<span class="variable">$&#123;KOTLIN_HOME&#125;</span>"</span>)</div><div class="line">    kotlin_app=(<span class="string">"<span class="variable">$&#123;KOTLIN_HOME&#125;</span>/lib/kotlin-runner.jar"</span> <span class="string">"org.jetbrains.kotlin.runner.Main"</span>)</div><div class="line"><span class="keyword">else</span></div><div class="line">    [ -n <span class="string">"<span class="variable">$KOTLIN_COMPILER</span>"</span> ] || KOTLIN_COMPILER=org.jetbrains.kotlin.cli.jvm.K2JVMCompiler</div><div class="line">    java_args=(<span class="string">"<span class="variable">$&#123;java_args[@]&#125;</span>"</span> <span class="string">"-noverify"</span>)</div><div class="line">    kotlin_app=(<span class="string">"<span class="variable">$&#123;KOTLIN_HOME&#125;</span>/lib/kotlin-preloader.jar"</span> <span class="string">"org.jetbrains.kotlin.preloading.Preloader"</span> <span class="string">"-cp"</span> <span class="string">"<span class="variable">$&#123;KOTLIN_HOME&#125;</span>/lib/kotlin-compiler.jar"</span> <span class="variable">$KOTLIN_COMPILER</span>)</div><div class="line"><span class="keyword">fi</span></div></pre></td></tr></table></figure>
+<p>我们看到了什么？org.jetbrains.kotlin.cli.jvm.K2JVMCompiler ？小哥，你看起来好生面熟啊，哪儿见过呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$JAVA_HOME</span>/java -Dfile.encoding=UTF-8 -classpath <span class="string">"<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-compiler.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-reflect.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-runtime.jar:<span class="variable">$INTELLIJ_HOME</span>/Kotlin/kotlinc/lib/kotlin-script-runtime.jar"</span> org.jetbrains.kotlin.cli.jvm.K2JVMCompiler -script /Users/benny/workspace/temp/Forty/Hello.kts</div></pre></td></tr></table></figure>
+<p>原来，IntelliJ 运行 kts 用到的命令，在 kotlinc 当中也是一样一样的，嗯哈，这就有意思了，我们运行一段脚本的程序入口原来在 K2JVMCompiler 当中，那我们不妨找着它的源码一看究竟~</p>
+<p><em>K2JVMCompiler 在 Kotlin 源码的 compiler/cli 模块下。</em></p>
+<p>它的入口方法倒也直接了当，</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    CLICompiler.doMain(K2JVMCompiler(), args)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>原来这只是一个壳而已，我们还是一步步往下追查吧。在追查之前呢，我们需要一点儿想象力，猜测一下 kts 是如何运行的。</p>
+<p>首先可以确定的是 kts 并没有 main 函数，所以一种可能是 kotlin 编译器在运行时给它生成一个 main 函数，然后调用它。这里有个问题，如果这个调用时普通 Java 虚拟机程序的那样调用的话，这就意味着 kts 执行的过程会有两个进程存在，一个是我们刚才执行的命令，另一个是以动态生成 main 为入口函数的 kts 文件。</p>
+<p>还有一种可能，kts 文件直接编译成一个普通的类，直接在 kotlinc 的运行时中类加载并且运行。</p>
+<p>另种方式比较下来，显然第二种最为简单，不过我们在 kts 当中写的代码究竟是作为哪部分代码运行的呢？</p>
+<blockquote>
+<p><strong>“元芳，你怎么看？”</strong></p>
+<p>“大人所言极是呀！只是小可有一事不明。。。”</p>
+<p><strong>“你哪儿来那么多事儿。。”</strong></p>
+</blockquote>
+<p>好，猜测完毕，开始查案~</p>
+<p>刚一开始看了两行就给我逗乐了，这个代码跳来跳去的，最后竟然又回到了 K2JVMCompiler.doExecute 方法，接着又到了 KotlinToJVMBytecodeCompiler.compileAndExecuteScript，这里基本上告诉我们 Kotlinc 会直接编译 kts 并且加载运行它。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">compileAndExecuteScript</span><span class="params">(</span></span></div><div class="line">        environment: <span class="type">KotlinCoreEnvironment</span>,</div><div class="line">        paths: <span class="type">KotlinPaths</span>,</div><div class="line">        scriptArgs: <span class="type">List</span>&lt;<span class="type">String</span>&gt;): ExitCode</div><div class="line">&#123;</div><div class="line">	...</div><div class="line">    <span class="keyword">val</span> scriptClass = compileScript(environment, paths) </div><div class="line">    tryConstructClassFromStringArgs(scriptClass, scriptArgs)</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们看下这个方法的内容，省略掉异常处理的代码之后，第一句是编译这个 kts ，得到 scrpitClass，这实际上就是一个 Java Class，后面的 tryConstructClassFromStringArgs 则是要实例化这个类，scriptArgs 则是我们在运行这个脚本时传入的其他参数，这里作为脚本生成的类 scriptClass 的构造方法的参数传入。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">tryConstructClassFromStringArgs</span><span class="params">(clazz: <span class="type">Class</span>&lt;*&gt;, args: <span class="type">List</span>&lt;<span class="type">String</span>&gt;)</span></span>: Any? &#123;</div><div class="line"></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> clazz.getConstructor(Array&lt;String&gt;::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>).<span class="title">newInstance</span></span>(args.toTypedArray())</div><div class="line">    &#125; <span class="keyword">catch</span> (e: NoSuchMethodException) &#123;</div><div class="line">        <span class="keyword">for</span> (ctor <span class="keyword">in</span> clazz.kotlin.constructors) &#123;</div><div class="line">            <span class="keyword">val</span> mapping = tryCreateCallableMappingFromStringArgs(ctor, args)</div><div class="line">            <span class="keyword">if</span> (mapping != <span class="literal">null</span>) &#123;</div><div class="line">               <span class="keyword">return</span> ctor.callBy(mapping)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>哦，这样我们就明白了，原来 kts 当中的代码其实是被编译成类的构造方法来运行的。这么说来我们还可以给脚本传入参数，在脚本当中引用命令行传入的参数也不难：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">println(<span class="string">"Hello from kts, args below: "</span>)</div><div class="line"></div><div class="line">args.forEach(::println)</div><div class="line"></div><div class="line">println(<span class="string">"The End."</span>)</div></pre></td></tr></table></figure>
+<p>运行输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ kotlinc -script Hello.kts X-Man Wolfrine</div><div class="line">Hello from kts, args below: </div><div class="line">X-Man</div><div class="line">Wolfrine</div><div class="line">The End.</div></pre></td></tr></table></figure>
+<p>注意，如果你需要单步调试上面的过程，可以直接在 IntelliJ 当中右键运行 org.jetbrains.kotlin.cli.jvm.K2JVMCompiler，参数填入 -script [kts文件的路径]即可。如果遇到下面的错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class <span class="string">'xxx'</span> is compiled by a pre-release version of Kotlin and cannot be loaded by this version of the compiler</div></pre></td></tr></table></figure>
+<p>确保你的编译环境和 IntelliJ 插件一致的前提下，加入 -Xskip-metadata-version-check 参数来忽略错误即可。</p>
+<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h2><p>通过这篇文章我们不仅知道了 Kotlin 可以支持脚本方式运行，还知道了其运行的原理：编译成一个类，脚本代码作为其构造方法运行，命令行参数作为构造方法的参数传入。</p>
+<p>其实前面这段分析本身没有什么难度，它最有价值的地方在于它为我们提供了一个方便快捷了解 Kotlin 内部运行机制的入口，哪里不会断哪里，妈妈再也不用担心我的 Kotlin~</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/03/13/Kotlin Script 介绍/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KotlinScript/">KotlinScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本运行/">脚本运行</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&title=《Kotlin Script 介绍》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&title=《Kotlin Script 介绍》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Script 介绍》 — Kotlin&url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/13/快速上手 Kotlin 11招/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">快速上手 Kotlin 11招</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/06/Kotlin 1.1 Event/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]Kotlin 1.1 Event</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&title=《Kotlin Script 介绍》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&title=《Kotlin Script 介绍》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Script 介绍》 — Kotlin&url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/03/13/Kotlin Script 介绍/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACO0lEQVR42u3aS3KDQAxFUfa/aTKlKnb7Pok4hfoycsUJ9GGg6Hcc+Dov1/Un62+vP3l3z/VTbr5kyJDxWMa5vNa/w6nk6Py5L6gyZMjYgLEOiOvDkUPzO9SeJUOGDBnkwSRBTI8oQ4YMGZ3boXQNl6//FnBlyJDxKAYJnfzB/A4kiby5FpchQ8YDGWmI/ObnP5lvyJAh41GMM7w6A87aIBOdSoYMGaMZPMDxdYo1mySOtfPIkCFjKiMtX3mxyktN3tR7G6ZlyJAxmpEWk51WWm3hjLxEGTJk7MNIl71qo4LOOPNIs1cZMmSMZqQtsFqLbZ3wpWWwDBkypjJ40pa27PsjAf6KZciQsQODP6Cz03HXEPTFZxkyZGzAIMPIdDxw18ASlbgyZMjYjMFbY3zxotMZQ0FfhgwZWzJqyxD3Lm3wtFKGDBmzGf0/4C02/rI6IV6GDBnzGOTQteDIm/vxGOD32WTIkLENgySFafHJh6BkFePDsoUMGTKGMjrJHMo0wevorHfEMwQZMmSMYKStt2Kt3BhzfhgPyJAhYzSDhzbeXOPjSd7Oi6ccMmTIGMRIhwS1EjR9HcEQQoYMGUMZZ3jxorQ22kxbe8F/DBkyZDyW0Vmq6CxbrMN6bdgpQ4aM2YxakK2tSvDAGgdcGTJkbMD4TssMtfhLXTUZMmTI4GPONKFMYTJkyJDRKSbTMrUWZIsLrDJkyBjBSFdL0zKVp5jFUC5DhozRjFbpGJajJK0k3xaHmjJkyHge4wfJbSy63ox0gQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

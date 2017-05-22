@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/">
+    
+    
+    <title>Kotlin 一个很厉害的 DSL 写法 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin">
+    <meta name="description" content="Kotlin DSL which su go i de su ne!">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 一个很厉害的 DSL 写法">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin DSL which su go i de su ne!">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin 一个很厉害的 DSL 写法">
+<meta name="twitter:description" content="Kotlin DSL which su go i de su ne!">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin 一个很厉害的 DSL 写法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin 一个很厉害的 DSL 写法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-22T02:30:56.890Z" itemprop="datePublished" class="page-time">
+  2017-05-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超厉害的-DSL"><span class="post-toc-text">超厉害的 DSL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串后面跟一个代码块"><span class="post-toc-text">字符串后面跟一个代码块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用"><span class="post-toc-text">使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表格字面量"><span class="post-toc-text">表格字面量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#形如-quot-1-1-quot-shouldBe-2-的测试"><span class="post-toc-text">形如 "(+ 1 1)" shouldBe 2 的测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一些特定情况"><span class="post-toc-text">一些特定情况</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项"><span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#几个厉害的-DSL-项目"><span class="post-toc-text">几个厉害的 DSL 项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Anko"><span class="post-toc-text">Anko</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两个基于-Swing-的-DSL"><span class="post-toc-text">两个基于 Swing 的 DSL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Gensokyo"><span class="post-toc-text">Gensokyo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FriceEngine-DSL"><span class="post-toc-text">FriceEngine DSL</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#官方教程里的-HTML-DSL"><span class="post-toc-text">官方教程里的 HTML DSL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JavaFX-DSL"><span class="post-toc-text">JavaFX DSL</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-2017-5-11-KotlinDSL2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin 一个很厉害的 DSL 写法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月22日 10:30" datetime="2017-05-22T02:30:56.890Z"  itemprop="datePublished">2017-05-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>好久没写博客了，今天发几个最近在各个地方看到的一些碉堡了的 Kotlin DSL。本文先介绍一种 DSL 写法，再推荐几个 DSL 项目。</p>
+<h2 id="超厉害的-DSL"><a href="#超厉害的-DSL" class="headerlink" title="超厉害的 DSL"></a>超厉害的 DSL</h2><p>之前在 <a href="https://github.com/kotlintest/kotlintest" target="_blank" rel="external">KotlinTest</a> 上看到一个很牛逼的写法（我把 README 里的实例改了下）：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringSpecExample</span> : <span class="type">StringSpec</span></span>() &#123;</div><div class="line">  init &#123;</div><div class="line"></div><div class="line">    <span class="string">"should add"</span> &#123;</div><div class="line">       forAll(table(</div><div class="line">           headers(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"result"</span>),</div><div class="line">           row(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</div><div class="line">           row(<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>)</div><div class="line">         )) &#123; a, b, result -&gt;</div><div class="line">         a + b shouldBe result</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这其中涉及了好几个 DSL 要素。我一一列举：</p>
+<h3 id="字符串后面跟一个代码块"><a href="#字符串后面跟一个代码块" class="headerlink" title="字符串后面跟一个代码块"></a>字符串后面跟一个代码块</h3><p>这个东西的原理你只要看了源码就知道了，很简单，但是你不看就是想不到（这也是我厨 Kotlin 的原因之一，它很简单，<br>但是可以玩出很多花样来）。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">inline</span> <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> String.<span class="title">invoke</span><span class="params">(block: ()</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就这样你可以利用这个 extension 写出字符串后面跟一个代码块的 DSL 。<br>此处使用的语言特性有：</p>
+<ol>
+<li>extension （万 DSL 基于 extension）</li>
+<li>操作符重载</li>
+<li>最后一个参数是 Lambda ，不需要写调用的括号</li>
+</ol>
+<p>明白了吧。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>举个例子，把他作为一个 URL 的 utility ：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">inline</span> <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> String.<span class="title">invoke</span><span class="params">(block: (<span class="type">URL</span>)</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</div><div class="line">  block(URL(<span class="keyword">this</span>))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="string">"ice1000.org"</span> &#123; url -&gt;</div><div class="line">  File(<span class="string">"download.html"</span>).run &#123;</div><div class="line">    <span class="keyword">if</span> (!exists()) createNewFile()</div><div class="line">    writeText(url.readText())</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="表格字面量"><a href="#表格字面量" class="headerlink" title="表格字面量"></a>表格字面量</h3><p>就是形如</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> a = listOf(</div><div class="line">   listOf(<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>),</div><div class="line">       listOf(<span class="number">0</span>, <span class="number">1</span>),</div><div class="line">          listOf(<span class="number">1</span>),</div><div class="line">          listOf(<span class="number">1</span>, <span class="number">2</span>),</div><div class="line">          listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</div><div class="line">          listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>这样的东西（上面的代码纯粹搞起耍，请不要在意）。</p>
+<p>这个就更简单了我觉得你们应该都知道：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">listOf</span><span class="params">(<span class="keyword">vararg</span> vars: <span class="type">T</span>)</span></span> = LinkedList(vars.size).apply &#123; addAll(*vars) &#125;</div></pre></td></tr></table></figure>
+<p>无非就是变长参数。</p>
+<h2 id="形如-quot-1-1-quot-shouldBe-2-的测试"><a href="#形如-quot-1-1-quot-shouldBe-2-的测试" class="headerlink" title="形如 &quot;(+ 1 1)&quot; shouldBe 2 的测试"></a>形如 <code>&quot;(+ 1 1)&quot; shouldBe 2</code> 的测试</h2><p>这个也很简单，我在小标题里写的就是我在 <a href="https://github.com/lice-lang/lice" target="_blank" rel="external">lice</a> 里使用的测试。</p>
+<p>首先，假定我们有以下测试：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">test</span><span class="params">()</span></span> &#123;</div><div class="line">  assertEquals(<span class="string">"ass we can"</span>, trie[<span class="string">"key"</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们希望写成：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">test</span><span class="params">()</span></span> &#123;</div><div class="line">  trie[<span class="string">"key"</span>] shouldBe <span class="string">"ass we can"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很简单，可以有：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">infix</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> T?.<span class="title">shouldBe</span><span class="params">(expected: <span class="type">T</span>?)</span></span> = assertEquals(expected, <span class="keyword">this</span>)</div></pre></td></tr></table></figure>
+<p>就是一个中缀表达式而已。这有什么难的？</p>
+<h4 id="一些特定情况"><a href="#一些特定情况" class="headerlink" title="一些特定情况"></a>一些特定情况</h4><p>我给我的 lice 写的测试中直接把运行字符串的那一步给包含进去了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">infix</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> Sting.<span class="title">shouldBe</span><span class="params">(expected: <span class="type">T</span>?)</span></span> = assertEquals(expected, Lice.run(<span class="keyword">this</span>))</div></pre></td></tr></table></figure>
+<p>看到没有，运行 lice 代码就是这么简单，还能返回最后一个表达式的值 （喂</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>任何长得类似这样的 DSL 都有一个缺点，就是缩进膨胀（字面意思）。 Scala 为了解决这个问题，<br>推荐用户使用 <code>Tab size 2</code> 的缩进（喂。 于是我也建议读者使用 2 空格缩进。</p>
+<h2 id="几个厉害的-DSL-项目"><a href="#几个厉害的-DSL-项目" class="headerlink" title="几个厉害的 DSL 项目"></a>几个厉害的 DSL 项目</h2><p>根据推荐程度排序：</p>
+<h3 id="Anko"><a href="#Anko" class="headerlink" title="Anko"></a>Anko</h3><p><a href="https://github.com/Kotlin/anko" target="_blank" rel="external">传送门</a>，不说了，最强的 Kotlin DSL 框架，想必大家早已有所耳闻：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">  <span class="keyword">super</span>.onCreate(savedInstanceState)</div><div class="line">  verticalLayout &#123;</div><div class="line">      padding = dip(<span class="number">30</span>)</div><div class="line">      editText &#123;</div><div class="line">        hint = <span class="string">"Name"</span></div><div class="line">        textSize = <span class="number">24</span>f</div><div class="line">      &#125;</div><div class="line">      editText &#123;</div><div class="line">        hint = <span class="string">"Password"</span></div><div class="line">        textSize = <span class="number">24</span>f</div><div class="line">      &#125;</div><div class="line">      button(<span class="string">"Login"</span>) &#123;</div><div class="line">        textSize = <span class="number">26</span>f</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>厉害吧。这个框架是用于 Android 的，用于描述 UI 。有一点要说一下，现在的预览插件挂了。</p>
+<p>弹窗：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alert(<span class="string">"Hi, I'm Roy"</span>, <span class="string">"Have you tried turning it off and on again?"</span>) &#123;</div><div class="line">    yesButton &#123; toast(<span class="string">"Oh…"</span>) &#125;</div><div class="line">    noButton &#123;&#125;</div><div class="line">&#125;.show()</div></pre></td></tr></table></figure>
+<p>还有一些非 UI 的吊炸天的代码块，比如异步：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">doAsync &#123;</div><div class="line">    <span class="comment">// Long background task</span></div><div class="line">    uiThread &#123;</div><div class="line">        result.text = <span class="string">"Done"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="两个基于-Swing-的-DSL"><a href="#两个基于-Swing-的-DSL" class="headerlink" title="两个基于 Swing 的 DSL"></a>两个基于 Swing 的 DSL</h3><h4 id="Gensokyo"><a href="#Gensokyo" class="headerlink" title="Gensokyo"></a>Gensokyo</h4><p><a href="https://github.com/cqjjjzr/Gensokyo" target="_blank" rel="external">传送门</a>，一个刚出来的项目，它长这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  systemLookAndFeel()</div><div class="line">  frame (title = <span class="string">"Test"</span>, show = <span class="literal">true</span>) &#123;</div><div class="line">      size(<span class="number">500</span>, <span class="number">500</span>)</div><div class="line">      exitOnClose</div><div class="line">    </div><div class="line">      menuBar &#123;</div><div class="line">        subMenu(<span class="string">"File"</span>) &#123;</div><div class="line">          item(<span class="string">"Open"</span>) &#123;</div><div class="line">              listenAction &#123;</div><div class="line">                println(<span class="string">"BOOM!"</span></div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          separator</div><div class="line">          subMenu(<span class="string">"Recent"</span>) &#123;</div><div class="line">              item(<span class="string">"nanimo arimasen"</span>) &#123;</div><div class="line">                listenAction &#123;</div><div class="line">                  println(<span class="string">"SHIT!"</span>)</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          separator</div><div class="line">          item(<span class="string">"Exit"</span>) &#123;</div><div class="line">              listenAction &#123;</div><div class="line">                println(<span class="string">"NOPE! SHIT!"</span>)</div><div class="line">                exitProcess(<span class="number">0</span>)</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    </div><div class="line">      gridLayout &#123;</div><div class="line">        row &#123;</div><div class="line">          button(<span class="string">"Hello!"</span>) &#123;</div><div class="line">              listenAction &#123;</div><div class="line">                println(<span class="string">"click!"</span>)</div><div class="line">                hide</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// gap</span></div><div class="line">        &#125;</div><div class="line">        row &#123;</div><div class="line">          button(<span class="string">"Another Hello!"</span>) &#123;</div><div class="line">              listenAction &#123;</div><div class="line">                println(<span class="string">"another click!"</span>)</div><div class="line">                hide</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">          <span class="comment">// gap</span></div><div class="line">        &#125;</div><div class="line">        row &#123;</div><div class="line">          container &#123;</div><div class="line">              gridLayout &#123;</div><div class="line">                row &#123;</div><div class="line">                  button(<span class="string">"Oh Boy♂Next♂Door!"</span>) &#123;</div><div class="line">                      listenAction&#123;</div><div class="line">                        println(<span class="string">"Ahh fuck you"</span>)</div><div class="line">                        hide</div><div class="line">                      &#125;</div><div class="line">                  &#125;</div><div class="line">                  button(<span class="string">"change the boss of the gym!"</span>) &#123;</div><div class="line">                      listenActionWithEvent &#123; source, _, _, _ -&gt;</div><div class="line">                        println(<span class="string">"Ahh FA♂Q <span class="subst">$source</span>"</span>)</div><div class="line">                        hide</div><div class="line">                        <span class="keyword">this</span><span class="symbol">@frame</span>.hide</div><div class="line">                      &#125;</div><div class="line">                  &#125;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Swing 其实没那么垃圾，只要配上 DSL ，啥 GUI 代码都变得好看了。</p>
+<h4 id="FriceEngine-DSL"><a href="#FriceEngine-DSL" class="headerlink" title="FriceEngine DSL"></a>FriceEngine DSL</h4><p>这是我之前弄的那个游戏引擎的 DSL 系统，<a href="https://github.com/icela/FriceEngine-DSL" target="_blank" rel="external">传送门</a>，它长这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  game &#123;</div><div class="line">    bounds(<span class="number">500</span>, <span class="number">500</span>, <span class="number">800</span>, <span class="number">750</span>)</div><div class="line">    showFPS = <span class="literal">false</span></div><div class="line"></div><div class="line">    whenExit &#123;</div><div class="line">      closeWindow()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    whenUpdate &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="number">800.</span>elapsed()) &#123;</div><div class="line">        rectangle &#123;</div><div class="line">          x = elapsed / <span class="number">10.0</span></div><div class="line">          y = elapsed / <span class="number">10.0</span></div><div class="line">          color = PINK</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    every(<span class="number">1000</span>) &#123;</div><div class="line">      oval &#123;</div><div class="line">        x = elapsed / <span class="number">10.0</span></div><div class="line">        y = elapsed / <span class="number">10.0</span></div><div class="line">        color = ORANGE</div><div class="line">      &#125;</div><div class="line">      log(<span class="string">"1 second has past."</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    rectangle &#123;</div><div class="line">      name(<span class="string">"rectangle"</span>)</div><div class="line">      x = <span class="number">100.0</span></div><div class="line">      y = <span class="number">100.0</span></div><div class="line">      width = <span class="number">100.0</span></div><div class="line">    &#125;</div><div class="line">    oval &#123;</div><div class="line">      x = <span class="number">0.0</span></div><div class="line">      y = <span class="number">85.0</span></div><div class="line">      accelerate &#123;</div><div class="line">        x = <span class="number">10.0</span></div><div class="line">      &#125;</div><div class="line">      whenColliding(<span class="string">"rectangle"</span>) &#123;</div><div class="line">        stop()</div><div class="line">        x -= <span class="number">5</span></div><div class="line">        accelerate &#123;</div><div class="line">          x = <span class="number">-2.0</span></div><div class="line">          y = <span class="number">10.0</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    image &#123;</div><div class="line">      file(<span class="string">"C:/frice.png"</span>)</div><div class="line">      x = <span class="number">200.0</span></div><div class="line">      y = <span class="number">300.0</span></div><div class="line">      velocity &#123;</div><div class="line">        x = <span class="number">-5.5</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我自己觉得做的还不错。我还为它搞了个中文版，比较粗鄙，用于讽刺中文编程，请前往同项目的 README 查看。</p>
+<h3 id="官方教程里的-HTML-DSL"><a href="#官方教程里的-HTML-DSL" class="headerlink" title="官方教程里的 HTML DSL"></a>官方教程里的 HTML DSL</h3><p><a href="https://github.com/Kotlin/kotlinx.html" target="_blank" rel="external">传送门</a>，它长这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">window.setInterval(&#123;</div><div class="line">  <span class="keyword">val</span> myDiv = document.create.div(<span class="string">"panel"</span>) &#123;</div><div class="line">      p &#123; </div><div class="line">        +<span class="string">"Here is "</span></div><div class="line">        a(<span class="string">"http://kotlinlang.org"</span>) &#123; +<span class="string">"official Kotlin site"</span> &#125; </div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  document.getElementById(<span class="string">"container"</span>)?.let &#123;</div><div class="line">    it.appendChild(myDiv)</div><div class="line">    it.append &#123; div &#123; +<span class="string">"added it"</span> &#125; &#125;</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="number">1000</span>L)</div></pre></td></tr></table></figure>
+<p>这代码也是我从 README 里面改过的，原文太瘦了，我改的胖一点。</p>
+<p>官方给的例子，非常给力（当时也是看这个的源码搞懂了 anko 的原理）。</p>
+<h3 id="JavaFX-DSL"><a href="#JavaFX-DSL" class="headerlink" title="JavaFX DSL"></a>JavaFX DSL</h3><p><a href="https://github.com/edvin/tornadofx" target="_blank" rel="external">传送门</a>，它长这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyView</span> : <span class="type">View</span></span>() &#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">val</span> persons = FXCollections.observableArrayList(</div><div class="line">        Person(<span class="number">1</span>, <span class="string">"Samantha Stuart"</span>, LocalDate.of(<span class="number">1981</span>, <span class="number">12</span>, <span class="number">4</span>)),</div><div class="line">        Person(<span class="number">2</span>, <span class="string">"Tom Marks"</span>, LocalDate.of(<span class="number">2001</span>, <span class="number">1</span>, <span class="number">23</span>)),</div><div class="line">        Person(<span class="number">3</span>, <span class="string">"Stuart Gills"</span>, LocalDate.of(<span class="number">1989</span>, <span class="number">5</span>, <span class="number">23</span>)),</div><div class="line">        Person(<span class="number">3</span>, <span class="string">"Nicole Williams"</span>, LocalDate.of(<span class="number">1998</span>, <span class="number">8</span>, <span class="number">11</span>))</div><div class="line">  )</div><div class="line">  <span class="keyword">override</span> <span class="keyword">val</span> root = tableview(persons) &#123;</div><div class="line">      column(<span class="string">"ID"</span>, Person::id)</div><div class="line">      column(<span class="string">"Name"</span>, Person::name)</div><div class="line">      column(<span class="string">"Birthday"</span>, Person::birthday)</div><div class="line">      column(<span class="string">"Age"</span>, Person::age)</div><div class="line">      columnResizePolicy = SmartResize.POLICY</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我个人觉得很不错了已经。</p>
+<p>嘛。祝大家玩 Kotlin 开心。</p>
+<hr>
+<p>如果你有兴趣加入我们，请直接关注公众号 Kotlin ，并且加 QQ 群：162452394 联系我们。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin_group.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.890Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="http://ice1000.org/2017/05/11/KotlinDSL2/ " target="_blank" rel="external">http://ice1000.org/2017/05/11/KotlinDSL2/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/千里冰封/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                千里冰封
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&title=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&title=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/22/2017-5-13-KotlinMeetupChengDu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">成都 Kotlin 线下聚会报告及科技汇总</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/18/Kotlin-on-Android-Now-official/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Google 力挺 Kotlin，这是怎么回事！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&title=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&title=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 一个很厉害的 DSL 写法》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3awQrCQAxF0f7/Tyu4EqT2vqQWm7ldCVadM0KaSbJt+Hq8rvfXe9fnPeQ7+adalwwZMm7L4MsivO8LIt+cbpkMGTLWYdSCbD9AEwYJ1jJkyJDx/R4epslGyJAhQ8a5ATdNK//0uSFDhoybMHj5LE0TeX3sorO4DBkybsioNQauef3z/oYMGTL+nlFL9WoNSH5/vCoZMmSMZpAmIk/mSJKXNj55M1WGDBmrMVISbxXUBi/QRsuQIWMBBi/QEzYJx/zYjBJQGTJkDGXwAa/aIZY3G2oppgwZMlZg8BGHWpA9+clAwrcMGTLGMdIgyFO9WpuhOEAmQ4aM0Yw0FJ4Q1xspY5rUypAhYwYjDYI8lUyDZqdpKkOGjNkMvjg+ZpEmhXzsQ4YMGTLSRiYvq/EAyn/x4H+QIUPGIEZnwKLTPOg0RHczXBkyZIxm8LQv/eFa8OX3y5AhYx0GP0zyI2X6bqecJ0OGjNkMUvaqjUF0SmbpJsqQIWM2g7cGSRJJ2glBjyINrDJkyBjN6BTayLu19idvo8qQIWM2gwe+2oBFmoDyIh1KEGXIkDGC0RnnSu9JQ3bwWRkyZIxmpONcaUrHxy9q5TkZMmSsw6gdJmu7xYv+8d7LkCFjAUbayKyV8uNID7ZAhgwZMsg9aXuALDcu58mQIUMGLoqlh1Ieag8eADJkyFiAkQ5G9H+401Q4GLaQIUPGOEb/ANlZdL+BKkOGjNGMJzfj0T8IYnZ2AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

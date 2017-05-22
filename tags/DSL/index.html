@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/tags/DSL/">
+    
+    
+    <title>标签: DSL | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+    <meta name="description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kotlin">
+<meta property="og:url" content="http://www.Kotliner.cn/tags/DSL/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin">
+<meta name="twitter:description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect active">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">标签: DSL</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header tags-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">标签: DSL</h1>
+        <h5 class="subtitle">
+            
+        </h5>
+    </div>
+
+     
+<div class="tabs-bar container">
+    <nav class="tags-list">
+        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
+            ">全部</a>
+         
+
+            <a href="/tags/线下活动/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">线下活动</a>
+
+         
+
+            <a href="/tags/Kotlin/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Kotlin</a>
+
+         
+
+            <a href="/tags/Native/" style="-webkit-order:13;order:13" class="tags-list-item waves-effect waves-button waves-light">Native</a>
+
+         
+
+            <a href="/tags/AllOpen/" style="-webkit-order:14;order:14" class="tags-list-item waves-effect waves-button waves-light">AllOpen</a>
+
+         
+
+            <a href="/tags/NoArg/" style="-webkit-order:15;order:15" class="tags-list-item waves-effect waves-button waves-light">NoArg</a>
+
+         
+
+            <a href="/tags/Kapt/" style="-webkit-order:16;order:16" class="tags-list-item waves-effect waves-button waves-light">Kapt</a>
+
+         
+
+            <a href="/tags/Coroutine/" style="-webkit-order:17;order:17" class="tags-list-item waves-effect waves-button waves-light">Coroutine</a>
+
+         
+
+            <a href="/tags/兼容/" style="-webkit-order:18;order:18" class="tags-list-item waves-effect waves-button waves-light">兼容</a>
+
+         
+
+            <a href="/tags/Android/" style="-webkit-order:19;order:19" class="tags-list-item waves-effect waves-button waves-light">Android</a>
+
+         
+
+            <a href="/tags/typealias/" style="-webkit-order:20;order:20" class="tags-list-item waves-effect waves-button waves-light">typealias</a>
+
+         
+
+            <a href="/tags/成长/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">成长</a>
+
+         
+
+            <a href="/tags/JavaScript/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">JavaScript</a>
+
+         
+
+            <a href="/tags/中文支持/" style="-webkit-order:23;order:23" class="tags-list-item waves-effect waves-button waves-light">中文支持</a>
+
+         
+
+            <a href="/tags/Kotlin元年/" style="-webkit-order:24;order:24" class="tags-list-item waves-effect waves-button waves-light">Kotlin元年</a>
+
+         
+
+            <a href="/tags/KotlinScript/" style="-webkit-order:25;order:25" class="tags-list-item waves-effect waves-button waves-light">KotlinScript</a>
+
+         
+
+            <a href="/tags/脚本运行/" style="-webkit-order:26;order:26" class="tags-list-item waves-effect waves-button waves-light">脚本运行</a>
+
+         
+
+            <a href="/tags/Java/" style="-webkit-order:27;order:27" class="tags-list-item waves-effect waves-button waves-light">Java</a>
+
+         
+
+            <a href="/tags/JavaBean/" style="-webkit-order:28;order:28" class="tags-list-item waves-effect waves-button waves-light">JavaBean</a>
+
+         
+
+            <a href="/tags/接口代理/" style="-webkit-order:29;order:29" class="tags-list-item waves-effect waves-button waves-light">接口代理</a>
+
+         
+
+            <a href="/tags/多继承/" style="-webkit-order:30;order:30" class="tags-list-item waves-effect waves-button waves-light">多继承</a>
+
+         
+
+            <a href="/tags/函数式编程/" style="-webkit-order:31;order:31" class="tags-list-item waves-effect waves-button waves-light">函数式编程</a>
+
+         
+
+            <a href="/tags/kotlin-cn-中文博客/" style="-webkit-order:32;order:32" class="tags-list-item waves-effect waves-button waves-light">kotlin.cn 中文博客</a>
+
+         
+
+            <a href="/tags/视频教程/" style="-webkit-order:33;order:33" class="tags-list-item waves-effect waves-button waves-light">视频教程</a>
+
+         
+
+            <a href="/tags/中文/" style="-webkit-order:34;order:34" class="tags-list-item waves-effect waves-button waves-light">中文</a>
+
+         
+
+            <a href="/tags/官网/" style="-webkit-order:35;order:35" class="tags-list-item waves-effect waves-button waves-light">官网</a>
+
+         
+
+            <a href="/tags/运算符重载/" style="-webkit-order:36;order:36" class="tags-list-item waves-effect waves-button waves-light">运算符重载</a>
+
+         
+
+            <a href="/tags/中缀表达式/" style="-webkit-order:37;order:37" class="tags-list-item waves-effect waves-button waves-light">中缀表达式</a>
+
+         
+
+            <a href="/tags/基本类型/" style="-webkit-order:38;order:38" class="tags-list-item waves-effect waves-button waves-light">基本类型</a>
+
+         
+
+            <a href="/tags/装箱类型/" style="-webkit-order:39;order:39" class="tags-list-item waves-effect waves-button waves-light">装箱类型</a>
+
+         
+
+            <a href="/tags/微信公众号/" style="-webkit-order:40;order:40" class="tags-list-item waves-effect waves-button waves-light">微信公众号</a>
+
+         
+
+            <a href="/tags/编辑代码/" style="-webkit-order:41;order:41" class="tags-list-item waves-effect waves-button waves-light">编辑代码</a>
+
+         
+
+            <a href="/tags/泛型/" style="-webkit-order:42;order:42" class="tags-list-item waves-effect waves-button waves-light">泛型</a>
+
+         
+
+            <a href="/tags/Lambda/" style="-webkit-order:43;order:43" class="tags-list-item waves-effect waves-button waves-light">Lambda</a>
+
+         
+
+            <a href="/tags/Stream-Api/" style="-webkit-order:44;order:44" class="tags-list-item waves-effect waves-button waves-light">Stream Api</a>
+
+         
+
+            <a href="/tags/Type-Alias/" style="-webkit-order:45;order:45" class="tags-list-item waves-effect waves-button waves-light">Type Alias</a>
+
+         
+
+            <a href="/tags/快速上手/" style="-webkit-order:46;order:46" class="tags-list-item waves-effect waves-button waves-light">快速上手</a>
+
+         
+
+            <a href="/tags/kotlinx/" style="-webkit-order:47;order:47" class="tags-list-item waves-effect waves-button waves-light">kotlinx</a>
+
+         
+
+            <a href="/tags/搭建环境/" style="-webkit-order:48;order:48" class="tags-list-item waves-effect waves-button waves-light">搭建环境</a>
+
+         
+
+            <a href="/tags/Anko/" style="-webkit-order:49;order:49" class="tags-list-item waves-effect waves-button waves-light">Anko</a>
+
+         
+
+            <a href="/tags/extensions/" style="-webkit-order:50;order:50" class="tags-list-item waves-effect waves-button waves-light">extensions</a>
+
+         
+
+            <a href="/tags/基础Api/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">基础Api</a>
+
+         
+
+            <a href="/tags/DSL/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">DSL</a>
+
+         
+
+            <a href="/tags/匿名函数/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">匿名函数</a>
+
+         
+
+            <a href="/tags/IntelliJ/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">IntelliJ</a>
+
+         
+
+            <a href="/tags/快捷键/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">快捷键</a>
+
+         
+
+            <a href="/tags/高效/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">高效</a>
+
+         
+
+            <a href="/tags/复合函数/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">复合函数</a>
+
+         
+
+            <a href="/tags/Currying/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Currying</a>
+
+         
+
+            <a href="/tags/偏函数/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">偏函数</a>
+
+         
+
+            <a href="/tags/高阶函数/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">高阶函数</a>
+
+         
+
+            <a href="/tags/尾递归/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">尾递归</a>
+
+        
+    </nav>
+    <!-- PC show more-->
+    <div class="tags-list-more">
+        <a href="javascript:;" onclick="BLOG.tabBar(this)" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
+    </div>
+</div>
+
+
+</header>
+
+<div class="container body-wrap fade">
+    
+            <div class="waterfall">
+          
+
+            <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2017年01月23日 12:46" datetime="2017-01-23T04:46:49.000Z"  itemprop="datePublished">Jan 23, 2017</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/">用 Kotlin 写 Android 02 说说 Anko</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Anko/">Anko</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DSL/">DSL</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+        
+            </div>
+        
+    
+</div>
+
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/tags/DSL/&title=Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/tags/DSL/&title=Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/tags/DSL/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Kotlin&url=http://www.Kotliner.cn/tags/DSL/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/tags/DSL/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvElEQVR42u3aO24DMQwFwL3/pTdtGm8eSUlZGKMqMBxp5ILgR9cVr/vX+vTJp/9Kdlu8cHFxx9z7cT1/Z35KbsDFxT3PfQ5DeQh7RiT7/2HDxcV9MTdJWfIL4+Lifgc3L4deFHdxcXGL3KQ4yVmTPZfVari4uANu3tTY9/eW/i4uLm6LexdXskO1WCqcjouLe4SbB5QqOieWz8XFxd3MPdPUmI9jr14FhouL2+JOHl1Vg2A+do1SHFxc3M3cXi9iMnTJG6blBgouLu5Sbn6DPNxUByeFJAkXF3czNx92JuHmGZ03WaIQhouLu4GbpxTPrOplmj8BLi7uEW4SH3rjk+R6ebGEi4t7kpunGvnB+eVHcRcXF3cbtzrwqA428nFI/pPh4uKe4Va3mwxB8xIrKn5wcXGPc+djkuo+SSKFi4v7Bm6euPTGKuXHXri4uJu5k/HGqidchSQJFxf3CDdfk3ZnPrgtvCPDxcXdzO0d3BvHzosrXFzck9y8uXmPVy9jwcXFfT+3NyjtPdhacAwuLu5mbv7JqN5aFchwcXEH3ObTyWIztLoDLi7uf3GroaR3jd4QZdTfxcXF7XB/AAktAS8Dr0OFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

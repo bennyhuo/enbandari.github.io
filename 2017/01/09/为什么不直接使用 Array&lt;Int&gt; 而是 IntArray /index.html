@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /">
+    
+    
+    <title>为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？ | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="基本类型,装箱类型">
+    <meta name="description" content="基本类型居然有特殊待遇其实我们用数组的场景不太多。有一天在做demo的时候，我突然意识到有 和 IntArray 这两种完全不同的存在，当时我感觉非常的奇怪，为什么要再搞一个 IntArray 呢？不仅 IntArray，还有 DoubleArray、LongArray 等等，所有基本类型都有一个专属的 Array 版本，这背后一定有什么原因的。1234567891011121314151617偏">
+<meta name="keywords" content="基本类型,装箱类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="基本类型居然有特殊待遇其实我们用数组的场景不太多。有一天在做demo的时候，我突然意识到有 和 IntArray 这两种完全不同的存在，当时我感觉非常的奇怪，为什么要再搞一个 IntArray 呢？不仅 IntArray，还有 DoubleArray、LongArray 等等，所有基本类型都有一个专属的 Array 版本，这背后一定有什么原因的。1234567891011121314151617偏">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？">
+<meta name="twitter:description" content="基本类型居然有特殊待遇其实我们用数组的场景不太多。有一天在做demo的时候，我突然意识到有 和 IntArray 这两种完全不同的存在，当时我感觉非常的奇怪，为什么要再搞一个 IntArray 呢？不仅 IntArray，还有 DoubleArray、LongArray 等等，所有基本类型都有一个专属的 Array 版本，这背后一定有什么原因的。1234567891011121314151617偏">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-09T08:20:22.000Z" itemprop="datePublished" class="page-time">
+  2017-01-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本类型居然有特殊待遇"><span class="post-toc-text">基本类型居然有特殊待遇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#真相总是藏在字节码里面"><span class="post-toc-text">真相总是藏在字节码里面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-text">小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-为什么不直接使用 Array&amp;lt;Int&amp;gt; 而是 IntArray "
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">为什么不直接使用 Array<Int> 而是 IntArray ？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月09日 16:20" datetime="2017-01-09T08:20:22.000Z"  itemprop="datePublished">2017-01-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="基本类型居然有特殊待遇"><a href="#基本类型居然有特殊待遇" class="headerlink" title="基本类型居然有特殊待遇"></a>基本类型居然有特殊待遇</h2><p>其实我们用数组的场景不太多。有一天在做demo的时候，我突然意识到有 <figure class="highlight plain"><figcaption><span>和 IntArray 这两种完全不同的存在，当时我感觉非常的奇怪，为什么要再搞一个 IntArray 呢？不仅 IntArray，还有 DoubleArray、LongArray 等等，所有基本类型都有一个专属的 Array 版本，这背后一定有什么原因的。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">偏偏巧了，kotlin-runtime 这个 jar 包里面对应的 kotlin.kotlin_builtins 这个文件没有源码，所以直接跳进去看到的 IntArray 的声明什么都没有。。</div><div class="line"></div><div class="line">```kotlin</div><div class="line">public final class IntArray public constructor(size: kotlin.Int) : kotlin.Cloneable &#123;</div><div class="line">    public constructor(size: kotlin.Int, init: (kotlin.Int) -&gt; kotlin.Int) &#123; /* compiled code */ &#125;</div><div class="line"></div><div class="line">    public final val size: kotlin.Int /* compiled code */</div><div class="line"></div><div class="line">    public open fun clone(): kotlin.IntArray &#123; /* compiled code */ &#125;</div><div class="line"></div><div class="line">    public final operator fun get(index: kotlin.Int): kotlin.Int &#123; /* compiled code */ &#125;</div><div class="line"></div><div class="line">    public final operator fun iterator(): kotlin.collections.IntIterator &#123; /* compiled code */ &#125;</div><div class="line"></div><div class="line">    public final operator fun set(index: kotlin.Int, value: kotlin.Int): kotlin.Unit &#123; /* compiled code */ &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当时我就很纳闷，想来想去可能也就 IntIterator 特殊一点儿，点进去看看吧。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** An iterator over a sequence of values of type `Int`. */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">IntIterator</span> : <span class="type">Iterator</span>&lt;<span class="type">Int</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="keyword">final</span> <span class="function"><span class="keyword">fun</span> <span class="title">next</span><span class="params">()</span></span> = nextInt()</div><div class="line"></div><div class="line">    <span class="comment">/** Returns the next value in the sequence without boxing. */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">nextInt</span><span class="params">()</span></span>: <span class="built_in">Int</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意看，“without boxing” 这一句，如果大家对 Java 基本类型的装箱有所了解，看到这个肯定会立马明白什么的——Kotlin 为基本类型定制 Array 的目的是为了避免装箱？</p>
+<h2 id="真相总是藏在字节码里面"><a href="#真相总是藏在字节码里面" class="headerlink" title="真相总是藏在字节码里面"></a>真相总是藏在字节码里面</h2><p>如果真是这个理由，那么这明显非常说得过去，毕竟装箱是有开销的。为了证实这个答案，我们只需要看下字节码就好了。我们分别用 kotlin 和 Java 写下下面的等价代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> intArray = intArrayOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</div></pre></td></tr></table></figure>
+<p>使用 ASM Bytecode Outline 插件查看字节码，发现二者的结果几乎是完全一样的（当然除了行号之类）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">LINENUMBER 7 L1</div><div class="line">ICONST_3</div><div class="line">NEWARRAY T_INT // 注意这里是构造int的数组</div><div class="line">DUP</div><div class="line">ICONST_0</div><div class="line">ICONST_1</div><div class="line">IASTORE</div><div class="line">DUP</div><div class="line">ICONST_1</div><div class="line">ICONST_3</div><div class="line">IASTORE</div><div class="line">DUP</div><div class="line">ICONST_2</div><div class="line">ICONST_4</div><div class="line">IASTORE</div><div class="line">ASTORE 1</div><div class="line">L2</div></pre></td></tr></table></figure>
+<p>而换个方式，如果我们用 <figure class="highlight plain"><figcaption><span>，会发生什么呢？</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```kotlin</div><div class="line">val arrayOfInt = arrayOf(1,3,4)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">LINENUMBER 8 L2</div><div class="line">ICONST_3</div><div class="line">ANEWARRAY java/lang/Integer</div><div class="line">DUP</div><div class="line">ICONST_0</div><div class="line">ICONST_1</div><div class="line">INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;</div><div class="line">AASTORE</div><div class="line">DUP</div><div class="line">ICONST_1</div><div class="line">ICONST_3</div><div class="line">INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;</div><div class="line">AASTORE</div><div class="line">DUP</div><div class="line">ICONST_2</div><div class="line">ICONST_4</div><div class="line">INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;</div><div class="line">AASTORE</div><div class="line">ASTORE 3</div><div class="line">NOP</div><div class="line">L3</div></pre></td></tr></table></figure>
+<p>这时候我们就能看到，其实是构造了一个 Integer[] 出来，每添加一个数字，就会调用 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 编译器的答案</div><div class="line"></div><div class="line">故事本来发展到这儿就应该结束了吧，毕竟我们得到了一个说得过去的答案，可偏偏我是挖掘机专业毕业的，我就是很好奇 Kotlin 运行的时候把 IntArray 给搞成了什么样子，于是我打开了 Kotlin 的源码（1.0.5），并在 core/builtins/native/kotlin/Arrays.kt 当中找到了 IntArray 的真身：</div><div class="line"></div><div class="line">```kotlin</div><div class="line">/**</div><div class="line"> * An array of ints. When targeting the JVM, instances of this class are represented as `int[]`.</div><div class="line"> * @constructor Creates a new array of the specified [size], with all elements initialized to zero.</div><div class="line"> */</div><div class="line">public class IntArray(size: Int) : Cloneable &#123;</div><div class="line">    /**</div><div class="line">     * Creates a new array of the specified [size], where each element is calculated by calling the specified</div><div class="line">     * [init] function. The [init] function returns an array element given its index.</div><div class="line">     */</div><div class="line">    public inline constructor(size: Int, init: (Int) -&gt; Int)</div><div class="line"></div><div class="line">    /** Returns the array element at the given [index]. This method can be called using the index operator. */</div><div class="line">    public operator fun get(index: Int): Int</div><div class="line">    /** Sets the element at the given [index] to the given [value]. This method can be called using the index operator. */</div><div class="line">    public operator fun set(index: Int, value: Int): Unit</div><div class="line"></div><div class="line">    /** Returns the number of elements in the array. */</div><div class="line">    public val size: Int</div><div class="line"></div><div class="line">    /** Creates an iterator over the elements of the array. */</div><div class="line">    public operator fun iterator(): IntIterator</div><div class="line"></div><div class="line">    public override fun clone(): IntArray</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>果然，这里面的注释明确地告诉我们 IntArray 最终是要编译为 int[] 的。可是，现在骗子这么多，我怎么知道注释不是逗我玩呢？</p>
+<p>于是我开始翻 Kotlin 的源码，主要是编译器相关的代码。关于这块儿呢，目前我还没有理解的很透彻，不过答案应该是有了的。</p>
+<p>Kotlin 的编译器运行的时候，主要依靠一个叫做 <figure class="highlight plain"><figcaption><span>的类来识别我们代码运行时的类型，所谓 FqName，其实就是 Full Qualified Name，简单的说就是代码元素（主要是类）的全名，比如 String -> java.lang.String。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下面是 Kotlin 映射 ```IntArray``` 的一段代码：</div><div class="line"></div><div class="line">**typeSignatureMapping.kt，mapBuiltInType方法**</div><div class="line"></div><div class="line">```kotlin</div><div class="line">    val arrayElementType = KotlinBuiltIns.getPrimitiveTypeByArrayClassFqName(fqName)</div><div class="line">    if (arrayElementType != null) &#123;</div><div class="line">        return typeFactory.createFromString(&quot;[&quot; + JvmPrimitiveType.get(arrayElementType).desc)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>在编译时，Kotlin 编译器如果遇到 IntArray，就会尝试映射这个类，运行到上面的代码时，fqName 的值是 “kotlin.IntArray”，而 arrayElementType 是 <figure class="highlight plain"><figcaption><span>的一个实例 ```INT```，而这个 ```PrimitiveType``` 又是什么呢？</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```java</div><div class="line">public enum PrimitiveType &#123;</div><div class="line">    BOOLEAN(&quot;Boolean&quot;),</div><div class="line">    CHAR(&quot;Char&quot;),</div><div class="line">    BYTE(&quot;Byte&quot;),</div><div class="line">    SHORT(&quot;Short&quot;),</div><div class="line">    INT(&quot;Int&quot;),</div><div class="line">    FLOAT(&quot;Float&quot;),</div><div class="line">    LONG(&quot;Long&quot;),</div><div class="line">    DOUBLE(&quot;Double&quot;),</div><div class="line">    ;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>是 Kotlin 基本类型的一个枚举。</p>
+<p>我们还是看刚才的映射代码，返回的究竟是什么呢？由于我们已经知道 <code>arrayElementType</code> 的值，也就不难得到 <code>JvmPrimitiveType.get(arrayElementType).desc</code> 实际上是 <code>I</code>，这么说来返回的类型应该是 <code>[I</code>——而这个，正是 <code>int[]</code> 的字节码类型。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>其实 Kotlin 中的不少类型都是对 Java 原有类型的扩展，当然有时候扩展不方便的话就直接在编译期做映射，类似的例子还有 kotlin.String -&gt; Java.lang.String，kotlin.collections.MutableMap -&gt; java.util.Map 等等。<br>如果跟高大上的设计模式、应用框架比起来，基本类型的数组问题，算不上一个“大”问题。不过，我希望通过本文传达给大家的一个信息是：“Kotlin 是开源哒，源码面前，了无秘密”。</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray / " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基本类型/">基本类型</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/装箱类型/">装箱类型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&title=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&title=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/16/用 Kotlin 写 Android 01 难道只有环境搭建这么简单/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">用 Kotlin 写 Android 01 难道只有环境搭建这么简单？</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/09/高效地使用你的 IntelliJ/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">高效地使用你的 IntelliJ</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&title=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&title=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《为什么不直接使用 Array<Int> 而是 IntArray ？》 — Kotlin&url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOElEQVR42u3ay3LiQBAEQP//T7PX3WARVT1SGA2pk4PAQjkcin78/MTX4+n6+/VX7z++z/M7n//r1ecmn3XChY2NjX0T9uPwyj/++IGO/z6+Z34ciQUbGxt7V3b70O0RJMgkzPI4fGPExsbG/np2XnIk5UcObosZbGxsbOyV1k/ySh6QHxRg2NjY2B/JbiNn1h5Kipk2ri7vpWFjY2N/PPvcRv/v/n3JfBsbGxv7g9mP8rpuiDuLpaECGxsbeyN2HgAJ/twyoz2m+vmxsbGxt2DPmjIJdWUAkN+nXfr5aRMSGxsb+ybsWQzkSzZJWZK08k8bV2BjY2NvzZ5FyMq4t13uWSlU/ilFsLGxsTdiJ0XCbH46Gx5f3pzCxsbG3ojdlhnt0sxsiNseaP4k2NjY2Pux27PJo6I9xOQZ8kIlym1sbGzsLdjXNYny4qdtCc0OPdpUwsbGxr4he7YWkx/NSuHRDoyLwTM2Njb2duwZ76w1nbaMaQuYpaTFxsbGviF7pdF/XAaslxzrKz7/2VTCxsbGvjk7edC8uZ8UHvm13nJ683ViY2Njb8Ruf58XP/pH7afka8iP+M2hYGNjY2/BvuIj8yZUOx6eDTOim2JjY2PfkL0eD7PSYn3Q2wbqm5UdbGxs7Juzk+ZRHm95G2jlQGcxjI2Njb0fO28qtTfNm0ftgLkFL40HsLGxsT+e3Y5O84HB+vA4bznVjS1sbGzsrdmzjvpK7M3AbSOsTkVsbGzsG7LXB7rtAlD+Sv7FDLdNsbGxsW/OXh+p5u37lVFEO2CoB73Y2NjYN2SftY45KyHWj3K2UYmNjY29H7v4ET8a2a6HUD5gKEILGxsbezv2rFTI39MGzxWBWi/uYGNjY9+K3ZYTbWy0zaN2kNAeLjY2NvYe7Ed55aEyK3LaLyCJzJffMzY2NvYW7FkAJNGVNIbOjcy8EYaNjY29H/usRZnZg+YBlkdpFIfY2NjY27HXg2G2yjNrGOUJHI0HsLGxsb+M3S5Z5rB2YJwPm08IMGxsbOyN2HmAzVpFeXMqvz82Njb2N7DXPyxZ30xeWfkaijtjY2Njb8SetWZWwqNdozl3qQgbGxt7I/YfevJT77T1ibgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

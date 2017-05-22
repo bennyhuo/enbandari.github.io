@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/page/3/">
+    
+    
+    <title>Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+    <meta name="description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kotlin">
+<meta property="og:url" content="http://www.Kotliner.cn/page/3/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin">
+<meta name="twitter:description" content="Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Native 编译。">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin</h1>
+        <h5 class="subtitle">
+            
+                简洁、优雅，100% 兼容 Java
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1.1 is out"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月14日 20:29" datetime="2017-03-14T12:29:00.000Z"  itemprop="datePublished">2017-03-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/14/Kotlin 1.1.1 is out/">[译]Kotlin 1.1.1 is out</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        今天我们发布了针对 Kotlin 1.1 的第一个bug修复更新。此更新的重点是解决导致错误代码生成的回归；我们希望尽可能快地修复此问题。详细内容请查看更新日志 。重点更新如下：
+
+默认情况下，已启用Gradle增量编译。如果需要，您仍然可以按照文档描述禁用此功能。
+Kotlin插件现已可以通过Gradle插件依赖添加使用。详情可参阅相关文档。
+禁用使用带有接收器的函数类型作为JavaScr...
+    
+
+        <a href="/2017/03/14/Kotlin 1.1.1 is out/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-快速上手 Kotlin 11招"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月13日 12:43" datetime="2017-03-13T04:43:19.000Z"  itemprop="datePublished">2017-03-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/13/快速上手 Kotlin 11招/">快速上手 Kotlin 11招</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        最近经常会收到一些 “用 Kotlin 怎么写” 的问题，作为有经验的程序员，我们已经掌握了一门或者多门语言，那么学 Kotlin 的时候就经常会有类似 “ ‘再见’用日语怎么说？”、“ ‘你好’ 用西班牙语怎么说？” 的问题，所以我决定把一些常用的语法对照列举出来，如果大家熟悉 Java，那么快速上手 Kotlin 会变得非常地容易。
+这篇文章主要是写给需要快速上手 Kotlin 的 Ja...
+    
+
+        <a href="/2017/03/13/快速上手 Kotlin 11招/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/快速上手/">快速上手</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin Script 介绍"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月13日 12:43" datetime="2017-03-13T04:43:19.000Z"  itemprop="datePublished">2017-03-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/13/Kotlin Script 介绍/">Kotlin Script 介绍</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1. 认识 kts打开你的 IntelliJ，随便找个位置，注意我说的，随便找个位置，创建一个文件，命名为 Hello.kts，然后你就会发现 IntelliJ 能够识别这种类型，文件的 icon 与 kt 后缀的 kotlin 文件没啥区别。
+那你知道你创建了一个什么东西吗？它究竟与平时我们写的 Kotlin 代码有啥区别呢？其实，从名字我们就可以了解到，这是一个 Kotlin 的脚本文件...
+    
+
+        <a href="/2017/03/13/Kotlin Script 介绍/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KotlinScript/">KotlinScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本运行/">脚本运行</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1 Event"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月06日 17:43" datetime="2017-03-06T09:43:00.000Z"  itemprop="datePublished">2017-03-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/06/Kotlin 1.1 Event/">[译]Kotlin 1.1 Event</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Kotlin 1.1除了为您的项目带来新特性之外，还是您与当地社区进行线下交流学习、了解Kotlin的未来与发展的绝好机会。您可以组织社区的小伙伴们，一起参与Jetbrains团队在3月23日举办的Kotlin直播活动。为了适应不同时区，我们准备了两个直播流，分别是欧洲中部时间[CET]下午5点/7点(太平洋夏季时间[PDT]上午9点/11点)。  
+告诉我们，我们将在博客上公布。
+
+
+
+
+...
+    
+
+        <a href="/2017/03/06/Kotlin 1.1 Event/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月04日 8:46" datetime="2017-03-04T00:46:34.000Z"  itemprop="datePublished">2017-03-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/04/Kotlin 1.1/">Kotlin 1.1</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        上周一的文章里面提到 Kotlin 1.1 rc了，还没正式发布，我在周三的时候把文章转到掘金以后，好多小伙伴告诉我，1.1 已经发布了~
+tips: 本文有较多外链，公众号阅读时无法跳转，如有需要，请大家点击”阅读原文”。
+1、更新要点1.1 Coroutine1.1 最大的更新一定必须毫无疑问的要数 Coroutine 了，尽管在正式发版之前，Kotlin Team 突然虚了，决定把这个...
+    
+
+        <a href="/2017/03/04/Kotlin 1.1/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coroutine/">Coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin元年/">Kotlin元年</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文支持/">中文支持</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1 Released with JavaScript Support, Coroutines and more"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年03月01日 17:12" datetime="2017-03-01T09:12:00.000Z"  itemprop="datePublished">2017-03-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/01/Kotlin 1.1 Released with JavaScript Support, Coroutines and more/">[译]Kotlin 1.1 发布啦！JavaScript，Coroutine 还有更多你想要的</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Kotlin 1.1 今天正式发布了，这让 Kotlin 有能力适用于更多的应用场景，希望大家能够喜欢。
+
+
+
+我们希望 Kotlin 能够在应用的任何组件中成为独立的、富有表现力且性能强大的强类型语言，Kotlin1.1 为了实现这一目标迈出了巨大的两步。
+
+
+
+首先，JavaScript 支持的“试验性”标签已被移除，并且支持所有 Kotlin 语言特性、标准库的大部分内容以及 Java...
+    
+
+        <a href="/2017/03/01/Kotlin 1.1 Released with JavaScript Support, Coroutines and more/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-高阶函数（二）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年02月27日 14:41" datetime="2017-02-27T06:41:00.000Z"  itemprop="datePublished">2017-02-27</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/27/高阶函数（二）/">高阶函数（二）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        上周我已经给大家推送了一篇关于高阶函数的文章，这一期，我们继续探讨一些相关的有意思的话题。
+1 复合函数大家一定见过下面的数学题吧：
+\[求 f(g(x)) 的值。解：    设 m(x) = f(g(x))    …\]m 就是 f 和 g 的复合。
+我们在 Kotlin 当中要如何对函数进行复合呢？
+12val add5 = &#123; i: Int -&gt; i + 5 &#125...
+    
+
+        <a href="/2017/02/27/高阶函数（二）/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Currying/">Currying</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/偏函数/">偏函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复合函数/">复合函数</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1：我们在路上"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年02月20日 10:32" datetime="2017-02-20T02:32:32.000Z"  itemprop="datePublished">2017-02-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/心路历程/">心路历程</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/20/Kotlin 1.1：我们在路上/">Kotlin 1.1：我们在路上</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ►1.1 RC 来了，Release 还会远吗？
+                
+                    
+                    
+                
+                
+            
+
+去年 2 月 19 日 1.0 发版，我记得此前看到论坛上面开始讨论 1.0 API 趋于稳定的话题，想想都还挺兴奋呢，一不留神，...
+    
+
+        <a href="/2017/02/20/Kotlin 1.1：我们在路上/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-高阶函数（一）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年02月20日 10:32" datetime="2017-02-20T02:32:32.000Z"  itemprop="datePublished">2017-02-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/20/高阶函数（一）/">高阶函数（一）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1 什么是高阶函数1.1 高阶函数的基本概念高阶函数其实看着挺吓人，不过就是把函数作为参数或者返回值的一类函数而已。其实这样的函数我们都见过很多了，来看个例子：
+123public inline fun &lt;T&gt; Array&lt;out T&gt;.forEach(action: (T) -&gt; Unit): Unit &#123;     for (element in t...
+    
+
+        <a href="/2017/02/20/高阶函数（一）/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/尾递归/">尾递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高阶函数/">高阶函数</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Kotlin 1.1 Release Candidate is Here"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017年02月17日 13:37" datetime="2017-02-17T05:37:00.000Z"  itemprop="datePublished">2017-02-17</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/17/Kotlin 1.1 Release Candidate is Here/">[译]Kotlin 1.1 候选版本来啦</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        截至今天，Kotlin 1.1 终于到了候选版本（RC）阶段。这意味着大部分开发工作都已经完成，我们对此结果感到满意，很快就会发布 Kotlin 1.1 正式版。我们已经在内部对此版本进行了大量测试，但现实世界总是比任何测试环境更加多样化，因此我们需要您的帮助。请尝试这个版本，让我们知道您的体验！
+
+
+
+
+候选版本中唯一的新功能是 takeUnless 函数，它对应 1.1 之前添加的 ta...
+    
+
+        <a href="/2017/02/17/Kotlin 1.1 Release Candidate is Here/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/page/3/&title=Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/page/3/&title=Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/page/3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Kotlin&url=http://www.Kotliner.cn/page/3/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/page/3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwElEQVR42u3awW7DIBAE0Pz/T6fXSm3oDBhsVc+nKIrNI4eRd5fXK77e3672rque9sLFxT3IfQ+v8W/GrGSV3ICLi3ueO46hn7/59LgxIn/+x+9xcXEfyc1DJ3kCLi7u/+DmLy5t5OHi4j6N25Y3ebSN42xjrYaLi7vAbVufOz5v6e/i4uJOcd/llQRZ21IpVsfFxT3C3T0IacukaByLi4t7hDt3wmH3oY3iXlxc3G3cy1oSQeHUhl3Ry8HFxb2Iu1LYtG3QtuX6y4q4uLibuUkZk7x8rBy/GIfmxy4OLi7uNu7c0Yp8G0nDtD72gYuLe4SbxEceN21TNb8LFxf3DHdl2NkOWfMDGVHxg4uLe4S70gZtC6e5+MPFxT3DzYufHD03ZE0KIVxc3PPcttRpt9SOZP4IMlxc3OPcfBt52bPSTsXFxb2LO/c5H7Lmo5Gom4uLi7uNO9cqXSl18qMeuLi4d3Hb9uhVo5f8mMXkZnBxcZe5c4u1r0pzo5f6n8PFxb2Umy8/t+F820uTH1xc3Fu5c1G10mzFxcV9MvfaqKrjDBcX9yA3D52VwGrbqbi4uHdx2yhZH6u0G8DFxT3I/QK0CeIx2zeU4gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

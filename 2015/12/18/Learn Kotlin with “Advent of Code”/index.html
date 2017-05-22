@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/">
+    
+    
+    <title>[译]Learn Kotlin with “Advent of Code” | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="圣诞节快到了！准备好了吗？是时候来一场与新语言的邂逅了！ 你已经解决了Eric Wastl上神奇的谜题集锦 “代码挑战” 了吗？得益于Kotlin具有函数式语言的特性，这些任务可以找到非常简洁而不失可读性的解决方案。尽力用kotlin去解决他们吧！    你可以在IntelliJ IDEA社区版上完成你的解决方案，它是免费的，也原生支持Kotlin。也可以在浏览器上通过Kotlin playgro">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]Learn Kotlin with “Advent of Code”">
+<meta property="og:url" content="http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="圣诞节快到了！准备好了吗？是时候来一场与新语言的邂逅了！ 你已经解决了Eric Wastl上神奇的谜题集锦 “代码挑战” 了吗？得益于Kotlin具有函数式语言的特性，这些任务可以找到非常简洁而不失可读性的解决方案。尽力用kotlin去解决他们吧！    你可以在IntelliJ IDEA社区版上完成你的解决方案，它是免费的，也原生支持Kotlin。也可以在浏览器上通过Kotlin playgro">
+<meta property="og:image" content="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/cover.png?resize=640%2C320&ssl=1">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译]Learn Kotlin with “Advent of Code”">
+<meta name="twitter:description" content="圣诞节快到了！准备好了吗？是时候来一场与新语言的邂逅了！ 你已经解决了Eric Wastl上神奇的谜题集锦 “代码挑战” 了吗？得益于Kotlin具有函数式语言的特性，这些任务可以找到非常简洁而不失可读性的解决方案。尽力用kotlin去解决他们吧！    你可以在IntelliJ IDEA社区版上完成你的解决方案，它是免费的，也原生支持Kotlin。也可以在浏览器上通过Kotlin playgro">
+<meta name="twitter:image" content="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/cover.png?resize=640%2C320&ssl=1">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[译]Learn Kotlin with “Advent of Code”</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[译]Learn Kotlin with “Advent of Code”</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-12-18T14:08:00.000Z" itemprop="datePublished" class="page-time">
+  2015-12-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Learn Kotlin with “Advent of Code”"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[译]Learn Kotlin with “Advent of Code”</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015年12月18日 22:08" datetime="2015-12-18T14:08:00.000Z"  itemprop="datePublished">2015-12-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>圣诞节快到了！准备好了吗？是时候来一场与新语言的邂逅了！</p>
+<p>你已经解决了<a href="http://was.tl/" target="_blank" rel="external">Eric Wastl</a>上神奇的谜题集锦 <a href="http://www.adventofcode.com" target="_blank" rel="external">“代码挑战”</a> 了吗？得益于Kotlin具有函数式语言的特性，这些任务可以找到非常简洁而不失可读性的解决方案。<br>尽力用kotlin去解决他们吧！</p>
+
+<p><a href="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/cover.png" target="_blank" rel="external"><img alt="cover" class="alignnone size-full wp-image-3312" data-recalc-dims="1" src="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/cover.png?resize=640%2C320&amp;ssl=1"></a></p>
+
+<p>你可以在<a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="external">IntelliJ IDEA社区版</a>上完成你的解决方案，它是免费的，也原生支持Kotlin。<br>也可以在浏览器上通过<a href="http://try.kotlinlang.org" target="_blank" rel="external">Kotlin playground</a>解决任务。我们为“Advent of Code”添加了特殊模板：</p>
+
+<p><iframe allowfullscreen frameborder="0" height="315" src="https://www.youtube.com/embed/1UkJ7CNzhNk" width="560"></iframe></p>
+
+<p>祝你圣诞(Kotlin)快乐!</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="https://blog.jetbrains.com/kotlin/2015/12/try-kotlin-with-advent-of-code/ " target="_blank" rel="external">https://blog.jetbrains.com/kotlin/2015/12/try-kotlin-with-advent-of-code/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/Roman Belov/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                Roman Belov
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&title=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&title=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/26/Kotlin 如何优雅的实现『多继承』/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotlin 如何优雅的实现『多继承』</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2015/12/07/Kotlin 1.0 Beta 3 is Out!/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]Kotlin 1.0 Beta 3 发布啦!</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&title=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&title=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Learn Kotlin with “Advent of Code”》 — Kotlin&url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2015/12/18/Learn Kotlin with “Advent of Code”/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7dMAwE0Nz/0um2QOCfGUosXOB5FdiJraeFxAz19RVf3z+up6d/33l6z9Odnz8n77xw4eHh4R0P/enVT7ynAbWM5Ov5X+Hh4eFt89oBtRtG/pX8u8nGg4eHh/cG3uc7Cf7z/WTLwcPDw/u/eJ+X8nzDaIMPPDw8vLfxkjigXe6TWCHfhNazFjw8PLyYl3eR3vPzSn8PDw8P77ir3pbFs7flBXf9fjw8PLwFXr7gztizwwTt7/xyfAEPDw/vKm8WPcyCgDaczQOIx0nBw8PD+4e8WbSaT8fJwayCioeHh7fAmxXNeWuqLbLzQjxpyOHh4eFt8No5mJW/10rk864dHh4e3lVe8sk8eE2W/jpvLoMSPDw8vD3ebFk/afzfffr4XTw8PLxlXl5259VsG9rmsXJUlOPh4eEt8PIGfxLRDgvfg9Ck3Zzw8PDwznlJCTsLI9qhtMe/okIfDw8Pb5nXYvLmWbtTnYS8w5nGw8PDi3nnS3k+iJPII5n0x6/g4eHhXeW1n5wdxsqL6XyFjzYMPDw8vAVe8k9+G8K2xwvabSB5ioeHh7fHS8LT8/ZYO9/5xP3yFA8PD2+B1zaZ2g+fTEfe7rqQteDh4eGVvNmymy/xs3ZXXsrXbTA8PDy8S7w2YJ0t2flwZ6FGcWICDw8P74B3ApiVxXePCxRhBB4eHt4Cr118j057HYQXxfvx8PDw1nj5cJMItW195YV1vYHh4eHhXeV9l1d7NKqdrNnG8AjGw8PDW+DNekbtcPOCeFayX7jw8PDwSl776rzptRc6FMcR8PDw8NZ4t+LdWfh7dx/Dw8PDeyfvZOi3DnJFIQUeHh7eC3h5nJqU2rNwthgDHh4e3hovX+JnxfQspEgY0caAh4eHd5XXLujtMYJZEHzhQAAeHh7efd4fNEwr8IhGrEsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/">
+    
+    
+    <title>像写文章一样使用 Kotlin | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="运算符重载,中缀表达式">
+    <meta name="description" content="我把所有文章和视频都放到了 Github 上 ，如果你喜欢，请给个 Star，谢谢~  运算符重载不知道大家有没有看到过下面的函数调用： 1print &quot;Hello World&quot; 这样的感觉就好像在写文章，没有括号，让语言的表现力进一步增强。Groovy 和 Scala 就有这样的特性，那么 Kotlin 呢？ 123for(i in 0..10)&amp;#123;	...&amp;#125; 如果你在 Ko">
+<meta name="keywords" content="运算符重载,中缀表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="像写文章一样使用 Kotlin">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="我把所有文章和视频都放到了 Github 上 ，如果你喜欢，请给个 Star，谢谢~  运算符重载不知道大家有没有看到过下面的函数调用： 1print &quot;Hello World&quot; 这样的感觉就好像在写文章，没有括号，让语言的表现力进一步增强。Groovy 和 Scala 就有这样的特性，那么 Kotlin 呢？ 123for(i in 0..10)&amp;#123;	...&amp;#125; 如果你在 Ko">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="像写文章一样使用 Kotlin">
+<meta name="twitter:description" content="我把所有文章和视频都放到了 Github 上 ，如果你喜欢，请给个 Star，谢谢~  运算符重载不知道大家有没有看到过下面的函数调用： 1print &quot;Hello World&quot; 这样的感觉就好像在写文章，没有括号，让语言的表现力进一步增强。Groovy 和 Scala 就有这样的特性，那么 Kotlin 呢？ 123for(i in 0..10)&amp;#123;	...&amp;#125; 如果你在 Ko">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">像写文章一样使用 Kotlin</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">像写文章一样使用 Kotlin</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-02T08:22:57.000Z" itemprop="datePublished" class="page-time">
+  2017-01-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符重载"><span class="post-toc-text">运算符重载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#去掉方法的括号"><span class="post-toc-text">去掉方法的括号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#聊聊-DSL"><span class="post-toc-text">聊聊 DSL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-text">小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-像写文章一样使用 Kotlin"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">像写文章一样使用 Kotlin</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月02日 16:22" datetime="2017-01-02T08:22:57.000Z"  itemprop="datePublished">2017-01-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>我把所有文章和视频都放到了 <a href="https://github.com/enbandari/Kotlin-Tutorials" target="_blank" rel="external">Github</a> 上 ，如果你喜欢，请给个 Star，谢谢~</p>
+</blockquote>
+<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>不知道大家有没有看到过下面的函数调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">"Hello World"</span></div></pre></td></tr></table></figure>
+<p>这样的感觉就好像在写文章，没有括号，让语言的表现力进一步增强。Groovy 和 Scala 就有这样的特性，那么 Kotlin 呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">0.</span><span class="number">.10</span>)&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你在 Kotlin 中写下了这样的代码，你可能觉得很自然，不过你有没有想过 0..10 究竟是个什么？</p>
+<p>“是个 IntRange 啊，这你都不知道。”你一脸嫌弃的回答道。</p>
+<p>是啊，确实是个 IntRange，不过为什么是 0..10 返回个 IntRange，而不是 0-&gt;10 呢？</p>
+<p>“我靠。。这是出厂设定，懂不懂。。”你开始变得更嫌弃了。。</p>
+<p>额，其实我想说的是，你知不知道这其实是个运算符重载？！</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">operator</span> </div><div class="line">	<span class="function"><span class="keyword">fun</span> <span class="title">rangeTo</span><span class="params">(other: <span class="type">kotlin</span>.<span class="type">Int</span>)</span></span></div><div class="line">	: kotlin.ranges.IntRange &#123; </div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没错，Kotlin 允许我们对运算符进行重载，所以你甚至可以给 String 定义 rangeTo 方法。</p>
+<h2 id="去掉方法的括号"><a href="#去掉方法的括号" class="headerlink" title="去掉方法的括号"></a>去掉方法的括号</h2><p>“毕竟运算符是有限的吧？如果说我想给 Person 增加个 say 方法，不带括号那种，怎么办？” 你不以为然地说。</p>
+<p>这个嘛。。当然也是可以哒！</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String)&#123;</div><div class="line">    <span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> 说<span class="params">(word: <span class="type">String</span>)</span></span>&#123;</div><div class="line">        println(<span class="string">"\"<span class="subst">$name</span> 说 <span class="subst">$word</span>\""</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> 老张 = Person(<span class="string">"老张"</span>)</div><div class="line">     老张 说 <span class="string">"小伙砸,你咋又调皮捏!"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码执行结果是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">老张 说 &quot;小伙砸,你咋又调皮捏!&quot;</div></pre></td></tr></table></figure>
+<p>这个看上去有有点儿意思不？代码跟输出是一样滴！有人会说，中文变量和函数名真的大丈夫？是滴，全然大丈夫，这是因为 Java、Kotlin 的字节码都采用 Unicode，中文确实是可以的——不过，Java 还支持中文包名和文件名，这在 Kotlin 当中还是有些问题的。</p>
+<p>接着说，通常我们的方法传参是需要括号的，为什么这里不需要了呢？因为 infix 这个关键字！这里跟 Scala 和 Groovy 不同，Kotlin 只有显示的声明为 infix 的只有一个参数的方法才可以这么玩，如果你不显示声明，想去括号门儿都没有。</p>
+<h2 id="聊聊-DSL"><a href="#聊聊-DSL" class="headerlink" title="聊聊 DSL"></a>聊聊 DSL</h2><p>好，抛开老张的例子不谈，毕竟真正生产环境下，谁会去用中文呢。什么情况下我们需要 infix？当然是 DSL 中。我们看一段 Gradle 配置：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply <span class="string">plugin:</span> <span class="string">'kotlin'</span></div></pre></td></tr></table></figure>
+<p>看上去很有表现力是吧，即使你不懂 groovy 语法，也能直接看懂这句话就是使用 kotlin 插件。可它本质上还是句 groovy 代码，所以它的结构是怎样的呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">apply</span><span class="params">(Map&lt;String, ?&gt; config)</span></span>;</div></pre></td></tr></table></figure>
+<p>实际上，apply 是 PluginAware 的一个方法，后面的 plugin 呢？ 那不过是一个 k-v 对而已，在 groovy 当中， K:V 的形式可以表示一个键值对。那既然参数是 Map，那我要是多传几个参数是不是也可以呢？</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply ([<span class="string">plugin:</span> <span class="string">'kotlin'</span>, 宝宝: <span class="string">"不开心"</span>])</div></pre></td></tr></table></figure>
+<p>不过这样虽然多传了一个键值对，不过由于 gradle 并不关心 “宝宝”，所以 “宝宝：不开心”那也没有办法了，说了也白说。哈哈。</p>
+<p>前面的 DSL 是 groovy 版本的，再回到 Kotlin 当中，如果我们编写 DSL 代码，据说 Kotlin 版本的 gradle 也已经在开发中了，那么我们猜猜它会长成啥样？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply mapOf(<span class="string">"plugin"</span> to <span class="string">"kotlin"</span>)</div></pre></td></tr></table></figure>
+<p>用 Kotlin 的 K to V 的方式传入一个 Pair。这里的 apply 的声明就应该是：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="title">apply</span><span class="params">(config: <span class="type">Map</span>&lt;<span class="type">String</span>, Any&gt;)</span></span></div></pre></td></tr></table></figure>
+<p>很丑？没关系，我们为什么不直接搞一个方法叫做 applyPlugin 呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span> <span class="title">applyPlugin</span><span class="params">(pluginName: <span class="type">String</span>)</span></span></div></pre></td></tr></table></figure>
+<p>于是：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">applyPlugin <span class="string">"kotlin"</span></div></pre></td></tr></table></figure>
+<p>当然，作为静态语言，与 groovy 当然不能照搬了，所以最理想的实现肯定是强类型约束，比如</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply&lt;KotlinPlugin&gt;()</div></pre></td></tr></table></figure>
+<p>不过，这个我们就不谈了，跑题了。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>infix 是一个非常有用的关键字，让你的代码看起来像一篇文章一样，你不比再为前后括号匹配着慌，每一个单词其实都是方法调用。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin扫码关注.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/02/像写文章一样使用 Kotlin/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中缀表达式/">中缀表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/运算符重载/">运算符重载</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&title=《像写文章一样使用 Kotlin》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&title=《像写文章一样使用 Kotlin》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《像写文章一样使用 Kotlin》 — Kotlin&url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/09/高效地使用你的 IntelliJ/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">高效地使用你的 IntelliJ</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/02/Kotlin 1.0.6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 1.0.6</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&title=《像写文章一样使用 Kotlin》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&title=《像写文章一样使用 Kotlin》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《像写文章一样使用 Kotlin》 — Kotlin&url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/02/像写文章一样使用 Kotlin/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQW7DMAwEwP7/0+kDUse7lIS4wPhUJK6k8cFkSP78xNfr7bq65/3+zyvkn1/tu+HCw8PDWz76581awNX97w9lZa/LR4CHh4d3jJe86D/fkx/xauX80RTnwcPDw3sYr10hCT9JKo+Hh4f3H3ltwp3s2IYQPDw8vO/y8lf2rPC6q8xxsNaCh4eHF/PyLtJz/j7S38PDw8Nb7qrnDa0NiW/cKitOi4eHh3eAl79w87Q1P1bS3GrTZTw8PLzTvDwA5An3rpZ//jguV8PDw8M7xkte33kbrEXmiXsdqPDw8PAO8NqBqnbIoC3CJoeuwxgeHh7eVl7e4E9e9G1SvpJw1w0wPDw8vK28JHlt/ytPiGdtsKQlhoeHh3eOt7cplbe72h3rdBwPDw/vS7zktZ4cNBmQakcTbga/8PDw8I7xVpZuU+dhWWG2Jh4eHt4x3nop4fNmSTBoy8TREAMeHh7eMV6eFs8wK0MGeUvsZiYCDw8Pbysvh+WjAC17tvvN/Xh4eHgHeLtexHn625Y/2tGrP9bEw8PDO8DbVUTIjzJbZ2WgAQ8PD28Xb70E0JZZ889njbGijIuHh4e3wEtezbOxgPbQK0OreHh4eN/izcaqdrXT8pAzHLrCw8PDW+YlSW07LDUr/q4Em5uEHg8PD+8wLw8AydhBW5DNQ9Ew+uHh4eEd47VJ7SwMrDy+oiiMh4eHd4y33vrKV5iNrg4HEfDw8PC28l7llbNn4wJtiLo5Dx4eHt4B3qypnzelZg22/P6VcIKHh4e3wltpz+dNrLaokT+ym2/x8PDwjvHyH/ltGFgpdmy48PDw8B7Aa8uyeciZDSLcfI6Hh4f3GF5bXGhLunkL7Sa04OHh4R3j5WXZ2WbtKFU+2hUFBjw8PLytvPYX/eygbdK8q+aAh4eHt5X3CwXH5CnVYAGjAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

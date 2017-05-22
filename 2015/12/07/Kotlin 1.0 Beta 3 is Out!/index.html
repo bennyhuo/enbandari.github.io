@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/">
+    
+    
+    <title>[译]Kotlin 1.0 Beta 3 发布啦! | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="我们很高兴发布了 Kotlin 1.0 Beta 的另一个更新。我们正在努力完善标准库，抛弃了过时已久的设计结构，同时修复了 bugs，改进性能和为下一个版本作准备。完整的更新历史在 这里 。 最新的 issue 在 这里 。 Library 变更我们努力在 1.0 版本到来之前让标准库变得更加完美。这意味着进行一些尝试，所以会有新的部分被弃用，有新的函数被添加。我们计划在 1.0 版本（或 RC">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]Kotlin 1.0 Beta 3 发布啦!">
+<meta property="og:url" content="http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="我们很高兴发布了 Kotlin 1.0 Beta 的另一个更新。我们正在努力完善标准库，抛弃了过时已久的设计结构，同时修复了 bugs，改进性能和为下一个版本作准备。完整的更新历史在 这里 。 最新的 issue 在 这里 。 Library 变更我们努力在 1.0 版本到来之前让标准库变得更加完美。这意味着进行一些尝试，所以会有新的部分被弃用，有新的函数被添加。我们计划在 1.0 版本（或 RC">
+<meta property="og:image" content="https://i2.wp.com/blog.jetbrains.com/kotlin/files/2015/12/Screen-Shot-2015-12-02-at-19.54.03.png?w=640&ssl=1">
+<meta property="og:image" content="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/init.png?w=640">
+<meta property="og:image" content="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/destructuring.png?w=640">
+<meta property="og:image" content="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/container.png?w=640">
+<meta property="og:image" content="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/templates.png?w=640">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译]Kotlin 1.0 Beta 3 发布啦!">
+<meta name="twitter:description" content="我们很高兴发布了 Kotlin 1.0 Beta 的另一个更新。我们正在努力完善标准库，抛弃了过时已久的设计结构，同时修复了 bugs，改进性能和为下一个版本作准备。完整的更新历史在 这里 。 最新的 issue 在 这里 。 Library 变更我们努力在 1.0 版本到来之前让标准库变得更加完美。这意味着进行一些尝试，所以会有新的部分被弃用，有新的函数被添加。我们计划在 1.0 版本（或 RC">
+<meta name="twitter:image" content="https://i2.wp.com/blog.jetbrains.com/kotlin/files/2015/12/Screen-Shot-2015-12-02-at-19.54.03.png?w=640&ssl=1">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[译]Kotlin 1.0 Beta 3 发布啦!</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[译]Kotlin 1.0 Beta 3 发布啦!</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2015-12-07T07:45:00.000Z" itemprop="datePublished" class="page-time">
+  2015-12-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Library-变更"><span class="post-toc-text">Library 变更</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语言变化"><span class="post-toc-text">语言变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#When-表达式"><span class="post-toc-text">When 表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-text">注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#枚举值"><span class="post-toc-text">枚举值()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可见性和作用域"><span class="post-toc-text">可见性和作用域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-扩展"><span class="post-toc-text">Android 扩展</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IDE-中的新功能"><span class="post-toc-text">IDE 中的新功能</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin 1.0 Beta 3 is Out!"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[译]Kotlin 1.0 Beta 3 发布啦!</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2015年12月07日 15:45" datetime="2015-12-07T07:45:00.000Z"  itemprop="datePublished">2015-12-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>我们很高兴发布了 Kotlin 1.0 Beta 的另一个更新。我们正在努力完善标准库，抛弃了过时已久的设计结构，同时修复了 bugs，改进性能和为下一个版本作准备。<br>完整的更新历史在 <a href="https://youtrack.jetbrains.com/issues/KT?q=%23Major+%23Critical+%23Resolved+-Obsolete+-%7BEclipse+Plugin%7D+resolved+date%3A+2015-11-16+..+2015-11-30" target="_blank" rel="external">这里</a> 。</p>
+<p>最新的 issue 在 <a href="https://youtrack.jetbrains.com/issues/KT?q=%23Major+%23Critical+%23Resolved+-Obsolete+-%7BEclipse+Plugin%7D+resolved+date%3A+2015-11-16+..+2015-11-30" target="_blank" rel="external">这里</a> 。</p>
+<h2 id="Library-变更"><a href="#Library-变更" class="headerlink" title="Library 变更"></a>Library 变更</h2><p>我们努力在 1.0 版本到来之前让标准库变得更加完美。这意味着进行一些尝试，所以会有新的部分被弃用，有新的函数被添加。我们计划在 1.0 版本（或 RC）中对标准库进行一次最后的清理：删除所有已过时和其他遗留的东西。<br>这里我们只关心一个需要注意的<a href="https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0-beta-3595" target="_blank" rel="external">变化</a>：现在<code>contains()</code>和其他类似的扩展方法接受集合元素的父类型。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// strs: Collection&lt;String&gt;</span></div><div class="line"><span class="comment">// ns: String?</span></div><div class="line"><span class="comment">// cs: CharSequence</span></div><div class="line"><span class="comment">// i: Int</span></div><div class="line">strs.contains(ns) <span class="comment">// accepted now</span></div><div class="line">strs.contains(cs) <span class="comment">// accepted now</span></div><div class="line">str.contains(i) <span class="comment">// ERROR (in fact, a deprecation warning, but will be an error soon)</span></div></pre></td></tr></table></figure>
+<p>我们发现以前建议的<code>containsRaw</code>方法比较低效，使用<code>contains()</code>更加合适，同时保证了兼容性。请注意，集合接口本身是完整的，所有这些都是通过扩展功能完成的。请使用<em>Code Cleanup</em>来迁移代码。</p>
+<h2 id="语言变化"><a href="#语言变化" class="headerlink" title="语言变化"></a>语言变化</h2><p>一些需要注意的语言变化，完整列表在<a href="https://github.com/JetBrains/kotlin/releases/tag/build-1.0.0-beta-3595" target="_blank" rel="external">这里</a> 。</p>
+<p>许多我们以前不推荐的实现现在会报错。请使用<em>Code Cleanup</em>进行迁移。</p>
+<h3 id="When-表达式"><a href="#When-表达式" class="headerlink" title="When 表达式"></a>When 表达式</h3><p>这种代码已被证明是有问题的，所以我们决定弃用它：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">when</span> &#123;</div><div class="line">    foo.isValid(), foo.isReady() -&gt; process(foo)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>许多人倾向于认为条件 <code>foo.isValid(), foo.isReady()</code> 表示 <code>foo.isValid() == true and foo.isReady() == true</code>，而实际上逗号是指 <strong>or</strong>。解决方法很简单：只需使用 <strong>||</strong>:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">when</span> &#123;</div><div class="line">    foo.isValid() || foo.isReady() -&gt; process(foo)</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>Code Cleanup</em>会自动迁移。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>一个 bug 已被修复，现在我们可以在注解的参数中使用默认值：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">annotation</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span></span>(<span class="keyword">val</span> value: String)</div><div class="line"> </div><div class="line"><span class="keyword">annotation</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span>(</div><div class="line">        <span class="keyword">val</span> entries: Array&lt;Entry&gt; = arrayOf(Entry(<span class="string">"a"</span>), Entry(<span class="string">"b"</span>)) <span class="comment">// OK now</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<h3 id="枚举值"><a href="#枚举值" class="headerlink" title="枚举值()"></a>枚举值()</h3><p>最近我们将传统的 Java 的<code>Enum.values()</code>更改为一个属性：<code>Enum.values</code>，但现在我们将回滚这个更改，因为有一个没有注意到的角落：枚举中的常量可能被命名为<code>values</code>，然后便没有办法访问其中的任何一个。我们考虑了不同的方案，最后决定将<code>values</code>改回函数是最干净的。<br>所以，现在不推荐使用<code>values</code>属性，也不推荐使用<code>values()</code>函数。</p>
+<h3 id="可见性和作用域"><a href="#可见性和作用域" class="headerlink" title="可见性和作用域"></a>可见性和作用域</h3><p>我们正在清理和修正小问题的可见性和作用域</p>
+<ul>
+<li>companion objects 中允许 protected 成员</li>
+<li>子类调用非 @JvmStatic 的 protected 对象将被标记为错误（不支持）</li>
+<li>对于 open 属性，私有 setters 现在已被标记为过时</li>
+<li>local sealed class 已弃用（从不可用）</li>
+<li>重写的 setter 不能降低可见性</li>
+<li>枚举类中不再允许存在内部类</li>
+<li>lambdas / object literals / local 函数中禁止使用未初始化的变量</li>
+</ul>
+<h2 id="Android-扩展"><a href="#Android-扩展" class="headerlink" title="Android 扩展"></a>Android 扩展</h2><p>我们合并了 IntelliJ IDEA 的主要 Kotlin 插件和 Android 的<em>Kotlin</em>扩展插件。后者现在已经过时了，因为它的功能可以从 Kotlin 插件获取。<br>此外，我们还添加了对 Android <strong>productFlavors</strong>的支持：现在，来自不同 flavors 的属性可以在不同的包中使用。<br>例如，我们可以在<code>build.gradle</code>文件中存在两种 flavors：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">productFlavors &#123;</div><div class="line">    free &#123;</div><div class="line">        versionName <span class="string">"1.0-free"</span></div><div class="line">    &#125;</div><div class="line">    pro &#123;</div><div class="line">        versionName <span class="string">"1.0-pro"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在，我们不仅可以在<strong>main source set</strong>中的布局使用合成属性，还可以在 flavor 布局使用合成属性：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Import synthetic properties for the `activity_free.xml` layout in the `free` flavor</span></div><div class="line"><span class="keyword">import</span> kotlinx.android.synthetic.free.activity_free.versionMarker</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreeActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</div><div class="line">        ...</div><div class="line"> </div><div class="line">        setContentView(R.layout.activity_free)</div><div class="line"> </div><div class="line">        ...</div><div class="line"> </div><div class="line">        versionMarker.text = <span class="string">"Free version"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请注意，<strong>main source set</strong>的所有布局现在位于<code>kotlinx.android.synthetic.main</code>包之下，旧的包命名约定已被弃用。</p>
+<h2 id="IDE-中的新功能"><a href="#IDE-中的新功能" class="headerlink" title="IDE 中的新功能"></a>IDE 中的新功能</h2><ul>
+<li><p>Android Extensions 插件已被合并到 Kotlin 插件中，不再需要单独安装<br><img src="https://i2.wp.com/blog.jetbrains.com/kotlin/files/2015/12/Screen-Shot-2015-12-02-at-19.54.03.png?w=640&amp;ssl=1" alt="Screen Shot 2015-12-02 at 19.54.03" width="640" height="437"></p>
+</li>
+<li><p>创建新的 Gradle 工程时，添加了 Kotlin 的选项以供选择：</p>
+</li>
+<li><p>调试器：stacktrace 导航功能现在支持跟踪内联函数的堆栈帧。同时对内联函数的步进调试功能进行了一系列的改进。</p>
+</li>
+<li><p>添加了三个快速初始化新属性的<em>Quick Fixes</em>：<br><img src="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/init.png?w=640" onmouseover="this.src='https://d3nmt5vlzunoa1.cloudfront.net/kotlin/files/2015/12/init.gif';" onmouseout="this.src='https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/init.png?w=640';" width="640" height="172"></p>
+</li>
+<li><p><strong>Introduce Variable</strong>（Ctrl + Alt + V / Cmd + Alt + V）现在支持<strong>结构声明(multi-declarations)</strong>：<br><img src="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/destructuring.png?w=640" onmouseover="this.src='https://d3nmt5vlzunoa1.cloudfront.net/kotlin/files/2015/12/destructuring.gif';" onmouseout="this.src='https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/destructuring.png?w=640';" width="640" height="172"></p>
+</li>
+<li><p>同时<strong>Introduce Variable</strong>还能使用于 lambda 或匿名函数中：<br><img src="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/container.png?w=640" onmouseover="this.src='https://d3nmt5vlzunoa1.cloudfront.net/kotlin/files/2015/12/container.gif';" onmouseout="this.src='https://i1.wp.com/blog.jetbrains.com/kotlin/files/2015/12/container.png?w=640';" width="640" height="197"></p>
+</li>
+<li><p>Beta 3 开始支持在字符串模板中使用 Introduce Variable/Parameter/Property/Function<br><img src="https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/templates.png?w=640" onmouseover="this.src='https://d3nmt5vlzunoa1.cloudfront.net/kotlin/files/2015/12/templates.gif';" onmouseout="this.src='https://i0.wp.com/blog.jetbrains.com/kotlin/files/2015/12/templates.png?w=640';" width="640" height="197"></p>
+</li>
+<li><p>最后，添加了一个实验功能 —— 在 IDE 中对 Kotlin 脚本文件（.kts）做了基本的支持</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.890Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="https://blog.jetbrains.com/kotlin/2015/12/kotlin-1-0-beta-3-is-out/ " target="_blank" rel="external">https://blog.jetbrains.com/kotlin/2015/12/kotlin-1-0-beta-3-is-out/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/Andrey Breslav/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                Andrey Breslav
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&title=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&title=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2015/12/18/Learn Kotlin with “Advent of Code”/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[译]Learn Kotlin with “Advent of Code”</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2013/06/24/“Static constants” in Kotlin/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]“Static constants” in Kotlin</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&title=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&title=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin 1.0 Beta 3 发布啦!》 — Kotlin&url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2015/12/07/Kotlin 1.0 Beta 3 is Out!/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3a3U7DMAwGUN7/pYfEHRrtPtsBseTkaurWLmdIJv75+IjX42vdv/u8nu+9evfq3sULAwPjbRmP23W/lfx6/o0J8gcqBgbGAYz7IJs/Ot/0fczM94aBgYGRB9Mcc3Xl/ufDwMDAyANuHkYnaS0GBgZGL4nNv6C68kC/IBfHwMB4Q0a1MfCXr3+xv4GBgfEmjMd4TdqfvWbAD3dhYGBszbgve62dc5gkwFEgxsDAOIBR3VByJSnVVVsCl0/AwMA4gFENuEkzMh/a6I1lLPi/gYGB8e8Za4v71QBafffyh8bAwNiaMRnGSo5uecCtDm1EfxkMDIwtGPkXVMtteaI7OVB+629gYGBsyshT2V7hvjpGlu8EAwPjNEY+9JCHzmRb1ScUqoYYGBgbMZJ0cT4ekSe0vfEODAyMvRnNCF08IP5GCC7XCzEwMLZmTAYj8lJds5uBgYFxDGN+vOulo6PwioGBcQyjOnqVjEckyW21FfHiNQYGxtaM3nDDpGHQa44WjowYGBibMlaV+P9mICOawMXAwNiUkRz1qhtaW0p78XwMDIytGYWgFg9kVDG9giAGBsYJjEdxJZuYJ8N56MfAwDiBUQ1z1YJadVxschjFwMDYm7GqMdkLtcnnMTAwMFaNO1TL+pP0FQMDA6PXBpiAk1S23InFwMA4kpG3DaohuDe6gYGBcRqjWqyfjIL1hsbKvU0MDIyNGPPGQK9hsKoVioGBsTXjE15u0T90/SizAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

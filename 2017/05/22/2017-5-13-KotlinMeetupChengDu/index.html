@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/">
+    
+    
+    <title>成都 Kotlin 线下聚会报告及科技汇总 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="线下活动">
+    <meta name="description" content="kotlin event ChengDu">
+<meta name="keywords" content="Life,ice1000,Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="成都 Kotlin 线下聚会报告及科技汇总">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="kotlin event ChengDu">
+<meta property="og:image" content="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/1.jpg">
+<meta property="og:image" content="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/2.jpg">
+<meta property="og:image" content="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/3.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="成都 Kotlin 线下聚会报告及科技汇总">
+<meta name="twitter:description" content="kotlin event ChengDu">
+<meta name="twitter:image" content="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/1.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">成都 Kotlin 线下聚会报告及科技汇总</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">成都 Kotlin 线下聚会报告及科技汇总</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-22T02:30:56.890Z" itemprop="datePublished" class="page-time">
+  2017-05-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/线下活动/">线下活动</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为何线下聚会"><span class="post-toc-text">为何线下聚会</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#活动内容"><span class="post-toc-text">活动内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#黑科技汇总"><span class="post-toc-text">黑科技汇总</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#假构造方法模拟-Factory"><span class="post-toc-text">假构造方法模拟 Factory</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非常规函数的-JNI-声明"><span class="post-toc-text">非常规函数的 JNI 声明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JvmMultifileClass"><span class="post-toc-text">JvmMultifileClass</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模拟-Null-safety"><span class="post-toc-text">模拟 Null safety</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三代人"><span class="post-toc-text">三代人</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#集体照"><span class="post-toc-text">集体照</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-2017-5-13-KotlinMeetupChengDu"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">成都 Kotlin 线下聚会报告及科技汇总</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月22日 10:30" datetime="2017-05-22T02:30:56.890Z"  itemprop="datePublished">2017-05-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/线下活动/">线下活动</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上星期我组织了成都的一次主题为 Kotlin 的线下聚会（也可以说是沙龙），来的人不到十个，却代表了三代人啊。</p>
+<h2 id="为何线下聚会"><a href="#为何线下聚会" class="headerlink" title="为何线下聚会"></a>为何线下聚会</h2><p>不知道</p>
+<h2 id="活动内容"><a href="#活动内容" class="headerlink" title="活动内容"></a>活动内容</h2><p>早上 9:30 ~ 10:00 基本把成员接到。</p>
+<p>上午大概的内容：</p>
+<ol>
+<li><em>千里冰封</em>聊 Kotlin DSL 的原理</li>
+<li><em>CharlieJiang</em> 聊 Kotlin JNI 调用</li>
+<li><em>CharlieJiang</em> 介绍项目 <a href="https://github.com/cqjjjzr/Laplacian" target="_blank" rel="external">Laplacian</a> ， JVM 音乐播放器内核</li>
+<li><em>清水河学渣</em>介绍 Kotlin Web 开发</li>
+<li><em>清水河学渣</em>介绍自己写的 IntelliJ 高亮插件 <a href="https://github.com/huoguangjin/MultiHighlight" target="_blank" rel="external">MultiHighlight</a></li>
+<li>大家一起讨论 Kotlin 的花样玩法。</li>
+</ol>
+<p>然后午饭就在旁边一破地方吃的，<em>优格</em>还说他来过这地方（汗），吃到一半，<em>迎风尿，腿不抖</em>被公司召唤而去。<br><code>members.size.dec()</code>。</p>
+<p>下午，<em>优格</em>拿出了他的<strong>任天堂 switch</strong>，然后一发而不可收拾。。</p>
+<ul>
+<li><em>清水河学渣</em>暴露身份，实际上是<strong>清水河学神</strong>。</li>
+<li>有个挤牛奶的游戏，玩起来动作很像撸管</li>
+<li>最年轻的<em>查理江</em>同学全程打守望先锋</li>
+<li>大家都笑得像个孩子</li>
+</ul>
+<p>这次聚会我反正学到了新东西，很开心。希望别人也如此。</p>
+<p>这里总结一下我觉得值得一提的聚会中聊到的科技。这两天我又有新发现，下次活动说。</p>
+<h2 id="黑科技汇总"><a href="#黑科技汇总" class="headerlink" title="黑科技汇总"></a>黑科技汇总</h2><h3 id="假构造方法模拟-Factory"><a href="#假构造方法模拟-Factory" class="headerlink" title="假构造方法模拟 Factory"></a>假构造方法模拟 Factory</h3><p>（by 清水河学渣）</p>
+<ul>
+<li>重载 <code>companion object</code> 的操作符模仿构造方法，还能做到完全模拟 Factory ：</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 直线，使用解析式表示</div><div class="line"> * ax + by + c = 0</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Line</span></span>(<span class="keyword">val</span> a: <span class="built_in">Int</span>, <span class="keyword">val</span> b: <span class="built_in">Int</span>, <span class="keyword">val</span> c: <span class="built_in">Int</span>) &#123;</div><div class="line"><span class="comment">//  constructor(point1: Pair&lt;Int, Int&gt;, point2: Pair&lt;Int, Int&gt;) : this()</span></div><div class="line"><span class="comment">// 上面这样写，通过两点计算 a b c 表达式会很复杂，可读性并不好（虽然我不觉得）</span></div><div class="line"><span class="comment">// 但是你必须在第一时间调用 primary constructor ，在此之前不能进行</span></div><div class="line"><span class="comment">// 任何变量声明或者流程控制</span></div><div class="line"><span class="comment">// 怎么办呢</span></div><div class="line">  <span class="keyword">companion</span> <span class="keyword">object</span> Factory &#123;</div><div class="line">    <span class="comment">// 于是可以通过这个解决</span></div><div class="line">    <span class="comment">// 这个求 a b c 的写法其实并不优雅，只是为了展示例子</span></div><div class="line">    <span class="comment">// 这个方法调用起来和构造方法语法完全相同</span></div><div class="line">    <span class="comment">// 但是这样写，可以在调用构造方法之前进行一些流程控制或者变量声明</span></div><div class="line">    <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">invoke</span><span class="params">(one: <span class="type">Pair</span>&lt;<span class="type">Int</span>, <span class="built_in">Int</span>&gt;, two: <span class="type">Pair</span>&lt;<span class="type">Int</span>, <span class="built_in">Int</span>&gt;)</span></span>: Line &#123;</div><div class="line">      <span class="keyword">val</span> a = two.second - one.second</div><div class="line">      <span class="keyword">val</span> b = one.first - two.first</div><div class="line">      <span class="keyword">val</span> c = two.first * one.second - one.first * two.second</div><div class="line">      <span class="keyword">return</span> Line(a, b, c)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  <span class="keyword">val</span> a = Line(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>) <span class="comment">// 调用构造方法</span></div><div class="line">  <span class="keyword">val</span> b = Line(Pair(<span class="number">1</span>, <span class="number">2</span>), Pair(<span class="number">3</span>, <span class="number">4</span>)) <span class="comment">// 调用操作符重载</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="非常规函数的-JNI-声明"><a href="#非常规函数的-JNI-声明" class="headerlink" title="非常规函数的 JNI 声明"></a>非常规函数的 JNI 声明</h3><p>（by CharlieJiang）</p>
+<ul>
+<li>非常规函数的 JNI 声明，以及通过注解确保编译器不改名</li>
+</ul>
+<p>比如 getter setter 以及改名的函数。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> a: <span class="built_in">Int</span></div><div class="line">    external <span class="keyword">get</span></div><div class="line">    external <span class="keyword">set</span></div><div class="line"></div><div class="line">  <span class="meta">@JvmName(<span class="meta-string">"myNameIsVan"</span>)</span></div><div class="line">  external <span class="function"><span class="keyword">fun</span> <span class="title">myNameIsVan</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="JvmMultifileClass"><a href="#JvmMultifileClass" class="headerlink" title="JvmMultifileClass"></a>JvmMultifileClass</h3><p>（by 千里冰封）</p>
+<ul>
+<li>将多个文件的内容编译到同一个类里面</li>
+</ul>
+<p>文件 1：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// file 1.kt</span></div><div class="line"><span class="meta">@file:JvmName</span>(<span class="string">"Fuck"</span>)</div><div class="line"><span class="meta">@file:JvmMultifileClass</span></div><div class="line"></div><div class="line"><span class="keyword">val</span> shit = <span class="string">"fuck"</span></div><div class="line"><span class="keyword">val</span> fuck = <span class="string">"shit"</span></div></pre></td></tr></table></figure>
+<p>文件 2：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// file 2.kt</span></div><div class="line"><span class="meta">@file:JvmName</span>(<span class="string">"Fuck"</span>)</div><div class="line"><span class="meta">@file:JvmMultifileClass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> GameObject.<span class="title">destroy</span><span class="params">()</span></span> &#123;</div><div class="line">  isAlive = <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译之后只会生成一个类 ‘Fuck.class’ ，里面有 <code>shit fuck destroy</code> 三个成员。</p>
+<h3 id="模拟-Null-safety"><a href="#模拟-Null-safety" class="headerlink" title="模拟 Null safety"></a>模拟 Null safety</h3><p>（by 千里冰封）</p>
+<ul>
+<li>代数数据类型模拟 Null safety</li>
+</ul>
+<p>这是个函数式编程的概念，这里用了 when+is 模拟模式匹配。</p>
+<p>这个我在讲的时候代码写错了，后来我想到了原因，是因为没加泛型的协变。</p>
+<p>关于我当时举的例子（用 ADT 处理除法的除数为 0 的情况），正确的代码是这样的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Option</span>&lt;<span class="type">out T</span>&gt;</span>()</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Some</span>&lt;<span class="type">out T</span>&gt;</span>(<span class="keyword">val</span> obj: T) : Option&lt;T&gt;()</div><div class="line"><span class="keyword">object</span> None : Option&lt;<span class="built_in">Nothing</span>&gt;()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">div</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span> : Option&lt;<span class="built_in">Int</span>&gt; =</div><div class="line">  <span class="keyword">if</span> (b == <span class="number">0</span>) None <span class="keyword">else</span> Some(a / b)</div></pre></td></tr></table></figure>
+<p>调用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  <span class="keyword">val</span> io = Scanner(System.`<span class="keyword">in</span>`)</div><div class="line">  <span class="keyword">val</span> res = div(io.nextInt(), io.nextInt())</div><div class="line">  println(<span class="keyword">when</span> (res) &#123;</div><div class="line">    <span class="keyword">is</span> Some -&gt; println(<span class="string">"result: <span class="subst">$&#123;res.obj&#125;</span>"</span>) <span class="comment">// smart cast</span></div><div class="line">    <span class="keyword">is</span> None -&gt; println(<span class="string">"nothing here"</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我觉得还行。</p>
+<h2 id="三代人"><a href="#三代人" class="headerlink" title="三代人"></a>三代人</h2><p>两个 00 后，两个 80 后，三个 90 后，我感觉没有任何代沟，最后一起嗨起来。</p>
+<p>也许这就是单纯吧.jpg</p>
+<h2 id="集体照"><a href="#集体照" class="headerlink" title="集体照"></a>集体照</h2><p>随便 po 两张上来：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/2.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://coding.net/u/ice1000/p/Images/git/raw/master/blog-img/14/3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p>如果你有兴趣加入我们，请直接关注公众号 Kotlin ，并且加 QQ 群：162452394 联系我们。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin_group.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.890Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="http://ice1000.org/2017/05/13/KotlinMeetupChengDu " target="_blank" rel="external">http://ice1000.org/2017/05/13/KotlinMeetupChengDu</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/千里冰封/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                千里冰封
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线下活动/">线下活动</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&title=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&title=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/22/KotlinForEachBreakContinue/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotlin：forEach也能break和continue</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/22/2017-5-11-KotlinDSL2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 一个很厉害的 DSL 写法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&title=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&title=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《成都 Kotlin 线下聚会报告及科技汇总》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQW4bMRAEQP//0wmQU4BEq+4ZUvah9iTIxpJFA+S4h19f8fPrz5P89Pnz30/+fTKH1YOHh4c3mvqrZ/bqHJmMm3z/7+/g4eHh3eYlU0xe1/7OZpmiAwwPDw/vW3lJ1fr85vb4aQ8qPDw8vJ/Gex6mPQCS97fLjYeHh/dJ3iwU2MCeQ9tNqIGHh4d3m7ePZT//+WJ/Dw8PD2/RVc8Pg1lo22709Wzx8PDwLvCeC+JZKTxrgLVBQ3G5AQ8PD+8Cbx+YJpFBG7/mSxmFuXh4eHhHee2Qm+bZjaj3zTvx8PDwLvBOXRdom2ftBaxZ0Y+Hh4d3ltdeezrbts/fcOxCAB4eHt5R3vPAsynm08rHKgIUPDw8vAu8WTy6ae23UW/bPMPDw8O7zft86TyLLfIZ1icJHh4e3po3+7d/cyE1X4I6tsDDw8O7wNts6DNGWxa3y/F16rzCw8PDe8HLL0LNrg60QUN+XEV/Nzw8PLwLvLx4nQW7+WHQLlO+6Hh4eHhneW3bKS9/ZzFBG0m8OdLw8PDwrvFmG3QyTH4M5Nt9Pls8PDy8G7xkm94EuLM2WB4iJ+/Bw8PDO8vblLBJFNtOd7bQb1JqPDw8vMu82QWmUwHurEkW5dN4eHh4R3ltwZpHD5u3tcv95tIVHh4e3gVe+7SYzUK0Lbf/XB3Aw8PDO8TbxKzJ1tw2pTattZej4OHh4R3ltdHqpq3VFuXtVa2X5x4eHh7eNd6sCE4Oj1n7qr0o8PLEw8PDwzvKm0UPm5/mR0vR6Nont3h4eHglLz8M2kNltt1vmm1vIgk8PDy8o7y8xZVv388l72xZEzYeHh7ez+HlpW0+/KxYL+aDh4eH9wN4UfPpaAG9Ksrx8PDwrvFm7f9kW8+n2F5TiEbEw8PDu8CbNcDyiCEPONorWccePDw8vPT5DbuXkpdkDYI1AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

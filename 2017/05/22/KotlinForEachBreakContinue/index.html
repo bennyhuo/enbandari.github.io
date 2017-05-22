@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/22/KotlinForEachBreakContinue/">
+    
+    
+    <title>Kotlin：forEach也能break和continue | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin">
+    <meta name="description" content="Kotlin forEach has breaking and continuing, too">
+<meta name="keywords" content="Kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin：forEach也能break和continue">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin forEach has breaking and continuing, too">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin：forEach也能break和continue">
+<meta name="twitter:description" content="Kotlin forEach has breaking and continuing, too">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin：forEach也能break和continue</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin：forEach也能break和continue</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-22T02:30:56.906Z" itemprop="datePublished" class="page-time">
+  2017-05-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-KotlinForEachBreakContinue"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin：forEach也能break和continue</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月22日 10:30" datetime="2017-05-22T02:30:56.906Z"  itemprop="datePublished">2017-05-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Kotlin/">Kotlin</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>昨天在BennyHuo的Kotlin裙里看到有人在讨论关于</p>
+<blockquote>
+<p>如何在forEach中跳出循环</p>
+</blockquote>
+<p>这样的问题。也就是说，他们想用forEach而不是for循环，因为这很fp，很洋气（我也喜欢），<br>但是他们又想使用break和continue，也就是普通的流程控制语句中的控制语句。</p>
+<p>这很不fp，因为原本有filter是用于完成这个工作的，还有flapMap。BennyHuo在他发的文章里面也说的是这种方法。</p>
+<p>filter很fp，但是会导致两次遍历，这样的话给人一股效率很低的赶脚。而Java8的Stream API就只会遍历一次，<br>而且很fp。但是它会有lambda对象的产生而且实现超复杂（我没看过，不清楚），而Kotlin的集合框架可是能inline掉lambda的，<br>少产生了多少对象啊，怎么能和辣鸡Java同流合污呢？</p>
+<p>有人提到使用label return，比如：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(ags: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  (<span class="number">0.</span><span class="number">.100</span>).forEach &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="number">50</span> &lt;= it) <span class="keyword">return</span><span class="symbol">@forEach</span></div><div class="line">    println(it)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是他做了实验之后发现这玩意只能相当于continue，也就是说你只能跳出当前循环，然后还是会继续下一轮。</p>
+<p>讲道理这个你仔细想想就可以发现。为了搞清楚其中的道理，我们自己实现一个forEach。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> Pair<span class="type">&lt;Int, Int&gt;</span>.<span class="title">forEach</span><span class="params">(block: (<span class="type">Int</span>)</span></span> -&gt; <span class="built_in">Unit</span>) &#123;</div><div class="line">  <span class="keyword">for</span> (i <span class="keyword">in</span> first..second) block.invoke(i)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后调用一下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Pair(<span class="number">1</span>, <span class="number">100</span>).forEach(::println)</div></pre></td></tr></table></figure>
+<p>没毛病老铁。</p>
+<p>然后你会发现，你在函数体内对block产生了(second - first)次调用，不论你怎么return，都只会跳出这个block，<br>它并不影响你之后继续调用这个block，也就是说这个for循环不受block行为的影响。</p>
+<p>看起来无解了，那怎么办呢？</p>
+<p>那么就让我来拯救你们吧。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(ags: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">  run <span class="symbol">outside@</span> &#123;</div><div class="line">    (<span class="number">0.</span><span class="number">.20</span>).forEach <span class="symbol">inside@</span> &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="number">10</span> &lt;= it) <span class="keyword">return</span><span class="symbol">@outside</span></div><div class="line">      println(it)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译之后运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">0</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure>
+<p>呐，跳出去了。</p>
+<p>把label的名字起的清真一点，就是这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">run <span class="symbol">breaking@</span> &#123;</div><div class="line">  (<span class="number">0.</span><span class="number">.20</span>).forEach <span class="symbol">continuing@</span> &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="number">10</span> &lt;= it) <span class="keyword">return</span><span class="symbol">@breaking</span></div><div class="line">    println(it)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这是break，运行结果就上面那样。</p>
+<p>下面这是continue，运行结果就是continue的效果。为了让效果表现的明显，我把println复制了一下，<br>分别在if前后，这样可以很清楚地看到效果。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">run <span class="symbol">breaking@</span> &#123;</div><div class="line">  (<span class="number">0.</span><span class="number">.20</span>).forEach <span class="symbol">continuing@</span> &#123;</div><div class="line">    print(it)</div><div class="line">    <span class="keyword">if</span> (<span class="number">10</span> &lt;= it) <span class="keyword">return</span><span class="symbol">@continuing</span></div><div class="line">    println(it)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">00</div><div class="line">11</div><div class="line">22</div><div class="line">33</div><div class="line">44</div><div class="line">55</div><div class="line">66</div><div class="line">77</div><div class="line">88</div><div class="line">99</div><div class="line">1011121314151617181920</div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure>
+<p>而且只进行了一次迭代，非常清真，效率看起来也比较高。</p>
+<p>如何证明只有一次迭代？我使用jd-gui逆向了刚才的代码，结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">_5Kt</span></span></div><div class="line">&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(@NotNull String[] args)</span></span></div><div class="line">  &#123;</div><div class="line">    Intrinsics.checkParameterIsNotNull(args, <span class="string">"args"</span>);</div><div class="line">    <span class="keyword">int</span> $i$a$<span class="number">1</span>$run;</div><div class="line">    Iterable $receiver$iv = (Iterable)<span class="keyword">new</span> IntRange(<span class="number">0</span>, <span class="number">20</span>);</div><div class="line">    <span class="keyword">int</span> $i$f$forEach;</div><div class="line">    <span class="keyword">for</span> (Iterator localIterator = $receiver$iv.iterator(); localIterator.hasNext();)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">int</span> element$iv = ((IntIterator)localIterator).nextInt();<span class="keyword">int</span> it = element$iv;</div><div class="line">      <span class="keyword">int</span> $i$a$<span class="number">1</span>$forEach;</div><div class="line">      System.out.print(it);</div><div class="line">      <span class="keyword">if</span> (<span class="number">10</span> &lt;= it) &#123;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">      System.out.println(it);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>确实只有一次，而且jd-gui直接把我的行为反编译为break了。服不服？</p>
+<p><strong>无fuck说</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="http://ice1000.org/2017/04/23/KotlinForEachBreakContinue/ " target="_blank" rel="external">http://ice1000.org/2017/04/23/KotlinForEachBreakContinue/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/千里冰封/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                千里冰封
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&title=《Kotlin：forEach也能break和continue》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&title=《Kotlin：forEach也能break和continue》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin：forEach也能break和continue》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/22/2017-5-13-KotlinMeetupChengDu/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">成都 Kotlin 线下聚会报告及科技汇总</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&title=《Kotlin：forEach也能break和continue》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&title=《Kotlin：forEach也能break和continue》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin：forEach也能break和continue》 — Kotlin&url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3au3aDMBAFQP//T5PWDcpdLZAgjSofTIQmxZp9fD7xOr7W95Xk/vGd46dcvDAwMF7LOIYrv+ds5+TKBc/FwMDYgDE+xDjUnm09PlwnrGNgYGDkjLPgOP52HKwxMDAw7gi4+UHHV/74dwMDA+PfM5Jkco6XlNIezcUxMDBeyMir7s9/vqW/gYGB8SrGUVxJalptDxzthYGBsTYjD3B5ib+621zAxcDA2IeRDzpUD5Gnmp3maHleAwMDYwlGNU98PtOMAi4GBsZCjDyxTMLlOBx32FELEwMDYwNGZ/AiOXoVVm12YmBgrMroD3KV/09TQx6/FOMwMDA2Y+R/XC3r99ucp58xMDA2YFTbAIVQGLcfOi+IGBgY+zDyItpcWb8/tHF6PwYGxjaMJIm9byDjsjYABgbGBoy5VmV+lGqDszAzgoGBsSijGlKT8Nov1eWJ8WfulwEDA+NVjLkXsmqozRucc8U7DAyMtRnJA/ovbdVEt1rUw8DA2I2RP3guaM61CqLBDgwMjG0YeTraKZPNFfUKqSwGBsaijMkwNx7YanQbqztjYGCsyugkjdUmQVI+q46OYWBg7MDoBLu5EJynyuVhCwwMjKUZV6Wveen/loCLgYGxAaNTMst36L/2Rbk4BgYGRjweke+fv25iYGBg9NuQ1bB72Q4YGBgbMJKg2b+SH6vcKMXAwFia0Ql5SYKaNAmil7926MfAwHgh4wd+OGqYGVaSvQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

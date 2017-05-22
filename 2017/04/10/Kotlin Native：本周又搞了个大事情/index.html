@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/">
+    
+    
+    <title>Kotlin Native：本周又搞了个大事情 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Native">
+    <meta name="description" content="话说。。有一天在地铁上正站得我风生水起（这玩意儿也能风生水起？）的时候，小伙伴突然往群里面丢了一个链接，然后群里就炸了：Kotlin/Native Tech Preview: Kotlin without a VM，Kotlin Native 在年初的时候就逐渐引起大家的注意，Kotlin 的扛把子 Andrey 哥也一再表示“用不了多久咱们就能过上好日子啦”，当然我估摸着 2017 年的大事情会">
+<meta name="keywords" content="Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin Native：本周又搞了个大事情">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="话说。。有一天在地铁上正站得我风生水起（这玩意儿也能风生水起？）的时候，小伙伴突然往群里面丢了一个链接，然后群里就炸了：Kotlin/Native Tech Preview: Kotlin without a VM，Kotlin Native 在年初的时候就逐渐引起大家的注意，Kotlin 的扛把子 Andrey 哥也一再表示“用不了多久咱们就能过上好日子啦”，当然我估摸着 2017 年的大事情会">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.4.10/native.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.4.10/show.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/arts/e_group.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin Native：本周又搞了个大事情">
+<meta name="twitter:description" content="话说。。有一天在地铁上正站得我风生水起（这玩意儿也能风生水起？）的时候，小伙伴突然往群里面丢了一个链接，然后群里就炸了：Kotlin/Native Tech Preview: Kotlin without a VM，Kotlin Native 在年初的时候就逐渐引起大家的注意，Kotlin 的扛把子 Andrey 哥也一再表示“用不了多久咱们就能过上好日子啦”，当然我估摸着 2017 年的大事情会">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.4.10/native.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin Native：本周又搞了个大事情</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin Native：本周又搞了个大事情</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-10T01:49:45.000Z" itemprop="datePublished" class="page-time">
+  2017-04-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Kotlin Native：本周又搞了个大事情"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin Native：本周又搞了个大事情</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年04月10日 9:49" datetime="2017-04-10T01:49:45.000Z"  itemprop="datePublished">2017-04-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>话说。。有一天在地铁上正站得我风生水起（这玩意儿也能风生水起？）的时候，小伙伴突然往群里面丢了一个链接，然后群里就炸了：<a href="https://blog.jetbrains.com/kotlin/2017/04/kotlinnative-tech-preview-kotlin-without-a-vm/" target="_blank" rel="external">Kotlin/Native Tech Preview: Kotlin without a VM</a>，Kotlin Native 在年初的时候就逐渐引起大家的注意，Kotlin 的扛把子 Andrey 哥也一再表示“用不了多久咱们就能过上好日子啦”，当然我估摸着 2017 年的大事情会不少，这不来得还挺快。</p>
+<p>话说这 Kotlin Native 呢，还处于预览阶段，官方一再强调“我还是个宝宝，你们可不要乱来哦”：</p>
+<blockquote>
+<p>No performance optimization has been done yet, so benchmarking Kotlin/Native makes no sense at this point.</p>
+</blockquote>
+<p>这个嘛，请官方放心，我们不会轻易放过你的！</p>
+<p>于是群里小伙伴们开始下载 Native 的源码 <a href="https://github.com/JetBrains/kotlin-native" target="_blank" rel="external">Github: Kotlin-native</a> 开始编译，并运行其中的 sample，整个过程其乐融融，有 Mac 和 Linux 的小伙伴表示毫无压力，而只有 windows 的哥们表示“我的树莓派不在家里啊”。额，看到没，用 windows 做开发是没有钱途滴！这事儿突然让我想起来前几天编译 Android Sdk 源码，编译 mac 版在 Mac 上面编即可，而想编译 windows 的 sdk，你就得在 Linux 上面先编译完 Linux 版 sdk，然后再用 Linux 版来个移魂大法换成 windows 版，额，我就改了几句 aapt 的代码，mac 版立等可取，windows 版编了好几天啊哭。。</p>
+<p>接着说 Kotlin Native，当小伙伴们看到 Kn 编译之后生成了这样的 stubs，瞬间表示 Jni 有救啦！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.4.10/native.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>一个注解就能连接上 C 代码，是不是很让人期待！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.4.10/show.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>想来也真是给力，上周刚刚推送的文章对 Kotlin Native 做了狠狠的期待，这周就出这样的大新闻，不得不说，2017 年 Kotlin 很让人期待呀，如果你还在犹豫到底要不要学，啥也别说了先加 QQ 群吧：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/e_group.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/04/10/Kotlin Native：本周又搞了个大事情/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Native/">Native</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&title=《Kotlin Native：本周又搞了个大事情》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&title=《Kotlin Native：本周又搞了个大事情》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Native：本周又搞了个大事情》 — Kotlin&url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/10/Kotliner.cn 上线啦/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotliner.cn 上线啦</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/07/KotlinPrimerFunction/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin Primer草稿 函数</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&title=《Kotlin Native：本周又搞了个大事情》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&title=《Kotlin Native：本周又搞了个大事情》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin Native：本周又搞了个大事情》 — Kotlin&url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3a0W7bMAwF0Pz/T3evA1Kr94pSFwzHT0NqxzwaIDEkX6/4+vrrev/8/Z73O5++Z33n+u3HLjw8PLxB6E8hrnnrp3LGepnWS/m4BHh4eHjXeMnWvBdcHuj6vXvx4OHh4X0Ob3145Jt4/hY8PDy8/4PXbvR5ceFUgo6Hh4d3j7eXBOevbI+H/JNjtRY8PDy8mJd3kT7n31f6e3h4eHjjrnpbMmjbVMmQwShaPDw8vAu8fMNdjw60xYLJaEIdJx4eHt5R3gS216baa2Wtl/XxWTw8PLxf4U1Kq+0xUwQafEPU2cPDw8Mb8/Ya9pNxq7bimsMiJB4eHt6YlxcX5vfn7f/8ePjhr3h4eHgXeMn2nQeUt/b3Shttgw0PDw/vBm+vfTVPx9ti8WZseHh4eJd5k1Q4Lwq3m35bdI5mIvDw8PAGvHyDbkOfFCDap/JUHg8PD2/Oy3/YJ6lwsYrlIZQs/TdP4eHh4V3g3bjahHtvoOoiAA8PD2+wQe81q/LEei+h3xztwsPDwzvEm2y4eQE3L2fstb4e34uHh4d3gZccCe2Lk5Q6T7XbUsU334mHh4d3lDfZrNtyQ7tY7eBXNHSFh4eHN+bND4DJr/623ZWURfDw8PBu89phpkmym9eV86h+iBkPDw/vAi/Zpttx0vzOFpA02B4POTw8PLyjvHxEdW+UKl+OfIwg+h/Dw8PDu8w7W4rNh6ja7LeOEA8PD+8ab1KMaAez2nGr9sLDw8O7x/sqrxy51x5LnsrHGvDw8PBu8NqtdvLK5BBqW26vUxceHh5eyZs0pfZKrvdKEpsNMDw8PLwt3jzBzQ+AtkB8oNaCh4eH90959TzXVnJ87Nvw8PDwPoyX/+qflxXaFhoeHh7ebV6eIq8/aZembb8VyTQeHh7eNd6px/aWY16GOFDCwMPDw0tj+wNVtDXKlJ1wvwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

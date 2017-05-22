@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/">
+    
+    
+    <title>深入理解 Kotlin Coroutine | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Coroutine,基础Api">
+    <meta name="description" content="本文主要介绍 Kotlin Coroutine 的基础 API，有关 Kotlinx.Coroutine 的内容，我们将在下一期给大家介绍。由于本人水平有限，如果大家有什么异议，欢迎直接抛出来跟我讨论~ 1 什么是 CoroutineCoroutine 被翻译成了“协程”，意思就是要各个子任务程协作运行的意思，所以大家一下就明白了它被创造出来是要解决异步问题的。 我们写 Java 的程序员，对线程">
+<meta name="keywords" content="Coroutine,基础Api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解 Kotlin Coroutine">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="本文主要介绍 Kotlin Coroutine 的基础 API，有关 Kotlinx.Coroutine 的内容，我们将在下一期给大家介绍。由于本人水平有限，如果大家有什么异议，欢迎直接抛出来跟我讨论~ 1 什么是 CoroutineCoroutine 被翻译成了“协程”，意思就是要各个子任务程协作运行的意思，所以大家一下就明白了它被创造出来是要解决异步问题的。 我们写 Java 的程序员，对线程">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.30/coroutine_lua.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.30/cr0.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.30/cr1.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.30/cr2.png">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解 Kotlin Coroutine">
+<meta name="twitter:description" content="本文主要介绍 Kotlin Coroutine 的基础 API，有关 Kotlinx.Coroutine 的内容，我们将在下一期给大家介绍。由于本人水平有限，如果大家有什么异议，欢迎直接抛出来跟我讨论~ 1 什么是 CoroutineCoroutine 被翻译成了“协程”，意思就是要各个子任务程协作运行的意思，所以大家一下就明白了它被创造出来是要解决异步问题的。 我们写 Java 的程序员，对线程">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.1.30/coroutine_lua.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深入理解 Kotlin Coroutine</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深入理解 Kotlin Coroutine</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-30T04:25:08.000Z" itemprop="datePublished" class="page-time">
+  2017-01-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-什么是-Coroutine"><span class="post-toc-text">1 什么是 Coroutine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Kotlin-协程初体验"><span class="post-toc-text">2 Kotlin 协程初体验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-进一步封装"><span class="post-toc-text">4 进一步封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-异步"><span class="post-toc-text">4.1 异步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-启动协程"><span class="post-toc-text">4.2 启动协程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-暂停协程"><span class="post-toc-text">4.3 暂停协程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-带有-Receiver-的协程"><span class="post-toc-text">4.4 带有 Receiver 的协程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-拿来主义：Kotlinx-Coroutine"><span class="post-toc-text">5 拿来主义：Kotlinx.Coroutine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-小结"><span class="post-toc-text">6 小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-深入理解 Kotlin Coroutine"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深入理解 Kotlin Coroutine</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月30日 12:25" datetime="2017-01-30T04:25:08.000Z"  itemprop="datePublished">2017-01-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文主要介绍 Kotlin Coroutine 的基础 API，有关 Kotlinx.Coroutine 的内容，我们将在下一期给大家介绍。由于本人水平有限，如果大家有什么异议，欢迎直接抛出来跟我讨论~</p>
+<h2 id="1-什么是-Coroutine"><a href="#1-什么是-Coroutine" class="headerlink" title="1 什么是 Coroutine"></a>1 什么是 Coroutine</h2><p>Coroutine 被翻译成了“协程”，意思就是要各个子任务程协作运行的意思，所以大家一下就明白了它被创造出来是要解决异步问题的。</p>
+<p>我们写 Java 的程序员，对线程更熟悉一些。线程是比进程更小一级的运行单位，它的调度由操作系统来完成，所以我们只管 new Thread 和 start，至于什么时候 run，什么时候 run 完，我们都没办法预见。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Thread t = <span class="keyword">new</span> Thread(task); </div><div class="line">t.start();</div></pre></td></tr></table></figure>
+<p>尽管有诸多不可控的因素，不过我们可以肯定的是起了一个新的线程并启动它之后，当前线程并不会受到阻塞。如果大家再往深处想想，CPU 在任意时刻运行什么进程及其线程，是操作系统决定的，但归根结底一个单线程的 CPU 在任一时刻只能运行一个任务。</p>
+<p>那么协程呢？协程的调度是应用层完成的，比如我们说 Lua 支持协程，那么各个协程如何运行，这一调度工作实际上是 Lua 自己的虚拟机来完成的。这个调度与线程调度有着比较大的差别，线程调度是抢占式调度，很有可能线程 A 运行得美滋滋的，线程 B 突然把 CPU 抢过来，跟 A 说“你给我下去吧你”，于是线程 A 只能干瞪眼没办法；而协程的调度是非抢占式的，目前常见的各支持协程的语言实现中都有 yield 关键字，它有“妥协、退让”的意思，如果一个协程执行到一段代码需要歇会儿，那么它将把执行权让出来，如果它不这么做，没人跟它抢。</p>
+<p>在 接触 Kotlin 的协程之前呢，我们先给大家看一个 Lua 的例子，比较直观：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(a)</span></span> </div><div class="line">    <span class="built_in">print</span>(<span class="string">"foo"</span>, a) </div><div class="line">    <span class="keyword">return</span> coroutine.<span class="built_in">yield</span>(<span class="number">2</span> * a) </div><div class="line"><span class="keyword">end</span> </div><div class="line">　 </div><div class="line">co = coroutine.<span class="built_in">create</span>(<span class="function"><span class="keyword">function</span> <span class="params">( a, b )</span></span> </div><div class="line">    <span class="built_in">print</span>(<span class="string">"co-body"</span>, a, b) </div><div class="line">    <span class="keyword">local</span> r = foo(a + <span class="number">1</span>) </div><div class="line">    <span class="built_in">print</span>(<span class="string">"co-body"</span>, r) </div><div class="line">    <span class="keyword">local</span> r, s = coroutine.<span class="built_in">yield</span>(a + b, a - b) </div><div class="line">    <span class="built_in">print</span>(<span class="string">"co-body"</span>, r, s) </div><div class="line">    <span class="keyword">return</span> b, <span class="string">"end"</span> </div><div class="line"><span class="keyword">end</span>) </div><div class="line">　 </div><div class="line"><span class="built_in">print</span>(<span class="string">"main"</span>, coroutine.<span class="built_in">resume</span>(co, <span class="number">1</span>, <span class="number">10</span>)) </div><div class="line"><span class="built_in">print</span>(<span class="string">"main"</span>, coroutine.<span class="built_in">resume</span>(co, <span class="string">"r"</span>)) </div><div class="line"><span class="built_in">print</span>(<span class="string">"main"</span>, coroutine.<span class="built_in">resume</span>(co, <span class="string">"x"</span>, <span class="string">"y"</span>)) </div><div class="line"><span class="built_in">print</span>(<span class="string">"main"</span>, coroutine.<span class="built_in">resume</span>(co, <span class="string">"x"</span>, <span class="string">"y"</span>))</div></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">co-body	1	10 </div><div class="line">foo	2 </div><div class="line">main	true	4 </div><div class="line">co-body	r </div><div class="line">main	true	11	-9 </div><div class="line">co-body	x	y </div><div class="line">main	true	10	end </div><div class="line">main	false	cannot resume dead coroutine</div></pre></td></tr></table></figure>
+<p>首先定义了一个 foo 函数，然后创建 coroutine，创建了之后还需要调用 resume 才能执行协程，运行过程是谦让的，是交替的：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.30/coroutine_lua.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>图中数字表示第n次</strong></p>
+<p>协程为我们的程序提供了一种暂停的能力，就好像状态机，只有等到下一次输入，它才做状态转移。显然，用协程来描述一个状态机是再合适不过的了。</p>
+<p>也许大家对 lua 的语法不是很熟悉，不过没关系，上面的例子只需要知道大概是在干什么就行：这例子就好像，main 和 Foo 在交替干活，有点儿像 A B 两个人分工协作，A 干一会儿 B 来，B 干一会儿，再让 A 来一样。如果我们用线程来描述这个问题，那么可能会用到很多回调，相信写 Js 的兄弟听到这儿要感到崩溃了，因为 Js 的代码写着写着就容易回调满天飞，业务逻辑的实现越来越抽象，可读性越来越差；而用协程的话，就好像一个很平常的同步操作一样，一点儿异步任务的感觉都没有。</p>
+<p>我们前面提到的协程的非抢占调度方式，以及这个交替执行代码的例子，基本上可以说明协程实际上致力于用同步一样的代码来完成异步任务的运行。</p>
+<p>一句话，有了协程，你的异步程序看起来就像同步代码一样。</p>
+<h2 id="2-Kotlin-协程初体验"><a href="#2-Kotlin-协程初体验" class="headerlink" title="2 Kotlin 协程初体验"></a>2 Kotlin 协程初体验</h2><p>Kotlin 1.1 对协程的基本支持都在 Kotlin 标准库当中，主要涉及两个类和几个包级函数和扩展方法：</p>
+<ul>
+<li><p>CoroutineContext，协程的上下文，这个上下文可以是多个的组合，组合的上下文可以通过 key 来获取。EmptyCoroutineContext 是一个空实现，没有任何功能，如果我们在使用协程时不需要上下文，那么我们就用这个对象作为一个占位即可。上下文这个东西，不管大家做什么应用，总是能遇到，比如 Android 里面的 Context，JSP 里面的 PageContext 等等，他们扮演的角色都大同小异：资源管理，数据持有等等，协程的上下文也基本上是如此。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.30/cr0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>Continuation，顾名思义，继续、持续的意思。我们前面说过，协程提供了一种暂停的能力，可继续执行才是最终的目的，Continuation 有两个方法，一个是 resume，如果我们的程序没有任何异常，那么直接调用这个方法并传入需要返回的值；另一个是 resumeWithException，如果我们的程序出了异常，那我们可以通过调用这个方法把异常传递出去。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.30/cr1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>协程的基本操作，包括创建、启动、暂停和继续，继续的操作在 Continuation 当中，剩下的三个都是包级函数或扩展方法：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.30/cr2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<p>这几个类和函数其实与我们前面提到的 Lua 的协程 API 非常相似，都是协程最基础的 API。</p>
+<p>除此之外，Kotlin 还增加了一个关键字：suspend，用作修饰会被暂停的函数，被标记为 suspend 的函数只能运行在协程或者其他 suspend 函数当中。</p>
+<p>好，介绍完这些基本概念，让我们来看一个例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123; </div><div class="line">    log(<span class="string">"before coroutine"</span>) </div><div class="line">    <span class="comment">//启动我们的协程 </span></div><div class="line">    asyncCalcMd5(<span class="string">"test.zip"</span>) &#123; </div><div class="line">        log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">        <span class="comment">//暂停我们的线程，并开始执行一段耗时操作 </span></div><div class="line">        <span class="keyword">val</span> result: String = suspendCoroutine &#123; </div><div class="line">            continuation -&gt; </div><div class="line">            log(<span class="string">"in suspend block."</span>) </div><div class="line">            continuation.resume(calcMd5(continuation.context[FilePath]!!.path)) </div><div class="line">            log(<span class="string">"after resume."</span>) </div><div class="line">        &#125; </div><div class="line">        log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"after coroutine"</span>) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="comment">/** </span></div><div class="line"> * 上下文，用来存放我们需要的信息，可以灵活的自定义 </div><div class="line"> */ </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilePath</span></span>(<span class="keyword">val</span> path: String): AbstractCoroutineContextElement(FilePath)&#123; </div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> Key : CoroutineContext.Key&lt;FilePath&gt; </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">asyncCalcMd5</span><span class="params">(path: <span class="type">String</span>, block: <span class="type">suspend</span> ()</span></span> -&gt; <span class="built_in">Unit</span>) &#123; </div><div class="line">    <span class="keyword">val</span> continuation = <span class="keyword">object</span> : Continuation&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">        <span class="keyword">override</span> <span class="keyword">val</span> context: CoroutineContext </div><div class="line">            <span class="keyword">get</span>() = FilePath(path) </div><div class="line">　 </div><div class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resume</span><span class="params">(value: <span class="type">Unit</span>)</span></span> &#123; </div><div class="line">            log(<span class="string">"resume: <span class="subst">$value</span>"</span>) </div><div class="line">        &#125; </div><div class="line">　 </div><div class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resumeWithException</span><span class="params">(exception: <span class="type">Throwable</span>)</span></span> &#123; </div><div class="line">            log(exception.toString()) </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    block.startCoroutine(continuation) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">calcMd5</span><span class="params">(path: <span class="type">String</span>)</span></span>: String&#123; </div><div class="line">    log(<span class="string">"calc md5 for <span class="subst">$path</span>."</span>) </div><div class="line">    <span class="comment">//暂时用这个模拟耗时 </span></div><div class="line">    Thread.sleep(<span class="number">1000</span>) </div><div class="line">    <span class="comment">//假设这就是我们计算得到的 MD5 值 </span></div><div class="line">    <span class="keyword">return</span> System.currentTimeMillis().toString() </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段程序在模拟计算文件的 Md5 值。我们知道，文件的 Md5 值计算是一项耗时操作，所以我们希望启动一个协程来处理这个耗时任务，并在任务运行结束时打印出来计算的结果。</p>
+<p>我们先来一段一段分析下这个示例：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"> * 上下文，用来存放我们需要的信息，可以灵活的自定义 </div><div class="line"> */ </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilePath</span></span>(<span class="keyword">val</span> path: String): AbstractCoroutineContextElement(FilePath)&#123; </div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> Key : CoroutineContext.Key&lt;FilePath&gt; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们在计算过程中需要知道计算哪个文件的 Md5，所以我们需要通过上下文把这个路径传入协程当中。如果有多个数据，也可以一并添加进去，在运行当中，我们可以通过 Continuation 的实例拿到上下文，进而获取到这个路径：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">continuation.context[FilePath]!!.path</div></pre></td></tr></table></figure>
+<p>接着，我们再来看下 Continuation：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> continuation = <span class="keyword">object</span> : Continuation&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">override</span> <span class="keyword">val</span> context: CoroutineContext </div><div class="line">        <span class="keyword">get</span>() = FilePath(path) </div><div class="line">　 </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resume</span><span class="params">(value: <span class="type">Unit</span>)</span></span> &#123; </div><div class="line">        log(<span class="string">"resume: <span class="subst">$value</span>"</span>) </div><div class="line">    &#125; </div><div class="line">　 </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resumeWithException</span><span class="params">(exception: <span class="type">Throwable</span>)</span></span> &#123; </div><div class="line">        log(exception.toString()) </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们除了给定了 FilePath 这样一个上下文之外就是简单的打了几行日志，比较简单。这里传入的 Continuation 当中的 resume 和 resumeWithException 只有在协程最终执行完成后才会被调用，这一点需要注意一下，也正是因为如此，startCoroutine 把它叫做 completion：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="params">(suspend  ()</span></span> -&gt; T).startCoroutine(completion: Continuation&lt;T&gt;</div></pre></td></tr></table></figure>
+<p>那么下面我们看下最关键的这段代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">asyncCalcMd5(<span class="string">"test.zip"</span>) &#123; </div><div class="line">    log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">    <span class="comment">//暂停我们的协程，并开始执行一段耗时操作 </span></div><div class="line">    <span class="keyword">val</span> result: String = suspendCoroutine &#123; </div><div class="line">        continuation -&gt; </div><div class="line">        log(<span class="string">"in suspend block."</span>) </div><div class="line">        continuation.resume(calcMd5(continuation.context[FilePath]!!.path)) </div><div class="line">        log(<span class="string">"after resume."</span>) </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>suspendCoroutine 这个方法将外部的代码执行权拿走，并转入传入的 Lambda 表达式中，而这个表达式当中的操作就对应异步的耗时操作了，在这里我们“计算”出了 Md5 值，接着调用 <figure class="highlight plain"><figcaption><span>将结果传了出去，传给了谁呢？传给了 suspendCoroutine 的返回值也即 result，这时候协程继续执行，打印 result 结束。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">下面就是运行结果了：</div></pre></td></tr></table></figure></p>
+<p> 2017-01-30T06:43:52.284Z [main] before coroutine<br> 2017-01-30T06:43:52.422Z [main] in coroutine. Before suspend.<br> 2017-01-30T06:43:52.423Z [main] in suspend block.<br> 2017-01-30T06:43:52.423Z [main] calc md5 for test.zip.<br> 2017-01-30T06:43:53.426Z [main] after resume.<br> 2017-01-30T06:43:53.427Z [main] in coroutine. After suspend. result = 1485758633426<br> 2017-01-30T06:43:53.427Z [main] resume: 1485758633426<br> 2017-01-30T06:43:53.427Z [main] after coroutine<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">细心的读者肯定一看就发现，所谓的异步操作是怎么个异步法？从日志上面看，明明上面这段代码就是顺序执行的嘛，不然 after coroutine 这句日志为什么非要等到最后才打印？</div><div class="line"></div><div class="line">还有，整个程序都只运行在了主线程上，我们的日志足以说明这一点了，根本没有异步嘛。难道说协程就是一个大骗子？？</div><div class="line"></div><div class="line">## 3 实现异步</div><div class="line"></div><div class="line">这一部分我们就要回答上一节留下的问题。不过在此之前，我们再来回顾一下协程存在的意义：让异步代码看上去像同步代码，直接自然易懂。至于它如何做到这一点，可能各家的语言实现各有不同，但协程给人的感觉更像是底层并发 API（比如线程）的语法糖。当然，如果你愿意，我们通常所谓的线程也可以被称作操作系统级 API 的语法糖了吧，毕竟各家语言对于线程的实现也各有不同，这个就不是我们今天要讨论的内容了。</div><div class="line"></div><div class="line">不管怎么样，你只需要知道，协程的异步需要依赖比它更底层的 API 支持，那么在 Kotlin 当中，这个所谓的底层 API 就非线程莫属了。</div><div class="line"></div><div class="line">知道了这一点，我们就要考虑想办法来把前面的示例完善一下了。</div><div class="line"></div><div class="line">首先我们实例化一个线程池：</div><div class="line"></div><div class="line">```kotlin</div><div class="line"> private val executor = Executors.newSingleThreadScheduledExecutor &#123; </div><div class="line">     Thread(it, &quot;scheduler&quot;) </div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>接着我们把计算 Md5 的部分交给线程池去运行：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">asyncCalcMd5(<span class="string">"test.zip"</span>) &#123; </div><div class="line">    log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">    <span class="comment">//暂停我们的线程，并开始执行一段耗时操作 </span></div><div class="line">    <span class="keyword">val</span> result: String = suspendCoroutine &#123; </div><div class="line">        continuation -&gt; </div><div class="line">        log(<span class="string">"in suspend block."</span>) </div><div class="line">        executor.submit &#123; </div><div class="line">            continuation.resume(calcMd5(continuation.context[FilePath]!!.path)) </div><div class="line">            log(<span class="string">"after resume."</span>) </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">    executor.shutdown() </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么结果呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-01-30T07:18:04.496Z [main] before coroutine </div><div class="line">2017-01-30T07:18:04.754Z [main] in coroutine. Before suspend. </div><div class="line">2017-01-30T07:18:04.757Z [main] in suspend block. </div><div class="line">2017-01-30T07:18:04.765Z [main] after coroutine </div><div class="line">2017-01-30T07:18:04.765Z [scheduler] calc md5 for test.zip. </div><div class="line">2017-01-30T07:18:05.769Z [scheduler] in coroutine. After suspend. result = 1485760685768 </div><div class="line">2017-01-30T07:18:05.769Z [scheduler] resume: 1485760685768 </div><div class="line">2017-01-30T07:18:05.769Z [scheduler] after resume.</div></pre></td></tr></table></figure>
+<p>我们看到在协程被暂停的那一刻，协程外面的代码被执行了。一段时间之后，协程被继续执行，打印结果。</p>
+<p>截止到现在，我们用协程来实现异步操作的功能已经实现。</p>
+<p>你可能要问，如果我们想要完成异步操作，直接用线程池加回调岂不更直接简单，为什么要用协程呢，搞得代码这么让人费解不说，也没有变的很简单啊。</p>
+<p>说的对，如果我们实际当中把协程的代码都写成这样，肯定会被蛋疼死，我前面展示给大家的，是 Kotlin 标准库当中最为基础的 API，看起来非常的原始也是理所应当的，如果我们对其加以封装，那效果肯定大不一样。</p>
+<p>除此之外，在高并发的场景下，多个协程可以共享一个或者多个线程，性能可能会要好一些。举个简单的例子，一台服务器有 1k 用户与之连接，如果我们采用类似于 Tomcat 的实现方式，一个用户开一个线程去处理请求，那么我们将要开 1k 个线程，这算是个不小的数目了；而我们如果使用协程，为每一个用户创建一个协程，考虑到同一时刻并不是所有用户都需要数据传输，因此我们并不需要同时处理所有用户的请求，那么这时候可能只需要几个专门的 IO 线程和少数来承载用户请求对应的协程的线程，只有当用户有数据传输事件到来的时候才去相应，其他时间直接挂起，这种事件驱动的服务器显然对资源的消耗要小得多。</p>
+<h2 id="4-进一步封装"><a href="#4-进一步封装" class="headerlink" title="4 进一步封装"></a>4 进一步封装</h2><p>**这一节的内容较多的参考了 Kotlin 官方的 <a href="https://github.com/Kotlin/kotlin-coroutines" target="_blank" rel="external">Coroutine Example</a>，里面有更多的例子，大家可以参考学习。</p>
+<h3 id="4-1-异步"><a href="#4-1-异步" class="headerlink" title="4.1 异步"></a>4.1 异步</h3><p>刚才那个示例让我们感觉到，写个协程调用异步代码实在太原始了，所以我们决定对它做一下封装。如果我们能在调用 suspendCoroutine 的时候直接把后面的代码拦截，并切到线程池当中执行，那么我们就不用每次自己搞一个线程池来做这事儿了，嗯，让我们研究下有什么办法可以做到这一点。</p>
+<p>拦截。。。怎么拦截呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ContinuationInterceptor</span> : <span class="type">CoroutineContext.Element &#123; </span></span></div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> Key : CoroutineContext.Key&lt;ContinuationInterceptor&gt; </div><div class="line">　 </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">interceptContinuation</span><span class="params">(continuation: <span class="type">Continuation</span>&lt;<span class="type">T</span>&gt;)</span></span>: Continuation&lt;T&gt; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们发现，Kotlin 的协程 API 当中提供了这么一个拦截器，可以把协程的操作拦截，传入的是原始的 Continuation，返回的是我们经过线程切换的 Continuation，这样就可以实现我们的目的了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Pool</span></span>(<span class="keyword">val</span> pool: ForkJoinPool)  </div><div class="line">	: AbstractCoroutineContextElement(ContinuationInterceptor),  </div><div class="line">	ContinuationInterceptor &#123; </div><div class="line">　 </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">interceptContinuation</span><span class="params">(continuation: <span class="type">Continuation</span>&lt;<span class="type">T</span>&gt;)</span></span> </div><div class="line">    	: Continuation&lt;T&gt; = </div><div class="line">        PoolContinuation(pool,  </div><div class="line">        	<span class="comment">//下面这段代码是要查找其他拦截器，并保证能调用它们的拦截方法 </span></div><div class="line">	        continuation.context.fold(continuation, &#123; cont, element -&gt; </div><div class="line">	            <span class="keyword">if</span> (element != <span class="keyword">this</span><span class="symbol">@Pool</span> &amp;&amp; element <span class="keyword">is</span> ContinuationInterceptor) </div><div class="line">	                element.interceptContinuation(cont) <span class="keyword">else</span> cont </div><div class="line">	        &#125;)) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">PoolContinuation</span>&lt;<span class="type">T</span>&gt;</span>( </div><div class="line">        <span class="keyword">val</span> pool: ForkJoinPool, </div><div class="line">        <span class="keyword">val</span> continuation: Continuation&lt;T&gt; </div><div class="line">) : Continuation&lt;T&gt; <span class="keyword">by</span> continuation &#123; </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resume</span><span class="params">(value: <span class="type">T</span>)</span></span> &#123; </div><div class="line">        <span class="keyword">if</span> (isPoolThread()) continuation.resume(value) </div><div class="line">        <span class="keyword">else</span> pool.execute &#123; continuation.resume(value) &#125; </div><div class="line">    &#125; </div><div class="line">　 </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resumeWithException</span><span class="params">(exception: <span class="type">Throwable</span>)</span></span> &#123; </div><div class="line">        <span class="keyword">if</span> (isPoolThread()) continuation.resumeWithException(exception) </div><div class="line">        <span class="keyword">else</span> pool.execute &#123; continuation.resumeWithException(exception) &#125; </div><div class="line">    &#125; </div><div class="line">　 </div><div class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">isPoolThread</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> = (Thread.currentThread() <span class="keyword">as</span>? ForkJoinWorkerThread)?.pool == pool </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个 Pool 是什么鬼？我们让它继承 AbstractCoroutineContextElement 表明它其实就是我们需要的上下文。实际上这个上下文可以给任意协程使用，于是我们再定义一个 object：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">object</span> CommonPool : Pool(ForkJoinPool.commonPool())</div></pre></td></tr></table></figure>
+<p>有了这个，我们就可以把没加线程池的版本改改了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123; </div><div class="line">    log(<span class="string">"before coroutine"</span>) </div><div class="line">    <span class="comment">//启动我们的协程 </span></div><div class="line">    asyncCalcMd5(<span class="string">"test.zip"</span>) &#123; </div><div class="line">        ... </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"after coroutine"</span>) </div><div class="line">    <span class="comment">//加这句的原因是防止程序在协程运行完之前停止 </span></div><div class="line">    CommonPool.pool.awaitTermination(<span class="number">10000</span>, TimeUnit.MILLISECONDS) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">... </div><div class="line">　 </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">asyncCalcMd5</span><span class="params">(path: <span class="type">String</span>, block: <span class="type">suspend</span> ()</span></span> -&gt; String) &#123; </div><div class="line">    <span class="keyword">val</span> continuation = <span class="keyword">object</span> : Continuation&lt;String&gt; &#123; </div><div class="line">        <span class="keyword">override</span> <span class="keyword">val</span> context: CoroutineContext </div><div class="line">        	<span class="comment">//注意这个写法，上下文可以通过 + 来组合使用 </span></div><div class="line">            <span class="keyword">get</span>() = FilePath(path) + CommonPool </div><div class="line">　 </div><div class="line">        ... </div><div class="line">    &#125; </div><div class="line">    block.startCoroutine(continuation) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">...</div></pre></td></tr></table></figure>
+<p>那么运行结果呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-01-30T09:13:11.183Z [main] before coroutine </div><div class="line">2017-01-30T09:13:11.334Z [main] after coroutine </div><div class="line">2017-01-30T09:13:11.335Z [ForkJoinPool.commonPool-worker-1] in coroutine. Before suspend. </div><div class="line">2017-01-30T09:13:11.337Z [ForkJoinPool.commonPool-worker-1] in suspend block. </div><div class="line">2017-01-30T09:13:11.337Z [ForkJoinPool.commonPool-worker-1] calc md5 for test.zip. </div><div class="line">2017-01-30T09:13:12.340Z [ForkJoinPool.commonPool-worker-1] after resume. </div><div class="line">2017-01-30T09:13:12.341Z [ForkJoinPool.commonPool-worker-1] in coroutine. After suspend. result = 1485767592340 </div><div class="line">2017-01-30T09:13:12.341Z [ForkJoinPool.commonPool-worker-1] resume: 1485767592340</div></pre></td></tr></table></figure>
+<p>我们看到程序已经非常完美的实现异步调用。显然，这种写法要比线程池回调的写法看上去顺理成章得多。</p>
+<h3 id="4-2-启动协程"><a href="#4-2-启动协程" class="headerlink" title="4.2 启动协程"></a>4.2 启动协程</h3><p>在讨论完异步的封装后，有人肯定还是会提出新问题：启动协程的写法是不是有点儿啰嗦了啊？没错，每次构造一个 Continuation，也没干多少事儿，实在没什么必要，干脆封装一个通用的版本得了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StandaloneCoroutine</span></span>(<span class="keyword">override</span> <span class="keyword">val</span> context: CoroutineContext): Continuation&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resume</span><span class="params">(value: <span class="type">Unit</span>)</span></span> &#123;&#125; </div><div class="line">　 </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">resumeWithException</span><span class="params">(exception: <span class="type">Throwable</span>)</span></span> &#123; </div><div class="line">    	<span class="comment">//处理异常 </span></div><div class="line">        <span class="keyword">val</span> currentThread = Thread.currentThread() </div><div class="line">        currentThread.uncaughtExceptionHandler.uncaughtException(currentThread, exception) </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就好办了，我们每次启动协程只需要针对当前协程提供特定的上下文即可，那么我们是不是再把启动的那个函数改改呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">launch</span><span class="params">(context: <span class="type">CoroutineContext</span>, block: <span class="type">suspend</span> ()</span></span> -&gt; <span class="built_in">Unit</span>) = </div><div class="line">        block.startCoroutine(StandaloneCoroutine(context))</div></pre></td></tr></table></figure>
+<p>有了这个，我们前面的代码就可以进一步修改：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123; </div><div class="line">    log(<span class="string">"before coroutine"</span>) </div><div class="line">    <span class="comment">//启动我们的协程 </span></div><div class="line">    launch(FilePath(<span class="string">"test.zip"</span>) + CommonPool) &#123; </div><div class="line">        log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">        <span class="comment">//暂停我们的线程，并开始执行一段耗时操作 </span></div><div class="line">        <span class="keyword">val</span> result: String = suspendCoroutine &#123; </div><div class="line">            continuation -&gt; </div><div class="line">            log(<span class="string">"in suspend block."</span>) </div><div class="line">            continuation.resume(calcMd5(continuation.context[FilePath]!!.path)) </div><div class="line">            log(<span class="string">"after resume."</span>) </div><div class="line">        &#125; </div><div class="line">        log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"after coroutine"</span>) </div><div class="line">    CommonPool.pool.awaitTermination(<span class="number">10000</span>, TimeUnit.MILLISECONDS) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="comment">/** </span></div><div class="line"> * 上下文，用来存放我们需要的信息，可以灵活的自定义 </div><div class="line"> */ </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilePath</span></span>(<span class="keyword">val</span> path: String) : AbstractCoroutineContextElement(Key) &#123; </div><div class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> Key : CoroutineContext.Key&lt;FilePath&gt; </div><div class="line">&#125; </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">calcMd5</span><span class="params">(path: <span class="type">String</span>)</span></span>: String &#123; </div><div class="line">    log(<span class="string">"calc md5 for <span class="subst">$path</span>."</span>) </div><div class="line">    <span class="comment">//暂时用这个模拟耗时 </span></div><div class="line">    Thread.sleep(<span class="number">1000</span>) </div><div class="line">    <span class="comment">//假设这就是我们计算得到的 MD5 值 </span></div><div class="line">    <span class="keyword">return</span> System.currentTimeMillis().toString() </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果自然也没什么好说的。</p>
+<h3 id="4-3-暂停协程"><a href="#4-3-暂停协程" class="headerlink" title="4.3 暂停协程"></a>4.3 暂停协程</h3><p>暂停协程这块儿也太乱了，看着莫名其妙的，能不能直白一点儿呢？其实我们的代码不过是想要获取 Md5 的值，所以如果能写成下面这样就好了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> result = calcMd5(continuation.context[FilePath]!!.path).await()</div></pre></td></tr></table></figure>
+<p>毋庸置疑，这肯定是可以的。想一下，有哪个类可以支持我们直接阻塞线程，等到获取到结果之后再返回呢？当然是 Future 了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">suspend <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> CompletableFuture<span class="type">&lt;T&gt;</span>.<span class="title">await</span><span class="params">()</span></span>: T &#123; </div><div class="line">    <span class="keyword">return</span> suspendCoroutine &#123; </div><div class="line">        continuation -&gt; </div><div class="line">        whenComplete &#123; result, e -&gt; </div><div class="line">            <span class="keyword">if</span> (e == <span class="literal">null</span>) continuation.resume(result) </div><div class="line">            <span class="keyword">else</span> continuation.resumeWithException(e) </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们干脆就直接给 CompletableFuture 定义一个扩展方法，当中只是用来挂起协程，并在结果拿到之后继续执行协程。这样，我们的代码可以进一步修改：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123; </div><div class="line">    log(<span class="string">"before coroutine"</span>) </div><div class="line">    <span class="comment">//启动我们的协程 </span></div><div class="line">    <span class="keyword">val</span> coroutineContext = FilePath(<span class="string">"test.zip"</span>) + CommonPool </div><div class="line">    launch(coroutineContext) &#123; </div><div class="line">        log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">        <span class="comment">//暂停我们的线程，并开始执行一段耗时操作 </span></div><div class="line">        <span class="keyword">val</span> result: String = calcMd5(coroutineContext[FilePath]!!.path).await() </div><div class="line">        log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">    &#125; </div><div class="line">    log(<span class="string">"after coroutine"</span>) </div><div class="line">    CommonPool.pool.awaitTermination(<span class="number">10</span>, TimeUnit.SECONDS) </div><div class="line">&#125; </div><div class="line">　 </div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">calcMd5</span><span class="params">(path: <span class="type">String</span>)</span></span>: CompletableFuture&lt;String&gt; = CompletableFuture.supplyAsync &#123; </div><div class="line">    log(<span class="string">"calc md5 for <span class="subst">$path</span>."</span>) </div><div class="line">    <span class="comment">//暂时用这个模拟耗时 </span></div><div class="line">    Thread.sleep(<span class="number">1000</span>) </div><div class="line">    <span class="comment">//假设这就是我们计算得到的 MD5 值 </span></div><div class="line">    System.currentTimeMillis().toString() </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">... 省略掉一些没有修改的代码 ...</div></pre></td></tr></table></figure>
+<h3 id="4-4-带有-Receiver-的协程"><a href="#4-4-带有-Receiver-的协程" class="headerlink" title="4.4 带有 Receiver 的协程"></a>4.4 带有 Receiver 的协程</h3><p>不知道大家注意到没有， 4.3 的代码中有个地方比较别扭：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> coroutineContext = FilePath(<span class="string">"test.zip"</span>) + CommonPool </div><div class="line">launch(coroutineContext) &#123; </div><div class="line">	... </div><div class="line">	<span class="comment">//在协程内部想要访问上下文居然需要用到外部的变量 </span></div><div class="line">    <span class="keyword">val</span> result: String = calcMd5(coroutineContext[FilePath]!!.path).await() </div><div class="line">	... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在协程内部想要访问上下文居然需要用到外部的变量。这个上下文毕竟是协程自己的，自己居然没有办法直接获取到，一点儿都不自然。</p>
+<p>其实这也不是没有办法，startCoroutine 其实还有一个带 receiver 的版本：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;R, T&gt;</span> <span class="params">(suspend R.()</span></span> -&gt; T).startCoroutine( </div><div class="line">        receiver: R, </div><div class="line">        completion: Continuation&lt;T&gt;</div></pre></td></tr></table></figure>
+<p>也就是说，我们不仅可以传入一个独立的函数作为协程的代码块，还可以将一个对象的方法传入，也就是说，我们完全可以在启动协程的时候为它指定一个 receiver：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">launch</span><span class="params">( </span></span></div><div class="line">	receiver: <span class="type">T</span>,  </div><div class="line">	context: <span class="type">CoroutineContext</span>,  </div><div class="line">	block: <span class="type">suspend</span> <span class="type">T</span>.() -&gt; <span class="built_in">Unit</span>)  </div><div class="line">	= block.startCoroutine(receiver, StandaloneCoroutine(context))</div></pre></td></tr></table></figure>
+<p>我们修改了 launch，加入了 receiver，于是我们的代码也可以这么改：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> coroutineContext = FilePath(<span class="string">"test.zip"</span>) + CommonPool </div><div class="line"><span class="comment">//需要传入 receiver </span></div><div class="line">launch(coroutineContext, coroutineContext) &#123; </div><div class="line">	... </div><div class="line">	<span class="comment">//注意下面直接用 this 来获取路径 </span></div><div class="line">    <span class="keyword">val</span> result: String = calcMd5(<span class="keyword">this</span>[FilePath]!!.path).await() </div><div class="line">	... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果你觉得绝大多数情况下 receiver 都会是上下文那么上面的代码还可以接着简化：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">launchWithContext</span><span class="params">( </span></span></div><div class="line">	context: <span class="type">CoroutineContext</span>,  </div><div class="line">	block: <span class="type">suspend</span> <span class="type">CoroutineContext</span>.() -&gt; <span class="built_in">Unit</span>)  </div><div class="line">	= launch(context, context, block)</div></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">launchWithContext(FilePath(<span class="string">"test.zip"</span>) + CommonPool) &#123; </div><div class="line">    log(<span class="string">"in coroutine. Before suspend."</span>) </div><div class="line">    <span class="comment">//暂停我们的线程，并开始执行一段耗时操作 </span></div><div class="line">    <span class="keyword">val</span> result: String = calcMd5(<span class="keyword">this</span>[FilePath]!!.path).await() </div><div class="line">    log(<span class="string">"in coroutine. After suspend. result = <span class="subst">$result</span>"</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>截止到现在，我们对最初的代码做了各种封装，这些封装后的代码可以在各种场景下直接使用，于是我们的协程代码也得到了大幅简化。另外，不知道大家有没有注意到，协程当中异常的处理也要比直接用线程写回调的方式容易的多，我们只需要在 Continuation 当中覆写 resumeWithException 方法就可以做到这一点。</p>
+<h2 id="5-拿来主义：Kotlinx-Coroutine"><a href="#5-拿来主义：Kotlinx-Coroutine" class="headerlink" title="5 拿来主义：Kotlinx.Coroutine"></a>5 拿来主义：Kotlinx.Coroutine</h2><p><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="external">Kotlinx.Coroutine</a> 是官方单独发出来的一个 Coroutine 的库，这个库为什么没有随着标准库一并发出来，想必大家从其包名就能略窥一二：<code>kotlinx.coroutines.experimental</code>，experimental，还处于试验阶段。不过既然敢随着 1.1 Beta 一并发出来，也说明后面的大方向不会太远，大家可以直接开始尝试其中的 API 了。</p>
+<p>应该说，Kotlinx.Coroutine 做的事情跟我们在上一节做的事情是相同的，只不过它在这个方向上面走的更远。有关它的一些用法和细节，我们将在下一期给大家介绍。</p>
+<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6 小结"></a>6 小结</h2><p>本文主要对 Kotlin 1.1Beta 标准库的 Coroutine API 做了介绍，也给出了相应的示例向大家展示 Coroutine 能为我们带来什么。</p>
+<p>协程是干什么的？是用来让异步代码更具表现力的。如果运用得当，它将让我们免于回调嵌套之苦，并发加锁之痛，使我们能够利用我们有限的时间写出更有魅力的程序。</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/30/深入理解 Kotlin Coroutine/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coroutine/">Coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础Api/">基础Api</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&title=《深入理解 Kotlin Coroutine》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&title=《深入理解 Kotlin Coroutine》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解 Kotlin Coroutine》 — Kotlin&url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/30/勘误：15 Kotlin 与 Java 共存 (2) /" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">勘误：15 Kotlin 与 Java 共存 (2)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/30/如何优雅的在微信公众号中编辑代码/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何优雅的在微信公众号中编辑代码</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&title=《深入理解 Kotlin Coroutine》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&title=《深入理解 Kotlin Coroutine》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解 Kotlin Coroutine》 — Kotlin&url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/30/深入理解 Kotlin Coroutine/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3a0U4rMQwE0P7/T3NfkYC9M3aCinT2qQLazVmkOB379Yqvj0/Xa3R9fLmef/75t19fH77w8PDw1jd+XkTCbj8h/8x8zXh4eHi3eT/tqM+LSPbkpDA8P5S8SODh4eG9Jy9nt1v5c5HAw8PD++u8JFYoFlGS8PDw8N6Bl2/ZmyN4ElK00caxrAUPDw8v5uVdpPd5faW/h4eHh7fuqidN/aTF1Y4gPBeeYrV4eHh4F3htKyuPGPKQIn+I7Trx8PDwbvNmQ1GzEKEtBnkk8c2n4eHh4V3jbQ6+m5B31jArCgYeHh7eUV6+7bbRQBu8tkfw6F+Fh4eHd4GXx6ybwLftT9WLnrXE8PDw8BazRsnWf6p4bN6Vl5Bv+nt4eHh4h3j5Bj0rFe1A1aYNhoeHh/c7vGEzPo5ZZ42r2aDAgZkIPDw8vPj7fg7YHI7PpiZJgcHDw8O7x0sAm+ZTcuDOj+btYR0PDw/vBi+JHvIbzBbXtruKwzceHh7eNV4bthYtqFEUm8ccxWEaDw8P7xAvLxWzY3Ee7+ahwyZ0xsPDw9vwNgvKQ4Q6Fykbaf8ZHcDDw8M7ymsPsrNjd/vz5NhdlBA8PDy8o7zZaFR9Qi8HAmZxw491Dw8PD+8yLw8C8gexH0eYlQo8PDy8G7z2BrPBgnZMajN09WMYgYeHh3eNN2tK5SVk9iDaMKJYLh4eHt6adzaG2DT+j41z4eHh4V3mzdr/7YjAgYghf9x4eHh4R3n7Iapkm27fuy9XeHh4ePd4B6rKOq6dgQ+PMuDh4eGVvKQYzBr/eflJCsCs2ODh4eHd47Uh7OzofPgonHwOHh4e3hvw2jggLzntIR4PDw/vr/CSrf9Y43/UqMPDw8P7HV6yfedh7iZieP6b9r54eHh4N3jtl/znG7dx8PWl4+Hh4Z3k/QMj31S5fFX48QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

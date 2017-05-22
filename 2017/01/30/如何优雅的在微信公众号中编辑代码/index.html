@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/">
+    
+    
+    <title>如何优雅的在微信公众号中编辑代码 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="微信公众号,编辑代码">
+    <meta name="description" content="这篇文章严格意义上是写给有公众号且公众号文章需要贴代码的朋友们看的。 1 公众号编辑器真难用自从入坑公众号以来，被公众号的这个编辑器简直折磨死了。我发的文章基本上是少不了贴代码的，可是每次贴上去的代码总是被公众号的编辑器无厘头的给我过滤掉换行符，简直气死人。 例如我编辑得好好的代码， 12345Person person = new Person(&quot;benny&quot;, 27); System.out.">
+<meta name="keywords" content="微信公众号,编辑代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何优雅的在微信公众号中编辑代码">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="这篇文章严格意义上是写给有公众号且公众号文章需要贴代码的朋友们看的。 1 公众号编辑器真难用自从入坑公众号以来，被公众号的这个编辑器简直折磨死了。我发的文章基本上是少不了贴代码的，可是每次贴上去的代码总是被公众号的编辑器无厘头的给我过滤掉换行符，简直气死人。 例如我编辑得好好的代码， 12345Person person = new Person(&quot;benny&quot;, 27); System.out.">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.30/mdhere.gif">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何优雅的在微信公众号中编辑代码">
+<meta name="twitter:description" content="这篇文章严格意义上是写给有公众号且公众号文章需要贴代码的朋友们看的。 1 公众号编辑器真难用自从入坑公众号以来，被公众号的这个编辑器简直折磨死了。我发的文章基本上是少不了贴代码的，可是每次贴上去的代码总是被公众号的编辑器无厘头的给我过滤掉换行符，简直气死人。 例如我编辑得好好的代码， 12345Person person = new Person(&quot;benny&quot;, 27); System.out.">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.1.30/mdhere.gif">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">如何优雅的在微信公众号中编辑代码</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">如何优雅的在微信公众号中编辑代码</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-30T04:25:08.000Z" itemprop="datePublished" class="page-time">
+  2017-01-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-公众号编辑器真难用"><span class="post-toc-text">1 公众号编辑器真难用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-分析下原因"><span class="post-toc-text">2 分析下原因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-几种常见的贴代码的方法"><span class="post-toc-text">3 几种常见的贴代码的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-贴图法"><span class="post-toc-text">3.1 贴图法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-Markdown-Here"><span class="post-toc-text">3.2 Markdown Here</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-渲染好的格式直接贴"><span class="post-toc-text">3.3 渲染好的格式直接贴</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-其他什么编辑器"><span class="post-toc-text">3.4 其他什么编辑器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-目前最优雅的方案诞生记"><span class="post-toc-text">4 目前最优雅的方案诞生记</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-小结"><span class="post-toc-text">5 小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-如何优雅的在微信公众号中编辑代码"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">如何优雅的在微信公众号中编辑代码</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月30日 12:25" datetime="2017-01-30T04:25:08.000Z"  itemprop="datePublished">2017-01-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这篇文章严格意义上是写给有公众号且公众号文章需要贴代码的朋友们看的。</p>
+<h2 id="1-公众号编辑器真难用"><a href="#1-公众号编辑器真难用" class="headerlink" title="1 公众号编辑器真难用"></a>1 公众号编辑器真难用</h2><p>自从入坑公众号以来，被公众号的这个编辑器简直折磨死了。我发的文章基本上是少不了贴代码的，可是每次贴上去的代码总是被公众号的编辑器无厘头的给我过滤掉换行符，简直气死人。</p>
+<p>例如我编辑得好好的代码，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Person person = <span class="keyword">new</span> Person(<span class="string">"benny"</span>, <span class="number">27</span>); </div><div class="line">System.out.println(person.getName() + <span class="string">" is "</span> + person.age); <span class="comment">//benny is 27 </span></div><div class="line">person.setName(<span class="string">"andy"</span>); </div><div class="line">person.age = <span class="number">26</span>; </div><div class="line">System.out.println(person.getName() + <span class="string">" is "</span> + person.age); <span class="comment">//andy is 26</span></div></pre></td></tr></table></figure>
+<p>贴上去就成了这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person person = <span class="keyword">new</span> Person(<span class="string">"benny"</span>, <span class="number">27</span>);System.out.println(person.getName() + <span class="string">" is "</span> + person.age); <span class="comment">//benny is 27person.setName("andy");person.age = 26;System.out.println(person.getName() + " is " + person.age); //andy is 26</span></div></pre></td></tr></table></figure>
+<p>每次一段代码一段代码的敲回车，简直敲到手抽筋。醉了。</p>
+<p>这还不算，这个格式的代码发到手机上，还不能水平滚动，各种任性的折行，让本来清秀的代码看起来真是一坨一坨的。</p>
+<h2 id="2-分析下原因"><a href="#2-分析下原因" class="headerlink" title="2 分析下原因"></a>2 分析下原因</h2><p>查了一下，不少同行都在因为这个而感到苦恼，大家分析得出的结论是微信公众号的编辑器会对我们贴上去的内容进行处理，而处理的过程中又会对一些换行符进行过滤，导致本来排好的代码乱成一团。</p>
+<h2 id="3-几种常见的贴代码的方法"><a href="#3-几种常见的贴代码的方法" class="headerlink" title="3 几种常见的贴代码的方法"></a>3 几种常见的贴代码的方法</h2><h3 id="3-1-贴图法"><a href="#3-1-贴图法" class="headerlink" title="3.1 贴图法"></a>3.1 贴图法</h3><p>对于这种情况，最直接的方法自然是用工具渲染好，然后截图贴到公众号的编辑器里面。也可以写一个工具把代码自动绘成图片。</p>
+<ul>
+<li>优点：简单直接，在找到更好的办法之前，我之前的几篇文章都是这么处理的。</li>
+<li>缺点：操作繁琐，除了生成图片或者截图，还要手动贴到公众号编辑器中，截图时对于代码的文字清晰度控制也不太容易，贴到编辑器之后，还会被压缩，导致代码不容易被看清楚。当然，另一个更大的硬伤就是读者阅读的时候会耗费比较多的流量，如果网速不好还会加载不出来。</li>
+</ul>
+<h3 id="3-2-Markdown-Here"><a href="#3-2-Markdown-Here" class="headerlink" title="3.2 Markdown Here"></a>3.2 Markdown Here</h3><p>很多朋友都提到 Markdown Here，这是一个非常棒的 Chrome 插件，大家可以搜索并添加它，安装之后可以在 Options 当中选择自己喜欢的主题，之后只要在选中编辑框，贴入 Markdown 源码，再点击插件的按钮即可。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.30/mdhere.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>不过。。这个插件同样不能幸免于换行符的过滤，如果我们在微信公众号编辑器当中贴入 md 源码，按照上述操作渲染出漂亮的格式，保存之后预览，你就会发现这个办法其实并不怎么好用，或者说基本上不能用。</p>
+<ul>
+<li>优点：这插件真的很棒。</li>
+<li>缺点：因为渲染后的格式还是会惨遭微信公众号的编辑器的毒手，也就是说，你得自己手动处理一下换行的问题。</li>
+</ul>
+<h3 id="3-3-渲染好的格式直接贴"><a href="#3-3-渲染好的格式直接贴" class="headerlink" title="3.3 渲染好的格式直接贴"></a>3.3 渲染好的格式直接贴</h3><p>我们前面说，可以先把 md 源码渲染好，然后直接复制粘贴到公众号的编辑器当中，结果其实与 Markdown Here 的效果完全一样。说到底是换行符被过滤的问题。</p>
+<p>我一直用的 md 工具是 MacDown，可以直接先用它编辑好文章，然后复制渲染结果贴到微信公众号当中，自行处理一下换行的问题即可。</p>
+<ul>
+<li>优点：本地编辑，方便快捷。</li>
+<li>缺点：一样，还是换行符的问题。</li>
+</ul>
+<h3 id="3-4-其他什么编辑器"><a href="#3-4-其他什么编辑器" class="headerlink" title="3.4 其他什么编辑器"></a>3.4 其他什么编辑器</h3><p>当你在搜索引擎里面搜索这个问题的时候，大多数回答可能是推荐你用一些第三方的编辑器，比如 什么 135 编辑器之类的，这些编辑器对于不写代码的朋友来说，真的挺好用的，里面提供了各式各样的模板，大家只要把文字准备好，一套用就立马狂拽酷炫吊炸天。</p>
+<p>可是，它们并不是为我们这些码农准备的啊，你想想公众号绝大多数的运营者都是编辑，而不是程序员，他们根本不需要关心什么是代码，更不需要关心怎么把代码排版好（我相信微信公众号编辑器的开发小伙伴大概也是这么想的吧，这么久了这编辑器还是这鬼样子）。</p>
+<p>第三方编辑器很多，不过，当你一个一个去试的时候，你会发现这条路根本不通！！</p>
+<ul>
+<li>优点：适合编辑各种花哨的文字和图片。</li>
+<li>缺点：不支持代码的格式。</li>
+</ul>
+<h2 id="4-目前最优雅的方案诞生记"><a href="#4-目前最优雅的方案诞生记" class="headerlink" title="4 目前最优雅的方案诞生记"></a>4 目前最优雅的方案诞生记</h2><p>说实在的这个方案没有很高端。我们的痛点其实就是想个办法不让微信公众号编辑器对贴到里面的代码进行换行符的过滤。</p>
+<p>有朋友提出把渲染后的结果每行都用 <br> 替换 \n，这样过滤时，换行自然就不会被干掉了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">"hljs language-java"</span> </span></div><div class="line">      <span class="attr">style</span>=<span class="string">"..."</span>&gt;Person person = <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-keyword"</span> <span class="attr">style</span>=<span class="string">"color: rgb(170, 13, 145);"</span>&gt;</span>new<span class="tag">&lt;/<span class="name">span</span>&gt;</span> Person(<span class="tag">&lt;<span class="name">span</span> </span></div><div class="line">        <span class="attr">class</span>=<span class="string">"hljs-string"</span> </div><div class="line">        <span class="attr">style</span>=<span class="string">"color: rgb(196, 26, 22);"</span>&gt;"benny"<span class="tag">&lt;/<span class="name">span</span>&gt;</span>, </div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-number"</span> <span class="attr">style</span>=<span class="string">"color: rgb(28, 0, 207);"</span>&gt;</span>27<span class="tag">&lt;/<span class="name">span</span>&gt;</span>); </div><div class="line">    System.out.println(person.getName() + <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-string"</span> <span class="attr">style</span>=<span class="string">"color: rgb(196, 26, 22);"</span>&gt;</span>" is "<span class="tag">&lt;/<span class="name">span</span>&gt;</span> + </div><div class="line">    person.age); <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-comment"</span> <span class="attr">style</span>=<span class="string">"color: rgb(0, 106, 0);"</span>&gt;</span>//benny is 27<span class="tag">&lt;/<span class="name">span</span>&gt;</span> </div><div class="line">    person.setName(<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-string"</span> <span class="attr">style</span>=<span class="string">"color: rgb(196, 26, 22);"</span>&gt;</span>"andy"<span class="tag">&lt;/<span class="name">span</span>&gt;</span>); </div><div class="line">    person.age = <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-number"</span> <span class="attr">style</span>=<span class="string">"color: rgb(28, 0, 207);"</span>&gt;</span>26<span class="tag">&lt;/<span class="name">span</span>&gt;</span>; </div><div class="line">    System.out.println(person.getName() + <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-string"</span> <span class="attr">style</span>=<span class="string">"color: rgb(196, 26, 22);"</span>&gt;</span>" is "<span class="tag">&lt;/<span class="name">span</span>&gt;</span> + </div><div class="line">    person.age); <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hljs-comment"</span> <span class="attr">style</span>=<span class="string">"color: rgb(0, 106, 0);"</span>&gt;</span>//andy is 26<span class="tag">&lt;/<span class="name">span</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这就是 md 渲染后的结果，代码对应于文章开头的例子。我们发现所有的代码被放到 code 这个标签当中，如果我们在其中用 <br> 替换 \n 会发生什么呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person person = <span class="keyword">new</span> Person(<span class="string">"benny"</span>, <span class="number">27</span>); </div><div class="line">System.out.println(person.getName() + <span class="string">" is "</span> + person.age); <span class="comment">//benny is 27 </span></div><div class="line">person.setName(<span class="string">"andy"</span>);&lt;br&gt;person.age = <span class="number">26</span>; </div><div class="line">System.out.println(person.getName() + <span class="string">" is "</span> + person.age); <span class="comment">//andy is 26</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>被直接显示出来了。根本不能用来换行。所以直接从结果入手好像没那么简单。那怎么办，我们干脆修改渲染方式吗？针对每行，用 ```<p< span=""><a href="/>```">标签包起来不就可以换行了吗？</a></p<></span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">想法挺好啊。想到这里我就开始准备去修改 Markdown Here 的源码了。。。可，尼玛，我不是搞前端的，一片一片的 js 代码我该修改哪里呢？这下可尴尬了。</div><div class="line"></div><div class="line">此路通，可能成本还是有点儿高了。于是我又回到原点，思考如何欺骗微信公众号编辑器那个换行符不能被过滤的问题。怎么骗呢？关键是，公众号的编辑器通过识别怎样的 pattern 来过滤换行符呢？如果我找到这个 pattern，然后把它破坏掉，不就可以了么？</div><div class="line"></div><div class="line">经过一番尝试发现：</div><div class="line"></div><div class="line">* 每一行代码的前后各加一个空格，那么正常有内容的行末换行符就不会被过滤</div><div class="line">* 空行替换成“英文空格+中文空格+英文空格”，这样在微信公众号编辑器看起来似乎不是空行，不过在我们看来其实是空行</div><div class="line"></div><div class="line">于是我动手写了一个简单的 python 脚本，那么后续我只要用 MacDown 编辑好我的文章，再用下面这个脚本自动为所有的代码加上空格、替换空行，那么我再把渲染好的文章贴到公众号的话，大功就告成了。</div><div class="line"></div><div class="line">附上非常简单的脚本代码：</div><div class="line"></div><div class="line">```py</div><div class="line"> #!/usr/local/bin/python </div><div class="line"></div><div class="line"> 　 </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"> 　 </div><div class="line"> import sys, re </div><div class="line"> 　 </div><div class="line"></div><div class="line"> CODE_PATTERN_START = r&quot;^\s*```\s*\w*$&quot; </div><div class="line"></div><div class="line"> CODE_PATTERN_END = r&quot;^\s*```\s*$&quot; </div><div class="line"> if len(sys.argv) &lt; 2: </div><div class="line">     print &quot;参数不正确.&quot; </div><div class="line">     exit() </div><div class="line"> 　 </div><div class="line"> inputFile = open(sys.argv[1]) </div><div class="line"> output = [] </div><div class="line"> while True: </div><div class="line">     line = inputFile.readline() </div><div class="line">     if line: </div><div class="line">         if re.match(CODE_PATTERN_START, line): </div><div class="line">             output.append(line) </div><div class="line">             while True: </div><div class="line">                 line = inputFile.readline() </div><div class="line">                 if re.match(CODE_PATTERN_END, line): </div><div class="line">                     output.append(line) </div><div class="line">                     break </div><div class="line">                 if line.strip(): </div><div class="line"></div><div class="line">                     line = &quot; &quot; + line </div><div class="line">                     line = line.replace(&quot;\n&quot;, &quot; \n&quot;) </div><div class="line">                     print line </div><div class="line">                 else: </div><div class="line">                     print &quot;空行&quot; </div><div class="line"></div><div class="line">                     line = &quot; 　 \n&quot; </div><div class="line">                 output.append(line) </div><div class="line">         else: </div><div class="line">             output.append(line) </div><div class="line">     else: </div><div class="line">         break </div><div class="line"> inputFile.close() </div><div class="line"> 　 </div><div class="line"> outputFile = open(sys.argv[1], &apos;w+&apos;) </div><div class="line"> outputFile.writelines(output) </div><div class="line"> outputFile.close()</div></pre></td></tr></table></figure>
+<h2 id="5-小结"><a href="#5-小结" class="headerlink" title="5 小结"></a>5 小结</h2><p>这种方法应该算不上一个最终的方案（最终方案应该是公众号编辑器的开发该考虑的事儿），但它成本比较低，输出效果也比较不错，希望能给大家带来帮助。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin扫码关注.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/30/如何优雅的在微信公众号中编辑代码/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信公众号/">微信公众号</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑代码/">编辑代码</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&title=《如何优雅的在微信公众号中编辑代码》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&title=《如何优雅的在微信公众号中编辑代码》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何优雅的在微信公众号中编辑代码》 — Kotlin&url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/30/深入理解 Kotlin Coroutine/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">深入理解 Kotlin Coroutine</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/23/用 Kotlin 写 Android 02 说说 Anko/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">用 Kotlin 写 Android 02 说说 Anko</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&title=《如何优雅的在微信公众号中编辑代码》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&title=《如何优雅的在微信公众号中编辑代码》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何优雅的在微信公众号中编辑代码》 — Kotlin&url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/30/如何优雅的在微信公众号中编辑代码/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3a0UrsQBAEUP//pxXukyBmq7pn1AsnT8tuSHJGyLTV/fYWH+//jq+fn8//fHz9vj0/ue/wwMPDwxs9+nfHM+n5xs8Pmt9ldjU8PDy827x8M8hf9O3W0vKiK+Dh4eH9Ki8vptsrJMU3Hh4e3v/Im4URm7ADDw8P7y/zkpggKZ2TF/1zfNCW8seyFjw8PLyYd/vFfePzD/X38PDw8Mquerth7MOLdozgxRPi4eHhXeCdCg7aIYAk5E3Gs6J74eHh4R3lnbrBLCyYLWsxvIWHh4d3gZdc4vn7pCzOA9/Z6MBwD8TDw8Nb89q20zMsX5RN5FFsMHh4eHhHefsQYb/BtIVyMcqAh4eHd5Q3azLlu020uqMhhuLvhoeHh3eNlxTHebO/ZeSL9Xzmi8kIPDw8vDVv1rjaFNOboYThpoKHh4d3gddOKLWtqdnybYrpKHHBw8PDW/BmjaU2hmivfOxXPDw8vKO/3ngp5yFFGxPXQ1d4eHh4F3htaDtreu3zgQPbFR4eHt4h3qm12UQVbYMtb8Lh4eHh3eblo6XtpjJrXOVP8u0d8fDw8K7x2sbS/qU/C3lzGB4eHt7P8JIXfftNO2A6W5QX+QoeHh7eBd7mpT9rg82+z0vt4j8GPDw8vJLXXm4WE8wW8dRi4eHh4d3gzcLZTfE9G8NqFxcPDw/vHq8NVZMH2hfZyfnRYAEeHh7eZV5eWM8aWrNmWF5k12EuHh4eXsl7L49Z2Z2Ak/seSFnw8PDwznSUDgcT+wedBb5tHIyHh4e34eUPlIPb8YK2fC82Bjw8PLxrvLMNsDxEyFtfs60LDw8P7+/w8mA3L8Hz/wCK5cDDw8P7VV5bcCdbxawET54ZDw8P7zYvD16Ti87K7lkrLtoY8PDw8I7y9tHq82Zwo/W1D4vx8PDwRrwP0E1UuS/qr3sAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

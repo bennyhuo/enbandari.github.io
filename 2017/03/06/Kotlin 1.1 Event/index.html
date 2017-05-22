@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/03/06/Kotlin 1.1 Event/">
+    
+    
+    <title>[译]Kotlin 1.1 Event | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Kotlin 1.1除了为您的项目带来新特性之外，还是您与当地社区进行线下交流学习、了解Kotlin的未来与发展的绝好机会。您可以组织社区的小伙伴们，一起参与Jetbrains团队在3月23日举办的Kotlin直播活动。为了适应不同时区，我们准备了两个直播流，分别是欧洲中部时间[CET]下午5点/7点(太平洋夏季时间[PDT]上午9点/11点)。   告诉我们，我们将在博客上公布。       K">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]Kotlin 1.1 Event">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin 1.1除了为您的项目带来新特性之外，还是您与当地社区进行线下交流学习、了解Kotlin的未来与发展的绝好机会。您可以组织社区的小伙伴们，一起参与Jetbrains团队在3月23日举办的Kotlin直播活动。为了适应不同时区，我们准备了两个直播流，分别是欧洲中部时间[CET]下午5点/7点(太平洋夏季时间[PDT]上午9点/11点)。   告诉我们，我们将在博客上公布。       K">
+<meta property="og:image" content="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2017/03/1600.png?resize=640%2C320&ssl=1">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译]Kotlin 1.1 Event">
+<meta name="twitter:description" content="Kotlin 1.1除了为您的项目带来新特性之外，还是您与当地社区进行线下交流学习、了解Kotlin的未来与发展的绝好机会。您可以组织社区的小伙伴们，一起参与Jetbrains团队在3月23日举办的Kotlin直播活动。为了适应不同时区，我们准备了两个直播流，分别是欧洲中部时间[CET]下午5点/7点(太平洋夏季时间[PDT]上午9点/11点)。   告诉我们，我们将在博客上公布。       K">
+<meta name="twitter:image" content="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2017/03/1600.png?resize=640%2C320&ssl=1">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[译]Kotlin 1.1 Event</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[译]Kotlin 1.1 Event</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-06T09:43:00.000Z" itemprop="datePublished" class="page-time">
+  2017-03-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kotlin-1-1活动时间："><span class="post-toc-text">Kotlin 1.1活动时间：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#互动问答环节"><span class="post-toc-text">互动问答环节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Future-Features-kit"><span class="post-toc-text">Future Features kit</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin 1.1 Event"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[译]Kotlin 1.1 Event</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月06日 17:43" datetime="2017-03-06T09:43:00.000Z"  itemprop="datePublished">2017-03-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Kotlin 1.1除了为您的项目带来新特性之外，还是您与当地社区进行线下交流学习、了解Kotlin的未来与发展的绝好机会。<br>您可以组织社区的小伙伴们，一起参与Jetbrains团队在<strong>3月23日</strong>举办的Kotlin直播活动。为了适应不同时区，我们准备了两个直播流，分别是<strong>欧洲中部时间[CET]下午5点/7点(太平洋夏季时间[PDT]上午9点/11点)</strong>。  </p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSf6iXcrIpaNIqeeUJI2L6pntS5yy_iI01PbrO9gTMmX0kg5Lw/viewform" target="_blank" rel="external">告诉我们</a>，我们将在博客上公布。</p>
+
+<p><img alt="1600" class="size-full wp-image-4739 aligncenter" data-recalc-dims="1" src="https://i1.wp.com/blog.jetbrains.com/kotlin/files/2017/03/1600.png?resize=640%2C320&amp;ssl=1"></p>
+
+
+<p><span id="more-4726"></span></p>
+
+<h2 id="Kotlin-1-1活动时间："><a href="#Kotlin-1-1活动时间：" class="headerlink" title="Kotlin 1.1活动时间："></a>Kotlin 1.1活动时间：</h2><ul>
+<li><strong>CET时间下午5点/7点(PDT时间上午9点/11点)</strong> - Andrey Breslav演讲(Youtube上直播30分钟)，链接将稍候放出。</li>
+<li><strong>CET时间下午5点30分/7点30分(PDT时间上午9点30分/11点30分)</strong> -  休息30分钟，期间可以自由讨论关于在Kotlin未来版本中您最希望加入的功能或特性，并在Twitter上分享和评论。</li>
+<li><strong>CET时间下午6点/8点(PDT时间上午10点/12点)</strong> - 与Kotlin团队的互动问答环节(45分钟，直播);</li>
+<li>欢迎各位参与讨论与发言。</li>
+</ul>
+<h2 id="互动问答环节"><a href="#互动问答环节" class="headerlink" title="互动问答环节"></a>互动问答环节</h2><ul>
+<li>从3月21日开始，至3月23日互动环节结束期间，您可以在Twitter上使用#kotlinQA标签向我们提出任何您想要问的问题；</li>
+<li>Kotlin团队将对问题进行分类;</li>
+<li>团队将在Q＆A环节现场回答问题;</li>
+<li>如果在会议期间有问题没有答复，我们仍将通过Twitter进行回复</li>
+<li>优先回答提问频率最高的问题</li>
+</ul>
+<h2 id="Future-Features-kit"><a href="#Future-Features-kit" class="headerlink" title="Future Features kit"></a>Future Features kit</h2><p>本次调查的目的是收集社区用户对语言特征的偏好和需求。您可以提出在Kotlin后续版本中最希望看到的特征或功能；不过这些内容并不保证能在1.2版本中发布，但我们会在确定工作优先级时考虑您的意见。</p>
+<ul>
+<li>Kotlin Future Feature Kit包含20张写有功能名称和描述的卡片以及用于投票的贴纸;</li>
+<li>将功能卡片粘贴到白板（或墙壁）上;</li>
+<li>每位参加者可获得3张（3张）贴纸，可以在功能中自由分配：最多为三种不同的功能进行投票，或者对某一功能投出两票甚至三票;</li>
+<li>参加者可以通过阅读卡片的说明了解功能，然后按上所述规则进行投票;</li>
+<li>将结果进行拍照;</li>
+<li>使用#kotlinevent标签在Twitter上发布</li>
+</ul>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSf6iXcrIpaNIqeeUJI2L6pntS5yy_iI01PbrO9gTMmX0kg5Lw/viewform" target="_blank" rel="external">在这里提交你的答案吧</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="https://blog.jetbrains.com/kotlin/2017/03/kotlin-1-1-event-2/ " target="_blank" rel="external">https://blog.jetbrains.com/kotlin/2017/03/kotlin-1-1-event-2/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/Alina Dolgikh/">
+                [原]
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                Alina Dolgikh
+                
+            </a>
+            
+            <a href="https://github.com/SnakeEys/">
+                [译]SnakEys
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&title=《[译]Kotlin 1.1 Event》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&title=《[译]Kotlin 1.1 Event》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin 1.1 Event》 — Kotlin&url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/13/Kotlin Script 介绍/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Kotlin Script 介绍</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/04/Kotlin 1.1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 1.1</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&title=《[译]Kotlin 1.1 Event》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&title=《[译]Kotlin 1.1 Event》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin 1.1 Event》 — Kotlin&url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/03/06/Kotlin 1.1 Event/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awW6EMAxF0fn/n6ZStxXMfS9QCedmVdEBclhYduzPB6/jd/Erx5/F38J/Hy8ZMmS8lnFcrnTT5Mo1srtLhgwZOzCugyx/8dm9PBBff77T6zJkyJABttJdkSFDhownAm4alHmqR1JSGTJk7Mwgj1tJ+LqC+ZFaXIYMGS9kpI2B//z7wf6GDBkyXsI4wrXSsEzL4GBXMmTIGM3ggxQrbctu6+SZ8TyIDBkyXsgg4xRd85KXmnwPp++VIUPGZgyS3q2HXRLWg//KkCFjGwYvI9eP+MmVAC9DhozRDFK4di9IAd1AWDA5IkOGjNcy1jfXBW7ehURsGTJkbMDgWRZhk0K0G2Y9fb4MGTJGM7qjtC5QdhmrDBkyZKSHWbwlyUNn0Kq8/jQyZMgYzeDbWmlJrh/b8aRThgwZuzF4osYHv0jSmTYbZMiQMZWRDmmlRWmaRJI0scxtZciQ8XJGl7qlbYOVEY0vn0yGDBmjGeSGlUP/NB4SDOpsyJAhYxAjPY7vAmiaAsZtABkyZGzASMvL9WB9c7NThgwZoxnp43i47A76uzEOGTJkzGYc4Qq+TXfEX5W4MmTImM3oxixuKDtxCc2LZxkyZMxmkCDLD+tJ0Xvv6JgMGTL2YfBHrxSlJBDzfQZnhzJkyNiGwdsD3VhGWh7ffMInQ4aMcYx0W929wRNkyJCxAaMLmukQWPdL9AlkyJAxmrFeQJLmZfeB0uaoDBkyxjF+AMELnpza0XSXAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

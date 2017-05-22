@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/">
+    
+    
+    <title>[译]Kotlin/Native v0.2 发布啦 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="我们很高兴地宣布Kotlin / Native v0.2 发布啦，这是 Kotlin / Native 技术预览版的一次功能更新和 Bug 修复。这次更新增加了对协程和跨模块内联函数的支持，以及整体上的问题修复和优化。这次更新包括了一个演示如何使用 并发非阻塞IO协同程序 的示例， 一个 使用GTK的GUI应用程序 ，以及一个由Julius Kunze贡献的TensorFlow机器学习框架 客户端">
+<meta name="keywords" content="Kotlin Java IntelliJ Android 编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]Kotlin&#x2F;Native v0.2 发布啦">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="我们很高兴地宣布Kotlin / Native v0.2 发布啦，这是 Kotlin / Native 技术预览版的一次功能更新和 Bug 修复。这次更新增加了对协程和跨模块内联函数的支持，以及整体上的问题修复和优化。这次更新包括了一个演示如何使用 并发非阻塞IO协同程序 的示例， 一个 使用GTK的GUI应用程序 ，以及一个由Julius Kunze贡献的TensorFlow机器学习框架 客户端">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译]Kotlin&#x2F;Native v0.2 发布啦">
+<meta name="twitter:description" content="我们很高兴地宣布Kotlin / Native v0.2 发布啦，这是 Kotlin / Native 技术预览版的一次功能更新和 Bug 修复。这次更新增加了对协程和跨模块内联函数的支持，以及整体上的问题修复和优化。这次更新包括了一个演示如何使用 并发非阻塞IO协同程序 的示例， 一个 使用GTK的GUI应用程序 ，以及一个由Julius Kunze贡献的TensorFlow机器学习框架 客户端">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[译]Kotlin/Native v0.2 发布啦</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">[译]Kotlin/Native v0.2 发布啦</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-12T03:08:00.000Z" itemprop="datePublished" class="page-time">
+  2017-05-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Kotlin_Native v0.2 is out"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[译]Kotlin/Native v0.2 发布啦</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月12日 11:08" datetime="2017-05-12T03:08:00.000Z"  itemprop="datePublished">2017-05-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/官方动态/">官方动态</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>我们很高兴地宣布Kotlin / Native v0.2 发布啦，这是 Kotlin / Native 技术预览版的一次功能更新和 Bug 修复。这次更新增加了对协程和跨模块内联函数的支持，以及整体上的问题修复和优化。<br>这次更新包括了一个演示如何使用 <a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/nonBlockingEchoServer" target="_blank" rel="external">并发非阻塞IO协同程序</a> 的示例， 一个 <a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/gtk" target="_blank" rel="external">使用GTK的GUI应用程序</a> ，以及一个由Julius Kunze贡献的<a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/tensorflow" target="_blank" rel="external">TensorFlow机器学习框架</a> 客户端。</p>
+<p>下面的代码演示了如何使用协程处理并发 Socket IO。各个用户的请求将得到并发处理。</p>
+
+<p></p>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> connectionId = <span class="number">0</span></div><div class="line">acceptClientsAndRun(listenFd) &#123;</div><div class="line">  memScoped &#123;</div><div class="line">    <span class="keyword">val</span> bufferLength = <span class="number">100</span>L</div><div class="line">    <span class="keyword">val</span> buffer = allocArray&lt;ByteVar&gt;(bufferLength)</div><div class="line">    <span class="keyword">val</span> connectionIdString = <span class="string">"#<span class="subst">$&#123;++connectionId&#125;</span>: "</span>.cstr</div><div class="line">    <span class="keyword">val</span> connectionIdBytes = connectionIdString.getPointer(<span class="keyword">this</span>)</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">        <span class="keyword">val</span> length = read(buffer, bufferLength)</div><div class="line">        <span class="keyword">if</span> (length == <span class="number">0</span>L) <span class="keyword">break</span></div><div class="line">        write(connectionIdBytes, connectionIdString.size.toLong())</div><div class="line">        write(buffer, length)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (e: IOException) &#123;</div><div class="line">      println(<span class="string">"I/O error occurred: <span class="subst">$&#123;e.message&#125;</span>"</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+<p></p>
+
+<p>下面的这段代码则演示了如何创建一个带有事件监听的GTK按钮：</p>
+
+<p></p>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> button = gtk_button_new_with_label(<span class="string">"Click me!"</span>)!!</div><div class="line">g_signal_connect(button, <span class="string">"clicked"</span>,</div><div class="line">   staticCFunction &#123; _: CPointer&lt;GtkWidget&gt;?, _: gpointer? -&gt; println(<span class="string">"Hi from Kotlin"</span>) &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+
+<p></p>
+
+<p>简单地说，Kotlin Native v0.2 能够支持我们编写一些功能完善而精巧的程序了。</p>
+<p>另外，Kotlin Native 编译和运行时性能均有明显改善，编译生成的可执行程序体积也进一步得到了缩减。</p>
+<p>完整更新内容请参考 <a href="https://github.com/JetBrains/kotlin-native/blob/v0.2.0/CHANGELOG.md" target="_blank" rel="external">更新日志。</a></p>
+<p> 点击后面的链接即可下载 <a href="http://download.jetbrains.com/kotlin/native/kotlin-native-linux-0.2.tar.gz" target="_blank" rel="external">Linux</a>  和 <a href="http://download.jetbrains.com/kotlin/native/kotlin-native-macos-0.2.tar.gz" target="_blank" rel="external">MacOS</a> 版本的编译器。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="https://blog.jetbrains.com/kotlin/2017/05/kotlinnative-v0-2-is-out/ " target="_blank" rel="external">https://blog.jetbrains.com/kotlin/2017/05/kotlinnative-v0-2-is-out/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/Nikolay Igotti/">
+                [原]
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                Nikolay Igotti
+                
+            </a>
+            
+            <a href="https://www.kotliner.cn/">
+                [译]bennyhuo
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&title=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&title=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/15/Good-news-chengdu_meetup-ucloud_support/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">成都线下活动成功举行，Kotliner 获得 Ucloud 赞助</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/25/Kotlin 1.1.2 is out/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]Kotlin 1.1.2 is out</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&title=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&title=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[译]Kotlin/Native v0.2 发布啦》 — Kotlin&url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS27bQBAFQN3/0so2QCD6vWkqBmeKK0GgySkt2v17veLr/df17/fX91/fk7zltgsDA+OxjPfl9ekFySs//VXy9vxsGBgY5zCuA2Jy3E+f18J0fjYMDAyMtUB5TcpTRgwMDIx5wE0Su+gQv/t/AwMD4yGM9kCTgjZ52hdrcQwMjAcy8q77///8lfkGBgbGoxjv8rrrWHlIjU6FgYGxNSMPcG152S5htAEXAwPjZMZd5WVeaubjh6JriIGBsR2jDZrXIbhNBNcCcfQzYWBgbMFoW/DJykX7y01SzLomxsDAeCCjDbhJoFwbgk7WOzAwMPZmJAF0rYzMQ/B1aI7afBgYGFsz8vTurmWvNpQXw1EMDIzDGHeleu1Qc1TiYmBgHMaYrHOtHeKGEhcDA2NrRlvQJgsTebBunx8NAzAwMLZj5IVru+bVjhzys31MDTEwMDZlFC2tOKFca+63LT8MDIxzGPkWRr4Wlg8SJo02DAyM0xjzw7WttLa4/eFUGBgYxzCSZYjFln2cOI6WLTAwMLZmzFe12rFBm3oWyxYYGBibMr7Rvp/cmQ8VMDAw9mbMV1fzVLIdBhRDAgwMjK0Z82A3KUeTb9aSUQwMjP0YbZCd4PNSuT4DBgbGAYy24CyGi2XzLh+XYmBgYExe0wbZ/I0YGBgYk4CbF6VtJR09AQMD4wBGUsS2SxX5UPOGcSYGBsbWjEnIy9v9k4A7T1gxMDAey/gDg39Vg5xfk1IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

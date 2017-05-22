@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/">
+    
+    
+    <title>高效地使用你的 IntelliJ | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="IntelliJ,快捷键,高效">
+    <meta name="description" content="这个世界上，有些人是奥义·真·懒，他们懒得折腾一切，甚至懒得活，所以他们不会看到这篇文章的。还有些人是奥义·嘴上说的·懒，这些人有个特点，懒到什么事儿都要弄个工具，于是人类社会就这么被一点儿推动着前进了。看到这篇文章的大家应该都是后面的这类人，so，给自己鼓个掌吧！ 话说，人懒就要用 IDE，IntelliJ 已经超神了，用的人越来越多，不过，它有这么多技能你们都用到过吗？ 回车 or Tab？很">
+<meta name="keywords" content="IntelliJ,快捷键,高效">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高效地使用你的 IntelliJ">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="这个世界上，有些人是奥义·真·懒，他们懒得折腾一切，甚至懒得活，所以他们不会看到这篇文章的。还有些人是奥义·嘴上说的·懒，这些人有个特点，懒到什么事儿都要弄个工具，于是人类社会就这么被一点儿推动着前进了。看到这篇文章的大家应该都是后面的这类人，so，给自己鼓个掌吧！ 话说，人懒就要用 IDE，IntelliJ 已经超神了，用的人越来越多，不过，它有这么多技能你们都用到过吗？ 回车 or Tab？很">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/enter.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/tab.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/swap_stupid.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/swap_smart.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/swap_action.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/swap_fun.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/newline.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/newline2.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/newline3.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/newline_action.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/iter_stupid.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/iter_smart.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/posix.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/multiline.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/multiline2.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/multiline_action.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/search.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/search2.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/action.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/findaction.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/main.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/livetemplate.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt2.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt3.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt4.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt5.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt6.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt8.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt9.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt10.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt11.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/comment.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt12.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt13.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/comment2.gif">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt14.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/lt15.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.1.9/comment3.gif">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高效地使用你的 IntelliJ">
+<meta name="twitter:description" content="这个世界上，有些人是奥义·真·懒，他们懒得折腾一切，甚至懒得活，所以他们不会看到这篇文章的。还有些人是奥义·嘴上说的·懒，这些人有个特点，懒到什么事儿都要弄个工具，于是人类社会就这么被一点儿推动着前进了。看到这篇文章的大家应该都是后面的这类人，so，给自己鼓个掌吧！ 话说，人懒就要用 IDE，IntelliJ 已经超神了，用的人越来越多，不过，它有这么多技能你们都用到过吗？ 回车 or Tab？很">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.1.9/enter.gif">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">高效地使用你的 IntelliJ</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">高效地使用你的 IntelliJ</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-09T08:20:22.000Z" itemprop="datePublished" class="page-time">
+  2017-01-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回车-or-Tab？"><span class="post-toc-text">回车 or Tab？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Swap-一下位置？"><span class="post-toc-text">Swap 一下位置？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#想要不移动光标就换行？"><span class="post-toc-text">想要不移动光标就换行？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速迭代一个集合或者数组？"><span class="post-toc-text">快速迭代一个集合或者数组？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多行编辑，哎哟小心某些人的钛合金眼"><span class="post-toc-text">多行编辑，哎哟小心某些人的钛合金眼~</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查找替换也有说法？"><span class="post-toc-text">查找替换也有说法？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最强快捷键，没有之一"><span class="post-toc-text">最强快捷键，没有之一</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么输入-main-就能打出完整的-main-方法？"><span class="post-toc-text">为什么输入 main 就能打出完整的 main 方法？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-text">小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-高效地使用你的 IntelliJ"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">高效地使用你的 IntelliJ</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月09日 16:20" datetime="2017-01-09T08:20:22.000Z"  itemprop="datePublished">2017-01-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其他/">其他</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这个世界上，有些人是奥义·真·懒，他们懒得折腾一切，甚至懒得活，所以他们不会看到这篇文章的。还有些人是奥义·嘴上说的·懒，这些人有个特点，懒到什么事儿都要弄个工具，于是人类社会就这么被一点儿推动着前进了。看到这篇文章的大家应该都是后面的这类人，so，给自己鼓个掌吧！</p>
+<p>话说，人懒就要用 IDE，IntelliJ 已经超神了，用的人越来越多，不过，它有这么多技能你们都用到过吗？</p>
+<h2 id="回车-or-Tab？"><a href="#回车-or-Tab？" class="headerlink" title="回车 or Tab？"></a>回车 or Tab？</h2><p>很多时候我们在召唤出自动补全之后，光标选中了我们想要的那个选项，于是我们按回车。。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/enter.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>额。。这。。难道就不能直接替换掉那个 map 吗？！当然可以：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/tab.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这操作有什么区别呢？前者按的是回车，后者按的是 Tab。</p>
+<p>印象中，微软的东西都比较倾向于按 Tab 补全，比如 VS，再比如 Excel（Whaaaat?)，说这个也没别的意思，就是想让你记住，有时候 Tab 比回车好用。</p>
+<h2 id="Swap-一下位置？"><a href="#Swap-一下位置？" class="headerlink" title="Swap 一下位置？"></a>Swap 一下位置？</h2><p>如果你飞快地写下了两句代码，然后发现他们的顺序是错的，你会怎么办？</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/swap_stupid.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>选中一整行，剪切，然后粘到上一句的前面？你 Out 了！看我的！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/swap_smart.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>怎么做到的？很简单，打开你的设置，找到 keymap，再找到下面的几个 Action：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/swap_action.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Statement 和 line 有时候会比较相似，比如我们刚才的情形；不过 Statement 还可以表示一整个函数或者类，于是你完全可以把光标放到一个函数的函数名上，然后 move up and down：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/swap_fun.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果你觉得默认的快捷键不好使，自己定义一个，你开心就好。</p>
+<h2 id="想要不移动光标就换行？"><a href="#想要不移动光标就换行？" class="headerlink" title="想要不移动光标就换行？"></a>想要不移动光标就换行？</h2><p>经常遇到这种需求，我的光标在某一行的中间，这时候想要换行，于是。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/newline.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这明显有点儿尴尬。。当然你也可以直接移到行末，再回车，但总是要操作两次。其实这个也简单了，按住 shift 再回车，就可以直接换到下一行：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/newline2.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>而按住 cmd+option 再按回车就直接换到上一行：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/newline3.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>windows的快捷键我不知道，不过我还是要告诉大家它的名称，你自己定义就好：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/newline_action.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="快速迭代一个集合或者数组？"><a href="#快速迭代一个集合或者数组？" class="headerlink" title="快速迭代一个集合或者数组？"></a>快速迭代一个集合或者数组？</h2><p>如果你在 Kotlin 里面，可能并不会有这样的困惑，毕竟我们可以写完一个集合，然后 .map 就行了。Java 里面可不能这样，于是。。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/iter_stupid.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>怎么办，怎么忍？让我们喊出我们的口号：不能忍！</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/iter_smart.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>上面只要我们在打出一个集合之后，再打出 for，就能自动生成这段迭代的代码，这个叫做  Postfix。IntelliJ  支持了挺多的 Postfix，我就不一一列出了，在设置里面输入 postfix 那么你将看到 IntelliJ 支持的所有 Postfix：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/posix.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="多行编辑，哎哟小心某些人的钛合金眼"><a href="#多行编辑，哎哟小心某些人的钛合金眼" class="headerlink" title="多行编辑，哎哟小心某些人的钛合金眼~"></a>多行编辑，哎哟小心某些人的钛合金眼~</h2><p>多行编辑没什么神秘的，大家一看就明白了。第一种触发方式比较简单，按住 option或者alt，用鼠标往下拖就可以触发，例如：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/multiline.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>第二种要高端一些了，比如我要修改个一个词，又不可以通过 refactor来统一修改，怎么办，难道有一百个还要让我改一百次吗？当然不需要，先选中第一个，然后如果是在Mac上，按 ctrl+G）选择下一个，或者直接 cmd+ctrl+G 选择全部，就如下图所示，选中之后，多行编辑触发，你就可以一下改掉所有的：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/multiline2.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这里涉及到添加选择下一个和选择全部的操作，大家可以自己随意定义快捷键：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/multiline_action.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="查找替换也有说法？"><a href="#查找替换也有说法？" class="headerlink" title="查找替换也有说法？"></a>查找替换也有说法？</h2><p>常规的查找替换肯定没啥可说的。不过不知道你注意到没，查找替换还有个 regex 的选项：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/search.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这个咋用呢？很简单，搜索词按照标准的正则表达式写就行了。比如我要定位到这个文件里面的所有函数名称，并在他们后面加一个 Test 方法，这种通常来说多行编辑是不太好做了，所以：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/search2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>替换结果中，$n 表示第n个匹配到的元组。这个用起来对正则表达式的功底要求比较高了，当然我觉得他更有用的地方在于帮助你熟悉正则比倒是的用法。</p>
+<h2 id="最强快捷键，没有之一"><a href="#最强快捷键，没有之一" class="headerlink" title="最强快捷键，没有之一"></a>最强快捷键，没有之一</h2><p>我之前看谷歌大会的视频，有一哥们在操作几乎任何操作的时候都用到了一个类似于命令行的快捷键，看上去非常酷：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/action.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在这里，几乎可以输入任意操作，比如我们想要查看 Kotlin 的字节码，或者想要看下历史记录，甚至 make/run/debug，都毫无压力。</p>
+<p>实际上，如果你对 IntelliJ 的插件开发有那么一丁点儿了解（比如我，虽然我自己没有写过= =、），你就会知道 IntelliJ 里面的各种操作都是 Action，只要是个 Action，就都可以配置快捷键，而且索引方式也是按照名称，所以前面的输入框就可以毫无压力的索引到这些 Action 了。</p>
+<p>那么这个搜索框本身是个啥呢？它自己也是一个 Action，叫做：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/findaction.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>给它配个快捷键，让你的 IntelliJ 起飞吧~</p>
+<h2 id="为什么输入-main-就能打出完整的-main-方法？"><a href="#为什么输入-main-就能打出完整的-main-方法？" class="headerlink" title="为什么输入 main 就能打出完整的 main 方法？"></a>为什么输入 main 就能打出完整的 main 方法？</h2><p>我在录制视频的时候经常会用一个比较快捷的输入方法：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/main.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>输入main 之后就可以打出完整的main方法，这是怎么做到的？打开你的设置，找到 Live Templates，</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/livetemplate.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>新建一个 group 叫亚瑟：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt3.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在这个 group 当中我们新建一个 Live Templates：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>注意看，abbreviation 是缩写的意思，也就是说你将通过输入这段文字来触发模板，比如我们刚才的 main，我们现在想要方便的在注释中写下自己的名字和注释的时间，于是我们给他起个名字叫 “//“</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>description 就是一个注释的作用，所以不写也可以（虽然这并不是一个好习惯）。接下来我们要写 Template Text了。我们希望输入 // 之后能自动生成下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;你的用户名&gt;[当前时间]</div></pre></td></tr></table></figure>
+<p>那么我们需要定义两个变量来代表 用户名和时间：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>接下来我们要考虑，我们的这个模板用在哪里呢？</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击 Define，在弹出的菜单中选择 Java -&gt; Comment：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt9.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>紧接着要给这两个变量赋值了，点击旁边的 Edit Variables：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt10.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Expressions 有个下拉菜单，选出 user() 和 time() 赋给我们定义好的两个变量，同时勾上后面的两个勾 Skip if define——如果想知道为什么，你把勾去掉试试。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt11.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这样我们就创建好了一个新的模板，一路 OK之后，我们就可以试试了：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/comment.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>不过，你对时间格式有点儿不太满意，其实你还想要日期对不对？于是：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt12.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt13.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/comment2.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其实这样基本就满足需求了。如果你偏偏对此感到不满意，为什么时间的格式不能自定义，那。。我想告诉你的是，谁说不可以的。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt14.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/lt15.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>DATETIME 的表达式是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">groovyScript(&quot;import java.util.Date; import java.text.SimpleDateFormat; new SimpleDateFormat(&apos;yyyy-MM-dd HH:ss&apos;).format(new Date());&quot;)</div></pre></td></tr></table></figure></p>
+<p>就是一段普通的 groovy 脚本，不过由于 groovy 完全兼容 Java 语法，所以你可以写一段 Java 代码进入，最后一行的值就是表达式的值。</p>
+<p>结果嘛：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.1.9/comment3.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>当然 IntelliJ 当中好玩的东西不只这些，比如 最常用的 refactor等等，剩下的就需要大家自己去发现了，实在不行咱也可以写个插件或者去搜个别人做好的插件。IntelliJ 提供了很好的扩展性和定制性，每个人的背景和习惯不一样，对 IDE 的需求也不一样，只要肯折腾，这工具会越来越顺手的。</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/01/09/高效地使用你的 IntelliJ/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ/">IntelliJ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/快捷键/">快捷键</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高效/">高效</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&title=《高效地使用你的 IntelliJ》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&title=《高效地使用你的 IntelliJ》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高效地使用你的 IntelliJ》 — Kotlin&url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/09/为什么不直接使用 Array&lt;Int&gt; 而是 IntArray /" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">为什么不直接使用 Array&lt;Int&gt; 而是 IntArray ？</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/02/像写文章一样使用 Kotlin/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">像写文章一样使用 Kotlin</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&title=《高效地使用你的 IntelliJ》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&title=《高效地使用你的 IntelliJ》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高效地使用你的 IntelliJ》 — Kotlin&url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/01/09/高效地使用你的 IntelliJ/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3a0WrkMAwF0P7/T+++LpSk90r2MoWTp5LOOD4pWKqkr6/4+vPP9f3O+2+/r/O0/vv9p88cuPDw8PAWW8+3m2CSjW6e/v4tPDw8vNu8dkPvK7y/jvyT+R4e7+Ph4eF9AO89qOSBITnW30MFHh4e3m/ktal5koInJDw8PLxP4CXlgLOpcJuyX6+14OHh4cW8vIv0OT9f6e/h4eHhrbvqbVqclBI2CXe9Wzw8PLwLvFmhYVbkzQPPrEz8+EQ8PDy8o7x2sCk5pvP8Nr/fNsPw8PDw7vE2gaEtsOYDW5tqQxFz8PDw8I7yZhuajU+dGhooJiPw8PDwFryWkafF+SBXOzRQBDY8PDy8a7z3IzgpE8xCyCxRLsoTeHh4eNd4+5Q3DzOzoDIsE+Ph4eFd4L0/YDZulW9i9tu6CYeHh4d3mTdr22+GDNqRrLqFhoeHh3eUd2pooD3K2/Ju3h57LEbg4eHhHeJtjubN+FQeeNrSxio84OHh4cW8TeurHRTYBKHZ8AEeHh7e/+d9La5N0fZsbQEPDw/vLG/fsJ8d37P12xExPDw8vLO8vDXVjmG1a7bJd/Si8fDw8C7wZqXSvAQwG95qS7pRGMPDw8M7xJt9OR+r2hc1kjUfXzQeHh7eBV6+3NmDezPe2u4ZDw8P7wZv3+hqixTJgZ6Xaw/MlOHh4eEteMlCFysicUOu+JPg4eHhXeO1j8xfRJtSt+Hqh9Xw8PDwjvI2R3/OzreeJNnFqBYeHh7eBd6+EfUeJGaJ8mYwa9hyw8PDwyt5bXt+9uBZ+v6elEcr4+Hh4V3jteXdWUh43/TZ9hseHh7eJ/PyrbdFjXxvFwMDHh4e3iHebGig3lxA+iGVx8PDw7vGaxv/mwZYGxJWrS88PDy8C7z63/tD323LEDfKFnh4eHjl5/8CLYbPFE8+DhAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

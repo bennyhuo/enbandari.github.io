@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/04/23/如何正确终止-forEach/">
+    
+    
+    <title>如何正确终止 forEach | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Kotlin,Lambda,Stream Api">
+    <meta name="description" content="问题背景话说周六下午团建回来，看到群里的小伙伴们在纠结一个问题，如何退出 forEach 循环，或者说有没有终止 forEach 循环的方法，就像 break 那样。我们来看个例子： 12345val list = listOf(1,3,4,5,6,7,9)for(e in list)&amp;#123;    if(e &amp;gt; 3) break    println(e)&amp;#125; 如果 e 大于">
+<meta name="keywords" content="Kotlin,Lambda,Stream Api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何正确终止 forEach">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="问题背景话说周六下午团建回来，看到群里的小伙伴们在纠结一个问题，如何退出 forEach 循环，或者说有没有终止 forEach 循环的方法，就像 break 那样。我们来看个例子： 12345val list = listOf(1,3,4,5,6,7,9)for(e in list)&amp;#123;    if(e &amp;gt; 3) break    println(e)&amp;#125; 如果 e 大于">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何正确终止 forEach">
+<meta name="twitter:description" content="问题背景话说周六下午团建回来，看到群里的小伙伴们在纠结一个问题，如何退出 forEach 循环，或者说有没有终止 forEach 循环的方法，就像 break 那样。我们来看个例子： 12345val list = listOf(1,3,4,5,6,7,9)for(e in list)&amp;#123;    if(e &amp;gt; 3) break    println(e)&amp;#125; 如果 e 大于">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin_group.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">如何正确终止 forEach</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">如何正确终止 forEach</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-23T15:18:52.000Z" itemprop="datePublished" class="page-time">
+  2017-04-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题背景"><span class="post-toc-text">问题背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#return-还是-return-forEach-？"><span class="post-toc-text">return 还是 return@forEach ？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调用还是循环？"><span class="post-toc-text">调用还是循环？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流式数据处理"><span class="post-toc-text">流式数据处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#性能"><span class="post-toc-text">性能</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-如何正确终止-forEach"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">如何正确终止 forEach</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年04月23日 23:18" datetime="2017-04-23T15:18:52.000Z"  itemprop="datePublished">2017-04-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>话说周六下午团建回来，看到群里的小伙伴们在纠结一个问题，如何退出 forEach 循环，或者说有没有终止 forEach 循环的方法，就像 break 那样。我们来看个例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line"><span class="keyword">for</span>(e <span class="keyword">in</span> list)&#123;</div><div class="line">    <span class="keyword">if</span>(e &gt; <span class="number">3</span>) <span class="keyword">break</span></div><div class="line">    println(e)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果 e 大于 3，那么循环终止，这是传统的写法，那么问题来了，我们现在追求更现代化的写法，要把代码改成 forEach 的函数调用，那么我们会怎么写呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">list.forEach &#123;</div><div class="line">    <span class="keyword">if</span>(it &gt; <span class="number">3</span>) ???</div><div class="line">    println(it)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就像上面这样吗？感觉应该是这样，不过大于 3 的时候，究竟该怎么办才能退出这个循环呢？</p>
+<h2 id="return-还是-return-forEach-？"><a href="#return-还是-return-forEach-？" class="headerlink" title="return 还是 return@forEach ？"></a>return 还是 return@forEach ？</h2><p>作为基本上等价于匿名函数的 Lambda 表达式，我们可能希望它能够提前返回，这样是不是就相当于终止循环了呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.forEach &#123;</div><div class="line">        <span class="keyword">if</span>(it &gt; <span class="number">3</span>) <span class="keyword">return</span></div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这时候我们毫不犹豫的写下了这样的代码，大于 3 的时候，直接 return，结果呢？运行到 4 的时候，forEach 就真的被终止了，后面也就没有了输出。</p>
+<p>嗯，这样是不是就算把问题解决啦？想想也不可能呀，不然我这周的文章岂不是太坑人了？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.forEach &#123;</div><div class="line">        <span class="keyword">if</span>(it &gt; <span class="number">3</span>) <span class="keyword">return</span></div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">    println(<span class="string">"Hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们把代码改成这样的时候，我们运行时发现只输出 1 3，后面的 Hello 则是无法打印的。原因呢，当然也很简单，在 return 眼里，Lambda 表达式都不算事儿，所以我们在大于 3 时的 return，实际上是返回了 main 函数，于是 list.forEach 这个结构之后的代码就不能被执行了。</p>
+<p>好吧，那这里用 return 肯定是有问题的，我们不用它了行了吧。那不用 return 用什么呢？好在 Kotlin 为我们提供了标签式的返回方法，也就是说，如果你想从一个 Lambda 表达式当中显式地返回，那么你只需要写 return@xxx 即可，例如：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.forEach &#123;</div><div class="line">        <span class="keyword">if</span>(it &gt; <span class="number">3</span>) <span class="keyword">return</span><span class="symbol">@forEach</span></div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">    println(<span class="string">"Hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你也可以给这个 Lambda 表达式起个新标签名称，比如 block：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.forEach <span class="symbol">block@</span>&#123;</div><div class="line">        <span class="keyword">if</span>(it &gt; <span class="number">3</span>) <span class="keyword">return</span><span class="symbol">@block</span></div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">    println(<span class="string">"Hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，我们的程序运行结果就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">3</div><div class="line">Hello</div></pre></td></tr></table></figure>
+<p>这一步大家都会想到的，不过这并不是最终的解。</p>
+<h2 id="调用还是循环？"><a href="#调用还是循环？" class="headerlink" title="调用还是循环？"></a>调用还是循环？</h2><p>我来问大家一个问题，前面的 forEach 后面传入的 Lambda 表达式体是循环体吗？</p>
+<p>当然不是。那其实就是一个函数体，因此对这个函数体的退出只能退出当前的调用。为了说明这个问题，我们还是需要对原有的例子做下小修改：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.forEach <span class="symbol">block@</span>&#123;</div><div class="line">        println(<span class="string">"it=<span class="subst">$it</span>"</span>)</div><div class="line">        <span class="keyword">if</span>(it &gt; <span class="number">3</span>) <span class="keyword">return</span><span class="symbol">@block</span></div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">    println(<span class="string">"Hello"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">it=<span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line">it=<span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line">it=<span class="number">4</span></div><div class="line">it=<span class="number">5</span></div><div class="line">it=<span class="number">6</span></div><div class="line">it=<span class="number">7</span></div><div class="line">it=<span class="number">9</span></div><div class="line">Hello</div></pre></td></tr></table></figure>
+<p>好家伙，尽管我们在大于 3 的时候 return@block，但看上去仍然没有什么软用，显然，后面的循环仍然执行了。</p>
+<p>简单总结一下，在 Lambda 表达式中，return 返回的是所在函数，return@xxx 返回的是 xxx 标签对应的代码块。由于 forEach 后面的这个 Lambda 实际上被调用了多次，因此我们没有办法像 for 循环那样直接 break 。</p>
+<p>额。。这可如何是好？</p>
+<h2 id="流式数据处理"><a href="#流式数据处理" class="headerlink" title="流式数据处理"></a>流式数据处理</h2><p>实际上我们在 Kotlin 当中用到的 forEach、map、flatMap 等等这样的高阶函数调用，都是流式数据处理的典型例子，我们也看到不甘落后却又跟不上节奏的 Java 在 8.0 推出了 stream Api，其实也无非就是为流式数据处理提供了方便。</p>
+<p>采用流式 api 处理数据，我们就不能再像以前那样思考问题啦，以前的思维方式多单薄呀，只要是遍历，那就是 for 循环，只要是条件那就是 if…else，殊不知世界在变，api 也在变，你不跟着变，那你就请便啦。</p>
+<p>那么，回到我们最开始的问题，需求其实很明确，遇到某一个大于 3 的数，我们就终止遍历，这样的代码用流式 api 写出来应该是这样的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">list.takeWhile &#123; it &lt;= <span class="number">3</span> &#125;.forEach(::println)</div><div class="line">println(<span class="string">"Hello"</span>)</div></pre></td></tr></table></figure>
+<p>我们首先通过 takeWhile 来筛选出前面连续不大于 3 的元素，也就是说一旦遇到一个大于 3 的元素我们就丢弃从这个开始所有后面的元素；接着，我们把取到的这些不大于 3 的元素通过 forEach 打印出来，这样的话，程序的效果与文章最开头的 for 循环 break 的实现就完全一致了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line"><span class="keyword">for</span>(e <span class="keyword">in</span> list)&#123;</div><div class="line">    <span class="keyword">if</span>(e &gt; <span class="number">3</span>) <span class="keyword">break</span></div><div class="line">    println(e)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，你可能会说如果我想要打印其中的偶数，那我该怎么写呢？这时候我告诉大家，如果你写出了下面这样的代码，那么我只能告诉你，。。额，我刚想说啥来着？？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">list.forEach &#123; </div><div class="line">    <span class="keyword">if</span>(it % <span class="number">2</span> == <span class="number">0</span>)&#123;</div><div class="line">        println(it)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这样写的代码呢，让我想起了辫帅张勋：张将军，你知不知道，咱大清已经亡了呢？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list.filter &#123; it % <span class="number">2</span> == <span class="number">0</span> &#125;.forEach(::println)</div></pre></td></tr></table></figure>
+<p>哈哈，如果真的希望使用流式 api，那么上面这样的写法才算是符合风格的写法。当然了，如果你愿意，你还可以定义一个 isEven 的方法，代码写出来就像下面这样：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="built_in">Int</span>.<span class="title">isEven</span><span class="params">()</span></span> = <span class="keyword">this</span> % <span class="number">2</span> == <span class="number">0</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</div><div class="line">    <span class="keyword">val</span> list = listOf(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">9</span>)</div><div class="line">    list.filter(<span class="built_in">Int</span>::isEven).forEach(::println)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>前不久看到有一篇文章对 Java 8 的流式 api 做了评测，说流式 api 的执行效率比传统的 for-loop 差出一倍甚至更多，所以建议大家慎重考虑选择。</p>
+<p>其实对于这个东西我认为我们没必要把神经绷这么紧。原因也很简单呀，流式 api 的执行效率从实现上来讲，确实很难达到纯 for-loop 那样的高效，例如我们前面的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list.filter(<span class="built_in">Int</span>::isEvent).forEach(::println)</div></pre></td></tr></table></figure>
+<p>在 filter 的时候就调用了一次完整的 for-loop，而后面的 forEach 同样再来一遍，也就是说我们用传统的 for-loop 一遍搞定的事儿，用流式 api 写了两遍，如果条件比较复杂，出现两遍三遍的情况也是比较正常的。</p>
+<p>不过这并不能说明流式 api 就一定要慎重使用。流式 api 更适用于数据的流式处理，特别是涉及到较多 UI 交互的场景，这样的业务逻辑用流式 api 表达起来会非常的简洁直观，也易于维护，相应的，这样的场景对于性能的要求并没有到吹毛求疵的地步；而对于性能比较敏感的程序，通常来说也没有很复杂的业务逻辑，流式 api 在这里也难以发挥作用。</p>
+<p>另外，仅仅多个几次循环也并不会改变算法本身的运算效率的数量级，所以对于适用于流式 api 的场景，大家还是可以放心去使用的。</p>
+<p>–</p>
+<p>如果你有兴趣加入我们，请直接关注公众号 Kotlin ，或者加 QQ 群：162452394 联系我们。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/arts/kotlin_group.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/04/23/如何正确终止-forEach/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stream-Api/">Stream Api</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&title=《如何正确终止 forEach》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&title=《如何正确终止 forEach》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何正确终止 forEach》 — Kotlin&url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/25/Kotlin 1.1.2 is out/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[译]Kotlin 1.1.2 is out</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/18/Use Kotlin with npm, webpack and react/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[译]Use Kotlin with npm, webpack and react</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&title=《如何正确终止 forEach》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&title=《如何正确终止 forEach》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何正确终止 forEach》 — Kotlin&url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aS27jMBAFwNz/0pptgESa95qaAUwWV4ItSywvGv3h11e8rm/r+yc/r+/un73l5YWBgfGxjOtxPd8ze3J+T7I3DAyMcxh3m8hDarLF58CaPPP2cwwMDIybV7bpYx6CMTAwMN5lFAnc6MkYGBgYeRGbBNycmjf1Xq7FMTAwPpCRd93///U/mW9gYGB8FOMq16xZlid/12hhYGDszcgDXJsyJsnfSsDFwMA4h/EcHN8tO9ujZnnIxsDA2JsxG0CulMGzdLPYDwYGxgGMZFj4jGmPds2+jfqCGBgYWzByazvmXAnfebL4SxGLgYGxHWPliEPxglebbnX5ioGB8eGMleZam3vm7f76GgMD4wBGEhxn48lkSDAriW/PjGBgYGzNyEvQvB22Prysy1cMDIxjGEtDxLjdNttDURNjYGBswcjb8W0KODts8cLhDwwMjO0Ys/Z9i1k5BBaFYAwMjCMZ+dbbPC0P0MWfi4GBsTWjDaxtOG4D7gtHLjAwMA5g5K35WQE8O1QRDR4wMDCOZCRjzhk7T0aLPWBgYBzAyH+wUty2IbX4UzAwMDZlXOVqk7Z2tNCGeAwMjBMYK+349mhXPqRsD5NhYGCcwJgF2TxEts21YcDFwMA4gNEWnPmv2kNjxTAAAwMDY7k1ljx/ZYSJgYGB0Q4D8iNcsyD7lzdiYGAcwGgTuFkytzIGwMDAOJmxkurNxoqz0UJeSGNgYGzE+APwFyy6PEMZOgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

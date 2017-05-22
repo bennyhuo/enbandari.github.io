@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/04/05/Kotlin视频教程/">
+    
+    
+    <title>Kotlin视频教程 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="视频教程">
+    <meta name="description" content="Kotlin从入门到『放弃』系列 视频教程随着Kotlin越来越成熟稳定，我已经开始在生产环境中使用它。考虑到目前国内资料较少，我录制了一套视频教程，希望以此抛砖引玉，让 Kotlin 在国内火起来。 个人水平有限，不足之处欢迎大家发邮件到 bennyhuo@println.net，谢谢大家！ 介绍视频从2016年10月初开始发布，更新至12月中旬完结。精力有限，后续暂时每周一通过公众号推送 Ko">
+<meta name="keywords" content="视频教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin视频教程">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="Kotlin从入门到『放弃』系列 视频教程随着Kotlin越来越成熟稳定，我已经开始在生产环境中使用它。考虑到目前国内资料较少，我录制了一套视频教程，希望以此抛砖引玉，让 Kotlin 在国内火起来。 个人水平有限，不足之处欢迎大家发邮件到 bennyhuo@println.net，谢谢大家！ 介绍视频从2016年10月初开始发布，更新至12月中旬完结。精力有限，后续暂时每周一通过公众号推送 Ko">
+<meta property="og:image" content="http://www.kotliner.cn/arts/Kotlin.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/arts/e_group.png">
+<meta property="og:image" content="http://www.kotliner.cn/arts/contributes.jpg">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin视频教程">
+<meta name="twitter:description" content="Kotlin从入门到『放弃』系列 视频教程随着Kotlin越来越成熟稳定，我已经开始在生产环境中使用它。考虑到目前国内资料较少，我录制了一套视频教程，希望以此抛砖引玉，让 Kotlin 在国内火起来。 个人水平有限，不足之处欢迎大家发邮件到 bennyhuo@println.net，谢谢大家！ 介绍视频从2016年10月初开始发布，更新至12月中旬完结。精力有限，后续暂时每周一通过公众号推送 Ko">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/Kotlin.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin视频教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin视频教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-05T03:40:48.000Z" itemprop="datePublished" class="page-time">
+  2017-04-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/视频教程/">视频教程</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kotlin从入门到『放弃』系列-视频教程"><span class="post-toc-text">Kotlin从入门到『放弃』系列 视频教程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目录"><span class="post-toc-text">目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#01-Kotlin-简介"><span class="post-toc-text">01 Kotlin 简介</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#02-Hello-World"><span class="post-toc-text">02 Hello World</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#03-使用Gradle编写程序简介（可选）"><span class="post-toc-text">03 使用Gradle编写程序简介（可选）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#04-集合遍历-map"><span class="post-toc-text">04 集合遍历 map</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#05-集合扁平化-flatMap"><span class="post-toc-text">05 集合扁平化 flatMap</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#06-枚举类型与When表达式"><span class="post-toc-text">06 枚举类型与When表达式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#07-在-RxJava-中使用-Lambda"><span class="post-toc-text">07 在 RxJava 中使用 Lambda</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#08-使用-Retrofit-发送-GET-请求"><span class="post-toc-text">08 使用 Retrofit 发送 GET 请求</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#09-尾递归优化"><span class="post-toc-text">09 尾递归优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#10-单例"><span class="post-toc-text">10 单例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#11-Sealed-Class"><span class="post-toc-text">11 Sealed Class</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#12-Json数据引发的血案"><span class="post-toc-text">12 Json数据引发的血案</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#13-kapt-以及它的小伙伴们"><span class="post-toc-text">13 kapt 以及它的小伙伴们</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#14-Kotlin-与-Java-共存-1"><span class="post-toc-text">14 Kotlin 与 Java 共存 (1)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#15-Kotlin-与-Java-共存-2"><span class="post-toc-text">15 Kotlin 与 Java 共存 (2)</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#打赏"><span class="post-toc-text">打赏</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin视频教程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin视频教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年04月05日 11:40" datetime="2017-04-05T03:40:48.000Z"  itemprop="datePublished">2017-04-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/视频教程/">视频教程</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Kotlin从入门到『放弃』系列-视频教程"><a href="#Kotlin从入门到『放弃』系列-视频教程" class="headerlink" title="Kotlin从入门到『放弃』系列 视频教程"></a><a href="https://github.com/enbandari/Kotlin-Tutorials" target="_blank" rel="external">Kotlin从入门到『放弃』系列 视频教程</a></h1><p>随着Kotlin越来越成熟稳定，我已经开始在生产环境中使用它。考虑到目前国内资料较少，我录制了一套视频教程，希望以此抛砖引玉，让 Kotlin 在国内火起来。</p>
+<p>个人水平有限，不足之处欢迎大家发邮件到 <a href="mailto: bennyhuo@println.net" target="_blank" rel="external">bennyhuo@println.net</a>，谢谢大家！</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>视频从2016年10月初开始发布，更新至12月中旬完结。精力有限，后续暂时每周一通过公众号推送 Kotlin 及 Java 生态的一些文章，大家有选题也可以直接联系我，目前已经有两篇是基于大家的反馈撰写的，反馈也比较不错，谢谢大家的关注与支持。</p>
+<p><a href="http://v.qq.com/boke/gplay/903446d6231d8612d198c58fb86eb4dc_t6d000101bd9lx1.html" target="_blank" rel="external">在线收看全部视频（腾讯视频）</a></p>
+<p><a href="http://pan.baidu.com/s/1nvGYAfB" target="_blank" rel="external">下载全部视频（百度云）</a></p>
+<p>关注微信公众号：Kotlin， 获取最新视频更新动态</p>
+<p><img src="/arts/Kotlin.jpg" width="250px"></p>
+<p>加入 QQ 群 Kotlin ，162452394：</p>
+<p><img src="/arts/e_group.png" width="250px"></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><h4 id="01-Kotlin-简介"><a href="#01-Kotlin-简介" class="headerlink" title="01 Kotlin 简介"></a><a href="http://v.qq.com/page/z/u/9/z0337i7a3u9.html" target="_blank" rel="external">01 Kotlin 简介</a></h4><p>　　简要介绍下什么是 Kotlin，新语言太多了，大家为什么要接触 Kotlin 呢？因为它除了长得与 Java 不太像以外，其他的都差不多~
+　　</p>
+<h4 id="02-Hello-World"><a href="#02-Hello-World" class="headerlink" title="02 Hello World"></a><a href="http://v.qq.com/page/h/n/m/h0337jfa5nm.html" target="_blank" rel="external">02 Hello World</a></h4><p>　　千里之行，始于Hello World！
+　　</p>
+<h4 id="03-使用Gradle编写程序简介（可选）"><a href="#03-使用Gradle编写程序简介（可选）" class="headerlink" title="03 使用Gradle编写程序简介（可选）"></a><a href="http://v.qq.com/page/b/p/l/b03372ox4pl.html" target="_blank" rel="external">03 使用Gradle编写程序简介（可选）</a></h4><p>　　这年头，写 Java 系的代码，不知道 Gradle 怎么行呢？
+　　</p>
+<h4 id="04-集合遍历-map"><a href="#04-集合遍历-map" class="headerlink" title="04 集合遍历 map"></a><a href="http://v.qq.com/page/s/q/c/s033707mdqc.html" target="_blank" rel="external">04 集合遍历 map</a></h4><p>　　放下 i++，你不知道 map 已经占领世界了么？以前我以为 map-reduce 很牛逼，后来才知道就是数据迭代处理嘛。
+　　</p>
+<h4 id="05-集合扁平化-flatMap"><a href="#05-集合扁平化-flatMap" class="headerlink" title="05 集合扁平化 flatMap"></a><a href="http://v.qq.com/page/h/u/7/h0337scgau7.html" target="_blank" rel="external">05 集合扁平化 flatMap</a></h4><p>　　这个可以说是 map 的一个加强版，返回的仍然是开一个可迭代的集合，用哪个您自己看需求~
+　　</p>
+<h4 id="06-枚举类型与When表达式"><a href="#06-枚举类型与When表达式" class="headerlink" title="06 枚举类型与When表达式"></a><a href="http://v.qq.com/page/t/0/9/t0337iacg09.html" target="_blank" rel="external">06 枚举类型与When表达式</a></h4><p>　　Kotlin 丢掉了 switch，却引进了 when，这二者看上去极其相似，不过后者却要强大得多。至于枚举嘛，还是 Java 枚举的老样子。</p>
+<h4 id="07-在-RxJava-中使用-Lambda"><a href="#07-在-RxJava-中使用-Lambda" class="headerlink" title="07 在 RxJava 中使用 Lambda"></a><a href="http://v.qq.com/x/page/l0340boeng7.html" target="_blank" rel="external">07 在 RxJava 中使用 Lambda</a></h4><p>　　这一期通过一个统计文章中字符数的小程序进一步给大家呈现 Lambda 的威力，也向大家展示一下如何在 Kotlin 当中优雅地使用 RxJava。我不做教科书，所以如果大家对概念感兴趣，可以直接阅读官方 <a href="https://kotlinlang.org/docs/reference/lambdas.html" target="_blank" rel="external">API</a></p>
+<p>　　<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a> 是一个非常流行的 Java Reactive 框架，函数式的数据操作使得 Lambda 表达式可以充分体现自己的优势，比起 Java 的冗长，你会看到一段非常漂亮简洁的代码。建议大家先阅读 <a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">RxJava</a> 的官方文章以对其有一些基本的认识。
+　　</p>
+<h4 id="08-使用-Retrofit-发送-GET-请求"><a href="#08-使用-Retrofit-发送-GET-请求" class="headerlink" title="08 使用 Retrofit 发送 GET 请求"></a><a href="http://v.qq.com/x/page/t0342thu1al.html" target="_blank" rel="external">08 使用 Retrofit 发送 GET 请求</a></h4><p>　　<a href="https://square.github.io/retrofit/" target="_blank" rel="external">Retrofit</a> 是 Square 的 Jake 大神开源的RESTful 网络请求框架，用它发送请求的感觉会让你感觉爽爆的。我这里还有几篇文章，以及一个我 hack 过的分支 <a href="https://github.com/enbandari/HackRetrofit" target="_blank" rel="external">HackRetrofit</a>，有兴趣的童鞋可以一起探讨下~</p>
+<ul>
+<li><p><a href="http://www.println.net/post/Android-Hack-Retrofit" target="_blank" rel="external">Android 下午茶：Hack Retrofit 之 增强参数</a>.</p>
+</li>
+<li><p><a href="http://www.println.net/post/Android-Hack-Retrofit-Mock-Server" target="_blank" rel="external">Android 下午茶：Hack Retrofit (2) 之 Mock Server</a></p>
+</li>
+<li><p><a href="http://www.println.net/post/deep-in-retrofit" target="_blank" rel="external">深入浅出 Retrofit，这么牛逼的框架你们还不来看看？</a></p>
+</li>
+</ul>
+<h4 id="09-尾递归优化"><a href="#09-尾递归优化" class="headerlink" title="09 尾递归优化"></a><a href="http://v.qq.com/x/page/f0345wmuw2m.html" target="_blank" rel="external">09 尾递归优化</a></h4><p>　　尾递归，顾名思义，就是递归中调用自身的部分在函数体的最后一句。我们知道，递归调用对于栈大小的考验是非常大的，也经常会因为这个导致 StackOverflow，所以尾递归优化也是大家比较关注的一个话题。Kotlin 支持语法层面的尾递归优化，这在其他语言里面是不多见的。</p>
+<h4 id="10-单例"><a href="#10-单例" class="headerlink" title="10 单例"></a><a href="https://v.qq.com/x/page/w03659ate6w.html" target="_blank" rel="external">10 单例</a></h4><p>　　单例大家一定都不陌生，只要你动手写一个程序，就免不了要设计出一些全局存在且唯一的对象，他们就适合采用单例模式编写。在 Java 里面，单例模式的写法常见的有好几种，虽然简单却也是涉及了一些有意思的话题，那么在 Kotlin 当中我们要怎么设计单例程序呢？</p>
+<h4 id="11-Sealed-Class"><a href="#11-Sealed-Class" class="headerlink" title="11 Sealed Class"></a><a href="https://v.qq.com/x/page/f0350ioskzj.html" target="_blank" rel="external">11 Sealed Class</a></h4><p>　　枚举类型可以很好的限制一个类型的实例个数，比如 State 枚举有两种类型 IDLE 和 BUSY 两种状态，用枚举来描述再合适不过。不过，如果你想要设计子类个数有限的数据结构，比如指令，指令的类型通常是确定的，不过对于某些有参数的指令每一次都使用同一个实例反而不合适，这时候就需要 Sealed Class。
+　　
+　　</p>
+<h4 id="12-Json数据引发的血案"><a href="#12-Json数据引发的血案" class="headerlink" title="12 Json数据引发的血案"></a><a href="https://v.qq.com/x/page/s035296s9nw.html" target="_blank" rel="external">12 Json数据引发的血案</a></h4><p>　　Json 数据可真是大红大紫一番，它实在是太容易理解了，随着 Js 的火爆它就更加『肆无忌惮』起来。我们在 Java/Kotlin 当中解析它的时候经常会用到 Gson 这个库，用它来解析数据究竟会遇到哪些问题？本期主要围绕 Json 解析的几个小例子，给大家展示一下 Java/Kotlin 的伪泛型设计的问题，以及不完整的数据的解析对语言本身特性的冲击。</p>
+<h4 id="13-kapt-以及它的小伙伴们"><a href="#13-kapt-以及它的小伙伴们" class="headerlink" title="13 kapt 以及它的小伙伴们"></a><a href="https://v.qq.com/x/page/q035439xksx.html" target="_blank" rel="external">13 kapt 以及它的小伙伴们</a></h4><p>　　首先感谢 @CodingPapi，这一期的内容主要来自于他的建议。</p>
+<p>　　Kotiln 对于注解的支持情况在今年（2016）取得了较大的成果，现在除了对 @Inherited 这个注解的支持还不够之外，试用了一下没有发现太大的问题。关于 kapt，官方的文章罗列下来，其中</p>
+<ul>
+<li><p><a href="https://blog.jetbrains.com/kotlin/2015/05/kapt-annotation-processing-for-kotlin/" target="_blank" rel="external">kapt: Annotation Processing for Kotlin
+</a> 已经过时了，大家可以阅读下了解其中提到的三个方案</p>
+</li>
+<li><p><a href="https://blog.jetbrains.com/kotlin/2015/06/better-annotation-processing-supporting-stubs-in-kapt/" target="_blank" rel="external">Better Annotation Processing: Supporting Stubs in kapt
+</a> 提到的实现其实基本上就是现在的正式版</p>
+</li>
+<li><p><a href="https://blog.jetbrains.com/kotlin/2016/09/kotlin-1-0-4-is-here/" target="_blank" rel="external">Kotlin 1.0.4 is here
+</a>提到了 kapt 的正式发布，需要注意的是，kapt 的使用方法有些变化，需要 <code>apply plugin: &#39;kotlin-kapt&#39;</code></p>
+</li>
+</ul>
+<p>　　本期主要通过一个简单的 <a href="https://google.github.io/dagger/" target="_blank" rel="external">Dagger2</a> 实例给大家展示了注解在 Kotlin 当中的使用，看上去其实与在 Java 中使用区别不大，生成的源码也暂时是 Java 代码，不过这都不重要了，反正是要编译成 class 文件的。</p>
+<p>　　后面我们又简单分析了一下 Dagger2 以及 <a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">ButterKnife</a> 的源码（有兴趣的话也可以看下我直接对后者进行分析和 Hack 的一篇文章：<a href="http://www.println.net/post/Deep-in-ButterKnife-3" target="_blank" rel="external">深入浅出 ButterKnife，听说你还在 findViewById？</a>），其实自己实现一个注解处理器是非常容易的，类似的框架还有<a href="https://github.com/androidannotations/androidannotations" target="_blank" rel="external">androidannotations</a>，它的源码大家可以自行阅读。</p>
+<hr>
+<p>通过这个例子，我们其实发现 kapt 还是有一些不完善的地方，主要是：</p>
+<ol>
+<li>不支持 @Inherited </li>
+<li>生成的源码需要手动添加到 SourceSets 中 </li>
+<li>编译时有时候需要手动操作一下 gradle 的 build 才能生成源码（这一点大家注意下就行了，我在视频中并没有提到）</li>
+</ol>
+<p>不过总体来讲，kapt 的现状还是不错的，相信不久的将来这些问题都将不是问题。</p>
+<hr>
+<h4 id="14-Kotlin-与-Java-共存-1"><a href="#14-Kotlin-与-Java-共存-1" class="headerlink" title="14 Kotlin 与 Java 共存 (1)"></a><a href="https://v.qq.com/x/page/c03579nzo8x.html" target="_blank" rel="external">14 Kotlin 与 Java 共存 (1)</a></h4><p>　　你想要追求代码简洁、美观、精致，你应该倾向于使用 Kotlin，而如果你想要追求代码的功能强大，甚至有些黑科技的感觉，那 Java 还是当仁不让的。</p>
+<p>　　说了这么多，还是那句话，让他们共存，各取所长。</p>
+<p>　　那么问题来了，怎么共存呢？虽然一说理论我们都知道，跑在 Jvm 上面的语言最终都是要编成 class 文件的，在这个层面大家都是 Java 虚拟机的字节码，可他们在编译之前毕竟还是有不少差异的，这可如何是好？</p>
+<p>　　正所谓兵来将挡水来土掩，有多少差异，就要有多少对策，这一期我们先讲<strong>在 Java 中调用 Kotlin</strong>。</p>
+<h4 id="15-Kotlin-与-Java-共存-2"><a href="#15-Kotlin-与-Java-共存-2" class="headerlink" title="15 Kotlin 与 Java 共存 (2)"></a><a href="https://v.qq.com/x/page/z0357ls85fe.html" target="_blank" rel="external">15 Kotlin 与 Java 共存 (2)</a></h4><p>　　上一期我们简单讨论了几个 Java 调用 Kotlin 的场景，这一期我们主要讨论相反的情况：如何在 Kotlin 当中调用 Java 代码。</p>
+<p>　　除了视频中提到的点之外还有一些细节，比如异常的捕获，集合类型的映射等等，大家自行参考官方文档即可。在了解了这些之后，你就可以放心大胆的在你的项目中慢慢渗透 Kotlin，让你的代码逐渐走向简洁与精致了。</p>
+<h1 id="打赏"><a href="#打赏" class="headerlink" title="打赏"></a>打赏</h1><p>录制这样一套视频确实是需要花费时间和心血的，如果您觉得它对您有帮助，可以通过微信和支付宝打赏，我将努力将视频做到最好！谢谢！</p>
+<p><img src="/arts/contributes.jpg" width="450px"></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/04/05/Kotlin视频教程/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频教程/">视频教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&title=《Kotlin视频教程》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&title=《Kotlin视频教程》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin视频教程》 — Kotlin&url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/05/Kotlin 1.1 is also for Android Developers/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[译]Kotlin 1.1 也适用于 Android 开发者</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/03/Kotlin 兼容 Java 遇到的最大的坑 /" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 兼容 Java 遇到的最大的坑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&title=《Kotlin视频教程》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&title=《Kotlin视频教程》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin视频教程》 — Kotlin&url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQY7bMAwF0Nz/0ilQdFFgJp7/RadopOeV4cCRnxc0RfLxiI/n7+Pv869Xrs+/3nv96+MdBwYGxscynpfH9QL59evzZN3rV4CBgXECow2yk0A5Cdkvr2NgYGCUoTPJ3JJfMTAwMO5l5Ji1dTEwMDCSzeRdSV679b15L46BgfGBjLXGwL85f3t/AwMD479nPMsjL+vngXjyPH/+BwMDY2vGvNTVBsr5N6HIcDEwMLZgtCMObYMzaQBcrxu9UAwMjGMYbVktby3kbc7kBf2Q4WJgYBzDaK+0bYa14PvypWNgYBzDyJO//K5kIKwdtig2sRgYGNsx8gJZG0zf0Rz9ITXEwMDYlJEE3GJjGZfh8hLbyysYGBjHMPLkbNKSzBPKYpgDAwPjGEZbvm8D6HyAo/5uYGBgbMpoU8C1JkEeTKNNMgYGxgGMPNVrk8jFlmQ8roGBgXECYy05u3cgo10RAwPjTEbegEyWX0sc8+GMl58EDAyMYxjzxmSdzC2lld/chYGBsSmjDmrx4FfbZihGK9aGLTAwMLZmTB4iGdqYvA4MDIwTGO04Vx4K839bC/E1AAMD42MZk3GHeVOh3fS+DL4YGBhbMyYBty3ArSWRbdsAAwNjV0YbBNvt7l0NhqiFiYGBsTVjnvDdxRttZTEwMI5nrD1cvvlsU0kMDAyM+Ta1faC2qIeBgXEaoy3WJ6X8tUQwB2NgYJzDmA9brNW+kuGwJMRjYGBszfgFXDWjiXw+MOgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

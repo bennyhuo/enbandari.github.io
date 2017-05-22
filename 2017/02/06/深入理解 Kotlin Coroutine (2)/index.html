@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/">
+    
+    
+    <title>深入理解 Kotlin Coroutine (2) | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Coroutine,kotlinx">
+    <meta name="description" content="上周我们把 Kotlin Coroutine 的基本 API 挨个讲了一下，也给出了一些简单的封装。 真是不要太给脸，就在前几天发布的 1.1 Beta 2 当中，所有协程的 API 包名后面都加了一个 experimental，这意味着 Kotlin 官方在 1.1 当中还是倾向于将 Coroutine 作为一个实验性质的特性的，不过，这也没关系，我们学习的心不以外界的变化而变化不是？ 这一篇我">
+<meta name="keywords" content="Coroutine,kotlinx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解 Kotlin Coroutine (2)">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="上周我们把 Kotlin Coroutine 的基本 API 挨个讲了一下，也给出了一些简单的封装。 真是不要太给脸，就在前几天发布的 1.1 Beta 2 当中，所有协程的 API 包名后面都加了一个 experimental，这意味着 Kotlin 官方在 1.1 当中还是倾向于将 Coroutine 作为一个实验性质的特性的，不过，这也没关系，我们学习的心不以外界的变化而变化不是？ 这一篇我">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解 Kotlin Coroutine (2)">
+<meta name="twitter:description" content="上周我们把 Kotlin Coroutine 的基本 API 挨个讲了一下，也给出了一些简单的封装。 真是不要太给脸，就在前几天发布的 1.1 Beta 2 当中，所有协程的 API 包名后面都加了一个 experimental，这意味着 Kotlin 官方在 1.1 当中还是倾向于将 Coroutine 作为一个实验性质的特性的，不过，这也没关系，我们学习的心不以外界的变化而变化不是？ 这一篇我">
+<meta name="twitter:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深入理解 Kotlin Coroutine (2)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深入理解 Kotlin Coroutine (2)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-06T00:14:15.000Z" itemprop="datePublished" class="page-time">
+  2017-02-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-准备工作"><span class="post-toc-text">1. 准备工作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-一个基本的协程的例子"><span class="post-toc-text">2. 一个基本的协程的例子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-主线程上的协程"><span class="post-toc-text">3. 主线程上的协程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-外部控制协程"><span class="post-toc-text">4. 外部控制协程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-轻量级线程"><span class="post-toc-text">5. 轻量级线程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-携带值的-Job"><span class="post-toc-text">6. 携带值的 Job</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-生成器"><span class="post-toc-text">7. 生成器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-小结"><span class="post-toc-text">8. 小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-深入理解 Kotlin Coroutine (2)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深入理解 Kotlin Coroutine (2)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月06日 8:14" datetime="2017-02-06T00:14:15.000Z"  itemprop="datePublished">2017-02-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/编程语言/">编程语言</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上周我们把 Kotlin Coroutine 的基本 API 挨个讲了一下，也给出了一些简单的封装。</p>
+<p>真是不要太给脸，就在前几天发布的 1.1 Beta 2 当中，所有协程的 API 包名后面都加了一个 experimental，这意味着 Kotlin 官方在 1.1 当中还是倾向于将 Coroutine 作为一个实验性质的特性的，不过，这也没关系，我们学习的心不以外界的变化而变化不是？</p>
+<p>这一篇我们基于前面的基础来了解一下 Kotlinx.coroutines 这个库的使用，如果大家对它的实现原理有兴趣，可以再读一读上一篇文章，我们也可以在后面继续写一些文章来给深入地大家介绍。</p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><p>就像前面我们说到的，1.1 Beta 2 当中协程相关的基础库的包名都增加了 experimental，所以我们在选择 kotlinx.coroutines 的版本的时候也一定要对应好编译器的版本，不然。。。你自己想哈哈。</p>
+<p>我们强调一下，kotlin 的版本选择 1.1.0-beta-38，kotlinx.coroutines 的版本选择 0.6-beta，如果你恰好使用 gradle，那么告诉你一个好消息，我会直接告诉你怎么配置：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">buildscript &#123; </div><div class="line">    ext.kotlin_version = <span class="string">'1.1.0-beta-38'</span> </div><div class="line">　 </div><div class="line">    repositories &#123; </div><div class="line">    	jcenter() </div><div class="line">　 </div><div class="line">	    maven &#123; </div><div class="line">	        url <span class="string">"http://dl.bintray.com/kotlin/kotlin-eap-1.1"</span> </div><div class="line">	    &#125; </div><div class="line">	&#125; </div><div class="line">　 </div><div class="line">	... </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">repositories &#123; </div><div class="line">	jcenter() </div><div class="line">　 </div><div class="line">    maven &#123; </div><div class="line">        url <span class="string">"http://dl.bintray.com/kotlin/kotlin-eap-1.1"</span> </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">kotlin &#123; </div><div class="line">    experimental &#123; </div><div class="line">        coroutines <span class="string">'enable'</span> </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line">　 </div><div class="line">dependencies &#123; </div><div class="line">    compile <span class="string">"org.jetbrains.kotlin:kotlin-stdlib:<span class="subst">$kotlin_version</span>"</span> </div><div class="line">    compile <span class="string">'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.6-beta'</span> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-一个基本的协程的例子"><a href="#2-一个基本的协程的例子" class="headerlink" title="2. 一个基本的协程的例子"></a>2. 一个基本的协程的例子</h2><p>这个例子是 kotlinx.coroutines 的第一个小例子。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123; </div><div class="line">    launch(CommonPool) &#123; <span class="comment">// create new coroutine in common thread pool </span></div><div class="line">        delay(<span class="number">1000</span>L) <span class="comment">// non-blocking delay for 1 second (default time unit is ms) </span></div><div class="line">        println(<span class="string">"World!"</span>) <span class="comment">// print after delay </span></div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"Hello,"</span>) <span class="comment">// main function continues while coroutine is delayed </span></div><div class="line">    Thread.sleep(<span class="number">2000</span>L) <span class="comment">// block main thread for 2 seconds to keep JVM alive </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个例子的运行结果是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hello, </div><div class="line">World!</div></pre></td></tr></table></figure>
+<p>其实有了上一篇文章的基础我们很容易知道，launch 方法启动了一个协程，CommonPool 是一个有线程池的上下文，它可以负责把协程的执行分配到合适的线程上。所以从线程的角度来看，打印的这两句是在不同的线程上的。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">20170206</span><span class="number">-063015.015</span> [main] Hello, </div><div class="line"><span class="number">20170206</span><span class="number">-063016.016</span> [ForkJoinPool.commonPool-worker<span class="number">-1</span>] World!</div></pre></td></tr></table></figure>
+<p>这段代码的执行效果与线程的版本看上去是一样的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">thread(name = <span class="string">"MyThread"</span>) &#123;  </div><div class="line">    Thread.sleep(<span class="number">1000</span>L)  </div><div class="line">    log(<span class="string">"World!"</span>)  </div><div class="line">&#125; </div><div class="line">log(<span class="string">"Hello,"</span>)  </div><div class="line">Thread.sleep(<span class="number">2000</span>L)</div></pre></td></tr></table></figure>
+<h2 id="3-主线程上的协程"><a href="#3-主线程上的协程" class="headerlink" title="3. 主线程上的协程"></a>3. 主线程上的协程</h2><p>我们刚才通过 launch 创建的协程是在 CommonPool 的线程池上面的，所以协程的运行并不在主线程。如果我们希望直接在主线程上面创建协程，那怎么办？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123;  </div><div class="line">    launch(CommonPool) &#123;  </div><div class="line">        delay(<span class="number">1000</span>L) </div><div class="line">        println(<span class="string">"World!"</span>) </div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"Hello,"</span>)  </div><div class="line">    delay(<span class="number">2000</span>L)  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个还是 kotlinx.coroutines 的例子，我们来分析一下。runBlocking 实际上也跟 launch 一样，启动一个协程，只不过它传入的 context 不会进行线程切换，也就是说，由它创建的协程会直接运行在当前线程上。</p>
+<p>在 runBlocking 当中通过 launch 再创建一个协程，显然，这段代码的运行结果与上一个例子是完全一样的。需要注意的是，尽管我们可以在协程中通过 launch 这样的方法创建协程，但不要再协程当中通过 runBlocking 再来创建协程，因为这样做虽然一般来说不会导致程序异常，不过，这样的程序也没有多大意义：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    runBlocking &#123; </div><div class="line">        delay(<span class="number">1000</span>L) </div><div class="line">        println(<span class="string">"World!"</span>) </div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"Hello,"</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">World! </div><div class="line">Hello,</div></pre></td></tr></table></figure>
+<p>大家看到了，嵌套的 runBlocking 实际上仍然只是一段顺序代码而已。</p>
+<p>那么，让我们再仔细看看前面的例子，不知道大家有没有问题：如果我在 launch 创建的协程当中多磨叽一会儿，主线程上的协程 delay(2000L) 好像也没多大用啊。有没有什么方法保证协程执行完？</p>
+<h2 id="4-外部控制协程"><a href="#4-外部控制协程" class="headerlink" title="4. 外部控制协程"></a>4. 外部控制协程</h2><p>我们在上一篇文章当中只是对内置的基础 API 进行了简单的封装，而 kotlinx.coroutines 却为我们做了非常多的事情。比如，每一个协程都看做一个 Job，我们在一个协程的外部也可以控制它的运行。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">val</span> job = launch(CommonPool) &#123;  </div><div class="line">        delay(<span class="number">1000</span>L) </div><div class="line">        println(<span class="string">"World!"</span>) </div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"Hello,"</span>) </div><div class="line">    job.join()  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>job.join 其实就是要求当前协程等待 job 执行完成之后再继续执行。</p>
+<p>其实，我们还可以取消协程，让他直接停止执行：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">val</span> job = launch(CommonPool) &#123;  </div><div class="line">        delay(<span class="number">1000</span>L) </div><div class="line">        println(<span class="string">"World!"</span>) </div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"Hello,"</span>) </div><div class="line">    job.cancel()  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>job.cancel 会直接终止 job 的执行。如果 job 已经执行完毕，那么 job.cancel 的执行时没有意义的。我们也可以根据 cancel 的返回值来判断是否取消成功。</p>
+<p>另外，cancel 还可以提供原因：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">job.cancel(IllegalAccessException(<span class="string">"World!"</span>))</div></pre></td></tr></table></figure>
+<p>如果我们提供了这个原因，那么被取消的协程会将它打印出来。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Hello, </div><div class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java.lang.IllegalAccessException: World! </div><div class="line">	at example13.Example_13Kt$main$<span class="number">1.</span>doResume(example<span class="number">-13.</span>kt:<span class="number">14</span>) </div><div class="line">	at kotlin.coroutines.experimental.jvm.<span class="keyword">internal</span>.CoroutineImpl.resume(CoroutineImpl.kt:<span class="number">53</span>) </div><div class="line">	at kotlinx.coroutines.experimental.DispatchedContinuation$resume$<span class="number">1.</span>run(CoroutineDispatcher.kt:<span class="number">57</span>)</div></pre></td></tr></table></figure>
+<p>其实，如果你自己做过对线程任务的取消，你大概会知道除非被取消的线程自己去检查取消的标志位，或者被 interrupt，否则取消是无法实现的，这有点儿像一个人执意要做一件事儿，另一个人说你别做啦，结果人家压根儿没听见，你说他能停下来吗？那么我们前面的取消到底是谁去监听了这个 cancel 操作呢？</p>
+<p>当然是 delay 这个操作了。其实所有 kotlinx.coroutines 当中定义的操作都可以做到这一点，我们对代码稍加改动，你就会发现异常来自何处了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> job = launch(CommonPool) &#123;  </div><div class="line">    <span class="keyword">try</span> &#123; </div><div class="line">        delay(<span class="number">1000</span>L) </div><div class="line">        println(<span class="string">"World!"</span>) </div><div class="line">    &#125; <span class="keyword">catch</span>(e: Exception) &#123; </div><div class="line">        e.printStackTrace() </div><div class="line">    &#125;<span class="keyword">finally</span> &#123; </div><div class="line">        println(<span class="string">"finally...."</span>) </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line">println(<span class="string">"Hello,"</span>) </div><div class="line">job.cancel(IllegalAccessException(<span class="string">"World!"</span>))</div></pre></td></tr></table></figure>
+<p>是的，你没看错，我们居然可以在协程里面对 cancel 进行捕获，如果你愿意的话，你甚至可以继续在这个协程里面运行代码，但请不要这样做，下面的示例破坏了 cancel 的设计本意，所以请勿模仿：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> job = launch(CommonPool) &#123;  </div><div class="line">    <span class="keyword">try</span> &#123; </div><div class="line">		... </div><div class="line">    &#125;<span class="keyword">finally</span> &#123; </div><div class="line">        println(<span class="string">"finally...."</span>) </div><div class="line">    &#125; </div><div class="line">    println(<span class="string">"I'm an EVIL!!! Hahahaha"</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说这个是什么意思呢？在协程被 cancel 掉的时候，我们应该做的其实是把战场打扫干净，比如：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> job = launch(CommonPool) &#123; </div><div class="line">	<span class="keyword">val</span> inputStream = ...</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">		...</div><div class="line">    &#125;<span class="keyword">finally</span> &#123;</div><div class="line">        inputStream.close()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 　<br> 我们再来考虑下面的情形：<br> 　<br> <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">val</span> job = launch(CommonPool) &#123; </div><div class="line">        <span class="keyword">var</span> nextPrintTime = <span class="number">0</span>L </div><div class="line">        <span class="keyword">var</span> i = <span class="number">0</span> </div><div class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123; <span class="comment">// computation loop </span></div><div class="line">            <span class="keyword">val</span> currentTime = System.currentTimeMillis() </div><div class="line">            <span class="keyword">if</span> (currentTime &gt;= nextPrintTime) &#123; </div><div class="line">                println(<span class="string">"I'm sleeping <span class="subst">$&#123;i++&#125;</span> ..."</span>) </div><div class="line">                nextPrintTime = currentTime + <span class="number">500</span>L </div><div class="line">            &#125; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    delay(<span class="number">1300</span>L) <span class="comment">// delay a bit </span></div><div class="line">    println(<span class="string">"main: I'm tired of waiting!"</span>) </div><div class="line">    job.cancel() <span class="comment">// cancels the job </span></div><div class="line">    delay(<span class="number">1300</span>L) <span class="comment">// delay a bit to see if it was cancelled.... </span></div><div class="line">    println(<span class="string">"main: Now I can quit."</span>) </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>不得不说，kotlinx.coroutines 在几天前刚刚更新的文档和示例非常的棒。我们看到这个例子，while(true) 会让这个协程不断运行来模拟耗时计算，尽管外部调用了 job.cancel()，但由于内部并没有 care 自己是否被 cancel，所以这个 cancel 显然有点儿失败。如果你想要在类似这种耗时计算当中检测当前协程是否被取消的话，你可以这么写：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">... </div><div class="line"><span class="keyword">while</span> (isActive) &#123; <span class="comment">// computation loop </span></div><div class="line">   ... </div><div class="line">&#125; </div><div class="line">...</div></pre></td></tr></table></figure>
+<p>isActive 会在 cancel 之后被置为 false。</p>
+<p>其实，通过这几个示例大家就会发现协程的取消，与我们通常取消线程操作的思路非常类似，只不过人家封装的比较好，而我们呢，每次还得自己搞一个 CancelableTask 来实现 Runnable 接口去承载自己的异步操作，想想也是够原始呢。</p>
+<h2 id="5-轻量级线程"><a href="#5-轻量级线程" class="headerlink" title="5. 轻量级线程"></a>5. 轻量级线程</h2><p>协程时轻量级的，它拥有自己的运行状态，但它对资源的消耗却非常的小。其实能做到这一点的本质原因，我们已经在上一篇文章当中提到过，一台服务器开 1k 线程和 1k 协程来响应服务，前者对资源的消耗必然很大，而后者可能只是基于很少的几个或几十个线程来工作的，随着请求数量的增加，协程的优势可能会体现的更加明显。</p>
+<p>我们来看个比较简单的例子：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">val</span> jobs = List(<span class="number">100</span>_000) &#123;  </div><div class="line">        launch(CommonPool) &#123; </div><div class="line">            delay(<span class="number">1000</span>L) </div><div class="line">            print(<span class="string">"."</span>) </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    jobs.forEach &#123; it.join() &#125; <span class="comment">//这里不能用 jobs.forEach(Job::join)，因为 Job.join 是 suspend 方法 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过 List 这个方法，我们可以瞬间创建出很多对象放入返回的 List，注意到这里的 jobs 其实就是协程的一个 List。</p>
+<p>运行上面的代码，我们发现 CommonPool 当中的线程池的线程数量基本上维持在三四个就足够了，如果我们用线程来写上面的代码会是什么感觉？</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> = runBlocking&lt;<span class="built_in">Unit</span>&gt; &#123; </div><div class="line">    <span class="keyword">val</span> jobs = List(<span class="number">100</span>_000) &#123;  </div><div class="line">        thread &#123; </div><div class="line">            Thread.sleep(<span class="number">1000</span>L) </div><div class="line">            log(<span class="string">"."</span>) </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">    jobs.forEach(Thread::join) <span class="comment">// Thread::join 说起来也是 1.1 的新特性呢！ </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行时，在创建了 1k 多个线程之后，就抛出了异常：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java.lang.OutOfMemoryError: unable to create new <span class="keyword">native</span> thread </div><div class="line">	at java.lang.Thread.start0(Native Method)</div></pre></td></tr></table></figure>
+<p>嗯，又多了一个用协程的理由，对不对？</p>
+<h2 id="6-携带值的-Job"><a href="#6-携带值的-Job" class="headerlink" title="6. 携带值的 Job"></a>6. 携带值的 Job</h2><p>我们前面说了，通过携程返回的 Job，我们可以控制携程的运行。可有时候我们更关注协程运行的结果，比如从网络加载一张图片：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">suspend <span class="function"><span class="keyword">fun</span> <span class="title">loadImage</span><span class="params">(url: <span class="type">String</span>)</span></span>: Bitmap &#123; </div><div class="line">    ... </div><div class="line">    <span class="keyword">return</span> ... </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没错，我们更关注它的结果，这种情况我们该怎么办呢？如果 loadImage 不是 suspend 方法，那么我们在非 UI 线程当中直接获取他们：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> imageA = loadImage(urlA) </div><div class="line"><span class="keyword">val</span> imageB = loadImage(urlB) </div><div class="line">onImageGet(imageA, imageB)</div></pre></td></tr></table></figure>
+<p>这样的操作有什么问题？顺序获取两张图片，耗时，不经济。所以传统的做法就是开两个线程做这件事儿，这意味着你会看到两个回调，并且还要同步这两个回调，想想都头疼。</p>
+<p>不过我们现在有更好的办法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> imageA = defer(CommonPool) &#123; loadImage(urlA) &#125; </div><div class="line"><span class="keyword">val</span> imageB = defer(CommonPool) &#123; loadImage(urlB) &#125; </div><div class="line">onImageGet(imageA.await(),imageB.await())</div></pre></td></tr></table></figure>
+<p>代码量几乎没有增加，不过我们却做到了两张图片异步获取，并同时传给 onImageGet 以便继续后面的操作。</p>
+<p>defer 到底是个什么东西？其实大家大可不必看到新词就感到恐慌，这东西用法几乎跟 launch 一样，只不过它返回的 Deferred 功能比 Job 多了一样：携带返回值。我们前面看到的 imageA 其实就是一个 Deferred 实例，而它的 await 方法返回的则是 Bitmap 类型，也即 loadImage(urlA) 的返回值。</p>
+<p>所以如果你对协程运行的结果感兴趣，直接使用 defer 来替换你的 launch 就可以了。需要注意的是，即便你不调用 await，defer 启动的协程也会立即运行，如果你希望你的协程能够按需启动，例如只有你调用 await 之后再启动，那么你可以用 lazyDefer：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> imageA = lazyDefer(CommonPool) &#123; loadImage(urlA) &#125; </div><div class="line"><span class="keyword">val</span> imageB = lazyDefer(CommonPool) &#123; loadImage(urlB) &#125; </div><div class="line">onImageGet(imageA.await(),imageB.await()) <span class="comment">//这时候才开始真正去加载图片</span></div></pre></td></tr></table></figure>
+<h2 id="7-生成器"><a href="#7-生成器" class="headerlink" title="7. 生成器"></a>7. 生成器</h2><p>不知道大家对 python 的生成器有没有了解，这个感觉就好似延迟计算一样。</p>
+<p>假设我们要计算 fibonacci 数列，这个大家都知道，也非常容易写，你可能分分钟写出一个递归的函数来求得这个序列，不过你应该知道递归的层级越多，stackOverflow 的可能性越大吧？另外，如果我们只是用到其中的几个，那么递归的函数一下子都给求出来，而且每次调用也没有记忆性导致同一个值计算多次，非常不经济。大家看一个 python 的例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibonacci</span><span class="params">()</span>:</span> </div><div class="line">    <span class="keyword">yield</span> <span class="number">1</span> <span class="comment"># 直接返回 1， 并且在此处暂停 </span></div><div class="line">    first = <span class="number">1</span> </div><div class="line">    second = <span class="number">1</span> </div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>: </div><div class="line">        <span class="keyword">yield</span> first </div><div class="line">        first, second = first + second, first </div><div class="line">　 </div><div class="line">　 </div><div class="line">a = fibonacci() </div><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a: </div><div class="line">    <span class="keyword">print</span> x </div><div class="line">    <span class="keyword">if</span> x &gt; <span class="number">100</span>: <span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>前面给出的这种计算方法，fibonacci 函数返回一个可迭代的对象，这个对象其实就是生成器，只有我们在迭代它的时候，它才会去真正执行计算，只要遇到 yield，那么这一次迭代到的值就是 yield 后面的值，比如，我们第一次调用 fibonacci 这个函数的时候，得到的值就是 1，后面依次类推。</p>
+<p>Kotlin 在添加了协程这个功能之后，也可以这么搞了：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> fibonacci = buildSequence &#123; </div><div class="line">    yield(<span class="number">1</span>) <span class="comment">// first Fibonacci number </span></div><div class="line">    <span class="keyword">var</span> cur = <span class="number">1</span> </div><div class="line">    <span class="keyword">var</span> next = <span class="number">1</span> </div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123; </div><div class="line">        yield(next) <span class="comment">// next Fibonacci number </span></div><div class="line">        <span class="keyword">val</span> tmp = cur + next </div><div class="line">        cur = next </div><div class="line">        next = tmp </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line">... </div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> fibonacci)&#123; </div><div class="line">    println(i) </div><div class="line">    <span class="keyword">if</span>(i &gt; <span class="number">100</span>) <span class="keyword">break</span> <span class="comment">//大于100就停止循环 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以这么说，这段代码与前面的 python 版本功能是完全相同的，在 yield 方法调用时，传入的值就是本次迭代的值。</p>
+<p>fibonacci 这个变量的类型如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sequence</span>&lt;<span class="type">out T</span>&gt; </span>&#123; </div><div class="line">   <span class="keyword">public</span> <span class="keyword">operator</span> <span class="function"><span class="keyword">fun</span> <span class="title">iterator</span><span class="params">()</span></span>: Iterator&lt;T&gt; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>既然有 iterator 方法，那么我们可以直接对 fibonacci 进行迭代也就没什么大惊小怪的了。这个 iterator 保证每次迭代的时候去执行 buildSequence 后面的 Lambda 的代码，从上一个 yield 之后开始到下一个 yield 结束，yield 传入的值就是 iterator 的 next 的返回值。</p>
+<p>有了这个特性，我们就可以构造许多“懒”序列，只有在用到的时候才去真正计算每一个元素的值，而且运算状态可以保存，每次计算的结果都不会浪费。</p>
+<p>注：这个特性是被 Kotlin 标准库收录了的，并不存在于 kotlinx.coroutines 当中，不过这也没关系啦，kotlinx.coroutines 的 API 会不会在不久的将来也作为 Kotlin 标准库的内容出现呢？</p>
+<h2 id="8-小结"><a href="#8-小结" class="headerlink" title="8. 小结"></a>8. 小结</h2><p>这一篇的内容其实相对上一篇要简单一些，面对 kotlinx.coroutines 这样的框架，我们直接通过分析案例，将 coroutine 这么理论化的东西投入实际场景，让大家从感性上对其有个更加深入的认识。</p>
+<p>当然，我们并没有深入其中了解其原理，原因就是上一篇我们为此做了足够的准备 —— kotlinx.coroutines 作为官方的框架，自然要实现得完善一些，但也是万变不离其宗。</p>
+<p>写到这里，我想，我们还是需要有一篇文章再来介绍一些协程使用的一些注意事项，那么我们下一篇再见吧。</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.921Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/02/06/深入理解 Kotlin Coroutine (2)/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coroutine/">Coroutine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kotlinx/">kotlinx</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&title=《深入理解 Kotlin Coroutine (2)》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&title=《深入理解 Kotlin Coroutine (2)》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解 Kotlin Coroutine (2)》 — Kotlin&url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/13/细说 Lambda 表达式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">细说 Lambda 表达式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/06/Kotlin 1.1 Beta 2 发布~/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin 1.1 Beta 2 发布~</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&title=《深入理解 Kotlin Coroutine (2)》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&title=《深入理解 Kotlin Coroutine (2)》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解 Kotlin Coroutine (2)》 — Kotlin&url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/06/深入理解 Kotlin Coroutine (2)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3a0WojMQwF0P7/T3dfC2HSeyWbTeHMUwiTjI4DtiLp6yu+vn9cr++8Xj/vebr/9Z6n5yZ3ri48PDy8Rejvg0iCS3jt05PFevoUHh4e3j3eflN+j0kWLlmgPGY8PDy8v8LbHADJp/Dw8PD+Im8W0PvSRkvCw8PD+wReW5BNUufkKe2SXay14OHh4cW8vIv0Oa+v9Pfw8PDw1l31thkWJbjlUq6ixcPDw7vAm5Vo8yQ4T6bbwkQeJx4eHt49Xl4CaF/nC3F2HAEPDw/vf/FmKW9bzmhT8+LAwMPDwzvKm23u+Ra/KUa041aPRwIeHh7eBd6sydSWFVrGfpnw8PDwbvDaQYG2nX+jdHtg9AoPDw9vzUvCbbfmJEHPxxHywwMPDw/vNi8PYrZNJ982G+eKknI8PDy8C7xZS6wdNRgWYdcHDx4eHt493uZI2NzZjgXMhsDw8PDwzvL2BdmWUa/9Ih48PDy8e7w86FkZd9bWattvj8k0Hh4e3lHeZr4gT4uTsu/sKdGPgYeHh3eBlwwN5KWE2Yae89qhBDw8PLwbvP2D25S6bZvlP0NUpcbDw8Nb8GZJbV6oba98649qtnh4eHjXePkXzcZD89bXpodVVDLw8PDwFrx9CpsHl8M2wwe/VKnx8PDwjvJmj2yb/UmgbYF4ePrh4eHhrXl50aFlbBpdeSTR0BUeHh7eZd7+f32e/uYHQ92Qw8PDwzvK+y6vZCvPU/BZal4sMR4eHt4F3qyp3waXsDff2RaX8fDw8Pa85DDYFxpmx8b+sMHDw8O7x9s3xvJU+1gqnJck8PDw8D6GN9vob5SM8fDw8D6flwR9oPEfjxfUjT88PDy8NS8PNy/4zkoM7dOLoSs8PDy8Q7z2T36SHG/uORw6Hh4e3kneP6xWh1xNuF3nAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+</html>

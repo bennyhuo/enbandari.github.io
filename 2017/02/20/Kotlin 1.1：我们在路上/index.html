@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="true">
+    <meta name="baidu-site-verification" content="97dbRVWfVh" />
+    <meta name="sogou_site_verification" content="AIePRXkUI4"/>
+    
+    
+    <link rel="canonical" href="http://www.kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/">
+    
+    
+    <title>Kotlin 1.1：我们在路上 | Kotlin | 简洁、优雅，100% 兼容 Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="成长">
+    <meta name="description" content="►1.1 RC 来了，Release 还会远吗？                                                                                                            去年 2 月 19 日 1.0 发版，我记得此前看到论坛上面开始讨论 1.0 API 趋于稳定的话题，想想都还挺兴奋呢，一不留神，Kot">
+<meta name="keywords" content="成长">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 1.1：我们在路上">
+<meta property="og:url" content="http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/index.html">
+<meta property="og:site_name" content="Kotlin">
+<meta property="og:description" content="►1.1 RC 来了，Release 还会远吗？                                                                                                            去年 2 月 19 日 1.0 发版，我记得此前看到论坛上面开始讨论 1.0 API 趋于稳定的话题，想想都还挺兴奋呢，一不留神，Kot">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/11RC-01.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/road.JPG">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/zhiyin.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/wangzhe.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/embarassed.png">
+<meta property="og:image" content="http://www.kotliner.cn/assets/2017.2.20/right.jpg">
+<meta property="og:image" content="http://www.kotliner.cn/arts/kotlin扫码关注.png">
+<meta property="og:updated_time" content="2017-05-22T02:30:56.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kotlin 1.1：我们在路上">
+<meta name="twitter:description" content="►1.1 RC 来了，Release 还会远吗？                                                                                                            去年 2 月 19 日 1.0 发版，我记得此前看到论坛上面开始讨论 1.0 API 趋于稳定的话题，想想都还挺兴奋呢，一不留神，Kot">
+<meta name="twitter:image" content="http://www.kotliner.cn/assets/2017.2.20/11RC-01.png">
+    
+        <link rel="alternative" href="/atom.xml" title="Kotlin" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.5.2">
+    <script>window.lazyScripts=[]</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/assets/img/Kotlin-logo.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Kotlin</h5>
+          <a href="mailto:kotlin@kotliner.cn" title="kotlin@kotliner.cn" class="mail">kotlin@kotliner.cn</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://www.kotlincn.net"  >
+                <i class="icon icon-lg icon-certificate"></i>
+                官网
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                所有文章
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/authors"  >
+                <i class="icon icon-lg icon-user"></i>
+                所有作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-info"></i>
+                关于我们
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/beijing/"  >
+                <i class="icon icon-lg icon-map-marker beijing"></i>
+                北京分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/chengdu/"  >
+                <i class="icon icon-lg icon-map-marker chengdu"></i>
+                成都分会
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://shanghai.kotliner.cn"  >
+                <i class="icon icon-lg icon-map-marker shanghai"></i>
+                上海分会
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Kotlin 1.1：我们在路上</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Kotlin 1.1：我们在路上</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-20T02:32:32.000Z" itemprop="datePublished" class="page-time">
+  2017-02-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/心路历程/">心路历程</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#►1-1-RC-来了，Release-还会远吗？"><span class="post-toc-text">►1.1 RC 来了，Release 还会远吗？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#►成长，一路有你"><span class="post-toc-text">►成长，一路有你</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#►还记得，你与-Kotiln-的第一次相遇吗？"><span class="post-toc-text">►还记得，你与 Kotiln 的第一次相遇吗？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#​►Kotlin-给你带来了什么？"><span class="post-toc-text">​►Kotlin 给你带来了什么？</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<article id="post-Kotlin 1.1：我们在路上"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Kotlin 1.1：我们在路上</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月20日 10:32" datetime="2017-02-20T02:32:32.000Z"  itemprop="datePublished">2017-02-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/心路历程/">心路历程</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="►1-1-RC-来了，Release-还会远吗？"><a href="#►1-1-RC-来了，Release-还会远吗？" class="headerlink" title="►1.1 RC 来了，Release 还会远吗？"></a>►1.1 RC 来了，Release 还会远吗？</h2><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/11RC-01.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>去年 2 月 19 日 1.0 发版，我记得此前看到论坛上面开始讨论 1.0 API 趋于稳定的话题，想想都还挺兴奋呢，一不留神，Kotlin 1.0 在稳定奔跑一年之后，也终于迎来下一个版本：就在前天（17日），我留意到 Kotlin 官博发出了 1.1 RC(Release Candidate) 的消息，截止到目前，1.1 的所有开发工作都已经进入尾声，剩下的就只有我们期待的眼神了。</p>
+<h2 id="►成长，一路有你"><a href="#►成长，一路有你" class="headerlink" title="►成长，一路有你"></a>►成长，一路有你</h2><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/road.JPG" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>2016 这一年发生了挺多的事情，最重要的就是 Kotlin 终于有一个正式的版本，开始了按部就班的日子：每两个月一个正式版本以及一个 1.1 的里程碑版本。接着，我们也很快的发现我们期待的功能都悄悄的走进了 Kotlin 的更新日志，Kotlin 正一天一天的成长起来。</p>
+<p>不知道各位看官年龄几何，对我来说，C 和 C++ 太老，Java 虽然小了一些，可它诞生的时候我还在小学里面玩 Dos；而当我真正开始认识它们的时候却发现它们实在是太庞大了，有时候甚至觉得可怕，有时候更是没办法理解它们。它们是编程语言的长者，而我，只是一个年轻的程序员。</p>
+<p>Kotlin 则不一样了。它出现的不算早，大概 2010 年的样子吧，那个时候我刚刚闲来无事考了个软考中级的 “软件设计师”，一个在学校里面随处可见的“小黄书”背后的没有多大用处的考试，那个时候大概是我基础最好的时候吧。后来 Kotlin 逐渐成长起来，而我也逐渐脱离了象牙塔里的天真，冲向了努力干活历练自己的道路中间。</p>
+<h2 id="►还记得，你与-Kotiln-的第一次相遇吗？"><a href="#►还记得，你与-Kotiln-的第一次相遇吗？" class="headerlink" title="►还记得，你与 Kotiln 的第一次相遇吗？"></a>►还记得，你与 Kotiln 的第一次相遇吗？</h2><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/zhiyin.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>最早认识 Kotlin 还是在 15 年初，那时候我正热衷于编写 IntelliJ 的插件，尽管后面成果空空，不过一些个莫名其妙的后缀为 kt 的文件却着实让我头疼不已。尽管照着说明安装好 Kotlin 的插件，可因为版本不一致，始终无法编译过去，真是无可奈何啊。当时我还想，又有新语言啊，这可当真是学海无涯咯。</p>
+<p>不过，随着接触的机会逐渐增多，我发现 Kotlin 解决了很多我对 Java 不满的问题，而它呢，却又全力支持着 Java 中的一切，始终让我们感觉不到我用了另外一种语言，语法的那点儿差异说真的比起不同语言背后的编程思维的差异来说，简直不值得一提。我在同时尝试了 groovy 和 scala 之后，觉得 Kotlin 才是我想要的，于是在 Kotlin 1.0 发布之际，我向 Bugly 公众号投稿文章：<a href="http://www.println.net/post/Android-A-Powerful-Substitution-Kotlin" target="_blank" rel="external">Android 必备技能：最有可能接替Java的语言——Kotlin</a> ，把我眼中的 Kotlin 向大家展现了出来。</p>
+<h2 id="​►Kotlin-给你带来了什么？"><a href="#​►Kotlin-给你带来了什么？" class="headerlink" title="​►Kotlin 给你带来了什么？"></a>​►Kotlin 给你带来了什么？</h2><p>去年上半年有段时间经常奔波在北京和深圳之间，工作节奏“日新月异”，项目似乎进入了一种莫名其妙的状态，而我自己则犹如置身死水，所幸我也是上过王者的人了，也不枉费我那一段时间在上面投入的一个个不眠之夜吧。</p>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/wangzhe.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>那段时间，我对项目的代码有我“自以为是的足够”的祸害的自由，于是我开始肆无忌惮的用 Kotlin 写一些模块，完全没有顾及合作开发的我们组唯一的妹子的感受。以及，这代码后来落入导师手中，我也算是坑他们不浅呐。不过，如果没有这段经历，或许我后来也不会有那么大的底气去在 10 月份斗胆录制视频，也自然不会去开公众号每周发几篇水文了。说来，得好好谢谢他们。</p>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/embarassed.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>话说，自从摊上这么个事儿，我只好每天早晨 6 点起来或写写东西，或看看书，学点儿东西，每天节奏也极其规律，中午再也没没有精力跟小伙伴们组团王者了，因为我得睡一个小时。</p>
+<p>年前我又在 Bugly 公众号发了一篇文章：<a href="http://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653578489&amp;idx=1&amp;sn=17d6e657d81c0daa345489271d305b36&amp;chksm=84b3b6feb3c43fe8b0197850bf6ca8caefaa8045671f75ed6dec2171a681496365acfd0ebd33&amp;mpshare=1&amp;scene=23&amp;srcid=0217VmFlkVB0LB4I2YRbvicL#rd" target="_blank" rel="external">你为什么需要 Kotlin</a>，结果大家都说我是被代码耽误了的段子手，呃。。我想说你们说的很对！</p>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/assets/2017.2.20/right.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<p>承蒙各位朋友厚爱，经常提及后续视频录制的问题，我正在尝试重新录制一套较为细致和基础的视频，目前讲义已经编写完毕，至于发布时间，那得看我啥时候录得完啦。</p>
+<p>末了，建议大家有事儿没事儿也都写写，我最开始在公司内部写文章刷积分玩，后来发现自己写的东西经常需要复习；不仅如此，很多时候遇到一个问题，可能最终用某种方式解决了，你以为这个问题你是搞清楚了的，不过，一旦你企图将其形成文字，你就会发现问题的背后将会是更多的细枝末节。俗话说得好，好记性不如啪啪啪的机械键盘啊！</p>
+<p><img src="/arts/kotlin扫码关注.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T02:30:56.906Z" itemprop="dateUpdated">2017年5月22日 10:30</time>
+</span><br>
+
+
+        
+        转载请注明出处：<a href="/2017/02/20/Kotlin 1.1：我们在路上/ " target="_blank" rel="external">http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/</a>
+        
+    </div>
+    <footer>
+        <div>
+            <a href="/authors/bennyhuo/">
+                
+                <img src="/assets/img/Kotlin-logo.png" alt="Kotlin">
+                
+                bennyhuo
+                
+            </a>
+            
+        </div>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/成长/">成长</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&title=《Kotlin 1.1：我们在路上》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&title=《Kotlin 1.1：我们在路上》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 1.1：我们在路上》 — Kotlin&url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/27/高阶函数（二）/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">高阶函数（二）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/20/高阶函数（一）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">高阶函数（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<div class="comments" id="comments">
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+    var cloudTieConfig = {
+        url: document.location.href,
+        sourceId: "",
+        productKey: "0263eabe3b1b46709556eda1c39750be",
+        target: "cloud-tie-wrapper"
+    };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Have a nice Kotlin!
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        
+        <li>
+            <img src="/assets/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/assets/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span class="copyright-text">京ICP备16022265号-2&nbsp;</span>
+            <span>Kotlin &copy; 2017</span>
+        </p>
+        <p>
+            本站由<a style="display:inline" href="https://account.ucloud.cn/cas/register?utm_source=kotliner&utm_medium=content_pic_pc&utm_campaign=zanzhu&ytag=kotliner">UCloud 提供赞助 - 注册即送 50 元代金券</a>
+        </p>
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&title=《Kotlin 1.1：我们在路上》 — Kotlin&pic=http://www.Kotliner.cn/assets/img/Kotlin-logo.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&title=《Kotlin 1.1：我们在路上》 — Kotlin&source=Kotlin 是一门由 JetBrains 公司开发的运行在 JVM、Android、前端的静态语言，它 100% 兼容 Java，并且开始逐步支持 Na..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Kotlin 1.1：我们在路上》 — Kotlin&url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/&via=http://www.Kotliner.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.Kotliner.cn/2017/02/20/Kotlin 1.1：我们在路上/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aW27rMAwFwOx/0+lvgdb2IWm6ubjjryIPW6MCEnOo1yu+3t+u83ePPvP9k8nr74PrtXHh4eHhDYZ+dLv5w37eLXl671t4eHh4z/CqA+qtycmWU/37woKHh4f3MbzzV855hWU9mAI8PDy8f4XX+24SbVQ3DDw8PLy/4vWCgHmokZTpo60FDw8Pb4E3D2Gf/3ulv4eHh4c37qpXDwTkBwt6S3l5tHh4eHhrC2HygGrZfUP82toY8PDw8LZ5+eCO3p1sD/PXz0eCh4eHt83rDf2uSakW61FRjoeHh7fA6w00aYwlzarq5pEfSsDDw8Pb5k22gWqZ2yuOk82juSXg4eHhFXkJI1nKey2xPDJOxnbR38PDw8O7iZcvvsminJTCvYI7L8d/mT48PDy8W3nzRtTzBwWSsb0ms4uHh4dXbINVMb04uBrR9u6Ah4eHt8HrlbCTdlR1S0hikYtDV3h4eHgLvHnMWm1TVQv3ZgmOh4eHt8DLm1gTUg/fCyDK/0M8PDy8Ii9veuVld7Xgni/9Fycj8PDw8BZ41WZ/NSPNC+j50YSLrAUPDw9vzKuGC70QdtLu6mULzewEDw8PL+BV44becp9vLfnURMEHHh4e3gKv2uavspOiuRAuDA4T4OHh4d3LywOFXsn7XrsKhTUeHh7eMm/evsoL9GqJXN5y8PDw8B7kVSODSRHcm7LoxwAeHh7eGq+64E7C3GZxXIwz8PDw8DZ4vR//k6V/r4j/5el4eHh4C7xeU+re1v5kEqvJAx4eHt5dvF6g0GuG7QW4h/fEw8PDW+NVC9w87egdRLghZcHDw8P7GF4+oHzQ59FDPn2F/h4eHh7eR/J6hw+qm82fbQx4eHj/PS8vfPNQYDLo6lEGPDw8vCd5va/NW1aTY1W3wfDw8PBqI/wC2w/kKVYowHsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261686164&web_id=1261686164')
+
+</script>
+
+<script src="/js/main.min.js?v=1.5.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.5.2" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Kotlin 博客';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Kotlin 博客';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>
