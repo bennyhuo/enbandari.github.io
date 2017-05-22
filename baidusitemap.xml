@@ -28,6 +28,30 @@
     
     
   <url>
+    <loc>https://enbandari.github.io/2017/02/27/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <lastmod>2017-05-22T02:30:56.921Z</lastmod>
+    <data>
+        <display>
+        <title>高阶函数（二）</title>
+        <pubTime>2017-02-27T06:41:00.000Z</pubTime>
+        
+        <tag>复合函数</tag>
+         
+        <tag>Currying</tag>
+         
+        <tag>偏函数</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://enbandari.github.io/2017/02/20/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
@@ -50,23 +74,17 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/02/27/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <loc>https://enbandari.github.io/2011/08/02/Why%20JetBrains%20needs%20Kotlin/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>高阶函数（二）</title>
-        <pubTime>2017-02-27T06:41:00.000Z</pubTime>
+        <title>[译]为什么 JetBrains 需要 Kotlin</title>
+        <pubTime>2011-08-02T07:52:00.000Z</pubTime>
         
-        <tag>复合函数</tag>
-         
-        <tag>Currying</tag>
-         
-        <tag>偏函数</tag>
-         
          
            
              
-              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
@@ -116,34 +134,16 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2011/08/02/Why%20JetBrains%20needs%20Kotlin/</loc>
+    <loc>https://enbandari.github.io/2017/01/09/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%20Array&lt;Int&gt;%20%E8%80%8C%E6%98%AF%20IntArray%20/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>[译]为什么 JetBrains 需要 Kotlin</title>
-        <pubTime>2011-08-02T07:52:00.000Z</pubTime>
+        <title>为什么不直接使用 Array<Int> 而是 IntArray ？</title>
+        <pubTime>2017-01-09T08:20:22.000Z</pubTime>
         
+        <tag>基本类型</tag>
          
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/01/02/%E5%83%8F%E5%86%99%E6%96%87%E7%AB%A0%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8%20Kotlin/</loc>
-    <lastmod>2017-05-22T02:30:56.921Z</lastmod>
-    <data>
-        <display>
-        <title>像写文章一样使用 Kotlin</title>
-        <pubTime>2017-01-02T08:22:57.000Z</pubTime>
-        
-        <tag>运算符重载</tag>
-         
-        <tag>中缀表达式</tag>
+        <tag>装箱类型</tag>
          
          
            
@@ -180,21 +180,17 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/01/09/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%20Array&lt;Int&gt;%20%E8%80%8C%E6%98%AF%20IntArray%20/</loc>
+    <loc>https://enbandari.github.io/2013/06/24/%E2%80%9CStatic%20constants%E2%80%9D%20in%20Kotlin/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>为什么不直接使用 Array<Int> 而是 IntArray ？</title>
-        <pubTime>2017-01-09T08:20:22.000Z</pubTime>
+        <title>[译]“Static constants” in Kotlin</title>
+        <pubTime>2013-06-24T04:00:00.000Z</pubTime>
         
-        <tag>基本类型</tag>
-         
-        <tag>装箱类型</tag>
-         
          
            
              
-              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
@@ -202,38 +198,16 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/01/30/%E5%8B%98%E8%AF%AF%EF%BC%9A15%20Kotlin%20%E4%B8%8E%20Java%20%E5%85%B1%E5%AD%98%20(2)%20/</loc>
+    <loc>https://enbandari.github.io/2017/01/02/%E5%83%8F%E5%86%99%E6%96%87%E7%AB%A0%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8%20Kotlin/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>勘误：15 Kotlin 与 Java 共存 (2)</title>
-        <pubTime>2017-01-30T04:25:08.000Z</pubTime>
+        <title>像写文章一样使用 Kotlin</title>
+        <pubTime>2017-01-02T08:22:57.000Z</pubTime>
         
-        <tag>泛型</tag>
+        <tag>运算符重载</tag>
          
-         
-           
-             
-              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/</loc>
-    <lastmod>2017-05-22T02:30:56.921Z</lastmod>
-    <data>
-        <display>
-        <title>如何正确终止 forEach</title>
-        <pubTime>2017-04-23T15:18:52.000Z</pubTime>
-        
-        <tag>Kotlin</tag>
-         
-        <tag>Lambda</tag>
-         
-        <tag>Stream Api</tag>
+        <tag>中缀表达式</tag>
          
          
            
@@ -310,23 +284,23 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/01/16/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2001%20%E9%9A%BE%E9%81%93%E5%8F%AA%E6%9C%89%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95/</loc>
+    <loc>https://enbandari.github.io/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>用 Kotlin 写 Android 01 难道只有环境搭建这么简单？</title>
-        <pubTime>2017-01-16T03:07:06.000Z</pubTime>
+        <title>如何正确终止 forEach</title>
+        <pubTime>2017-04-23T15:18:52.000Z</pubTime>
         
-        <tag>搭建环境</tag>
+        <tag>Kotlin</tag>
          
-        <tag>Anko</tag>
+        <tag>Lambda</tag>
          
-        <tag>extensions</tag>
+        <tag>Stream Api</tag>
          
          
            
              
-              <breadCrumb title="Android" url="https://enbandari.github.io/categories/Android/"/>
+              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
           
         </display>
     </data>
@@ -378,16 +352,18 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/01/23/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2002%20%E8%AF%B4%E8%AF%B4%20Anko/</loc>
+    <loc>https://enbandari.github.io/2017/01/16/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2001%20%E9%9A%BE%E9%81%93%E5%8F%AA%E6%9C%89%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>用 Kotlin 写 Android 02 说说 Anko</title>
-        <pubTime>2017-01-23T04:46:49.000Z</pubTime>
+        <title>用 Kotlin 写 Android 01 难道只有环境搭建这么简单？</title>
+        <pubTime>2017-01-16T03:07:06.000Z</pubTime>
         
+        <tag>搭建环境</tag>
+         
         <tag>Anko</tag>
          
-        <tag>DSL</tag>
+        <tag>extensions</tag>
          
          
            
@@ -422,17 +398,21 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2013/06/24/%E2%80%9CStatic%20constants%E2%80%9D%20in%20Kotlin/</loc>
+    <loc>https://enbandari.github.io/2017/01/23/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2002%20%E8%AF%B4%E8%AF%B4%20Anko/</loc>
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>[译]“Static constants” in Kotlin</title>
-        <pubTime>2013-06-24T04:00:00.000Z</pubTime>
+        <title>用 Kotlin 写 Android 02 说说 Anko</title>
+        <pubTime>2017-01-23T04:46:49.000Z</pubTime>
         
+        <tag>Anko</tag>
+         
+        <tag>DSL</tag>
+         
          
            
              
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+              <breadCrumb title="Android" url="https://enbandari.github.io/categories/Android/"/>
           
         </display>
     </data>
@@ -440,19 +420,57 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/05/22/KotlinForEachBreakContinue/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <loc>https://enbandari.github.io/2017/01/30/%E5%8B%98%E8%AF%AF%EF%BC%9A15%20Kotlin%20%E4%B8%8E%20Java%20%E5%85%B1%E5%AD%98%20(2)%20/</loc>
+    <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     <data>
         <display>
-        <title>Kotlin：forEach也能break和continue</title>
-        <pubTime>2017-05-22T02:30:56.906Z</pubTime>
+        <title>勘误：15 Kotlin 与 Java 共存 (2)</title>
+        <pubTime>2017-01-30T04:25:08.000Z</pubTime>
         
-        <tag>Kotlin</tag>
+        <tag>泛型</tag>
          
          
            
              
-              <breadCrumb title="Kotlin" url="https://enbandari.github.io/categories/Kotlin/"/>
+              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2017/04/07/KotlinPrimerFunction/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin Primer草稿 函数</title>
+        <pubTime>2017-04-07T01:10:11.000Z</pubTime>
+        
+        <tag>函数式编程</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Kotlin 1.1 Event in Your City</title>
+        <pubTime>2017-03-21T13:51:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
@@ -466,6 +484,62 @@
         <display>
         <title>[译]Kotlin 1.1 Event Report</title>
         <pubTime>2017-04-06T15:21:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin视频教程</title>
+        <pubTime>2017-04-05T03:40:48.000Z</pubTime>
+        
+        <tag>视频教程</tag>
+         
+         
+           
+             
+              <breadCrumb title="视频教程" url="https://enbandari.github.io/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2015/12/18/Learn%20Kotlin%20with%20%E2%80%9CAdvent%20of%20Code%E2%80%9D/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Learn Kotlin with “Advent of Code”</title>
+        <pubTime>2015-12-18T14:08:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2011/07/20/Slides%20from%20the%20JVM%20Language%20Summit%20presentations/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>[译] JVM 语言峰会上的演示幻灯片</title>
+        <pubTime>2011-07-20T15:16:00.000Z</pubTime>
         
          
            
@@ -498,80 +572,6 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>Kotlin视频教程</title>
-        <pubTime>2017-04-05T03:40:48.000Z</pubTime>
-        
-        <tag>视频教程</tag>
-         
-         
-           
-             
-              <breadCrumb title="视频教程" url="https://enbandari.github.io/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2011/07/20/Slides%20from%20the%20JVM%20Language%20Summit%20presentations/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>[译] JVM 语言峰会上的演示幻灯片</title>
-        <pubTime>2011-07-20T15:16:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2015/12/18/Learn%20Kotlin%20with%20%E2%80%9CAdvent%20of%20Code%E2%80%9D/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>[译]Learn Kotlin with “Advent of Code”</title>
-        <pubTime>2015-12-18T14:08:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/03/06/Kotlin%201.1%20Event/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>[译]Kotlin 1.1 Event</title>
-        <pubTime>2017-03-06T09:43:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://enbandari.github.io/2017/02/17/Kotlin%201.1%20Release%20Candidate%20is%20Here/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
@@ -590,12 +590,30 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/</loc>
+    <loc>https://enbandari.github.io/2017/03/01/Kotlin%201.1%20Released%20with%20JavaScript%20Support,%20Coroutines%20and%20more/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
         <display>
-        <title>[译]Kotlin 1.1 Event in Your City</title>
-        <pubTime>2017-03-21T13:51:00.000Z</pubTime>
+        <title>[译]Kotlin 1.1 发布啦！JavaScript，Coroutine 还有更多你想要的</title>
+        <pubTime>2017-03-01T09:12:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2017/03/06/Kotlin%201.1%20Event/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Kotlin 1.1 Event</title>
+        <pubTime>2017-03-06T09:43:00.000Z</pubTime>
         
          
            
@@ -650,6 +668,44 @@
 
     
   <url>
+    <loc>https://enbandari.github.io/2017/04/25/Kotlin%201.1.2%20is%20out/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Kotlin 1.1.2 is out</title>
+        <pubTime>2017-04-25T13:19:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2017/02/20/Kotlin%201.1%EF%BC%9A%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B7%AF%E4%B8%8A/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin 1.1：我们在路上</title>
+        <pubTime>2017-02-20T02:32:32.000Z</pubTime>
+        
+        <tag>成长</tag>
+         
+         
+           
+             
+              <breadCrumb title="心路历程" url="https://enbandari.github.io/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://enbandari.github.io/2017/03/04/Kotlin%201.1/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
@@ -665,42 +721,6 @@
          
         <tag>Kotlin元年</tag>
          
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/03/01/Kotlin%201.1%20Released%20with%20JavaScript%20Support,%20Coroutines%20and%20more/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>[译]Kotlin 1.1 发布啦！JavaScript，Coroutine 还有更多你想要的</title>
-        <pubTime>2017-03-01T09:12:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/04/25/Kotlin%201.1.2%20is%20out/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>[译]Kotlin 1.1.2 is out</title>
-        <pubTime>2017-04-25T13:19:00.000Z</pubTime>
-        
          
            
              
@@ -734,19 +754,19 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/02/20/Kotlin%201.1%EF%BC%9A%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B7%AF%E4%B8%8A/</loc>
+    <loc>https://enbandari.github.io/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
         <display>
-        <title>Kotlin 1.1：我们在路上</title>
-        <pubTime>2017-02-20T02:32:32.000Z</pubTime>
+        <title>Kotlin Native：本周又搞了个大事情</title>
+        <pubTime>2017-04-10T01:49:45.000Z</pubTime>
         
-        <tag>成长</tag>
+        <tag>Native</tag>
          
          
            
              
-              <breadCrumb title="心路历程" url="https://enbandari.github.io/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
@@ -769,48 +789,6 @@
            
              
               <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2016/12/26/Kotlin%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0%E3%80%8E%E5%A4%9A%E7%BB%A7%E6%89%BF%E3%80%8F/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>Kotlin 如何优雅的实现『多继承』</title>
-        <pubTime>2016-12-26T01:49:45.000Z</pubTime>
-        
-        <tag>接口代理</tag>
-         
-        <tag>多继承</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://enbandari.github.io/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/</loc>
-    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
-    <data>
-        <display>
-        <title>Kotlin Native：本周又搞了个大事情</title>
-        <pubTime>2017-04-10T01:49:45.000Z</pubTime>
-        
-        <tag>Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
@@ -862,6 +840,28 @@
 
     
   <url>
+    <loc>https://enbandari.github.io/2016/12/26/Kotlin%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0%E3%80%8E%E5%A4%9A%E7%BB%A7%E6%89%BF%E3%80%8F/</loc>
+    <lastmod>2017-05-22T02:30:56.906Z</lastmod>
+    <data>
+        <display>
+        <title>Kotlin 如何优雅的实现『多继承』</title>
+        <pubTime>2016-12-26T01:49:45.000Z</pubTime>
+        
+        <tag>接口代理</tag>
+         
+        <tag>多继承</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://enbandari.github.io/2017/03/27/Kotlin%20%E9%81%87%E5%88%B0%20MyBatis%EF%BC%9A%E5%88%B0%E5%BA%95%E6%98%AF%20Int%20%E7%9A%84%E9%94%99%EF%BC%8C%E8%BF%98%E6%98%AF%20data%20class%20%E7%9A%84%E9%94%99/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
@@ -884,19 +884,19 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/04/07/KotlinPrimerFunction/</loc>
+    <loc>https://enbandari.github.io/2017/05/22/KotlinForEachBreakContinue/</loc>
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     <data>
         <display>
-        <title>Kotlin Primer草稿 函数</title>
-        <pubTime>2017-04-07T01:10:11.000Z</pubTime>
+        <title>Kotlin：forEach也能break和continue</title>
+        <pubTime>2017-05-22T02:30:56.906Z</pubTime>
         
-        <tag>函数式编程</tag>
+        <tag>Kotlin</tag>
          
          
            
              
-              <breadCrumb title="编程语言" url="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+              <breadCrumb title="Kotlin" url="https://enbandari.github.io/categories/Kotlin/"/>
           
         </display>
     </data>
@@ -904,17 +904,19 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2015/12/07/Kotlin%201.0%20Beta%203%20is%20Out!/</loc>
+    <loc>https://enbandari.github.io/2017/05/22/2017-5-11-KotlinDSL2/</loc>
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     <data>
         <display>
-        <title>[译]Kotlin 1.0 Beta 3 发布啦!</title>
-        <pubTime>2015-12-07T07:45:00.000Z</pubTime>
+        <title>Kotlin 一个很厉害的 DSL 写法</title>
+        <pubTime>2017-05-22T02:30:56.890Z</pubTime>
         
+        <tag>Kotlin</tag>
+         
          
            
              
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+              <breadCrumb title="Kotlin" url="https://enbandari.github.io/categories/Kotlin/"/>
           
         </display>
     </data>
@@ -968,24 +970,6 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2011/07/19/Hello%20World/</loc>
-    <lastmod>2017-05-22T02:30:56.890Z</lastmod>
-    <data>
-        <display>
-        <title>[译]Hello World</title>
-        <pubTime>2011-07-19T14:13:00.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://enbandari.github.io/2017/05/15/Good-news-chengdu_meetup-ucloud_support/</loc>
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     <data>
@@ -1008,19 +992,35 @@
 
     
   <url>
-    <loc>https://enbandari.github.io/2017/05/22/2017-5-11-KotlinDSL2/</loc>
+    <loc>https://enbandari.github.io/2011/07/19/Hello%20World/</loc>
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     <data>
         <display>
-        <title>Kotlin 一个很厉害的 DSL 写法</title>
-        <pubTime>2017-05-22T02:30:56.890Z</pubTime>
+        <title>[译]Hello World</title>
+        <pubTime>2011-07-19T14:13:00.000Z</pubTime>
         
-        <tag>Kotlin</tag>
-         
          
            
              
-              <breadCrumb title="Kotlin" url="https://enbandari.github.io/categories/Kotlin/"/>
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://enbandari.github.io/2015/12/07/Kotlin%201.0%20Beta%203%20is%20Out!/</loc>
+    <lastmod>2017-05-22T02:30:56.890Z</lastmod>
+    <data>
+        <display>
+        <title>[译]Kotlin 1.0 Beta 3 发布啦!</title>
+        <pubTime>2015-12-07T07:45:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="官方动态" url="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
           
         </display>
     </data>
