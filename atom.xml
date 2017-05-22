@@ -486,14 +486,14 @@
   </entry>
   
   <entry>
-    <title>[译]Kotlin/Native v0.2 发布啦</title>
+    <title>[译]Kotlin/Native v0.2 is out</title>
     <link href="http://www.Kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/"/>
     <id>http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/</id>
     <published>2017-05-12T03:08:00.000Z</published>
-    <updated>2017-05-22T02:30:56.906Z</updated>
+    <updated>2017-05-22T01:47:46.391Z</updated>
     
     <content type="html"><![CDATA[<p>我们很高兴地宣布Kotlin / Native v0.2 发布啦，这是 Kotlin / Native 技术预览版的一次功能更新和 Bug 修复。这次更新增加了对协程和跨模块内联函数的支持，以及整体上的问题修复和优化。<br>这次更新包括了一个演示如何使用 <a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/nonBlockingEchoServer" target="_blank" rel="external">并发非阻塞IO协同程序</a> 的示例， 一个 <a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/gtk" target="_blank" rel="external">使用GTK的GUI应用程序</a> ，以及一个由Julius Kunze贡献的<a href="https://github.com/JetBrains/kotlin-native/tree/master/samples/tensorflow" target="_blank" rel="external">TensorFlow机器学习框架</a> 客户端。</p>
-<p>下面的代码演示了如何使用协程处理并发 Socket IO。各个用户的请求将得到并发处理。</p>
+<p>诸如下面的代码：</p>
 
 <p></p>
 
@@ -501,6 +501,7 @@
 
 <p></p>
 
+<p>可用于使用协程处理并发 Socket IO，各个用户的请求将得到并发处理。</p>
 <p>下面的这段代码则演示了如何创建一个带有事件监听的GTK按钮：</p>
 
 <p></p>
