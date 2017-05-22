@@ -4,9 +4,9 @@
   <subtitle>简洁、优雅，100% 兼容 Java</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.Kotliner.cn/"/>
+  <link href="https://enbandari.github.io/"/>
   <updated>2017-05-22T02:30:56.906Z</updated>
-  <id>http://www.Kotliner.cn/</id>
+  <id>https://enbandari.github.io/</id>
   
   <author>
     <name>Kotlin</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Kotlin：forEach也能break和continue</title>
-    <link href="http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/"/>
-    <id>http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/</id>
+    <link href="https://enbandari.github.io/2017/05/22/KotlinForEachBreakContinue/"/>
+    <id>https://enbandari.github.io/2017/05/22/KotlinForEachBreakContinue/</id>
     <published>2017-05-22T02:30:56.906Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -64,17 +64,17 @@
     
     </summary>
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/categories/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
   </entry>
   
   <entry>
     <title>成都 Kotlin 线下聚会报告及科技汇总</title>
-    <link href="http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/"/>
-    <id>http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/</id>
+    <link href="https://enbandari.github.io/2017/05/22/2017-5-13-KotlinMeetupChengDu/"/>
+    <id>https://enbandari.github.io/2017/05/22/2017-5-13-KotlinMeetupChengDu/</id>
     <published>2017-05-22T02:30:56.890Z</published>
     <updated>2017-05-22T02:30:56.890Z</updated>
     
@@ -171,17 +171,17 @@
     
     </summary>
     
-      <category term="线下活动" scheme="http://www.Kotliner.cn/categories/%E7%BA%BF%E4%B8%8B%E6%B4%BB%E5%8A%A8/"/>
+      <category term="线下活动" scheme="https://enbandari.github.io/categories/%E7%BA%BF%E4%B8%8B%E6%B4%BB%E5%8A%A8/"/>
     
     
-      <category term="线下活动" scheme="http://www.Kotliner.cn/tags/%E7%BA%BF%E4%B8%8B%E6%B4%BB%E5%8A%A8/"/>
+      <category term="线下活动" scheme="https://enbandari.github.io/tags/%E7%BA%BF%E4%B8%8B%E6%B4%BB%E5%8A%A8/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin 一个很厉害的 DSL 写法</title>
-    <link href="http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/"/>
-    <id>http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/</id>
+    <link href="https://enbandari.github.io/2017/05/22/2017-5-11-KotlinDSL2/"/>
+    <id>https://enbandari.github.io/2017/05/22/2017-5-11-KotlinDSL2/</id>
     <published>2017-05-22T02:30:56.890Z</published>
     <updated>2017-05-22T02:30:56.890Z</updated>
     
@@ -256,17 +256,17 @@
     
     </summary>
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/categories/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
   </entry>
   
   <entry>
     <title>Google 力挺 Kotlin，这是怎么回事！</title>
-    <link href="http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/"/>
-    <id>http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/</id>
+    <link href="https://enbandari.github.io/2017/05/18/Kotlin-on-Android-Now-official/"/>
+    <id>https://enbandari.github.io/2017/05/18/Kotlin-on-Android-Now-official/</id>
     <published>2017-05-17T23:38:18.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -384,22 +384,22 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>
   
   <entry>
     <title>Kotlin 官方参考文档翻译完毕</title>
-    <link href="http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/"/>
-    <id>http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/</id>
+    <link href="https://enbandari.github.io/2017/05/17/kotlin-reference-translated/"/>
+    <id>https://enbandari.github.io/2017/05/17/kotlin-reference-translated/</id>
     <published>2017-05-17T03:13:15.000Z</published>
     <updated>2017-05-22T02:30:56.921Z</updated>
     
     <content type="html"><![CDATA[<p>非常高兴跟大家宣布：Kotlin 官方文档的参考部分已翻译校对完毕、且与官网同步，这也是目前唯一完整且最新的官方参考文档翻译。</p>
 <p>打开 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 语言中文站</a>，点<a href="https://www.kotlincn.net/docs/reference/" target="_blank" rel="external">学习</a>即是，或者直接打开这个链接：<a href="https://www.kotlincn.net/docs/reference/" target="_blank" rel="external">https://www.kotlincn.net/docs/reference/</a>。为了便于离线阅读，还可以从 GitBook 项目 <a href="https://www.gitbook.com/book/hltj/kotlin-reference-chinese/details" target="_blank" rel="external">gitbook.com/book/hltj/kotlin-reference-chinese</a> 下载对应电子书。今后官方文档有更新时，中文站和 GitBook 也会及时同步并更新翻译，关注 Kotlin 语言的同学请保持关注。</p>
-<h2 id="Kotlin-是什么？"><a href="#Kotlin-是什么？" class="headerlink" title="Kotlin 是什么？"></a>Kotlin 是什么？</h2><p>Kotlin 中文站首页（<a href="https://www.kotlincn.net/" target="_blank" rel="external">https://www.kotlincn.net/</a>）已经用很醒目的字眼回答了这个问题。而我觉得这样介绍会更充分一些：Kotlin 是一门支持多范式、多平台的现代静态编程语言。Kotlin 支持面向对象、泛型与函数式等编程范式，它支持 JVM、Android、JavaScript 目标平台，而<a href="https://www.kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/">原生（Native）平台的 Kotlin 几天前也发布了 0.2 版本</a>。而且 Kotlin 具有很多现代（也有称下一代的）静态语言特性：如类型推断、多范式支持、可空性表达、扩展函数、模式匹配等。因此上面描述毫不夸张，它是一门非常有潜力的新兴语言。</p>
-<p>另外 100% 的 Java 互操作性，，使 Kotlin 能够与既有工具/框架如 Dagger、Spring、Vert.x 等集成，也能让既有的基于 Java 的服务端与 Android 项目逐步迁移到 Kotlin。详情参见<a href="https://www.kotlincn.net/docs/reference/server-overview.html" target="_blank" rel="external">Kotlin 用于服务器端</a>与<a href="https://www.kotlincn.net/docs/reference/android-overview.html" target="_blank" rel="external">Kotlin 用于 Android</a>。了解更多关于 Kotlin 的内容，请关注 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 中文站</a>与 <a href="https://www.kotliner.cn/">Kotlin 中文博客</a>。</p>
+<h2 id="Kotlin-是什么？"><a href="#Kotlin-是什么？" class="headerlink" title="Kotlin 是什么？"></a>Kotlin 是什么？</h2><p>Kotlin 中文站首页（<a href="https://www.kotlincn.net/" target="_blank" rel="external">https://www.kotlincn.net/</a>）已经用很醒目的字眼回答了这个问题。而我觉得这样介绍会更充分一些：Kotlin 是一门支持多范式、多平台的现代静态编程语言。Kotlin 支持面向对象、泛型与函数式等编程范式，它支持 JVM、Android、JavaScript 目标平台，而<a href="https://www.kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/" target="_blank" rel="external">原生（Native）平台的 Kotlin 几天前也发布了 0.2 版本</a>。而且 Kotlin 具有很多现代（也有称下一代的）静态语言特性：如类型推断、多范式支持、可空性表达、扩展函数、模式匹配等。因此上面描述毫不夸张，它是一门非常有潜力的新兴语言。</p>
+<p>另外 100% 的 Java 互操作性，，使 Kotlin 能够与既有工具/框架如 Dagger、Spring、Vert.x 等集成，也能让既有的基于 Java 的服务端与 Android 项目逐步迁移到 Kotlin。详情参见<a href="https://www.kotlincn.net/docs/reference/server-overview.html" target="_blank" rel="external">Kotlin 用于服务器端</a>与<a href="https://www.kotlincn.net/docs/reference/android-overview.html" target="_blank" rel="external">Kotlin 用于 Android</a>。了解更多关于 Kotlin 的内容，请关注 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 中文站</a>与 <a href="https://www.kotliner.cn/" target="_blank" rel="external">Kotlin 中文博客</a>。</p>
 <h2 id="Kotlin-中文站"><a href="#Kotlin-中文站" class="headerlink" title="Kotlin 中文站"></a>Kotlin 中文站</h2><p>针对 Kotlin 官方参考文档的翻译有很多支系，而只有 <a href="https://www.kotlincn.net/" target="_blank" rel="external">Kotlin 中文站</a> 能够与官网及时同步且最终完成全部参考文档翻译。</p>
 <p>这当然离不开创始人<a href="http://tanfujun.com" target="_blank" rel="external">晓_晨DEV</a>和我（<a href="https://hltj.me/" target="_blank" rel="external">灰蓝天际</a>）以及<a href="https://www.kotlincn.net/contribute.html#中文站翻译贡献者" target="_blank" rel="external">所有参与翻译的同学</a>的共同努力。我从 2016 年 2 月开始参与 Kotlin 中文站的翻译，Kotlin 1.0 就是那时正式发布的，时隔一年多又亲历了它 1.1 版的发布，见证它成长的同时，也在不断校对和补充官方参考文档的翻译。而晓_晨DEV更是在 2015 年就开了 Kotlin 中文站的翻译，并且组织带动社区参与者一起翻译。在 Kotlin 中文站版本库的<a href="https://github.com/hltj/kotlin-web-site-cn/graphs/contributors" target="_blank" rel="external">贡献者统计图</a>中可以看到晓_晨DEV与我分别提交了近 4000 行与近 6000 行的改动，已经同官方文档的撰写者一起排进了前十。</p>
 <figure class="image-bubble">
@@ -430,31 +430,31 @@
     
     </summary>
     
-      <category term="社区动态" scheme="http://www.Kotliner.cn/categories/%E7%A4%BE%E5%8C%BA%E5%8A%A8%E6%80%81/"/>
+      <category term="社区动态" scheme="https://enbandari.github.io/categories/%E7%A4%BE%E5%8C%BA%E5%8A%A8%E6%80%81/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
-      <category term="中文" scheme="http://www.Kotliner.cn/tags/%E4%B8%AD%E6%96%87/"/>
+      <category term="中文" scheme="https://enbandari.github.io/tags/%E4%B8%AD%E6%96%87/"/>
     
-      <category term="官网" scheme="http://www.Kotliner.cn/tags/%E5%AE%98%E7%BD%91/"/>
+      <category term="官网" scheme="https://enbandari.github.io/tags/%E5%AE%98%E7%BD%91/"/>
     
   </entry>
   
   <entry>
     <title>成都线下活动成功举行，Kotliner 获得 Ucloud 赞助</title>
-    <link href="http://www.Kotliner.cn/2017/05/15/Good-news-chengdu_meetup-ucloud_support/"/>
-    <id>http://www.Kotliner.cn/2017/05/15/Good-news-chengdu_meetup-ucloud_support/</id>
+    <link href="https://enbandari.github.io/2017/05/15/Good-news-chengdu_meetup-ucloud_support/"/>
+    <id>https://enbandari.github.io/2017/05/15/Good-news-chengdu_meetup-ucloud_support/</id>
     <published>2017-05-15T03:13:15.000Z</published>
     <updated>2017-05-22T02:30:56.890Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>本文来自：<a href="https://www.kotliner.cn">www.kotliner.cn</a></p>
+<p>本文来自：<a href="https://www.kotliner.cn" target="_blank" rel="external">www.kotliner.cn</a></p>
 </blockquote>
 <p>下面是近期我们组织和参与的一些活动，希望 Kotlin 社区在国内站稳脚跟，发扬光大~</p>
 <h2 id="Kotliner-获得-Ucloud-赞助"><a href="#Kotliner-获得-Ucloud-赞助" class="headerlink" title="Kotliner 获得 Ucloud 赞助"></a>Kotliner 获得 Ucloud 赞助</h2><p>Ucloud 云计算的相关负责人在了解了我们的 Kotliner 网站之后决定赞助我们一台云服务器，简直不能更赞。Ucloud 还为我们的站点提供了注册优惠，大家可以阅读原文点击<a href="https://account.ucloud.cn/cas/register?utm_source=kotliner&amp;utm_medium=content_pic_pc&amp;utm_campaign=zanzhu&amp;ytag=kotliner" target="_blank" rel="external">注册</a>，注册立即赠送 50 元代金券~</p>
 <p>那么，我们终于可以将托管在 Github 以及 Coding.net 上面的静态站点迁到自己独立的服务器上面了，后续我们也将推出更多有价值的内容，帮助大家迅速了解和掌握 Kotlin，并切实享受到新时代不可阻挡的开发体验。</p>
-<h2 id="成都线下活动成功举行"><a href="#成都线下活动成功举行" class="headerlink" title="成都线下活动成功举行"></a>成都线下活动成功举行</h2><p>目前国内使用 Kotlin 的小伙伴们越来越多，在我们 Kotlin 的布道师<a href="http://ice1000.org/" target="_blank" rel="external">千里冰封</a>的组织下，成都的小伙伴们都按捺不住率先搞了一波<a href="https://www.kotliner.cn/2017/05/15/2017-5-13-KotlinMeetupChengDu/">线下聚会</a>，这个事情对我们的触动也不小，北京地区也将在 6月初举办一次线下活动，有兴趣的同学可以加群联系我们。</p>
+<h2 id="成都线下活动成功举行"><a href="#成都线下活动成功举行" class="headerlink" title="成都线下活动成功举行"></a>成都线下活动成功举行</h2><p>目前国内使用 Kotlin 的小伙伴们越来越多，在我们 Kotlin 的布道师<a href="http://ice1000.org/" target="_blank" rel="external">千里冰封</a>的组织下，成都的小伙伴们都按捺不住率先搞了一波<a href="https://www.kotliner.cn/2017/05/15/2017-5-13-KotlinMeetupChengDu/" target="_blank" rel="external">线下聚会</a>，这个事情对我们的触动也不小，北京地区也将在 6月初举办一次线下活动，有兴趣的同学可以加群联系我们。</p>
 <h2 id="线下活动-Kotlin-官方表示支持"><a href="#线下活动-Kotlin-官方表示支持" class="headerlink" title="线下活动 Kotlin 官方表示支持"></a>线下活动 Kotlin 官方表示支持</h2><p>就在我们如火如荼的瞎折腾的时候，我们收到了官方的慰问邮件，他们表示要给我们寄文化衫过来(虽然有点儿远，但是我们可以等！)，北京地区和成都地区的链接也挂到了<a href="http://kotlinlang.org/community/user-groups.html" target="_blank" rel="external">官网</a>。</p>
 <h2 id="腾讯云近期举办-Kotlin-分享"><a href="#腾讯云近期举办-Kotlin-分享" class="headerlink" title="腾讯云近期举办 Kotlin 分享"></a>腾讯云近期举办 Kotlin 分享</h2><p>腾讯云将在近期举办 Kotlin 直播分享，届时主讲人将为大家带来自己在 Kotlin 方面的学习以及实战经历。具体分享的时间和参与形式我们将在微信公众号 Kotlin 中第一时间为大家推送，敬请关注。</p>
 <hr>
@@ -470,25 +470,25 @@
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;本文来自：&lt;a href=&quot;https://www.kotliner.cn&quot;&gt;www.kotliner.cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;本文来自：&lt;a href=&quot;https://www.kotliner.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;www.kotliner.cn&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;下面是近期我们组织和参与的一些活动，希望 Kotlin 社区在国内站稳脚跟，发扬光大~&lt;
+&lt;p&gt;下面是近期我们组织和参与的
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
-      <category term="Native" scheme="http://www.Kotliner.cn/tags/Native/"/>
+      <category term="Native" scheme="https://enbandari.github.io/tags/Native/"/>
     
   </entry>
   
   <entry>
     <title>[译]Kotlin/Native v0.2 is out</title>
-    <link href="http://www.Kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/"/>
-    <id>http://www.Kotliner.cn/2017/05/12/Kotlin_Native v0.2 is out/</id>
+    <link href="https://enbandari.github.io/2017/05/12/Kotlin_Native%20v0.2%20is%20out/"/>
+    <id>https://enbandari.github.io/2017/05/12/Kotlin_Native v0.2 is out/</id>
     <published>2017-05-12T03:08:00.000Z</published>
     <updated>2017-05-22T01:47:46.391Z</updated>
     
@@ -522,15 +522,15 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>
   
   <entry>
     <title>[译]Kotlin 1.1.2 is out</title>
-    <link href="http://www.Kotliner.cn/2017/04/25/Kotlin%201.1.2%20is%20out/"/>
-    <id>http://www.Kotliner.cn/2017/04/25/Kotlin 1.1.2 is out/</id>
+    <link href="https://enbandari.github.io/2017/04/25/Kotlin%201.1.2%20is%20out/"/>
+    <id>https://enbandari.github.io/2017/04/25/Kotlin 1.1.2 is out/</id>
     <published>2017-04-25T13:19:00.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -566,15 +566,15 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>
   
   <entry>
     <title>如何正确终止 forEach</title>
-    <link href="http://www.Kotliner.cn/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/"/>
-    <id>http://www.Kotliner.cn/2017/04/23/如何正确终止-forEach/</id>
+    <link href="https://enbandari.github.io/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/"/>
+    <id>https://enbandari.github.io/2017/04/23/如何正确终止-forEach/</id>
     <published>2017-04-23T15:18:52.000Z</published>
     <updated>2017-05-22T02:30:56.921Z</updated>
     
@@ -638,21 +638,21 @@
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
-      <category term="Lambda" scheme="http://www.Kotliner.cn/tags/Lambda/"/>
+      <category term="Lambda" scheme="https://enbandari.github.io/tags/Lambda/"/>
     
-      <category term="Stream Api" scheme="http://www.Kotliner.cn/tags/Stream-Api/"/>
+      <category term="Stream Api" scheme="https://enbandari.github.io/tags/Stream-Api/"/>
     
   </entry>
   
   <entry>
     <title>[译]Use Kotlin with npm, webpack and react</title>
-    <link href="http://www.Kotliner.cn/2017/04/18/Use%20Kotlin%20with%20npm,%20webpack%20and%20react/"/>
-    <id>http://www.Kotliner.cn/2017/04/18/Use Kotlin with npm, webpack and react/</id>
+    <link href="https://enbandari.github.io/2017/04/18/Use%20Kotlin%20with%20npm,%20webpack%20and%20react/"/>
+    <id>https://enbandari.github.io/2017/04/18/Use Kotlin with npm, webpack and react/</id>
     <published>2017-04-18T07:23:00.000Z</published>
     <updated>2017-05-22T02:30:56.921Z</updated>
     
@@ -667,15 +667,15 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>
   
   <entry>
     <title>Kotlin Native 详细体验，你想要的都在这儿</title>
-    <link href="http://www.Kotliner.cn/2017/04/15/Kotlin%20Native%20%E8%AF%A6%E7%BB%86%E4%BD%93%E9%AA%8C%EF%BC%8C%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E5%84%BF/"/>
-    <id>http://www.Kotliner.cn/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/</id>
+    <link href="https://enbandari.github.io/2017/04/15/Kotlin%20Native%20%E8%AF%A6%E7%BB%86%E4%BD%93%E9%AA%8C%EF%BC%8C%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E5%84%BF/"/>
+    <id>https://enbandari.github.io/2017/04/15/Kotlin Native 详细体验，你想要的都在这儿/</id>
     <published>2017-04-15T03:13:15.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -684,7 +684,7 @@
 <p>源码地址：<a href="https://github.com/enbandari/Kotlin-Native-Demo" target="_blank" rel="external">https://github.com/enbandari/Kotlin-Native-Demo</a></p>
 </blockquote>
 <p><strong>内容提要：本文通过 gradle 以及 makefile 两种方式对 Kotlin Native 项目进行构建，提供了详细的从 C 源码编译、到 Kotlin Native 项目的编译及运行的方法，以及该过程中遇到的问题和解决方案，涉及两处对编译器的修改也已经提交 pr。</strong></p>
-<p>最近因为 <a href="http://www.kotliner.cn/">www.kotliner.cn</a>上线的原因，一直没顾上对 Kotlin Native 进行体验，现在 Kotlin Native 预览版发布一周了，我来给大家较为详细地介绍一下它的一些相关内容。</p>
+<p>最近因为 <a href="http://www.kotliner.cn/" target="_blank" rel="external">www.kotliner.cn</a>上线的原因，一直没顾上对 Kotlin Native 进行体验，现在 Kotlin Native 预览版发布一周了，我来给大家较为详细地介绍一下它的一些相关内容。</p>
 <h2 id="1、Kotlin-Native-是什么"><a href="#1、Kotlin-Native-是什么" class="headerlink" title="1、Kotlin Native 是什么"></a>1、Kotlin Native 是什么</h2><p>Kotlin Native 不是 Jni 的概念，它不仅仅是要与底层代码比如 C、C++ 交互，而且还要绕过 Jvm 直接编译成机器码供系统运行。也就是说，Kotlin 准备丢掉 Java 这根拐杖了！</p>
 <p>其实我第一次看到 Native 这个名字的时候很自然的想到了 Jni，Kotlin 跑在 Jvm 上面，使用 Jni 与底层代码交互是一件再正常不过的事情了，至于搞这么大动静么，不过等我进行了一番了解之后才发现，Kotlin 项目组的野心真是不小，Java 诞生这么多年了，也没有做过编译成除 Java 虚拟机字节码以外的字节码的事情，Kotlin 才出来多久啊，果然具有革命性。</p>
 <p>所以以后有人再问你，什么是 Kotlin，你要回答，Kotlin 是一门很牛逼的静态语言（而不是之前经常说的 Kotlin 是一门运行在 Jvm、Android、FE 上的静态语言了），反正你能想到的，Kotlin 项目组都想干。。</p>
@@ -809,23 +809,23 @@
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="Kotlin" scheme="http://www.Kotliner.cn/tags/Kotlin/"/>
+      <category term="Kotlin" scheme="https://enbandari.github.io/tags/Kotlin/"/>
     
-      <category term="Native" scheme="http://www.Kotliner.cn/tags/Native/"/>
+      <category term="Native" scheme="https://enbandari.github.io/tags/Native/"/>
     
   </entry>
   
   <entry>
     <title>Kotliner.cn 上线啦</title>
-    <link href="http://www.Kotliner.cn/2017/04/10/Kotliner.cn%20%E4%B8%8A%E7%BA%BF%E5%95%A6/"/>
-    <id>http://www.Kotliner.cn/2017/04/10/Kotliner.cn 上线啦/</id>
+    <link href="https://enbandari.github.io/2017/04/10/Kotliner.cn%20%E4%B8%8A%E7%BA%BF%E5%95%A6/"/>
+    <id>https://enbandari.github.io/2017/04/10/Kotliner.cn 上线啦/</id>
     <published>2017-04-10T03:09:51.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://www.kotliner.cn">Kotliner</a></p>
+    <content type="html"><![CDATA[<p><a href="http://www.kotliner.cn" target="_blank" rel="external">Kotliner</a></p>
 <p>Kotlin 在国内目前引起了不少人的关注，不过整体上 Kotlin 的国内技术氛围还是要稍微差一些的。目前国内有一个 Kotlin 论坛，不过不太活跃，毕竟论坛的时代已经过去了，现在除了房地产水一下水木，找 IT 工作的水一下北邮人，技术论坛感觉已经过气了。我看到有些朋友在 Github 上面发起翻译 Kotlin 官网的项目，这个想法挺不错，不过应该知道的人不多，可能需要一些宣传；在总结了前人的经验之后，我觉得我们可以依托公众号和 QQ 群搭建一个博客，这个博客主要承担下面的功能：</p>
 <ul>
 <li>同步更新官方博客中文版</li>
@@ -846,22 +846,22 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://www.kotliner.cn&quot;&gt;Kotliner&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Kotlin 在国内目前引起了不少人的关注，不过整体上 Kotlin 的国内技术氛围还是要稍微差一些的。目前国内有一个 Kotlin 论坛，不过不太活跃，毕竟论坛的时代
+      &lt;p&gt;&lt;a href=&quot;http://www.kotliner.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Kotliner&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kotlin 在国内目前引起了不少人的关注，不过整体上 Kotlin 的国内技术氛围还是要稍微差一些的。目
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
-      <category term="kotlin.cn 中文博客" scheme="http://www.Kotliner.cn/tags/kotlin-cn-%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/"/>
+      <category term="kotlin.cn 中文博客" scheme="https://enbandari.github.io/tags/kotlin-cn-%E4%B8%AD%E6%96%87%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin Native：本周又搞了个大事情</title>
-    <link href="http://www.Kotliner.cn/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/"/>
-    <id>http://www.Kotliner.cn/2017/04/10/Kotlin Native：本周又搞了个大事情/</id>
+    <link href="https://enbandari.github.io/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/"/>
+    <id>https://enbandari.github.io/2017/04/10/Kotlin Native：本周又搞了个大事情/</id>
     <published>2017-04-10T01:49:45.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -904,17 +904,17 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
-      <category term="Native" scheme="http://www.Kotliner.cn/tags/Native/"/>
+      <category term="Native" scheme="https://enbandari.github.io/tags/Native/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin Primer草稿 函数</title>
-    <link href="http://www.Kotliner.cn/2017/04/07/KotlinPrimerFunction/"/>
-    <id>http://www.Kotliner.cn/2017/04/07/KotlinPrimerFunction/</id>
+    <link href="https://enbandari.github.io/2017/04/07/KotlinPrimerFunction/"/>
+    <id>https://enbandari.github.io/2017/04/07/KotlinPrimerFunction/</id>
     <published>2017-04-07T01:10:11.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1268,17 +1268,17 @@
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="函数式编程" scheme="http://www.Kotliner.cn/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+      <category term="函数式编程" scheme="https://enbandari.github.io/tags/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>[译]Kotlin 1.1 Event Report</title>
-    <link href="http://www.Kotliner.cn/2017/04/06/Kotlin%201.1%20Event%20Report/"/>
-    <id>http://www.Kotliner.cn/2017/04/06/Kotlin 1.1 Event Report/</id>
+    <link href="https://enbandari.github.io/2017/04/06/Kotlin%201.1%20Event%20Report/"/>
+    <id>https://enbandari.github.io/2017/04/06/Kotlin 1.1 Event Report/</id>
     <published>2017-04-06T15:21:00.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1300,15 +1300,15 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>
   
   <entry>
     <title>[译]Kotlin 1.1 也适用于 Android 开发者</title>
-    <link href="http://www.Kotliner.cn/2017/04/05/Kotlin%201.1%20is%20also%20for%20Android%20Developers/"/>
-    <id>http://www.Kotliner.cn/2017/04/05/Kotlin 1.1 is also for Android Developers/</id>
+    <link href="https://enbandari.github.io/2017/04/05/Kotlin%201.1%20is%20also%20for%20Android%20Developers/"/>
+    <id>https://enbandari.github.io/2017/04/05/Kotlin 1.1 is also for Android Developers/</id>
     <published>2017-04-05T08:13:00.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1390,21 +1390,21 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
-      <category term="Coroutine" scheme="http://www.Kotliner.cn/tags/Coroutine/"/>
+      <category term="Coroutine" scheme="https://enbandari.github.io/tags/Coroutine/"/>
     
-      <category term="Android" scheme="http://www.Kotliner.cn/tags/Android/"/>
+      <category term="Android" scheme="https://enbandari.github.io/tags/Android/"/>
     
-      <category term="typealias" scheme="http://www.Kotliner.cn/tags/typealias/"/>
+      <category term="typealias" scheme="https://enbandari.github.io/tags/typealias/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin视频教程</title>
-    <link href="http://www.Kotliner.cn/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
-    <id>http://www.Kotliner.cn/2017/04/05/Kotlin视频教程/</id>
+    <link href="https://enbandari.github.io/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
+    <id>https://enbandari.github.io/2017/04/05/Kotlin视频教程/</id>
     <published>2017-04-05T03:40:48.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1486,17 +1486,17 @@
     
     </summary>
     
-      <category term="视频教程" scheme="http://www.Kotliner.cn/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
+      <category term="视频教程" scheme="https://enbandari.github.io/categories/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="视频教程" scheme="http://www.Kotliner.cn/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
+      <category term="视频教程" scheme="https://enbandari.github.io/tags/%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin 兼容 Java 遇到的最大的坑</title>
-    <link href="http://www.Kotliner.cn/2017/04/03/Kotlin%20%E5%85%BC%E5%AE%B9%20Java%20%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9D%91%20/"/>
-    <id>http://www.Kotliner.cn/2017/04/03/Kotlin 兼容 Java 遇到的最大的坑 /</id>
+    <link href="https://enbandari.github.io/2017/04/03/Kotlin%20%E5%85%BC%E5%AE%B9%20Java%20%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9D%91%20/"/>
+    <id>https://enbandari.github.io/2017/04/03/Kotlin 兼容 Java 遇到的最大的坑 /</id>
     <published>2017-04-03T07:05:15.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1575,23 +1575,23 @@
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="AllOpen" scheme="http://www.Kotliner.cn/tags/AllOpen/"/>
+      <category term="AllOpen" scheme="https://enbandari.github.io/tags/AllOpen/"/>
     
-      <category term="NoArg" scheme="http://www.Kotliner.cn/tags/NoArg/"/>
+      <category term="NoArg" scheme="https://enbandari.github.io/tags/NoArg/"/>
     
-      <category term="Java" scheme="http://www.Kotliner.cn/tags/Java/"/>
+      <category term="Java" scheme="https://enbandari.github.io/tags/Java/"/>
     
-      <category term="JavaBean" scheme="http://www.Kotliner.cn/tags/JavaBean/"/>
+      <category term="JavaBean" scheme="https://enbandari.github.io/tags/JavaBean/"/>
     
   </entry>
   
   <entry>
     <title>Kotlin 遇到 MyBatis：到底是 Int 的错，还是 data class 的错？</title>
-    <link href="http://www.Kotliner.cn/2017/03/27/Kotlin%20%E9%81%87%E5%88%B0%20MyBatis%EF%BC%9A%E5%88%B0%E5%BA%95%E6%98%AF%20Int%20%E7%9A%84%E9%94%99%EF%BC%8C%E8%BF%98%E6%98%AF%20data%20class%20%E7%9A%84%E9%94%99/"/>
-    <id>http://www.Kotliner.cn/2017/03/27/Kotlin 遇到 MyBatis：到底是 Int 的错，还是 data class 的错/</id>
+    <link href="https://enbandari.github.io/2017/03/27/Kotlin%20%E9%81%87%E5%88%B0%20MyBatis%EF%BC%9A%E5%88%B0%E5%BA%95%E6%98%AF%20Int%20%E7%9A%84%E9%94%99%EF%BC%8C%E8%BF%98%E6%98%AF%20data%20class%20%E7%9A%84%E9%94%99/"/>
+    <id>https://enbandari.github.io/2017/03/27/Kotlin 遇到 MyBatis：到底是 Int 的错，还是 data class 的错/</id>
     <published>2017-03-27T01:26:47.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1687,19 +1687,19 @@
     
     </summary>
     
-      <category term="编程语言" scheme="http://www.Kotliner.cn/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+      <category term="编程语言" scheme="https://enbandari.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-      <category term="NoArg" scheme="http://www.Kotliner.cn/tags/NoArg/"/>
+      <category term="NoArg" scheme="https://enbandari.github.io/tags/NoArg/"/>
     
-      <category term="JavaBean" scheme="http://www.Kotliner.cn/tags/JavaBean/"/>
+      <category term="JavaBean" scheme="https://enbandari.github.io/tags/JavaBean/"/>
     
   </entry>
   
   <entry>
     <title>[译]Kotlin 1.1 Event in Your City</title>
-    <link href="http://www.Kotliner.cn/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/"/>
-    <id>http://www.Kotliner.cn/2017/03/21/Kotlin 1.1 Event in Your City/</id>
+    <link href="https://enbandari.github.io/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/"/>
+    <id>https://enbandari.github.io/2017/03/21/Kotlin 1.1 Event in Your City/</id>
     <published>2017-03-21T13:51:00.000Z</published>
     <updated>2017-05-22T02:30:56.906Z</updated>
     
@@ -1716,7 +1716,7 @@
     
     </summary>
     
-      <category term="官方动态" scheme="http://www.Kotliner.cn/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
+      <category term="官方动态" scheme="https://enbandari.github.io/categories/%E5%AE%98%E6%96%B9%E5%8A%A8%E6%80%81/"/>
     
     
   </entry>

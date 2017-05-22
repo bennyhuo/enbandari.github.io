@@ -2,399 +2,399 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.Kotliner.cn/tags/index.html</loc>
+    <loc>https://enbandari.github.io/tags/index.html</loc>
     
     <lastmod>2017-05-22T02:30:57.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/beijing/index.html</loc>
+    <loc>https://enbandari.github.io/authors/index.html</loc>
     
     <lastmod>2017-05-22T02:30:57.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/categories/index.html</loc>
+    <loc>https://enbandari.github.io/beijing/index.html</loc>
     
     <lastmod>2017-05-22T02:30:57.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/authors/index.html</loc>
+    <loc>https://enbandari.github.io/categories/index.html</loc>
     
     <lastmod>2017-05-22T02:30:57.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/chengdu/index.html</loc>
+    <loc>https://enbandari.github.io/chengdu/index.html</loc>
     
     <lastmod>2017-05-22T02:30:57.187Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/about/index.html</loc>
+    <loc>https://enbandari.github.io/about/index.html</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/20/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    <loc>https://enbandari.github.io/2017/02/20/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/27/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <loc>https://enbandari.github.io/2017/02/27/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/18/Use%20Kotlin%20with%20npm,%20webpack%20and%20react/</loc>
+    <loc>https://enbandari.github.io/2017/01/09/%E9%AB%98%E6%95%88%E5%9C%B0%E4%BD%BF%E7%94%A8%E4%BD%A0%E7%9A%84%20IntelliJ/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2013/06/24/%E2%80%9CStatic%20constants%E2%80%9D%20in%20Kotlin/</loc>
+    <loc>https://enbandari.github.io/2017/04/18/Use%20Kotlin%20with%20npm,%20webpack%20and%20react/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2011/08/02/Why%20JetBrains%20needs%20Kotlin/</loc>
+    <loc>https://enbandari.github.io/2017/05/17/kotlin-reference-translated/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/17/kotlin-reference-translated/</loc>
+    <loc>https://enbandari.github.io/2011/08/02/Why%20JetBrains%20needs%20Kotlin/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/09/%E9%AB%98%E6%95%88%E5%9C%B0%E4%BD%BF%E7%94%A8%E4%BD%A0%E7%9A%84%20IntelliJ/</loc>
+    <loc>https://enbandari.github.io/2017/02/13/%E7%BB%86%E8%AF%B4%20Lambda%20%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/09/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%20Array&lt;Int&gt;%20%E8%80%8C%E6%98%AF%20IntArray%20/</loc>
+    <loc>https://enbandari.github.io/2013/06/24/%E2%80%9CStatic%20constants%E2%80%9D%20in%20Kotlin/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E4%B8%AD%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/</loc>
+    <loc>https://enbandari.github.io/2017/01/09/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%20Array&lt;Int&gt;%20%E8%80%8C%E6%98%AF%20IntArray%20/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/30/%E5%8B%98%E8%AF%AF%EF%BC%9A15%20Kotlin%20%E4%B8%8E%20Java%20%E5%85%B1%E5%AD%98%20(2)%20/</loc>
+    <loc>https://enbandari.github.io/2017/01/30/%E5%8B%98%E8%AF%AF%EF%BC%9A15%20Kotlin%20%E4%B8%8E%20Java%20%E5%85%B1%E5%AD%98%20(2)%20/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/</loc>
+    <loc>https://enbandari.github.io/2017/04/23/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%BB%88%E6%AD%A2-forEach/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/21/%E5%96%9C%E5%A4%A7%E6%99%AE%E5%A5%94%EF%BC%81Kotlin%201.1%20Beta%20%E9%99%8D%E4%B8%B4~/</loc>
+    <loc>https://enbandari.github.io/2017/01/21/%E5%96%9C%E5%A4%A7%E6%99%AE%E5%A5%94%EF%BC%81Kotlin%201.1%20Beta%20%E9%99%8D%E4%B8%B4~/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/13/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%20Kotlin%2011%E6%8B%9B/</loc>
+    <loc>https://enbandari.github.io/2017/01/30/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E4%B8%AD%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/06/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine%20(2)/</loc>
+    <loc>https://enbandari.github.io/2017/03/13/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%20Kotlin%2011%E6%8B%9B/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/16/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2001%20%E9%9A%BE%E9%81%93%E5%8F%AA%E6%9C%89%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95/</loc>
+    <loc>https://enbandari.github.io/2017/01/16/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2001%20%E9%9A%BE%E9%81%93%E5%8F%AA%E6%9C%89%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine/</loc>
+    <loc>https://enbandari.github.io/2017/01/30/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/23/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2002%20%E8%AF%B4%E8%AF%B4%20Anko/</loc>
+    <loc>https://enbandari.github.io/2017/02/06/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Kotlin%20Coroutine%20(2)/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/13/%E7%BB%86%E8%AF%B4%20Lambda%20%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <loc>https://enbandari.github.io/2017/01/23/%E7%94%A8%20Kotlin%20%E5%86%99%20Android%2002%20%E8%AF%B4%E8%AF%B4%20Anko/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/02/%E5%83%8F%E5%86%99%E6%96%87%E7%AB%A0%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8%20Kotlin/</loc>
+    <loc>https://enbandari.github.io/2017/01/02/%E5%83%8F%E5%86%99%E6%96%87%E7%AB%A0%E4%B8%80%E6%A0%B7%E4%BD%BF%E7%94%A8%20Kotlin/</loc>
     
     <lastmod>2017-05-22T02:30:56.921Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://enbandari.github.io/2017/04/07/KotlinPrimerFunction/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/07/KotlinPrimerFunction/</loc>
+    <loc>https://enbandari.github.io/2017/05/22/KotlinForEachBreakContinue/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/10/Kotliner.cn%20%E4%B8%8A%E7%BA%BF%E5%95%A6/</loc>
+    <loc>https://enbandari.github.io/2017/04/06/Kotlin%201.1%20Event%20Report/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/06/Kotlin%201.1%20Event%20Report/</loc>
+    <loc>https://enbandari.github.io/2017/04/10/Kotliner.cn%20%E4%B8%8A%E7%BA%BF%E5%95%A6/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2015/12/18/Learn%20Kotlin%20with%20%E2%80%9CAdvent%20of%20Code%E2%80%9D/</loc>
+    <loc>https://enbandari.github.io/2017/04/05/Kotlin%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2011/07/20/Slides%20from%20the%20JVM%20Language%20Summit%20presentations/</loc>
+    <loc>https://enbandari.github.io/2011/07/20/Slides%20from%20the%20JVM%20Language%20Summit%20presentations/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/</loc>
+    <loc>https://enbandari.github.io/2015/12/18/Learn%20Kotlin%20with%20%E2%80%9CAdvent%20of%20Code%E2%80%9D/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/06/Kotlin%201.1%20Event/</loc>
+    <loc>https://enbandari.github.io/2017/03/06/Kotlin%201.1%20Event/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/17/Kotlin%201.1%20Release%20Candidate%20is%20Here/</loc>
+    <loc>https://enbandari.github.io/2017/02/17/Kotlin%201.1%20Release%20Candidate%20is%20Here/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/01/Kotlin%201.1%20Released%20with%20JavaScript%20Support,%20Coroutines%20and%20more/</loc>
+    <loc>https://enbandari.github.io/2017/03/21/Kotlin%201.1%20Event%20in%20Your%20City/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/05/Kotlin%201.1%20is%20also%20for%20Android%20Developers/</loc>
+    <loc>https://enbandari.github.io/2017/04/05/Kotlin%201.1%20is%20also%20for%20Android%20Developers/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/25/Kotlin%201.1.2%20is%20out/</loc>
+    <loc>https://enbandari.github.io/2017/03/14/Kotlin%201.1.1%20is%20out/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/14/Kotlin%201.1.1%20is%20out/</loc>
+    <loc>https://enbandari.github.io/2017/03/04/Kotlin%201.1/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/20/Kotlin%201.1%EF%BC%9A%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B7%AF%E4%B8%8A/</loc>
+    <loc>https://enbandari.github.io/2017/03/01/Kotlin%201.1%20Released%20with%20JavaScript%20Support,%20Coroutines%20and%20more/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/15/Kotlin%20Native%20%E8%AF%A6%E7%BB%86%E4%BD%93%E9%AA%8C%EF%BC%8C%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E5%84%BF/</loc>
+    <loc>https://enbandari.github.io/2017/04/25/Kotlin%201.1.2%20is%20out/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/04/Kotlin%201.1/</loc>
+    <loc>https://enbandari.github.io/2017/04/15/Kotlin%20Native%20%E8%AF%A6%E7%BB%86%E4%BD%93%E9%AA%8C%EF%BC%8C%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E5%84%BF/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/13/Kotlin%20Script%20%E4%BB%8B%E7%BB%8D/</loc>
+    <loc>https://enbandari.github.io/2017/02/20/Kotlin%201.1%EF%BC%9A%E6%88%91%E4%BB%AC%E5%9C%A8%E8%B7%AF%E4%B8%8A/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/</loc>
+    <loc>https://enbandari.github.io/2017/03/13/Kotlin%20Script%20%E4%BB%8B%E7%BB%8D/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/04/03/Kotlin%20%E5%85%BC%E5%AE%B9%20Java%20%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9D%91%20/</loc>
+    <loc>https://enbandari.github.io/2016/12/26/Kotlin%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0%E3%80%8E%E5%A4%9A%E7%BB%A7%E6%89%BF%E3%80%8F/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2016/12/26/Kotlin%20%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0%E3%80%8E%E5%A4%9A%E7%BB%A7%E6%89%BF%E3%80%8F/</loc>
+    <loc>https://enbandari.github.io/2017/04/10/Kotlin%20Native%EF%BC%9A%E6%9C%AC%E5%91%A8%E5%8F%88%E6%90%9E%E4%BA%86%E4%B8%AA%E5%A4%A7%E4%BA%8B%E6%83%85/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/27/Kotlin%20%E9%81%87%E5%88%B0%20MyBatis%EF%BC%9A%E5%88%B0%E5%BA%95%E6%98%AF%20Int%20%E7%9A%84%E9%94%99%EF%BC%8C%E8%BF%98%E6%98%AF%20data%20class%20%E7%9A%84%E9%94%99/</loc>
+    <loc>https://enbandari.github.io/2017/04/03/Kotlin%20%E5%85%BC%E5%AE%B9%20Java%20%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9A%84%E5%9D%91%20/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/18/Kotlin-on-Android-Now-official/</loc>
+    <loc>https://enbandari.github.io/2017/05/18/Kotlin-on-Android-Now-official/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/22/KotlinForEachBreakContinue/</loc>
+    <loc>https://enbandari.github.io/2017/03/27/Kotlin%20%E9%81%87%E5%88%B0%20MyBatis%EF%BC%9A%E5%88%B0%E5%BA%95%E6%98%AF%20Int%20%E7%9A%84%E9%94%99%EF%BC%8C%E8%BF%98%E6%98%AF%20data%20class%20%E7%9A%84%E9%94%99/</loc>
     
     <lastmod>2017-05-22T02:30:56.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/15/Good-news-chengdu_meetup-ucloud_support/</loc>
+    <loc>https://enbandari.github.io/2015/12/07/Kotlin%201.0%20Beta%203%20is%20Out!/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/02/06/Kotlin%201.1%20Beta%202%20%E5%8F%91%E5%B8%83~/</loc>
+    <loc>https://enbandari.github.io/2017/02/06/Kotlin%201.1%20Beta%202%20%E5%8F%91%E5%B8%83~/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2015/12/07/Kotlin%201.0%20Beta%203%20is%20Out!/</loc>
+    <loc>https://enbandari.github.io/2017/01/02/Kotlin%201.0.6/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2011/07/19/Hello%20World/</loc>
+    <loc>https://enbandari.github.io/2011/07/19/Hello%20World/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/01/02/Kotlin%201.0.6/</loc>
+    <loc>https://enbandari.github.io/2017/05/15/Good-news-chengdu_meetup-ucloud_support/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/22/2017-5-11-KotlinDSL2/</loc>
+    <loc>https://enbandari.github.io/2017/05/22/2017-5-11-KotlinDSL2/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/22/2017-5-13-KotlinMeetupChengDu/</loc>
+    <loc>https://enbandari.github.io/2017/05/22/2017-5-13-KotlinMeetupChengDu/</loc>
     
     <lastmod>2017-05-22T02:30:56.890Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/05/12/Kotlin_Native%20v0.2%20is%20out/</loc>
+    <loc>https://enbandari.github.io/2017/05/12/Kotlin_Native%20v0.2%20is%20out/</loc>
     
     <lastmod>2017-05-22T01:47:46.391Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.Kotliner.cn/2017/03/15/Kotlin%201.0.7%20is%20out/</loc>
+    <loc>https://enbandari.github.io/2017/03/15/Kotlin%201.0.7%20is%20out/</loc>
     
     <lastmod>2017-05-22T01:47:46.329Z</lastmod>
     
